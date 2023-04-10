@@ -1,0 +1,115 @@
+.navbar {
+    padding: 20px 15px;
+    position: relative;
+    min-height: 120px;
+    /* max-height: 200px; */
+    background-color: var(--section-color);
+
+}
+
+.navbar .navbar-brand img {
+    width: 40px;
+    height: 40px;
+}
+
+@media(min-width:992px) {
+    .navbar .collapse {
+        flex-basis: 0 !important;
+        flex-grow: 0 !important;
+    }
+
+}
+
+@media(max-width:992px) {
+    .search-form {
+        margin: 12px 0;
+        flex-grow: 0 !important;
+    }
+
+    .navbar-toggler {
+        background-color: #fff;
+        display: flex;
+    }
+
+    .navbar-toggler span {
+        display: flex;
+        color: #45AAC8;
+        font-size: 18px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+    }
+
+    .navbar-toggler span i {
+        text-align: center;
+    }
+
+
+}
+
+nav .container-fluid {
+    position: relative;
+    /* top: 32px;
+        left: 0; */
+    z-index: 3;
+}
+
+/* .search-form{
+    position: absolute;
+        top: 11px;
+        left: 21%;
+        width: 512px;
+    
+} */
+.search-form input {
+    border-radius: 16px 0 0 16px;
+    margin-right: 0 !important;
+    padding: 10px;
+    height: 55px;
+    width: 100%;
+}
+
+.search-form input:active {
+    outline: none;
+}
+
+.search-form button {
+    border-radius: 0 15px 16px 0;
+    background-color: var(--orange-color);
+    color: #fff;
+    width: 75px;
+    height: 55px;
+    border: none;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form button i {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.navbar-collapse {
+    background-color: var(--section-color);
+    /* center items */
+    text-align: center;
+    border-radius: 20px;
+}
+
+.collapse ul li a,
+.navbar .collapse ul li .btn {
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+
+.navbar .collapse ul li a.active,
+.navbar .collapse ul li .btn.active {
+    color: var(--primary-color) !important;
+}

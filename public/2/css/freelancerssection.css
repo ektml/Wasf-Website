@@ -1,0 +1,45 @@
+.freelanc {
+    height: 1000px;
+}
+
+.frelancer {
+    box-shadow: 0 5px 15px -8px;
+    border-radius: 21px;
+    margin: 50px 60px;
+
+}
+
+.frelancer .proparitis {
+    background-color: #F5F5F5;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 21px 21px 0;
+    padding: 35px 5px;
+}
+
+.imgfreelancer {
+    position: relative;
+    padding: 35px 5px;
+}
+
+.imgfreelancer img {
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+}
+
+.infoFreelancer {
+    padding: 5px;
+    display: grid;
+}
+
+.infoFreelancer div {
+    padding: 5px;
+    display: flex;
+}
+
+.infoFreelancer p {
+    padding: 5px;
+    font-weight: lighter;
+}
