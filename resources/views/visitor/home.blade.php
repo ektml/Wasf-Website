@@ -6,9 +6,7 @@
 @endsection
 @section("og-image")
 @endsection
-@section("title")
-home
-@endsection
+@section("title", "Wasf Platform | منصة وصف")
 @section("header")
 @endsection
 @section("css")
