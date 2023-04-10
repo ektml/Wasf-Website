@@ -1,15 +1,9 @@
-
-<meta name="description"
-    content="وصف هي المنصه الأولى في الشرق الأوسط لتنفيذ المشاريع الرقميه والبرمجيه التجاريه وغيرها">
-<!-- project header -->
-<meta name="description" content="إمتلك موقع لنشر الأخبار والمقالات العامه , وإكسب المال من الزيارات التي ستزور موقعك">
+<meta name="description" content="منصة وصف لخدمات الفري لانسر">
 <meta name="keywords" content="تجارة الكترونية , منصة وصف , مشاريع ربحية">
-<title>المقالات الربحية</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="title" Content="منصة وصف - المتجر">
 <link rel="shortcut icon" href="{{asset('assets/images/newlogo.png')}}" type="image/x-icon">
-
 <meta name="csrf_token" content="{{ csrf_token() }}" />
 <link rel="apple-touch-icon" href="https://www.ektml.com/public/static/img/logo_ektml-2.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
