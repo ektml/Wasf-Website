@@ -180,7 +180,7 @@
          --}}
          <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
             @csrf
-            <button class="dropdown-item  logout">
+            <button class="dropdown-item  ">
                 <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></button>
         </form>
     </div>
