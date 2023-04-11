@@ -573,7 +573,7 @@
                                             </td>
                                             @if($payment->pay_type =='wallet')
                                             <td>
-                                                <i class="fab fa-cc-wallet me-1"></i>محفظة
+                                                <i class="fa-solid fa-wallet" style="color: #976b0c;"></i>محفظة
                                             </td>
                                             @elseif ($payment->pay_type =='bank')
                                             <td>
