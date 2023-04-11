@@ -16,10 +16,12 @@
         </div>
         
         <div class="nav-x">
-        
-            <a href="{{ route('home') }}" class=" d-inline-block align-self-center ms-2 px-2{{ Request::is('home*') ? 'active' : '' }}">Home</a>
-            <a href="{{ route('products') }}"class=" d-inline-block align-self-center  ms-2 px-2">products</a>
-            <a href="{{ route('freelancers') }}"class=" d-inline-block align-self-center  ms-2 px-2{{ request()->is('freelancers') ? 'active' : '' }}">freelancers</a>
+            <div class="d-flex justify-content-end">
+                <a href="{{ route('home') }}" class=" d-inline-block align-self-center ms-2 px-2{{ Request::is('home*') ? 'active' : '' }}">Home</a>
+                <a href="{{ route('products') }}"class=" d-inline-block align-self-center  ms-2 px-2">products</a>
+                <a href="{{ route('freelancers') }}"class=" d-inline-block align-self-center  ms-2 px-2{{ request()->is('freelancers') ? 'active' : '' }}">freelancers</a>
+    
+            </div>
 
             @if (!auth()->check())
                 <a class="d-inline-block align-self-center" href="#" class="btn" data-bs-toggle="modal"
