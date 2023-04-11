@@ -85,25 +85,28 @@ product
                  </a>
                @foreach ( $products as $product )
                <div class="card">
-                <div class="image-product">
-                   <img src="{{ asset('assets/images/product/'.$product->img1) }}" class="card-img-top" alt="product image">
-
-                   <a href="{{route("freelanc.product.edit",$product->id)}}"class="edit">
-                      <i class="fa fa-pencil"></i>
-                   </a>
-                  </div>
-                          <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <div class="freelancer-info d-flex align-items-center ">
+                <a href="{{route('freelanc.product.show' ,$product->id)}}">
+                    <div class="image-product">
+                       <img src="{{ asset('assets/images/product/'.$product->img1) }}" class="card-img-top" alt="product image">
+    
+                       <a href="{{route("freelanc.product.edit",$product->id)}}"class="edit">
+                          <i class="fa fa-pencil"></i>
+                       </a>
+                      </div>
+                              <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <div class="freelancer-info d-flex align-items-center ">
+                                  
+                                  
+                                </div>
+                                <div  class="prod-likes justify-content-start ">
+                                    <i class="fa-solid fa-heart align-self-center"></i>
+                                    <span>{{ $product->likes->count() }}</span>
+                                </div>
                               
-                              
-                            </div>
-                            <div  class="prod-likes justify-content-start ">
-                                <i class="fa-solid fa-heart align-self-center"></i>
-                                <span>{{ $product->likes->count() }}</span>
-                            </div>
-                          
-                          </div>
+                              </div>
+    
+                            </a>
                </div>
                @endforeach
                
