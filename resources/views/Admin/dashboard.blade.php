@@ -585,7 +585,7 @@
                                             <td>
                                                 <button type="button"
                                                     class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
-                                                    View Details
+                                                  عرض التفاصيل
                                                 </button>
                                             </td>
                                         </tr>
