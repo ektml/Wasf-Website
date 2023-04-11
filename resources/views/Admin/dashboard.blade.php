@@ -252,7 +252,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="float-end">
-                                <div class="dropdown">
+                                {{-- <div class="dropdown">
                                     <a class=" dropdown-toggle" href="#" id="dropdownMenuButton2"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="text-muted">All Members<i
@@ -264,16 +264,16 @@
                                         <a class="dropdown-item" href="#">Revenue</a>
                                         <a class="dropdown-item" href="#">Join Date</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <h4 class="card-title mb-4">Top Users</h4>
+                            <h4 class="card-title mb-4">Top users</h4>
 
                             <div data-simplebar style="max-height: 339px;">
                                 <div class="table-responsive">
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::where('type','!=','admin')->get() as $user )
+                                            @foreach ( App\Models\User::where('type','freelancer')->get() as $user )
 
 
                                             <tr>
@@ -325,7 +325,7 @@
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::where('type','!=','admin')->get() as $user )
+                                            @foreach ( App\Models\User::where('type','freelancer')->get() as $user )
 
 
                                             <tr>
