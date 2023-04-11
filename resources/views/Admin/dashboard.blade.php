@@ -276,7 +276,7 @@
                                             @foreach ( App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
                                         $user->request()->count();
 
-                                            })->take(3) as $user )
+                                            })->take(10) as $user )
 
 
                                             <tr>
@@ -328,7 +328,10 @@
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::where('type','freelancer')->get() as $user )
+                                            @foreach ( App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
+                                                $user->request()->count();
+        
+                                                    })->take(10) as $user )
 
 
                                             <tr>
