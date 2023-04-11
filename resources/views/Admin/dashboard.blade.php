@@ -288,7 +288,7 @@
                                                 <td>
                                                     <h6 class="font-size-15 mb-1 fw-normal">{{$user->name}}</h6>
                                                     <p class="text-muted font-size-13 mb-0"><i
-                                                            class="mdi mdi-map-marker"></i> {{$user->phone}}</p>
+                                                            class="mdi mdi-phone"></i> {{$user->phone}}</p>
                                                 </td>
                                                 <td><span class="badge bg-soft-success font-size-12">Success</span></td>
                                                 <td class="text-muted fw-semibold text-end"><i
@@ -344,7 +344,7 @@
                                                 <td>
                                                     <h6 class="font-size-15 mb-1 fw-normal">{{$user->name}}</h6>
                                                     <p class="text-muted font-size-13 mb-0"><i
-                                                            class="mdi mdi-map-marker"></i> {{$user->phone}}</p>
+                                                            class="mdi mdi-phone"></i> {{$user->phone}}</p>
                                                 </td>
                                                 <td><span class="badge bg-soft-success font-size-12">Success</span></td>
                                                 <td class="text-muted fw-semibold text-end"><i
