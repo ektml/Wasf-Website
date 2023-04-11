@@ -178,8 +178,8 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
          @method('delete')
-            <a class="dropdown-item  logout" type="submit">
-                <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></a>
+            <buttom class="dropdown-item  logout" type="submit">
+                <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></buttom>
         </form>
        
      
