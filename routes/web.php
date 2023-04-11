@@ -23,7 +23,7 @@ use App\Http\Controllers\payment\HayperpayController;
 
 
 
-Route::get('logout',function(){
+Route::get('/logout',function(){
 
     Auth::guard('web')->logout();
 
