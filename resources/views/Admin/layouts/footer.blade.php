@@ -22,7 +22,7 @@
     <div data-simplebar class="h-100">
         <div class="rightbar-title d-flex align-items-center p-3">
 
-            <h5 class="m-0 me-2">Settings</h5>
+            <h5 class="m-0 me-2">الاعدادات</h5>
 
             <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
                 <i class="mdi mdi-close noti-icon"></i>
@@ -32,32 +32,32 @@
         <!-- Settings -->
         <hr class="m-0" />
         <div class="p-4">
-            <h6 class="mb-3">Layout</h6>
+            <h6 class="mb-3">تخطيط</h6>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout"
                     id="layout-vertical" value="vertical">
-                <label class="form-check-label" for="layout-vertical">Vertical</label>
+                <label class="form-check-label" for="layout-vertical">عمودي</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout"
                     id="layout-horizontal" value="horizontal">
-                <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                <label class="form-check-label" for="layout-horizontal">افقي</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+            <h6 class="mt-4 mb-3 pt-2">وضع التخطيط</h6>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-mode"
                     id="layout-mode-light" value="light">
-                <label class="form-check-label" for="layout-mode-light">Light</label>
+                <label class="form-check-label" for="layout-mode-light">فاتح</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-mode"
                     id="layout-mode-dark" value="dark">
-                <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                <label class="form-check-label" for="layout-mode-dark">داكن</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+            <h6 class="mt-4 mb-3 pt-2"></h6>حجم التخطيط</h6>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-width"
@@ -70,14 +70,14 @@
                 <label class="form-check-label" for="layout-width-boxed">Boxed</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+            <h6 class="mt-4 mb-3 pt-2">موضع التخطيط</h6>
 
-            <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+            <h6 class="mt-4 mb-3 pt-2">لون الشريط العلوي</h6>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="topbar-color"
                     id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
-                <label class="form-check-label" for="topbar-color-light">Light</label>
+                <label class="form-check-label" for="topbar-color-light">فاتح</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="topbar-color"
@@ -85,17 +85,17 @@
                 <label class="form-check-label" for="topbar-color-dark">Dark</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+            <h6 class="mt-4 mb-3 pt-2 sidebar-setting">حجم الشريط الجانبي</h6>
 
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-size"
                     id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
-                <label class="form-check-label" for="sidebar-size-default">Default</label>
+                <label class="form-check-label" for="sidebar-size-default">الافتراضي</label>
             </div>
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-size"
                     id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'small')">
-                <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                <label class="form-check-label" for="sidebar-size-compact">مضغوط</label>
             </div>
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-size"
@@ -103,25 +103,25 @@
                 <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+            <h6 class="mt-4 mb-3 pt-2 sidebar-setting">لون الشريط الجانبي</h6>
 
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-color"
                     id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
-                <label class="form-check-label" for="sidebar-color-light">Light</label>
+                <label class="form-check-label" for="sidebar-color-light">فاتح</label>
             </div>
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-color"
                     id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
-                <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                <label class="form-check-label" for="sidebar-color-dark">داكن</label>
             </div>
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-color"
                     id="sidebar-color-colored" value="colored" onchange="document.body.setAttribute('data-sidebar', 'colored')">
-                <label class="form-check-label" for="sidebar-color-colored">Colored</label>
+                <label class="form-check-label" for="sidebar-color-colored">ملون</label>
             </div>
 
-            <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+            <h6 class="mt-4 mb-3 pt-2">الاتجاه</h6>
 
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-direction"
