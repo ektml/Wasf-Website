@@ -27,7 +27,6 @@ Route::get('/logout',function(){
 
     Auth::guard('web')->logout();
 
-
         return redirect('/');
 
 });
