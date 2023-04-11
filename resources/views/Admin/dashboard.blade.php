@@ -104,19 +104,19 @@
                                     <li class="list-inline-item chart-border-left me-0 border-0">
                                         <h3 class="text-primary">SAR <span
                                                 data-plugin="counterup">{{App\Models\Payment::all()->sum('total')}}</span><span
-                                                class="text-muted d-inline-block font-size-15 ms-3">Income</span></h3>
+                                                class="text-muted d-inline-block font-size-15 ms-3">الاجمالي</span></h3>
                                     </li>
                                     <li class="list-inline-item chart-border-left me-0">
                                         <h3><span
                                                 data-plugin="counterup">{{App\Models\Selled::all()->count()}}</span><span
-                                                class="text-muted d-inline-block font-size-15 ms-3">Sales</span>
+                                                class="text-muted d-inline-block font-size-15 ms-3">المبيعات</span>
                                         </h3>
                                     </li>
-                                    <li class="list-inline-item chart-border-left me-0">
+                                    {{-- <li class="list-inline-item chart-border-left me-0">
                                         <h3><span data-plugin="counterup">3.6</span>%<span
                                                 class="text-muted d-inline-block font-size-15 ms-3">Conversation
                                                 Ratio</span></h3>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
 

@@ -8,7 +8,7 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="{{ asset('Admin3/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/newlogo.png') }}">
     <link rel="stylesheet" href="{{ asset('Admin3/assets/css/all.min.css') }}">
     <!-- Bootstrap Css -->
     <link href="{{ asset('Admin3/assets/css/bootstrap-rtl.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
