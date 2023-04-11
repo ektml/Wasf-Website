@@ -276,7 +276,7 @@
                                             @foreach ( App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
                                         $user->request()->count();
 
-                                            })->take(10) as $user )
+                                            })->take(3) as $user )
 
 
                                             <tr>
