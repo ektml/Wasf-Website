@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/wasfplat/public_html/
-    - /bin/cp -R * $DEPLOYPATH
