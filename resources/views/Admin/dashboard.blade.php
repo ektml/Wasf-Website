@@ -273,7 +273,7 @@
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
+                                            @foreach ( App\Models\User::all()->where('type','customer')->sortBy(function($user){
                                         $user->request()->count();
 
                                             })->take(10) as $user )
