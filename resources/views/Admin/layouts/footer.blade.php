@@ -62,12 +62,12 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-width"
                     id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
-                <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                <label class="form-check-label" for="layout-width-fuild">ممتد</label>
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-width"
                     id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed')">
-                <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                <label class="form-check-label" for="layout-width-boxed">محاط</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2">موضع التخطيط</h6>
@@ -82,7 +82,7 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="topbar-color"
                     id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
-                <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                <label class="form-check-label" for="topbar-color-dark">داكن</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">حجم الشريط الجانبي</h6>
@@ -100,7 +100,7 @@
             <div class="form-check sidebar-setting">
                 <input class="form-check-input" type="radio" name="sidebar-size"
                     id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
-                <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                <label class="form-check-label" for="sidebar-size-small">صغير (عرض الأيقونات)</label>
             </div>
 
             <h6 class="mt-4 mb-3 pt-2 sidebar-setting">لون الشريط الجانبي</h6>
