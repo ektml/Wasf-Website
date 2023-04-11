@@ -553,7 +553,7 @@
 
 
                                             <td>
-                                                {{  date_format($payment->created_at,'Y/m/d h:m')}}
+                                                {{  date_format($payment->created_at,' h:m  Y-m-d ')}}
                                             </td>
                                             <td>
                                                 {{$payment->total}}
