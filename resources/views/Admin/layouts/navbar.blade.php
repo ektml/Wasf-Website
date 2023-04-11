@@ -178,9 +178,9 @@
         {{-- <a class="dropdown-item  logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></a>
          --}}
-         <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+         <form id="logout-form" action="{{ route('logout') }}" method="GET" >
             @csrf
-            <button class="dropdown-item  ">
+            <button class="dropdown-item ">
                 <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">Sign out</span></button>
         </form>
     </div>
