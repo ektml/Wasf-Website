@@ -135,7 +135,8 @@
                             <div class="row align-items-center">
                                 <div class="col-sm-8">
                                     <p class="text-white font-size-18">Enhance your <b>Campaign</b> for better outreach
-                                        <i class="mdi mdi-arrow-right"></i></p>
+                                        <i class="mdi mdi-arrow-right"></i>
+                                    </p>
                                     <div class="mt-4">
                                         <a href="javascript: void(0);"
                                             class="btn btn-success waves-effect waves-light">Upgrade Account!</a>
@@ -273,8 +274,9 @@
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::all()->where('type','customer')->sortBy(function($user){
-                                        $user->request()->count();
+                                            @foreach (
+                                            App\Models\User::all()->where('type','customer')->sortBy(function($user){
+                                            $user->request()->count();
 
                                             })->take(10) as $user )
 
@@ -328,10 +330,11 @@
                                     <table class="table table-borderless table-centered table-nowrap">
                                         <tbody>
 
-                                            @foreach ( App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
-                                                $user->request()->count();
-        
-                                                    })->take(10) as $user )
+                                            @foreach (
+                                            App\Models\User::all()->where('type','freelancer')->sortBy(function($user){
+                                            $user->request()->count();
+
+                                            })->take(10) as $user )
 
 
                                             <tr>
@@ -512,7 +515,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Latest Transaction</h4>
+                            <h4 class="card-title mb-4">احدث العمليات</h4>
                             <div class="table-responsive">
                                 <table class="table table-centered table-nowrap mb-0">
                                     <thead class="table-light">
@@ -523,13 +526,13 @@
                                                     <label class="form-check-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th>
-                                            <th>Order ID</th>
-                                            <th>user Name</th>
-                                            <th>Date</th>
-                                            <th>Total</th>
-                                            <th>Payment Status</th>
-                                            <th>Payment Method</th>
-                                            <th>View Details</th>
+                                            <th>رقم العلمية</th>
+                                            <th>اسم المستخدم</th>
+                                            <th>تاريخ</th>
+                                            <th>المبلغ</th>
+                                            <th>حالة الدفع</th>
+                                            <th>طريقة الدفع</th>
+                                            <th>عرض </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -557,21 +560,28 @@
                                             </td>
                                             <td>
                                                 @if($payment->status=='pending')
-                                                <span
-                                                    class="badge rounded-pill bg-soft-warning font-size-12">pending</span>
+                                                <span class="badge rounded-pill bg-soft-warning font-size-12">قيد
+                                                    التنفيذ</span>
                                                 @elseif ($payment->status=='purchase')
-                                                <span
-                                                    class="badge rounded-pill bg-soft-success font-size-12">purchase</span>
+                                                <span class="badge rounded-pill bg-soft-success font-size-12">دفع</span>
 
                                                 @elseif ($payment->status=='refund')
-                                                <span
-                                                    class="badge rounded-pill bg-soft-warning font-size-12">Refund</span>
+                                                <span class="badge rounded-pill bg-soft-warning font-size-12">اعاده
+                                                    الدفع</span>
                                                 @endif
 
                                             </td>
+                                            @if($payment->pay_type =='wallet')
                                             <td>
-                                                <i class="fab fa-cc-mastercard me-1"></i>{{$payment->pay_type}}
+                                                <i class="fab fa-cc-wallet me-1"></i>محفظة
                                             </td>
+                                            @elseif ($payment->pay_type =='bank')
+                                            <td>
+                                                <i class="fab fa-cc-mastercard me-1"></i>فيزا
+                                            </td>
+
+                                            @endif
+
                                             <td>
                                                 <button type="button"
                                                     class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">
