@@ -83,7 +83,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="float-end">
-                                <div class="dropdown">
+                                {{-- <div class="dropdown">
                                     <a class="dropdown-toggle text-reset" href="#" id="dropdownMenuButton5"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="fw-semibold">Sort By:</span> <span class="text-muted">Yearly<i
@@ -95,9 +95,9 @@
                                         <a class="dropdown-item" href="#">Yearly</a>
                                         <a class="dropdown-item" href="#">Weekly</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <h4 class="card-title mb-4">Sales Analytics</h4>
+                            <h4 class="card-title mb-4">احصائيات المبيعات</h4>
 
                             <div class="mt-1">
                                 <ul class="list-inline main-chart mb-0">
