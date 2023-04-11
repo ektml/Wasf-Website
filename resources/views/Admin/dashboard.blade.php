@@ -274,7 +274,7 @@
                                         <tbody>
 
                                             @foreach ( App\Models\User::where('type','freelancer')->sortBy(function($user){
-                                        $user->request()->count()
+                                        $user->request()->count();
 
                                             })->take(10) as $user )
 
