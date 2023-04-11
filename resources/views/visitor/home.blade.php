@@ -69,7 +69,7 @@
         <div class="scrollable d-flex" >
             @forelse  ($categories as $category)
                 <div class="category ">
-                    <div class="image"><i class="fa {{ $category->icon }}"></i></div>
+                <div class="image" style="display: flex; justify-content: center; align-items: center;"><i style="font-size: 6rem;" class="fa {{ $category->icon }}"></i></div>
                     <p>{{ $category->title_en }}</p>
                 </div>
                 @empty
