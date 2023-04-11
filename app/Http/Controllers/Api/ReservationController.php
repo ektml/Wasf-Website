@@ -16,7 +16,6 @@ class ReservationController extends Controller
     {   
         try{
             $reservations = Reservation::where('user_id', auth('api')->user()->id)->with('freelancer', 'offer')->get();
-            
           
                 return $this->returnData(200, 'Reservations Returned Successfully', $reservations);
         }catch(\Exception $e){
