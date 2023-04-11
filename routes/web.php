@@ -21,6 +21,15 @@ use App\Http\Controllers\FreelancerServiceController;
 use App\Http\Controllers\payment\HayperpayController;
 
 
+
+
+Route::get('/logout',function(){
+
+    Auth::guard('web')->logout();
+
+        return redirect('/');
+
+});
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
