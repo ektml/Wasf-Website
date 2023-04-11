@@ -276,7 +276,7 @@
 
                                             @foreach (
                                             App\Models\User::all()->where('type','customer')->sortBy(function($user){
-                                            $user->request()->count();
+                                            $user->request()->count() + $user->selled()->count();
 
                                             })->take(10) as $user )
 
@@ -573,7 +573,7 @@
                                             </td>
                                             @if($payment->pay_type =='wallet')
                                             <td>
-                                                <i class="fa-solid fa-wallet" style="color: #976b0c;"></i>محفظة
+                                                 <i class="fa-solid fa-wallet"></i>محفظة
                                             </td>
                                             @elseif ($payment->pay_type =='bank')
                                             <td>

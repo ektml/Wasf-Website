@@ -2,6 +2,7 @@
 namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Review;
+use App\Models\Selled;
 use App\Models\Wallet;
 use App\Models\Product;
 use App\Models\Requests;
@@ -96,5 +97,8 @@ class User extends Authenticatable implements JWTSubject
 
     public function promocodeused(){
         return $this->hasMany(UserPromoCode::class);
+    }
+    public function selled(){
+        return $this->hasMany(Selled::class);
     }
 }
