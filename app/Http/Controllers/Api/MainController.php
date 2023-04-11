@@ -1,14 +1,17 @@
 <?php
 namespace App\Http\Controllers\Api;
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Photo;
 use App\Models\AboutUs;
 use App\Models\Product;
 use App\Models\Service;
+use App\Models\Requests;
+use App\Models\Reservation;
+use App\Models\Offer;
 use App\Models\Category;
 use App\Models\ContactUs;
 use App\Models\Cart;
-use Illuminate\Http\Request;
 use App\Models\FreelancerService;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiResponseTrait;
@@ -16,13 +19,13 @@ use App\Http\Controllers\Api\ApiResponseTrait;
 class MainController extends Controller
 {
     use ApiResponseTrait;
-    
+
     public function getServicesOfCategories($cat_id=[])
     {
         try{
             $services = [];
             $cate_id = json_decode($cat_id);
-            
+
             foreach ($cate_id as $id)
             {
                 foreach(Service::where('category_id',$id)->get() as $serv)
@@ -30,25 +33,28 @@ class MainController extends Controller
                    array_push($services,$serv);
                 }
             }
-
             return $this->returnData(201, 'Categories Returned Successfully', $services);
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'There Is No AboutUs Info');
         }
     }
-    
-    
+
+
+
+
     public function addServiceToFreelancer($cat_id,$serv_id){
         try{
-         
+
             return $this->returnData(201, 'Categories Returned Successfully');
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'There Is No AboutUs Info');
         }
     }
-    
+
+
+
 
     public function aboutUs()
     {
@@ -93,23 +99,23 @@ class MainController extends Controller
 
 
 
-    
-    
-    
-    
-    
+
+
+
+
+
     public function ProductsOfCategory(Request $request, $cat_id, $serv_id = null)
     {
         try{
             $category = Category::find($cat_id);
             $service = Service::find($serv_id);
-            
+
             if(!$category){
                 return $this->returnError('400', "Category Doesn't Exists");
             }elseif($category && !$service){
                 $products = Product::where('cat_id', $cat_id)->with(['freelancer', 'category', 'service'])->get();
                 $services= $category->services()->select('id', 'service_en','category_id')->get();
-                
+
                 foreach($products as $product){
                     $product['img1'] = asset('assets/images/product/'.$product->img1);
                     $product['img2'] = asset('assets/images/product/'.$product->img2);
@@ -118,7 +124,7 @@ class MainController extends Controller
                     $product['likes'] = $product->likes()->count();
                 }
                 return $this->returnData(200, 'Products Returned Successfully', compact('services','products'));
-                
+
             }elseif($category && $service){
                 $products = Product::where('cat_id', $cat_id)->where('service_id', $serv_id)->with(['freelancer', 'category', 'service'])->get();
                 foreach($products as $product){
@@ -248,17 +254,84 @@ class MainController extends Controller
         }
         return $this->returnData(200, 'Services Returned Successfully', $services);
     }
-    
-    
-    
-    
-    
+
+
+
+
+
+
+    public function createNewRequestOffer(Request $request, $request_id)
+    {
+        try{
+            $request->validate([
+                'price' => 'required',
+            ]);
+
+            $user_id = auth('api')->user()->id;
+            $requests = Requests::find($request_id);
+            
+            if(!$requests){
+                return $this->returnError(400, "Request Doesn't Exists");
+            }else{
+                
+            $offer = $requests->offer()->create([
+                'freelancer_id' => $user_id,
+                'price' => $request->price,
+                'type' => "request",
+                'status' =>"pending",
+            ]);
+            return $this->returnData(200, 'Offer Sent Successfully', $offer);
+            }
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, 'Offer Sent Failed');
+        }
+    }
+
+
+
+
+
+    public function createNewReservationOffer(Request $request, $reservation_id)
+    {
+        try{
+            $request->validate([
+                'price' => 'required',
+            ]);
+
+            $user_id = auth('api')->user()->id;
+            $reservation = Reservation::find($reservation_id);
+            
+            if(!$reservation){
+                return $this->returnError(400, "Reservation Doesn't Exists");
+            }else{
+                
+            $offer = Offer::create([
+                'freelancer_id' => $user_id,
+                'price' => $request->price,
+                'offersable_type' => "reservation",
+                'offersable_id' => $reservation_id,
+                'type' => "reservation",
+                'status' =>"pending",
+            ]);
+            return $this->returnData(200, 'Offer Sent Successfully', $offer);
+            }
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, 'Offer Sent Failed');
+        }
+    }
+
+
+
+
+
     public function allProductsInCart()
     {
         try{
             $cart_items = Cart::with('cartsable')->get();
             $total = Cart::select('price')->get();
-            
+
             foreach($cart_items as $item){
                 $item->cartsable['attachment'] = asset('assets/images/product/'.$item->cartsable['attachment']);
                 $item->cartsable['img1'] = asset('assets/images/product/'.$item->cartsable['img1']);
@@ -271,7 +344,7 @@ class MainController extends Controller
             return $this->returnError(400, "Carts Don't Found");
         }
     }
-    
-    
-    
+
+
+
 }

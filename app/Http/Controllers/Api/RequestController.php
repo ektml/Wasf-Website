@@ -27,7 +27,7 @@ class RequestController extends Controller
               }
 
               if($request->offer()->exists()){
-                // $request['price'] = $request->offer->where('freelancer_id', $request->freelancer_id)->first()->price;
+                $request['price'] = $request->offer->where('freelancer_id', $request->freelancer_id)->first()->price;
               }
               else{
                  $request['price'] = null; 

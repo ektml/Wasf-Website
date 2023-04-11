@@ -34,13 +34,13 @@ class photoController extends Controller
             $request->validate([
                 'photo' => 'required',
                 'name' => 'required',
-                'description' => 'required',
-                'price' => 'required',
-                'camera_brand' => 'required',
-                'lens_type' => 'required',
-                'size_width' => 'required',
-                'size_height' => 'required',
-                'size_type' => 'required',
+                'description' => 'nullable',
+                'price' => 'nullable',
+                'camera_brand' => 'nullable',
+                'lens_type' => 'nullable',
+                'size_width' => 'nullable',
+                'size_height' => 'nullable',
+                'size_type' => 'nullable',
                 'location' => 'nullable',
             ]);
 
@@ -48,18 +48,26 @@ class photoController extends Controller
             $photo_name = time(). "." .$file_extension;
             $request->file("photo")->move(public_path('assets/images/photo/'), $photo_name);
 
+            if(auth('api')->user()->type != 'freelancer'){
+                return $this->returnError(400, "Doesn't a Freelancer");
+            }
+            
+            if(auth('api')->user()->is_photographer != 1){
+                return $this->returnError(400, "Freelancer Doesn't a Photographer");
+            }
+            
             $photo = Photo::create([
                 "freelancer_id" => auth()->user()->id,
                 "photo" => $photo_name,
                 "name" => $request->name,
-                "description" => $request->description,
-                "price" => $request->price,
-                "camera_brand" => $request->camera_brand,
-                "lens_type" => $request->lens_type,
-                "size_width" => $request->size_width,
-                "size_height" =>$request->size_height,
-                "size_type" => $request->size_type,
-                "location" => $request->location,
+                // "description" => $request->description,
+                // "price" => $request->price,
+                // "camera_brand" => $request->camera_brand,
+                // "lens_type" => $request->lens_type,
+                // "size_width" => $request->size_width,
+                // "size_height" =>$request->size_height,
+                // "size_type" => $request->size_type,
+                // "location" => $request->location,
             ]);
             $photo->photo =  asset('assets/images/photo/'.$photo->photo);
             return $this->returnData(201, 'Photo Created Successfully', $photo);
