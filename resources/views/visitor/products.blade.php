@@ -87,7 +87,7 @@ products
                 <div class="filter d-flex align-items-baseline">
                     <button class=" filter-button btn d-flex align-items-center justify-content-between">
                         <i class="fa-solid fa-arrow-up-wide-short"></i>
-                        <span>sort by:</span>
+                        <span>{{__('translate.sort by')}}:</span>
                     </button>
                     <span class="px-2">
                         @foreach ( $filter as $f )

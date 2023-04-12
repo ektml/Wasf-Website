@@ -14,32 +14,8 @@
 
 <style>
 
-@media(max-width:767px){
 
-    .freelanc.v2 .totals i{
-        display: none;
-    }
 
-    .freelanc.v2 .totals div p{
-        display: flex;
-        flex-direction: column;
-
-    }
-
-   
-.freelanc {
-    flex-direction: column;
-    /* margin: 0 30px; */
-    margin-top: 40px;
-    
-    margin-top: 70px;
-    width: calc(100% - 11px);
-    max-width: 880px;
-    /* width: 100%; */
-    margin-left: 14px;
-    margin-right: 68px;
-
-}
 </style>
 @endsection
 
@@ -65,7 +41,7 @@
 
 <div class="products-page py-5">
     <div class="container">
-        <section class="freelanc v2 " style="max-width: 1200px;">
+        <section class="freelanc v2  freelancerinprofile" style="max-width: 1200px;">
             <div class="image">
                 <img src="{{ asset("Admin3/assets/images/users/".$freelancer->profile_image) }}" alt="">
             </div>

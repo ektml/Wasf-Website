@@ -130,6 +130,12 @@ z-index: 1000;
  width:60%;
 
 }
+@media(max-width:400px){
+    .modal-uk form .halfwidthinput{
+        width:90%;
+       
+       }  
+}
 .addrequesticon{
     background-color: #f26b1de8;
     position: fixed;
@@ -2084,6 +2090,34 @@ font-size: 1rem;
     .freelanc.v2 .totals a p{
         font-size: 17px;
     }
+}
+
+@media(max-width:767px){
+
+    .freelanc.freelancerinprofile .totals i{
+        display: none;
+    }
+
+    .freelanc.freelancerinprofile .totals div p{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+   
+    .freelanc.freelancerinprofile {
+        flex-direction: column;
+        /* margin: 0 30px; */
+        margin-top: 40px;
+        /* margin-top: 70px; */
+        width: calc(100% - 20px);
+        max-width: 880px;
+        /* width: 100%; */
+        /* margin-right: 14px; */
+        margin-left:20px;
+    
+    }
+
 }
 .products-page .productscroll{
     display: flex;

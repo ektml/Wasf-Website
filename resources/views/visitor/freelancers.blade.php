@@ -79,7 +79,7 @@ freelancers
             <div class="filter d-flex align-items-baseline">
             <button class=" filter-button btn d-flex align-items-center justify-content-between">
                 <i class="fa-solid fa-arrow-up-wide-short"></i>
-                <span >sort by:</span>
+                <span >{{__('translate.sort by')}}:</span>
             </button>
             <span class="px-2">
                 @foreach ( $filter as  $f )
@@ -106,17 +106,17 @@ freelancers
                     <input type="checkbox" name="freelancsearch[]" value="highestrating" id="highestrating" @if (in_array('highestrating',$filter))
                     checked
                 @endif>
-                    <label for="highestrating"class="bold" >highest rating</label>
+                    <label for="highestrating"class="bold" >{{__('translate.highest rating')}}</label>
                 </div>
 
                 <div>
                     <input type="checkbox" name = "freelancsearch[]" value="moreproject" id="moreproject"id="moreproject" @if (in_array('moreproject',$filter))
                     checked @endif>
-                    <label for="moreproject"class="bold">more project</label>
+                    <label for="moreproject"class="bold">{{__('translate.more project')}}</label>
                 </div>
 
                 <div class="btn-contianer d-flex justify-content-center align-items-center">
-                    <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary">apply</button>
+                    <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary">{{__('translate.apply')}}</button>
                 </div>
             </form>
             </div>

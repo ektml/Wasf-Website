@@ -33,6 +33,9 @@ return [
     'apple store'=>'apple store',
     
     'sort by'=> 'sort by',
+    'apply'=> 'apply',
+    'highest rating'=>'highest rating',
+    'more project'=>'more project',
 
     'edit password' => 'Edit password',
     'edit profile' => 'Edit profile',

@@ -32,6 +32,10 @@ return [
   'google play'=>'متجر جوجل بلاي',
   'apple store'=>'متجر ابل',
   'sort by'=> 'ترتيب حسب',
+  'apply'=> 'تطبيق',
+'highest rating'=>'التقييم الأعلى',
+'more project'=>'المزيد من المشاريع',
+  
 
 
     'edit password' => 'تعديل كلمة السر',
