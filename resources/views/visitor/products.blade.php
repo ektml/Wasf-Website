@@ -37,7 +37,12 @@ products
                 <li><a href="{{route('products',['cat_id'=>$category->id])}}" @if(isset($cat_id) &&
                         $cat_id==$category->id)
                         class="active"
-                        @endif >{{ $category->title_en }}</a></li>
+                        @endif >
+                        @if(app()->getLocale()=='ar')
+                        {{ $category->title_ar }}
+                        @else
+                        {{ $category->title_en }}
+                        @endif</a></li>
                 @else
                 <li><a href="#" class="linktosubcategory @if(isset($cat_id) && $cat_id==$category->id)
                     active
@@ -214,7 +219,6 @@ products
 
 @section("js")
 <script>
-    
     $(".filter-button").click(function(){
         $(".filter-items").toggle();
     });

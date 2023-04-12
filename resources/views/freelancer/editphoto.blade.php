@@ -54,14 +54,7 @@ label span{
     position: relative;
 
 }
-.search{
-    position: absolute;
-    top:0;
-    right:0;
-    background-color: #fff;
-    color: #C0C0C0;
-    border: none;
-}
+
 </style>
 @endsection
 
@@ -173,7 +166,7 @@ value="{{$photo->lens_type}}">
   <label for="lens" class="form-label mb-3 " id>location<span>(optional)</span></label>
   <div class="location" >
       <input  class="form-control " id="lens" placeholder="Search"  name="location"value="{{$photo->location}}" >
-      <button class="search" type="button">
+      <button class="search-location" type="button">
           <i class="fa fa-search"
           ></i>
       </button>

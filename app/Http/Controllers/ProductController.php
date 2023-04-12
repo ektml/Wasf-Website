@@ -101,7 +101,47 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        
+       
+        $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
+        $size=number_format($request->file("attachment")->getSize()/ 1024,2);
+        $type=$request->file("attachment")->getCLientOriginalExtension();
+        $file_extention = $request->file("attachment")->getCLientOriginalExtension();
+        $attachment_name=time(). ".".$file_extention;
+        $request->file("attachment")->move(public_path('front/upload/files/'),$attachment_name);
+
+        $file_extention=$request->file("img1")->getCLientOriginalExtension();
+        $img1=time(). ".".$file_extention;
+        $request->img1->move(public_path('assets/images/product/'),$img1);
+
+        $file_extention=$request->file("img2")->getCLientOriginalExtension();
+        $img2=time(). ".".$file_extention;
+        $request->img2->move(public_path('assets/images/product/'),$img2);
+
+        $file_extention=$request->file("img3")->getCLientOriginalExtension();
+        $img3=time(). ".".$file_extention;
+        $request->img3->move(public_path('assets/images/product/'),$img3);
+
+        $product= Product::create([
+            'name'=> $request->name,
+            "freelancer_id" =>auth()->user()->id,
+            'cat_id'=> $request->category_id,
+            'service_id'=> $request->service_id,
+            'price'=> $request->price,
+            'description'=> $request->description,
+            'attachment' =>  $attachment_name,
+            'img1' => $img1,
+            'img2' => $img2,
+            'img3' => $img3,
+        ]);
+
+
+    foreach($request['group-a'] as $proprity){
+        $product->proprity()->create([
+            'key'=>$proprity['prop_key'],
+            'value'=>$proprity['prop_value'],
+        ]);
+    } 
+
     }
 
 

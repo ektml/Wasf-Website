@@ -39,6 +39,10 @@ a{
     pointer-events: auto;
 
 }
+
+[dir=rtl] input {
+    text-align:start;
+}
 .deadline{
     color:red;
 }
@@ -885,6 +889,18 @@ form.search-home  input , form.search-home  button {
         
         width:350px !important;
     } 
+}
+
+
+.cart-navicon{
+    position: relative;
+}
+
+#cart-count{
+position: absolute;
+top: -15px;
+right: 0;
+font-size: 14px;
 }
 /* end nav2 */
 
@@ -1962,7 +1978,7 @@ font-size: 1rem;
     flex-direction: column;
     justify-content: space-around;
     background-color: #F5F5F5;
-    border-radius: 0 17px 17px 0;
+    border-radius:  17px 0 0 17px;
 
 
 }
@@ -2373,8 +2389,7 @@ margin:0 4px;
 @media(min-width:767px){
 .charts .chartcheckout{
     position: relative;
-    top: -193px;
-
+    top: -162px;
     padding-top: 220px;
     width: 500px;
 }
@@ -3611,3 +3626,13 @@ padding: 10px 12px  !important ;
 }
 
 
+
+
+.search-location{
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: #fff;
+    color: #C0C0C0;
+    border: none;
+}

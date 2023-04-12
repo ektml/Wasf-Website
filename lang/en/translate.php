@@ -48,5 +48,6 @@ return [
      'delete from cart'=> 'delete from cart sucessfully',
      'fail delete from cart'=> 'fail delete from cart ',
      ' already add cart'=> 'already added to  cart',
+     'search'=> 'search',
    
 ];

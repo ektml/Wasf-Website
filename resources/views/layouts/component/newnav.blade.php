@@ -32,7 +32,7 @@
             <a class="d-inline-block align-self-center" href="#" class="btn" data-bs-toggle="modal"
                 data-bs-target="#login">{{__('translate.login')}}</a>
             @else
-            <a class=" d-flex align-self-center" href="{{route("user.cart.index")}}">
+            <a class=" d-flex align-self-center cart-navicon" href="{{route("user.cart.index")}}">
                 <i class="fa-solid fa-cart-shopping cart-icon px-3"></i>
                 <span id="cart-count">{{App\Models\Cart::where('user_id' ,auth()->user()->id)->count()}}</span>
             </a>
@@ -150,7 +150,7 @@
     <div class="layout"></div>
     <div class="carve">
         <form class="search-form d-flex flex-grow-1 px-lg-3 " style="display:@yield(" nosearch")" role="search">
-            <input class="form-control me-2 " type='text' id="search" placeholder="Search" aria-label="Search"
+            <input class="form-control me-2 " type='text' id="search" placeholder="{{__('translate.search')}}" aria-label="Search"
                 name="search">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 

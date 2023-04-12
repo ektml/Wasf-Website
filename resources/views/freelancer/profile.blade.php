@@ -60,15 +60,15 @@ profile
 
             <div class="totals">
                 <a class="projects" href=" {{ route("freelanc.wallet") }}">
-                    <p>Wallet</p>
+                    <p>{{__('freelancerprofile.wallet')}}</p>
                 </a>
 
                 <a class="productstotal" href="{{ route('freelanc.files') }}">
-                    <p>My files</p>
+                    <p>{{__('freelancerprofile.My Files')}}</p>
                 </a>
 
                 <a class="photos" href="{{ route("freelanc.reviews") }}">
-                    <p>Reviews </p>
+                    <p>{{__('freelancerprofile.Reviews')}} </p>
                 </a>
             </div>
         </section>
@@ -77,7 +77,7 @@ profile
     <div class="categories pt-5 ms-3 ccs">
         <div class="container-fluid py-5   ">
             <div class="section-header">
-                <h2>statics</h2>
+                <h2>{{__('freelancerprofile.statics')}}</h2>
             </div>
 
             <div class="row">
@@ -96,7 +96,7 @@ profile
                                     <h3 class="bold">
                                         {{ \App\Models\Product::where('freelancer_id', Auth::user()->id)->count() }}
                                     </h3>
-                                    <p class="text-black-50">products</p>
+                                    <p class="text-black-50">{{__('freelancerprofile.products')}}</p>
                                 </div>
                             </div>
 
@@ -111,7 +111,7 @@ profile
                                 <div class="div px-3 static-info">
                                     <h3 class="bold">
                                         {{ App\Models\Photo::where('freelancer_id', Auth::user()->id)->count() }}</h3>
-                                    <p class="text-black-50">photos</p>
+                                    <p class="text-black-50">{{__('freelancerprofile.photos')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +121,7 @@ profile
                 <div class="col-lg-6 d-flex justify-content-center col-12  ">
                     <div class="card  ">
                         <div class="card-body card-body-bar">
-                            <h4 class="card-title bold">top 5 sales</h4>
+                            <h4 class="card-title bold">{{__('freelancerprofile.top 5 sales')}}</h4>
                             <div id="sparkline2" data-colors="[&quot;#ffb88fb8&quot;]" class="text-center"><canvas
                                     style="display: inline-block; width: 231px; height: 200px; vertical-align: top;"
                                     width="231" height="200"></canvas></div>
@@ -134,7 +134,7 @@ profile
 
     <div class="container-fluid py-5  px-3 ">
         <div class="section-header">
-            <h2>services</h2>
+            <h2>{{__('freelancerprofile.services')}}</h2>
         </div>
     </div>
 
@@ -193,8 +193,8 @@ profile
 
     <div class="container-fluid py-2 px-3 ">
         <div class="section-header">
-            <h2>products</h2>
-            <a href="{{route("freelanc.product.index")}}" class="flex-1">See all</a>
+            <h2>{{__('freelancerprofile.products')}}</h2>
+            <a href="{{route("freelanc.product.index")}}" class="flex-1">{{__('freelancerprofile.see all')}}</a>
         </div>
     </div>
     <div class="container-fluid py-2 px-3 ">
@@ -203,7 +203,7 @@ profile
                 <div class="image-product "
                     style="display: flex; justify-content: center; align-items: center; color: #CDCDCD; background-color: #F8F8F8; border-radius: 18px; display: flex; flex-direction: column;">
                     <i class="fa fa-add " style="font-size: 70px;"></i>
-                    <p>add New product</p>
+                    <p>{{__('freelancerprofile.add new product')}} </p>
                 </div>
                 <div class="card-body"></div>
             </a>
@@ -234,8 +234,8 @@ profile
     <div class="categories ccs ms-3 ">
         <div class="container-fluid py-2 px-3 ">
             <div class="section-header">
-                <h2>photos</h2>
-                <a href="{{route("freelanc.photo.index")}}" class="flex-1">See all</a>
+                <h2>{{__('freelancerprofile.photos')}}</h2>
+                <a href="{{route("freelanc.photo.index")}}" class="flex-1">{{__('freelancerprofile.see all')}}</a>
             </div>
         </div>
 
@@ -245,7 +245,7 @@ profile
                     <div class="image-product"
                         style="display: flex; justify-content: center; align-items: center; color: #CDCDCD; background-color: #F8F8F8; border-radius: 18px; display: flex; flex-direction: column;">
                         <i class="fa fa-add " style="font-size: 70px;"></i>
-                        <p>add new photo</p>
+                        <p>{{__('freelancerprofile.add new photo')}}</p>
                     </div>
 
                     <div class="card-body">
