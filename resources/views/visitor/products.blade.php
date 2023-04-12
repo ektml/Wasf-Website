@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-  products
+products
 @endsection
 @section("header")
 @endsection
@@ -22,7 +22,7 @@
     <i class="fa-solid fa-plus"></i>
 </a>
 @else
-<a class="addrequesticon" href="#login2"  data-bs-toggle="modal">
+<a class="addrequesticon" href="#login2" data-bs-toggle="modal">
     <i class="fa-solid fa-plus"></i>
 </a>
 @endauth
@@ -34,15 +34,22 @@
             <ul class="category">
                 @foreach ($categories as $category)
                 @if( empty($category->services->first()))
-                <li><a href="{{route('products',['cat_id'=>$category->id])}}"
-                    @if(isset($cat_id) && $cat_id==$category->id)
-                    class="active"
-                    @endif >{{ $category->title_en }}</a></li>
-                    @else
-                    <li><a href="#" class="linktosubcategory @if(isset($cat_id) && $cat_id==$category->id)
+                <li><a href="{{route('products',['cat_id'=>$category->id])}}" @if(isset($cat_id) &&
+                        $cat_id==$category->id)
+                        class="active"
+                        @endif >{{ $category->title_en }}</a></li>
+                @else
+                <li><a href="#" class="linktosubcategory @if(isset($cat_id) && $cat_id==$category->id)
                     active
-                        @endif" data-id='{{$category->id}}'>{{ $category->title_en }}</a></li>
-                    @endif
+                        @endif" data-id='{{$category->id}}'>
+
+                        @if(app()->getLocale()=='ar')
+                        {{ $category->title_ar }}
+                        @else
+                        {{ $category->title_en }}
+                        @endif
+                    </a></li>
+                @endif
                 @endforeach
             </ul>
 
@@ -55,12 +62,20 @@
                 </div>
 
                 <div class="d-flex flex-column">
-                    @foreach ( $category->services as  $service)
+                    @foreach ( $category->services as $service)
                     <a href="{{route('products',['cat_id'=>$category->id,'subcat_id'=>$service->id])}}"
                         @if(isset($subcat_id)&&$subcat_id==$service->id)
-                            class="active"
+                        class="active"
                         @endif
-                        >{{$service->service_en}}</a>
+                        >
+                        @if(app()->getLocale()=='ar')
+                        {{$service->service_ar}}
+                        @else
+                        {{$service->service_en}}
+                        @endif
+
+
+                    </a>
                     @endforeach
                 </div>
             </div>
@@ -71,112 +86,109 @@
             <div class="filtercontainer d-flex align-items-baseline justify-content-start mb-2">
                 <div class="filter d-flex align-items-baseline">
                     <button class=" filter-button btn d-flex align-items-center justify-content-between">
-                    <i class="fa-solid fa-arrow-up-wide-short"></i>
-                        <span >sort by:</span>
+                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                        <span>sort by:</span>
                     </button>
                     <span class="px-2">
-                        @foreach ( $filter as  $f )
+                        @foreach ( $filter as $f )
 
-                            {{ $f }} 
-                            @if(!$loop->last)
-                            ,
-                            @endif
+                        {{ $f }}
+                        @if(!$loop->last)
+                        ,
+                        @endif
                         @endforeach
                     </span>
                 </div>
 
-            <div class="filter-items">
-               
-                <form action="{{route('products') }}">
-                    @if (isset($cat_id) && isset($subcat_id))
-                    <input type="hidden" name="cat_id" value="{{$cat_id}}">
-                    <input type="hidden" name="subcat_id" value="{{$subcat_id}}">
-                   
-                    @elseif (isset($cat_id))
-                    <input type="hidden" name="cat_id" value="{{$cat_id}}">
-                     
-                    @endif
-                <div>
-                    <input type="checkbox" name="productsearch[]"
-                    @if (in_array('newest',$filter))
-                        checked
-                    @endif
-                    value="newest" id="newest">
-                    <label for="newest" class="bold">newest</label>
-                </div>
+                <div class="filter-items">
 
-                <div>
-                    <input type="checkbox" name="productsearch[]" value="highestrating" id="highestrating"
-                    @if (in_array('highestrating',$filter))
-                    checked
-                    @endif
-                    >
-                    <label for="highestrating"class="bold" >highest rating</label>
-                </div>
+                    <form action="{{route('products') }}">
+                        @if (isset($cat_id) && isset($subcat_id))
+                        <input type="hidden" name="cat_id" value="{{$cat_id}}">
+                        <input type="hidden" name="subcat_id" value="{{$subcat_id}}">
 
-                <div>
-                    <input type="checkbox" name="productsearch[]" value="pricelowtoheight"id="pricelowtoheight"
-                    @if (in_array('pricelowtoheight',$filter))
-                    checked
-                    @endif
-                    >
-                    <label for="pricelowtoheight"class="bold" >price lower to high</label>
-                </div>
+                        @elseif (isset($cat_id))
+                        <input type="hidden" name="cat_id" value="{{$cat_id}}">
 
-                <div class="btn-contianer d-flex justify-content-center align-items-center">
-                    <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">apply</button>
-                </div>
-            </form>
-        </div>
-        </div>
+                        @endif
+                        <div>
+                            <input type="checkbox" name="productsearch[]" @if (in_array('newest',$filter)) checked
+                                @endif value="newest" id="newest">
+                            <label for="newest" class="bold">newest</label>
+                        </div>
 
-        <div class="products">
-            @forelse ($products as $product)
-            
-                <div class="card" >
+                        <div>
+                            <input type="checkbox" name="productsearch[]" value="highestrating" id="highestrating" 
+                            @if(in_array('highestrating',$filter)) checked @endif>
+                            <label for="highestrating" class="bold">highest rating</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" name="productsearch[]" value="pricelowtoheight" id="pricelowtoheight"
+                                @if (in_array('pricelowtoheight',$filter)) checked  @endif>
+                            <label for="pricelowtoheight" class="bold">price lower to high</label>
+                        </div>
+
+                        <div class="btn-contianer d-flex justify-content-center align-items-center">
+                            <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">apply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="products">
+                @forelse ($products as $product)
+
+                <div class="card">
                     <div class="image-product">
-                        <a href='{{route('product',$product->id)}}' tabindex='2'> <img src="{{asset('assets/images/product/'.$product->img1) }}" class="card-img-top" alt="product image"></a>
-                            @auth
-                        <button type="button" data-type="product" data-id="{{$product->id}}"
-
-                            onclick="likes(this)"
-                        class="hart   @if ($product->likes->where("user_id",auth()->user()->id)->count())
-                                active
+                        <a href='{{route('product',$product->id)}}' tabindex='2'> <img
+                                src="{{asset('assets/images/product/'.$product->img1) }}" class="card-img-top"
+                                alt="product image"></a>
+                        @auth
+                        <button type="button" data-type="product" data-id="{{$product->id}}" onclick="likes(this)"
+                            class="hart   @if ($product->likes->where(" user_id",auth()->user()->id)->count())
+                            active
                             @endif"><i class="fa fa-heart"></i></button>
-                               @else
-                               <button  class="hart" type="button" data-bs-target="#login2" data-bs-toggle="modal"><i class="fa fa-heart"></i></button>
-                              @endauth
+                        @else
+                        <button class="hart" type="button" data-bs-target="#login2" data-bs-toggle="modal"><i
+                                class="fa fa-heart"></i></button>
+                        @endauth
 
 
-                              @auth
+                        @auth
 
-                              @if(!$product->sells()->where('user_id',auth()->user()->id)->exists())
-                                 @if ($product->carts()->where('user_id',auth()->user()->id)->exists())
-                                 <button class="addtochart active"  data-id="{{$product->id}}" onclick="addcart(this)"data-type='product'>in cart</button>  
-                                 @else
-                                 <button class="addtochart"  data-id="{{$product->id}}" onclick="addcart(this)"data-type='product'>add to cart</button>
-                                 @endif
-                        
-                              @else
-                              <button class="addtochart active" > you paid</button>
-                              @endif
+                        @if(!$product->sells()->where('user_id',auth()->user()->id)->exists())
+                        @if ($product->carts()->where('user_id',auth()->user()->id)->exists())
+                        <button class="addtochart active" data-id="{{$product->id}}" onclick="addcart(this)"
+                            data-type='product'>in cart</button>
+                        @else
+                        <button class="addtochart" data-id="{{$product->id}}" onclick="addcart(this)"
+                            data-type='product'>add to cart</button>
+                        @endif
 
-                                
-                              @else
-                              <button class="addtochart" data-bs-target="#login2" data-bs-toggle="modal" >add to cart</button>
-                              @endauth
+                        @else
+                        <button class="addtochart active"> you paid</button>
+                        @endif
+
+
+                        @else
+                        <button class="addtochart" data-bs-target="#login2" data-bs-toggle="modal">add to cart</button>
+                        @endauth
 
 
 
                     </div>
 
-                    <div class="card-body" >
+                    <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
-                        <a class="freelancer-info d-flex align-items-center " href="{{ route('showFreelancerDetails', $product->freelancer_id) }}">
+                        <a class="freelancer-info d-flex align-items-center "
+                            href="{{ route('showFreelancerDetails', $product->freelancer_id) }}">
                             <div class="image">
-                                <img src="{{ asset("Admin3/assets/images/users/".App\Models\User::where('id', $product->freelancer_id)->first()->profile_image) }}" alt="">
+                                <img src="{{ asset("Admin3/assets/images/users/".App\Models\User::where('id', $product->freelancer_id)->first()->profile_image) }}"
+                                    alt="">
                             </div>
-                            <p class="card-text">{{ \App\Models\User::where('id', $product->freelancer_id)->first()->name }}</p>
+                            <p class="card-text">
+                                {{ \App\Models\User::where('id', $product->freelancer_id)->first()->name }}</p>
                         </a>
 
                         <div class="prod-likes">
@@ -184,18 +196,18 @@
                             <span>{{ $product->likes->count() }}</span>
                         </div>
                     </div>
-                </div> 
-           <!-- card -->
-           @empty
+                </div>
+                <!-- card -->
+                @empty
 
-          <div class="text-center w-100"> no product </div> 
+                <div class="text-center w-100"> no product </div>
                 @endforelse
             </div>
 
             <div class="text-end p-4">
                 {{ $products->links() }}
             </div>
-    </div>
+        </div>
     </div>
 </div>
 @endsection
@@ -282,8 +294,5 @@ $(document).ready(function () {
 
     });
 });
-    </script>
+</script>
 @endsection
-
-
-

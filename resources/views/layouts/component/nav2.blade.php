@@ -23,38 +23,19 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link text-capitalize active" aria-current="page" href="{{route("home")}}" style="color: #fff;" >Home</a>
+                <a class="nav-link text-capitalize active" aria-current="page" href="{{route("home")}}" style="color: #fff;" >{{__('translate.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="{{route("products")}}"  style="color: #fff;">product</a>
+                    <a class="nav-link text-capitalize" href="{{route("products")}}"  style="color: #fff;">{{__('translate.products')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" href="{{route("freelancers")}}" style="color: #fff;">freelancer</a>
+                    <a class="nav-link text-capitalize" href="{{route("freelancers")}}" style="color: #fff;">{{__('translate.freelancers')}}</a>
                 </li>
                 <li class="nav-item text-capitalize text-white-100">
-                    <a class="nav-link text-capitalize" href="#login" class="btn" data-bs-toggle="modal"  style="color: #fff;">login</a>
+                    <a class="nav-link text-capitalize" href="#login" class="btn" data-bs-toggle="modal"  style="color: #fff;">{{__('translate.login')}}</a>
 
                 </li>
-            <li class="nav-item dropdown">
-            {{-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-            </a>
-            <ul class="dropdown-menu">
-                <li class="nav-item">
-                    <a class="nav-link text-capitalize active" aria-current="page" href="{{route("home")}}" style="color: #fff;" >Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize" href="{{route("products")}}"  style="color: #fff;">product</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-capitalize" href="{{route("freelancers")}}" style="color: #fff;">freelancer</a>
-                    </li>
-                    <li class="nav-item text-capitalize text-white-100">
-                        <a class="nav-link text-capitalize" href="#" class="btn" data-bs-toggle="modal"  data-bs-target="#login"style="color: #fff;">login</a>
-
-                    </li>
-            </ul> --}}
-            </li>
+         
 
         </ul>
 

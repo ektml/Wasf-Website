@@ -2,7 +2,37 @@
 
 return [
 
-    
+    //HOME PAGE
+  "home"=>'الصفحة الرئيسية',
+  "freelancers"=>'المستقلين',
+  "products"=>'المنتجات',
+  "login"=>'تسجيل الدخول',
+  "Sign out"=>'تسجيل الخروج',
+  "requests"=>'الطلبات',
+  "switch to freelancer account"=>"التحويل إلى حساب مستقل",
+  "profile"=>"الملف الشخصي",
+  "language"=>"اللغة",
+  "reservations"=>'الحجوزات',
+  'notification'=>'الإشعارات',
+  "categories"=>'الفئات',
+  "top freelancers"=> "أفضل المستقلين",
+  "see all"=>"عرض الكل",
+  "about us"=>"من نحن",
+  "contact us"=>"اتصل بنا",
+  'privacy & police'=>'الخصوصية والشروط',
+  'phone number'=>'رقم الهاتف',
+  'subject'=>'الموضوع',
+  'message'=>'الرسالة',
+  "send"=>"إرسال",
+  "Download application"=>'تنزيل التطبيق',
+
+  'All copy writes saved to'=>'جميع حقوق النسخ محفوظة لـ',
+  'wasf'=>'وصف',
+  "co."=>'ش.م.م.',
+  'google play'=>'متجر جوجل بلاي',
+  'apple store'=>'متجر ابل',
+  'sort by'=> 'ترتيب حسب',
+
 
     'edit password' => 'تعديل كلمة السر',
     'edit profile' => 'تعديل الملف الشخصي',

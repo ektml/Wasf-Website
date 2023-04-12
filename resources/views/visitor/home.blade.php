@@ -56,9 +56,9 @@
 
 <div class="categories pt-3">
     <div class="container py-3 scrollable-container">
-        <div class="section-header">
-            <h2>categories</h2>
-            <a href="{{route('products')}}">See all</a>
+        <div class="section-header  row">
+            <h2 class="col-6">{{__('translate.categories')}}</h2>
+            <a class="col-6" href="{{route('products')}}">{{__('translate.see all')}} </a>
         </div>
 
         <button class="pre-btn">
@@ -82,9 +82,9 @@
 
 <div class="freelancers pt-3">
     <div class="container py-3 scrollable-container">
-        <div class="section-header">
-            <h2>Top freelancers</h2>
-            <a href="{{route('freelancers')}}">See all</a>
+        <div class="section-header row">
+            <h2 class="col-6">{{__("translate.top freelancers")}} </h2>
+            <a class="col-6" href="{{route('freelancers')}}">{{__('translate.see all')}} </a>
         </div>
 
         <button class="pre-btn">
@@ -127,7 +127,7 @@
 <div class="abouts pt-3">
     <div class="container py-3">
         <div class="section-header">
-            <h2>about us</h2>
+            <h2>{{__('translate.about us')}}</h2>
         </div>
         <div class="about-data">
             <div style=" border-image-width:10px;border-image: url('assets/images/navbg.png') 30 30 round; display:flex;align-items:center;justify-content:center;padding:20px"><img src="{{asset("assets/images/newlogo2.png")}}" alt=""></div>
@@ -144,28 +144,28 @@
 <div class="contacts pt-3">
     <div class="container py-3">
         <div class="section-header">
-            <h2>contact us</h2>
+            <h2> {{__('translate.contact us')}}</h2>
         </div>
 
         <div class="row">
             <div class="form-contact col-12 col-lg-6 col-md-6">
                 <form action="">
                     <div class="input-group mb-3 d-flex flex-column">
-                        <label for="phone">phone number</label>
+                        <label for="phone">{{__("translate.phone number")}}</label>
                         <input class="form-control w-100" type="text" placeholder="05XXXXXXXX">
                     </div>
 
                     <div class="input-group mb-3 d-flex flex-column">
-                        <label for="phone">subject</label>
+                        <label for="phone">{{__("translate.subject")}}</label>
                         <input  class="form-control w-100" type="text"placeholder="Subject">
                     </div>
 
                     <div class="input-group mb-3 d-flex flex-column">
-                        <label for="phone" >message</label>
+                        <label for="phone" >{{__("translate.message")}}</label>
                         <input class="form-control w-100" place-holder="Write your message here" type="text">
                     </div>
 
-                    <button type="submit" class="btn btn-primary rounded-pill">send</button>
+                    <button type="submit" class="btn btn-primary rounded-pill">{{__("translate.send")}}</button>
                     </form>
                 </div>
 

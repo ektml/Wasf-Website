@@ -1,10 +1,13 @@
 @extends("layouts.home.index")
 
 @section("og-title")
+{{$product->title}}
 @endsection
 @section("og-description")
+{{$product->description}}
 @endsection
 @section("og-image")
+{{ asset('assets/images/product/'.$product->img1) }}
 @endsection
 @section("title")
 product

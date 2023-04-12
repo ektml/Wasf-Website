@@ -41,10 +41,11 @@
 <!-- App Css-->
 
 <link href="{{asset("assets/css/app.min.css")}}" id="app-style" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="{{asset("assets/css/style.css")}}"> 
-@if ( App::getLocale() =="ar")
 
+@if ( App::getLocale() =="ar")
 <link rel="stylesheet" href="{{asset("assets/css/stylertl.css")}}"> 
+@else
+<link rel="stylesheet" href="{{asset("assets/css/style.css")}}"> 
 @endif
 
    {{-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"> --}}

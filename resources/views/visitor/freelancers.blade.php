@@ -36,7 +36,13 @@ freelancers
                     @else
                     <li><a href="#" class="linktosubcategory @if(isset($cat_id) && $cat_id==$category->id)
                     active
-                        @endif" data-id='{{$category->id}}'>{{ $category->title_en }}</a></li>
+                        @endif" data-id='{{$category->id}}'>
+                        @if(app()->getLocale()=='ar')
+                        {{ $category->title_ar }}
+                    @else
+                    {{ $category->title_en }}
+                    @endif
+                    </a></li>
                     @endif
                 @endforeach
             </ul>
@@ -55,7 +61,13 @@ freelancers
                         @if(isset($subcat_id)&&$subcat_id==$service->id)
                             class="active"
                         @endif
-                        >{{$service->service_en}}</a>
+                        > 
+                        @if(app()->getLocale()=='ar')
+                        {{$service->service_ar}}
+                        @else
+                        {{$service->service_en}}
+                        @endif
+                    </a>
                     @endforeach
                 </div>
             </div>

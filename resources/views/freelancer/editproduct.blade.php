@@ -61,11 +61,22 @@ edit product
             <option value="" selected disabled>Choose Category</option>
             @foreach ($categories as $category)
             @if(app()->getLocale()=='ar')
-                <option value="{{ $category->id }}"> {{ $category->title_ar }}</option>
+                <option value="{{ $category->id }}" 
+                  @if ($category->id==$product->cat_id)
+                  selected
+                  @endif
+                  > {{ $category->title_ar }}</option>
 
                 @else
-                <option value="{{ $category->id }}"> {{ $category->title_en }}</option>
+                <option value="{{ $category->id }}"
+                  @if ($category->id==$product->cat_id)
+                  selected
+                  @endif
+                  > {{ $category->title_en }}</option>
 
+               
+                  
+              
                 @endif
             @endforeach
         </select>
@@ -81,6 +92,7 @@ edit product
        <div class="mb-4 hlafwidth">
   <label for="price" class="form-label pd-2">price</label>
   <input type="text" class="form-control" id="price" name="price" placeholder="50 S.R">
+  
 </div>
 <div class="mb-4 fullwidth">
     <label for="description" class="form-label mb-3">description</label>
@@ -243,8 +255,9 @@ $(document).ready(function() {
                         if(data!='[]'){
                             console.log(data);
                         $.each(data, function(key, value) {
+                          
                             $('#service_id').append('<option value="' +
-                                key + '">' + value + '</option>');
+                                key + '+ +">' + value + '</option>');
                         });}else{
 
                            
