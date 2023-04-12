@@ -118,14 +118,14 @@ products
                         </div>
 
                         <div>
-                            <input type="checkbox" name="productsearch[]" value="highestrating" id="highestrating" 
-                            @if(in_array('highestrating',$filter)) checked @endif>
+                            <input type="checkbox" name="productsearch[]" value="highestrating" id="highestrating"
+                                @if(in_array('highestrating',$filter)) checked @endif>
                             <label for="highestrating" class="bold">highest rating</label>
                         </div>
 
                         <div>
                             <input type="checkbox" name="productsearch[]" value="pricelowtoheight" id="pricelowtoheight"
-                                @if (in_array('pricelowtoheight',$filter)) checked  @endif>
+                                @if (in_array('pricelowtoheight',$filter)) checked @endif>
                             <label for="pricelowtoheight" class="bold">price lower to high</label>
                         </div>
 
@@ -143,7 +143,7 @@ products
                     <div class="image-product">
                         <a href='{{route('product',$product->id)}}' tabindex='2'> <img
                                 src="{{asset('assets/images/product/'.$product->img1) }}" class="card-img-top"
-                                alt="product image"></a>
+                                onerror='changeimage(this)' alt="product image"></a>
                         @auth
                         <button type="button" data-type="product" data-id="{{$product->id}}" onclick="likes(this)"
                             class="hart   @if ($product->likes->where(" user_id",auth()->user()->id)->count())
@@ -214,6 +214,7 @@ products
 
 @section("js")
 <script>
+    
     $(".filter-button").click(function(){
         $(".filter-items").toggle();
     });
