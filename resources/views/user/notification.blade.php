@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-notification
+{{__('translate.Notifications')}}
 @endsection
 @section("header")
 @endsection
@@ -23,7 +23,7 @@ notification
 <div class="notification">
     <div class="container">
         <div class="section-header">
-            <h2>Notifications</h2>
+            <h2> {{__('translate.Notifications')}}</h2>
         </div>
         <div class="row">
 

@@ -89,6 +89,7 @@ return [
 'your cart is empty'=>'your cart is empty......',
 'S.R'=>'S.R',
 'payment method'=>'payment method',
+'Notifications'=>'Notifications',
 
 
 

@@ -66,6 +66,9 @@ return [
 'S.R'=>'ر.س',
 'payment method'=>'طريقة الدفع',
 
+
+'notification'=>'الإشعارات',
+
   "Sign up"=>"تسجيل",
   "By signing up you accept the"=>"بالتسجيل، أنت توافق على",
   "Term of service"=>"شروط الخدمة",
