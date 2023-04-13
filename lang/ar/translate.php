@@ -67,7 +67,7 @@ return [
 'payment method'=>'طريقة الدفع',
 
 
-'notification'=>'الإشعارات',
+'Notifications'=>'الإشعارات',
 
   "Sign up"=>"تسجيل",
   "By signing up you accept the"=>"بالتسجيل، أنت توافق على",
