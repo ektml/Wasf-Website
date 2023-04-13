@@ -329,7 +329,7 @@ class UserController extends Controller
 
 
 
-        $wallet_history=Payment::all();
+        $wallet_history=Payment::all()->sortByDesc("created_at");
         $user_wallet_hestory=[];
         foreach($wallet_history as $wr){
 
