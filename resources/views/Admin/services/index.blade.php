@@ -117,14 +117,15 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label>الأيقونة</label>
-                        <select id="selectIcon" name="service_icon" class="form-control">
+                        <label>الأيقونة <i class="changeme bx bx-sticker"></i></label>
+                        <input type="text" class="form-control inputme" id="inputme" value="bx bx-sticker">
+                        {{--<select id="selectIcon" name="service_icon" class="form-control">
                             <option value="{{ $service->service_icon }}">{{ $service->service_icon }}</option>
                             <option value='fa-camera'>&#xf030;<i class="fa-thin fa-camera"></i></option>
                             <option value='fa-mobile'>&#xe1ee;<i class="fa-thin fa-mobile"></i></option>
                             <option value='fa-pen-nib'>&#xf5ad;<i class="fa-thin fa-pen-nib"></i></option>
                             <option value='fa-photo-film'>&#xf87c;<i class="fa-thin fa-photo-film"></i></option>
-                        </select>
+                        </select>--}}
                     </div>
 
                     <div class="form-group mb-3">
@@ -252,3 +253,12 @@
 </div> <!-- container-fluid -->
 
 @endsection
+
+<script>
+    setTimeout(() => {
+        $(".inputme").on("change", () => {
+            $(".changeme").attr('class', `changeme ${$(".inputme").val()}`)
+        })
+    }, 3000)
+    
+</script>

@@ -262,17 +262,47 @@ show private requests
 $(document).ready(function () {
 $('.chat').on('show.bs.offcanvas',function(){
 
+var myId = {{auth()->id()}}
 var request_id= $(this).attr('data-id');
 var type= $(this).attr('data-type');
 var mesageto= $(this).attr('data-to');
 var conversation =$(this).find('.conversation')
 // console.log(.append("asdsdas"));
+
+function createMessage(text, date, rl) {
+    const msg = document.createElement("div")
+    msg.classList.add(`${rl}cont`)
+    
+    const msg2 = document.createElement("div")
+    msg2.classList.add("chat-txt")
+    msg2.classList.add(`${rl}side`)
+    
+    const p = document.createElement("p")
+    const span = document.createElement("span")
+    
+    p.textContent = text
+    span.textContent = date
+    
+    msg2.append(p)
+    msg2.append(span)
+    msg.append(msg2)
+    conversation.append(msg)
+}
+
+const channel = pusher.subscribe('chats')
+channel.bind('new-message', function (data) {
+    if(!data?.msg) return
+    const { msg, requestId } = data
+    
+    createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ? "right" : "left")
+});
+
 var olddata =0;
 type=type.trim();
 
 mesageto=mesageto.trim();
 setTimeout(getmessage, 0);
-var getmes =setInterval(getmessage,3000);
+// var getmes =setInterval(getmessage,3000);
 
 function getmessage() { 
 $.ajax({
@@ -326,7 +356,7 @@ $('.conversation').scrollTop($('.conversation')[0].scrollHeight);
 olddata=Object.keys(data).length;
 }
 $('.chat').on('hide.bs.offcanvas',function(){
-clearInterval(getmes);
+// clearInterval(getmes);
 });
 
 
@@ -359,7 +389,6 @@ function sendmessage(e){
             dataType: "json",
             success: function(data) {
             if(data){
-                console.log(data);
                 $(e).find('.messageinput').val(' ');
 
             }else{

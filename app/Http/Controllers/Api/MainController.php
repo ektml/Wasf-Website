@@ -120,7 +120,9 @@ class MainController extends Controller
                     $product['img1'] = asset('assets/images/product/'.$product->img1);
                     $product['img2'] = asset('assets/images/product/'.$product->img2);
                     $product['img3'] = asset('assets/images/product/'.$product->img3);
-                    $product->freelancer->profile_image = asset('Admin3/assets/images/users/'.$product->freelancer->profile_image);
+                     if(!strpos($product->freelancer->profile_image,'Admin3/assets/images/users/')){
+                         $product->freelancer->profile_image = asset('Admin3/assets/images/users/'.$product->freelancer->profile_image);
+                    }
                     $product['likes'] = $product->likes()->count();
                 }
                 return $this->returnData(200, 'Products Returned Successfully', compact('services','products'));
@@ -131,9 +133,14 @@ class MainController extends Controller
                     $product['img1'] = asset('assets/images/product/'.$product->img1);
                     $product['img2'] = asset('assets/images/product/'.$product->img2);
                     $product['img3'] = asset('assets/images/product/'.$product->img3);
-                    $product->freelancer->profile_image = asset('Admin3/assets/images/users/'.$product->freelancer->profile_image);
+                    
+                    if(!strpos($product->freelancer->profile_image,'Admin3/assets/images/users/')){
+                         $product->freelancer->profile_image = asset('Admin3/assets/images/users/'.$product->freelancer->profile_image);
+                    }
+                   
                     $product['likes'] = $product->likes()->count();
                 }
+                
                 return $this->returnData(200, 'Products Returned Successfully', compact('products'));
             }
         }catch(\Exception $e){
@@ -159,9 +166,10 @@ class MainController extends Controller
                 $freelancers = FreelancerService::select('freelancer_id')->where('parent_id', $cat_id)
                 ->where('service_id', $service_id)->get();
                 foreach($freelancers as $freelancer){
-                    $name = User::find($freelancer)->first();
-                    $name['profile_image'] = asset('Admin3/assets/images/users/'.$name->profile_image);
-                    array_push($freelancer_detail,$name);
+                    $data = User::find($freelancer)->first();
+                     if(!strpos( $data['profile_image'] ,"Admin3/assets/images/users/")){
+                     $data['profile_image'] = asset('Admin3/assets/images/users/'. $data->profile_image);}
+                    array_push($freelancer_detail, $data);
                 }
                 return $this->returnData(200, 'Freelancers Returned Successfully',compact('services','freelancer_detail') );
             }else{
@@ -170,6 +178,10 @@ class MainController extends Controller
 
                 foreach($freelancers as $freelancer){
                     $data = User::find($freelancer)->first();
+                    if(!strpos($data['profile_image'] ,"Admin3/assets/images/users/")){
+                          $data['profile_image'] = asset('Admin3/assets/images/users/'.$data->profile_image);
+                    }
+                   
                     array_push($freelancer_detail, $data);
                 }
                 return $this->returnData(200, 'Freelancers Returned Successfully',compact( 'freelancer_detail'));
@@ -179,7 +191,8 @@ class MainController extends Controller
                 $freelancers =  FreelancerService::where('parent_id', $cat_id)->where('service_id', $serv_id)->get();
                 foreach($freelancers as $freelancer){
                     $data = User::find($freelancer->freelancer_id);
-                    $data['profile_image'] = asset('Admin3/assets/images/users/'.$data->profile_image);
+                     if(!strpos($data['profile_image'] ,"Admin3/assets/images/users/")){
+                    $data['profile_image'] = asset('Admin3/assets/images/users/'.$data->profile_image);}
                     array_push($freelancer_detail, $data);
                 }
                 return $this->returnData(200, 'Freelancers Returned Successfully',compact('freelancer_detail') );
@@ -331,12 +344,13 @@ class MainController extends Controller
         try{
             $cart_items = Cart::with('cartsable')->get();
             $total = Cart::select('price')->get();
-
-            foreach($cart_items as $item){
-                $item->cartsable['attachment'] = asset('assets/images/product/'.$item->cartsable['attachment']);
+            foreach($cart_items as $key=> $item){
+               if( $item->cartsable !=null){
+                   $item->cartsable['attachment'] = asset('assets/images/product/'.$item->cartsable['attachment']);
                 $item->cartsable['img1'] = asset('assets/images/product/'.$item->cartsable['img1']);
                 $item->cartsable['img2'] = asset('assets/images/product/'.$item->cartsable['img2']);
                 $item->cartsable['img3'] = asset('assets/images/product/'.$item->cartsable['img3']);
+               }
             }
             return $this->returnData(200, 'Carts Returned Successfully', compact('cart_items', 'total'));
         }catch(\Exception $e){

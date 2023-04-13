@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\MainController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PhotoController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\StripePaymentController;
@@ -46,6 +48,9 @@ Route::get('addServiceToFreelancer/{cat_id}/{serv_id}', [MainController::class, 
 
 // Cart
 Route::get('allProductsInCart',[MainController::class, 'allProductsInCart'])->middleware('auth:api');
+Route::get('cartBankPay/{discount_key?}',[PaymentController::class, 'cartBankPay']);
+Route::get('cartCalcDiscount',[PaymentController::class, 'cartBankPay']);
+
 
 
 // Customers
@@ -60,6 +65,7 @@ Route::get('allFreelancers', [UserController::class, 'allFreelancers']);
 Route::get('getFreelancerById/{id}', [UserController::class, 'getFreelancerById']);
 Route::put('editFreelancer/{id}', [UserController::class, 'editFreelancer']);
 Route::get('allFiles/{id}', [UserController::class, 'allFiles']);
+Route::get('deleteFile/{id}', [UserController::class, 'deleteFile'])->middleware('auth:api');
 
 
 
@@ -100,5 +106,15 @@ Route::get('allReservations',  [ReservationController::class, 'allReservations']
 Route::post('createBookingPhotoShot/{freelancer_id}', [ReservationController::class, 'createBookingPhotoShot']); // Create Reservation
 Route::get('getReservationById/{id}', [ReservationController::class, 'getReservationById'])->middleware('auth:api');
 Route::post('changeReservationStatus/{id}', [ReservationController::class, 'changeReservationStatus']);
+
+
+// order
+
+Route::get('getPublicRequests/{freelancer_id}',[OrderController::class,'getPublicRequests'])->middleware('auth:api');
+
+Route::get('getPrivateRequests/{freelancer_id}',[OrderController::class,'getPrivateRequests'])->middleware('auth:api');
+
+Route::get('getMyWork/{freelancer_id}',[OrderController::class,'getMyWork'])->middleware('auth:api');
+
 
 

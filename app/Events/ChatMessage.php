@@ -11,7 +11,8 @@ class ChatMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $from, $to, $text, $chatsable_type, $chatsable_id, $type;
+    public $msg;
+    public $requestId;
     // request / reservation
     // App\Models\Requests / App\Models\Reservation
 
@@ -20,14 +21,10 @@ class ChatMessage implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($from, $to, $text, $chatsable_type, $chatsable_id, $type)
+    public function __construct($msg, $requestId)
     {
-        $this->from = $from;
-        $this->to = $to;
-        $this->text = $text;
-        $this->chatsable_type = $chatsable_type;
-        $this->chatsable_id = $chatsable_id;
-        $this->type = $type;
+        $this->msg = $msg;
+        $this->requestId = $requestId;
     }
 
     /**
