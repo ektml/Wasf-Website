@@ -126,7 +126,7 @@
                             class="align-middle">{{__('translate.reservations')}}</span></a>
                     <a class="dropdown-item" href="{{route("freelanc.neworder")}}"><i
                             class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                            class="align-middle">orders</span></a>
+                            class="align-middle">{{__('translate.orders')}}</span></a>
                     <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

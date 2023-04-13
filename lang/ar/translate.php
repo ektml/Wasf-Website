@@ -14,6 +14,7 @@ return [
   "switch to freelancer account"=>"التحويل إلى حساب مستقل",
   "profile"=>"الملف الشخصي",
   "language"=>"اللغة",
+  "orders"=>"الطلبات",
   "reservations"=>'الحجوزات',
   'notification'=>'الإشعارات',
   "categories"=>'الفئات',

@@ -14,6 +14,7 @@ return [
     "switch to freelancer account"=>"switch to freelancer account",
     "profile"=>"Profile",
     "language"=>"language",
+    "orders"=>"orders",
     "categories"=>'categories',
     "top freelancers"=> "top freelancers",
     "see all"=>"see all",
