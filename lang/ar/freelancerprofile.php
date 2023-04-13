@@ -39,5 +39,16 @@ return [
 'Maximun 3 pictures'=>'الحد الأقصى للصور 3',
 
   
-//
+//add photo
+'edit photo'=>'تعديل الصورة',
+'upload photo'=>'تحميل الصورة',
+'photo name'=>'اسم الصورة',
+'camera brand'=>'علامة الكاميرا',
+'lens type'=>'نوع العدسة',
+'size'=>'الحجم',
+'width'=>'العرض',
+'height'=>'الارتفاع',
+'size type'=>'نوع الحجم',
+'location'=>'الموقع',
+'optional'=>'اختياري',
 ];

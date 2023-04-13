@@ -23,19 +23,74 @@ return [
     'phone number'=>'phone number',
     'subject'=>'subject',
     'message'=>'message',
-    "send"=>"send",
     "Download application"=>'Download application',
+    "send"=>"send",
+
+    "Sign up"=>"Sign up",
+    "By signing up you accept the"=>"By signing up you accept the",
+    "Term of service"=>"Term of service",
+    "Privacy policy"=>"Privacy policy",
+    "Password"=>"Password",
+    "email"=>"email",
+    "Phone number"=>"Phone number",
+    "fullname"=>"fullname",
+    "have an account?"=>"have an account?",
+
+    "Forgot password?"=>"Forgot password?",
+    "confirm password"=>"confirm password",
+    "and"=>"and",
+    "Log in"=>"Log in",
+    "Not a member?"=>"Not a member?",
+    
+    "Please, log in to request new service"=>"Please, log in to request new service",
+
     
     'All copy writes saved to'=>'All copy writes saved to ',
     'wasf'=>'WASF',
     "co."=>'co.',
     'google play'=>'google play',
     'apple store'=>'apple store',
-    
+
+
+    // sort 
     'sort by'=> 'sort by',
     'apply'=> 'apply',
     'highest rating'=>'highest rating',
     'more project'=>'more project',
+    'all'=>'all',
+    'All'=>'all',
+    'highestrating'=>'highest rating',
+    'moreproject'=>'more project',
+    'price lower to high'=>'price lower to high',
+    'pricelowtohigh'=>'price lower to high',
+    'newest'=>'newest',
+    
+
+
+// product
+'addtocart'=>'add to cart',
+'in cart'=>'in cart',
+'you paid'=>' you paid',
+'in cart'=>'in cart',
+
+
+// cart
+
+'cart'=>'cart',
+'shopping cart'=>'shopping cart ',
+'order summery'=>'order summery',
+'promo code is actived'=>'promo code is actived',
+'promo code'=>'promo code ',
+'price'=>'price',
+'discount'=>'discount',
+'total'=>'total',
+'start shopping now'=>'start shopping now',
+'checkout'=>'checkout',
+'your cart is empty'=>'your cart is empty......',
+'S.R'=>'S.R',
+'payment method'=>'payment method',
+
+
 
     'edit password' => 'Edit password',
     'edit profile' => 'Edit profile',
@@ -50,4 +105,5 @@ return [
      ' already add cart'=> 'already added to  cart',
      'search'=> 'search',
    
+     
 ];

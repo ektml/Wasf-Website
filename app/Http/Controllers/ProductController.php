@@ -187,9 +187,9 @@ class ProductController extends Controller
                 });
                 array_push($filter,'highestrating');
             }
-            if(in_array('pricelowtoheight',request('productsearch'))){
+            if(in_array('pricelowtohigh',request('productsearch'))){
                 $products=$products->sortBy('price');
-                array_push($filter,'pricelowtoheight');
+                array_push($filter,'pricelowtohigh');
             }
 
         }else{
@@ -216,9 +216,9 @@ class ProductController extends Controller
                     });
                     array_push($filter,'highestrating');
                 }
-                if(in_array('pricelowtoheight',request('productsearch'))){
+                if(in_array('pricelowtohigh',request('productsearch'))){
                     $products=$products->sortBy('price');
-                    array_push($filter,'pricelowtoheight');
+                    array_push($filter,'pricelowtohigh');
                 }
                
             }else{
@@ -244,9 +244,9 @@ class ProductController extends Controller
                     });
                     array_push($filter,'highestrating');
                 }
-                if(in_array('pricelowtoheight',request('productsearch'))){
+                if(in_array('pricelowtohigh',request('productsearch'))){
                     $products=$products->sortBy('price');
-                    array_push($filter,'pricelowtoheight');
+                    array_push($filter,'pricelowtohigh');
                 }
 
             }else{

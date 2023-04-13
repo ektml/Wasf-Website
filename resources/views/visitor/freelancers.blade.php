@@ -90,7 +90,7 @@ freelancers
                     <span class="px-2">
                         @foreach ( $filter as $f )
 
-                        {{ $f }}
+                        {{ __('translate.'.$f ) }}
                         @if(!$loop->last)
                         ,
                         @endif
@@ -122,7 +122,7 @@ freelancers
 
                         <div class="btn-contianer d-flex justify-content-center align-items-center">
                             <button type="submit"
-                                class=" border-0 btn-modal  my-3 btn-model-primary">{{__('translate.highest rating')}}</button>
+                                class=" border-0 btn-modal  my-3 btn-model-primary">{{__('translate.apply')}}</button>
                         </div>
                     </form>
                 </div>

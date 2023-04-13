@@ -97,7 +97,7 @@ products
                     <span class="px-2">
                         @foreach ( $filter as $f )
 
-                        {{ $f }}
+                        {{__('translate.'.$f )}}
                         @if(!$loop->last)
                         ,
                         @endif
@@ -119,23 +119,23 @@ products
                         <div>
                             <input type="checkbox" name="productsearch[]" @if (in_array('newest',$filter)) checked
                                 @endif value="newest" id="newest">
-                            <label for="newest" class="bold">newest</label>
+                            <label for="newest" class="bold">{{__("translate.newest")}}</label>
                         </div>
 
                         <div>
                             <input type="checkbox" name="productsearch[]" value="highestrating" id="highestrating"
                                 @if(in_array('highestrating',$filter)) checked @endif>
-                            <label for="highestrating" class="bold">highest rating</label>
+                            <label for="highestrating" class="bold">{{__("translate.highest rating")}}</label>
                         </div>
 
                         <div>
-                            <input type="checkbox" name="productsearch[]" value="pricelowtoheight" id="pricelowtoheight"
-                                @if (in_array('pricelowtoheight',$filter)) checked @endif>
-                            <label for="pricelowtoheight" class="bold">price lower to high</label>
+                            <input type="checkbox" name="productsearch[]" value="pricelowtohigh" id="pricelowtoheight"
+                                @if (in_array('pricelowtohigh',$filter)) checked @endif>
+                            <label for="pricelowtohigh" class="bold">{{__("translate.price lower to high")}}</label>
                         </div>
 
                         <div class="btn-contianer d-flex justify-content-center align-items-center">
-                            <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">apply</button>
+                            <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">{{__("translate.apply")}}</button>
                         </div>
                     </form>
                 </div>
@@ -165,10 +165,10 @@ products
                         @if(!$product->sells()->where('user_id',auth()->user()->id)->exists())
                         @if ($product->carts()->where('user_id',auth()->user()->id)->exists())
                         <button class="addtochart active" data-id="{{$product->id}}" onclick="addcart(this)"
-                            data-type='product'>in cart</button>
+                            data-type='product'>   {{__('translate.in cart')}}</button>
                         @else
                         <button class="addtochart" data-id="{{$product->id}}" onclick="addcart(this)"
-                            data-type='product'>add to cart</button>
+                            data-type='product'> {{__('translate.addtocart')}}</button>
                         @endif
 
                         @else
@@ -177,9 +177,9 @@ products
 
 
                         @else
-                        <button class="addtochart" data-bs-target="#login2" data-bs-toggle="modal">add to cart</button>
+                        <button class="addtochart" data-bs-target="#login2" data-bs-toggle="modal">{{__('translate.addtocart')}}</button>
                         @endauth
-
+                     
 
 
                     </div>
@@ -265,7 +265,7 @@ function addcart(e){
     console.log(data);
     if(data['status']){
         $(e).addClass("active");
-        $(e).text('in cart');
+        $(e).text('{{__('translate.in cart')}}');
 
         $('#cart-count').html(parseInt($('#cart-count').html())+1);
         $(document).ready(function(){
