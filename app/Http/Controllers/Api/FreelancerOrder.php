@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\ApiResponseTrait;
 class FreelancerOrder extends Controller
 {
     use ApiResponseTrait;
-
+    
     public function getPublicRequests(Request $request, $freelancer_id)
     {
         try{
@@ -18,26 +18,21 @@ class FreelancerOrder extends Controller
             if($freelancer->type != 'freelancer'){
                 return $this->returnError(404, "Freelancer Doesn't Exists");
             }
-
-
+            
             $requests = Requests::where('type', 'public')->where('status', 'Pending')->with(['user', 'freelancer', 'category', 'service', 'file'])->get();
-
-
-
 
             if($freelancer_id == auth('api')->user()->id){
                 foreach($requests as $request){
                 $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
-
+                
                 $offers = Offer::where('freelancer_id', '!=', $freelancer_id)->where('type', 'request')->
                 where('offersable_id', $request->id)->where('status', 'pending')->get();
                 $request['offers'] = $offers;
-
+                
                   if(!stripos($request->user->profile_image, "Admin3/assets/images/users/")){
                     $request->user->profile_image = asset('Admin3/assets/images/users/'.$request->user->profile_image);
                   }
                 }
-            //new
                 }else{
                     return $this->returnError(403, 'UnAuthenticated');
                 }
@@ -54,6 +49,7 @@ class FreelancerOrder extends Controller
 
 
 
+
     public function getPrivateRequests($freelancer_id)
     {
         try{
@@ -65,18 +61,18 @@ class FreelancerOrder extends Controller
             if($freelancer_id == auth('api')->user()->id){
             $requests = Requests::where('freelancer_id', $freelancer_id)->where('type', 'private')->where('status', 'Pending')
             ->with(['user', 'freelancer', 'category', 'service', 'file'])->get();
-
+            
             foreach($requests as $request){
                 $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
-
+            
               if(!stripos($request->user->profile_image, "Admin3/assets/images/users/")){
                 $request->user->profile_image = asset('Admin3/assets/images/users/'.$request->user->profile_image);
               }
-
+    
                 if(!stripos($request->freelancer->profile_image, "Admin3/assets/images/users/")){
                 $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
               }
-
+              
               if($request->offer()->exists()){
                 $request['price'] = $request->offer->where('freelancer_id', $request->freelancer_id)->first()->price;
               }
@@ -90,6 +86,9 @@ class FreelancerOrder extends Controller
             return $this->returnError(400, 'Private Requests Returned Failed');
         }
     }
+
+
+
 
 
 

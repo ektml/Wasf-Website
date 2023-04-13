@@ -23,6 +23,11 @@ class Reservation extends Model
     {
         return $this->morphMany(Offer::class,'offersable');
     }
+    
+    public  function freelancer(){
+        
+        return $this->belongsTo(User::class,"freelancer_id");
+    }
     public function review()
     {
      return $this->morphMany(Review::class,'reviewsable');

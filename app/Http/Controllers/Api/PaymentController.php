@@ -3,6 +3,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Offer;
+use  Carbon\Carbon;
+use App\Models\Cart;
+use App\Models\User;
+use App\Models\Photo;
+use App\Models\Product;
+use App\Models\Discount;
+use App\Models\CardOrder;
 use App\Models\Requests;
 use Illuminate\Http\Request;
 use App\Http\Services\PayTabs;
@@ -10,6 +17,8 @@ use App\Notifications\requests\AcceptOffer;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
 use App\Http\Controllers\payment\HayperpayController;
+
+use App\Http\Controllers\payment\CartController;
 
 class PaymentController extends Controller
 {
@@ -188,5 +197,59 @@ class PaymentController extends Controller
     {
         return User::findOrFail(auth()->user()->id)->wallet->total;
     }
+    
+    
+    
+    
+    
+    
+    public function  cartBankPay($discount_key){
+        
+        try{
+         $paydata=[];
+    $payed=false;
+    $discount=null;
+    $discount_id=null;
+    $visa_pay_id=null;
+    $disvalue=0;
+    $payment_fail=false;
+
+    
+                if (request('id') && request('status')=='paid') {
+                    $paymentService = new \Moyasar\Providers\PaymentService();
+                    $payment = $paymentService->fetch($request->id);
+
+                    //culc discount and get  price
+                    $discount=Discount::where('key',$discount_key)->first();
+                  $cartController=  new CartController;
+                    $paydata= $cartController->calcCartTotal($discount);
+                    if(trim($payment->amountFormat,config('moyasar.currency'))==$paydata['total']){
+                        $request->paytype='visa';
+                        $request->disc=$discount_key;
+                    }else{
+                        $payment_fail=true;
+                    }
+
+    
+            }elseif(request('status')=='failed'){
+                $payment_fail=true;
+            }
+            
+            
+            
+            
+        
+        
+    }catch(\Exception $e){
+        
+        echo $e;
+        
+        return $this->returnError(400,'some thing went wrong');
+    }
+
+}
+
+
+   
 
 }

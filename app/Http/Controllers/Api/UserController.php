@@ -4,6 +4,8 @@ use App\Models\User;
 use App\Models\File;
 use App\Models\Product;
 use App\Models\Photo;
+use App\Models\Selled;
+use Carbon\Carbon;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\FreelancerService;
@@ -11,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
 use App\Http\Controllers\Api\ApiResponseTrait;
 
 class UserController extends Controller
@@ -269,20 +272,84 @@ class UserController extends Controller
 
 
     
-    public function allFiles(Request $request, $id)
+    public function allFiles(Request $request,$id)
     {
         try{
-            $freelancer = User::find($id);
-            $files = File::where('user_id', $id)->get();
+         
+        $user_id=$id;
+        $user=User::find($user_id);
+
+        $currentYear = Carbon::now()->year; 
+        $currentMonth = Carbon::now()->month;
+        $lastMonth = Carbon::now()->subMonth()->month;
+
+        
+      $fc=Selled::where('user_id',$user_id)->whereMonth('created_at', $currentMonth)
+        ->whereYear('created_at', $currentYear)->get();
+        $files_current=[];
+        foreach($fc as $f){
+            $selled_id=$f->id;
+           $f=$f->selledsable()->withTrashed()->first()->file()->first();
+              $f->url = asset('front/upload/files/'.$f->url);
+              $f->selled_id=$selled_id;
+            $files_current[]=$f;
+   
+        }
+      
+        $files_lastmonth=[];
+        $fl=Selled::where('user_id',$user_id)->whereMonth('created_at', $lastMonth)
+        ->whereYear('created_at', $currentYear)
+        ->get();
+        foreach($fl as $f){
+             $selled_id=$f->id;
+             $f=$f->selledsable()->withTrashed()->first()->file()->first();
+              $f->url = asset('front/upload/files/'.$f->url);
+              $f->selled_id=$selled_id;
+          $files_lastmonth[]=$f;
+
+        }
+   
+        $f0=Selled::where('user_id',$user_id)->whereNotBetween('created_at', [
+                Carbon::createFromDate($currentYear, $lastMonth,1),
+                Carbon::createFromDate($currentYear, $currentMonth,31)
+            ])->get();
+            $files_old=[];
+        foreach($f0 as $f){
+             $selled_id=$f->id;
+             $f=$f->selledsable()->withTrashed()->first()->file()->first();
+              $f->url = asset('front/upload/files/'.$f->url);
+               $f->selled_id=$selled_id;
+            $files_old[]=$f;
             
-            foreach($files as $file){
-                $file->url = asset('front/upload/files/'.$file->url);
-            }
-            return $this->returnData(200, 'Files Returned Successfully', $files);
+           
+
+        }
+
+          return $this->returnData(200, 'Files Returned Successfully', compact('files_current','files_lastmonth','files_old'));
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'Files Returned Failed');
         }
     }
-}
+    
+    function deleteFile($id){
+        
+         try{
+        if(Selled::find($id)){
+            
+            $d=Selled::destroy($id);
+            
+             return $this->returnData(200, 'Files deleted Successfully');
+            
+        }else{
+             return $this->returnError(400, 'Files not found');
+        }
+        
+       
+     }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, 'Files Returned Failed');
+        }
+    }
 
+}

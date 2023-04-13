@@ -17,25 +17,50 @@ class RequestController extends Controller
     {
         try{
             
-            $requests = Requests::where('type', 'public')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file'])->get();
+            $price=null;
+            $requests = Requests::where('type', 'public')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
             
-              if(!stripos($request->user->profile_image, "Admin3/assets/images/users/")){
+              if(!strpos($request->user->profile_image, "Admin3/assets/images/users/")){
                 $request->user->profile_image = asset('Admin3/assets/images/users/'.$request->user->profile_image);
               }
+              
+              if($request->freelancer !=null){
+              if(!strpos($request->freelancer->profile_image, "Admin3/assets/images/users/")){
+                $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
+            
+              }
+              }
 
-              if($request->offer()->exists()){
-                $request['price'] = $request->offer->where('freelancer_id', $request->freelancer_id)->first()->price;
-              }
-              else{
-                 $request['price'] = null; 
-              }
+          
+            
+                   foreach($request['offer'] as $offer){
+                  
+                  
+                    $offer['freelancer']= User::find($offer->freelancer_id);
+                    
+                    if(!strpos($offer['freelancer']->profile_image,'Admin3/assets/images/users/')){
+                        
+                        $offer['freelancer']->profile_image= asset('Admin3/assets/images/users/'. $offer['freelancer']->profile_image);
+                    }
+                    
+                       
+                   }
+                   
+                   
+                   if($request->freelancer_id !=null){
+                       
+                       $request->price= $request->offer()->where('freelancer_id',$request->freelancer_id)->first()->price ;
+                   }else{
+                        $request->price=null;
+                   }
+                   
+                  
+            
             }
-            if($request->freelancer_id){
-                    $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
-                }
+           
             return $this->returnData(200, 'Requests Returned Successfully', $requests);
         }catch(\Exception $e){
             echo $e;
@@ -49,18 +74,29 @@ class RequestController extends Controller
     public function privateRequests(Request $request)
     {
         try{
-            $requests = Requests::where('type', 'private')->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
+            $requests = Requests::where('type', 'private')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
+            
+            // $requests = Requests::where('type', 'private')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
             
             foreach($requests as $request){
                  $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
-              if(!stripos($request->user->profile_image, "Admin3/assets/images/users/")){
+              if(!strpos($request->user->profile_image, "Admin3/assets/images/users/")){
                 $request->user->profile_image = asset('Admin3/assets/images/users/'.$request->user->profile_image);
               }
+              if(!strpos($request->freelancer->profile_image, "Admin3/assets/images/users/")){
+                $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
+              }
+              
+         
+              if($request->offer()->exists()){
+                   $request->price=$request->offer()->first()->price;
+              }else{
+                 $request->price=null;
+              }
+             
             }
             
-          if($request->freelancer_id){
-                $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
-            }
+         
 
             return $this->returnData(200, 'Requests Returned Successfully', $requests);
         }catch(\Exception $e){

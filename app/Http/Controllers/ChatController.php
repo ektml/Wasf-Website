@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatMessage;
 use App\Models\chat;
 use App\Models\Requests;
 use App\Models\Reservation;
@@ -82,14 +83,12 @@ class ChatController extends Controller
     
     public function store(Request $request)
     {
-
-        $flag=false;
+        $msg = null;
         $request->validate([
             'request_id'=>'required',
             'to'=>'required',
             'type'=>'required',
             'message'=>'required',
-
         ]);
 
     
@@ -97,29 +96,25 @@ class ChatController extends Controller
         if($request->type=="request"){
 
             $order= Requests::findorfail($request->request_id);
-            $order->chats()->create([
+            $msg = $order->chats()->create([
               'text'=>$request->message,
               'type'=>trim($request->type),
               'from'=>auth()->user()->id,
               'to'=>$request->to,
             ]);
-
-            $flag=true;
 
         }elseif($request->type=="reservation"){
             $order= Reservation::findorfail($request->request_id);
-            $order->chats()->create([
+            $msg = $order->chats()->create([
               'text'=>$request->message,
               'type'=>trim($request->type),
               'from'=>auth()->user()->id,
               'to'=>$request->to,
             ]);
-
-            $flag=true;
         }
 
-       return JSON_decode($flag);
-
+        event(new ChatMessage($msg, $request->request_id));
+        return response()->json($msg, 201);
     }
 
 
