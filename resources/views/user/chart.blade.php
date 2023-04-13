@@ -124,7 +124,7 @@
 
       @else
       <div class="d-flex">
-        <p>{{__('translate.your cart is empty......')}}</p><a href="{{route("products")}}"
+        <p>{{__('translate.your cart is empty')}}</p><a href="{{route("products")}}"
           class="linkemptycart">{{__('translate.start shopping now')}}</a>
       </div>
 
