@@ -240,7 +240,7 @@
           </div>
           @else
           <div class="wallet-pay">
-            <form action="{{route('user.cartpay')}}" method="POST" class=" d-flex flex-column justify-content-end">
+            <form action="{{route('user.cartpay')}}" method="GET" class=" d-flex flex-column justify-content-end">
               @csrf
 
               <input type="hidden" name="paytype" value="wallet">

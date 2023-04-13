@@ -143,6 +143,7 @@ Route::prefix("freelancer")->name("freelanc.")->middleware('auth','is_freelancer
     Route::get('/finish/{id}',[ReservationController::class,'finish'])->name('reservation.finish');
 
 
+   
 
 
 
@@ -159,6 +160,12 @@ Route::prefix("freelancer")->name("freelanc.")->middleware('auth','is_freelancer
     Route::post('service/add',[FreelancerServiceController::class,'addservice'])->name('addservice');
 
 });
+
+ 
+// cart pay
+
+
+
 ########################################## End Freelancer ##############################################
 
 
