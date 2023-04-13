@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use  Carbon\Carbon;
 use App\Models\Cart;
-use App\Models\User;
 use App\Models\Photo;
 use App\Models\Product;
 use App\Models\Discount;

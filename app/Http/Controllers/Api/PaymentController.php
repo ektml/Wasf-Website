@@ -5,7 +5,6 @@ use App\Models\User;
 use App\Models\Offer;
 use  Carbon\Carbon;
 use App\Models\Cart;
-use App\Models\User;
 use App\Models\Photo;
 use App\Models\Product;
 use App\Models\Discount;
