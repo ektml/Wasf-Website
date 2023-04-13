@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-products
+{{__('translate.products')}}
 @endsection
 @section("header")
 @endsection
@@ -135,7 +135,8 @@ products
                         </div>
 
                         <div class="btn-contianer d-flex justify-content-center align-items-center">
-                            <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">{{__("translate.apply")}}</button>
+                            <button type="submit"
+                                class=" border-0 btn-modal  my-3 btn-model-primary ">{{__("translate.apply")}}</button>
                         </div>
                     </form>
                 </div>
@@ -165,21 +166,22 @@ products
                         @if(!$product->sells()->where('user_id',auth()->user()->id)->exists())
                         @if ($product->carts()->where('user_id',auth()->user()->id)->exists())
                         <button class="addtochart active" data-id="{{$product->id}}" onclick="addcart(this)"
-                            data-type='product'>   {{__('translate.in cart')}}</button>
+                            data-type='product'> {{__('translate.in cart')}}</button>
                         @else
                         <button class="addtochart" data-id="{{$product->id}}" onclick="addcart(this)"
                             data-type='product'> {{__('translate.addtocart')}}</button>
                         @endif
 
                         @else
-                        <button class="addtochart active"> you paid</button>
+                        <button class="addtochart active"> {{__('translate.you buied')}}</button>
                         @endif
 
 
                         @else
-                        <button class="addtochart" data-bs-target="#login2" data-bs-toggle="modal">{{__('translate.addtocart')}}</button>
+                        <button class="addtochart" data-bs-target="#login2"
+                            data-bs-toggle="modal">{{__('translate.addtocart')}}</button>
                         @endauth
-                     
+
 
 
                     </div>

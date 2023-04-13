@@ -51,4 +51,13 @@ return [
 'size type'=>'نوع الحجم',
 'location'=>'الموقع',
 'optional'=>'اختياري',
+
+
+
+"freelancer profile"=>'ملف تعريف العامل المستقل',
+"Request service"=>'طلب خدمة',
+"Request new service"=>'طلب خدمة جديدة',
+"Booking for photo shot"=>'حجز جلسة تصوير فوتوغرافي',
+
+
 ];

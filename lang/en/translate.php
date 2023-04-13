@@ -17,6 +17,7 @@ return [
     "categories"=>'categories',
     "top freelancers"=> "top freelancers",
     "see all"=>"see all",
+    "show more"=>"show more",
     "about us"=>"about us",
     "contact us"=>"contact us",
     'privacy & police'=>'privacy & police',
@@ -70,7 +71,7 @@ return [
 // product
 'addtocart'=>'add to cart',
 'in cart'=>'in cart',
-'you paid'=>' you paid',
+'you buied'=>'you buied',
 'in cart'=>'in cart',
 
 
@@ -90,6 +91,7 @@ return [
 'S.R'=>'S.R',
 'payment method'=>'payment method',
 'Notifications'=>'Notifications',
+'move back'=>'move back',
 
 
 

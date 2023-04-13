@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-product
+ {{__('freelancerprofile.wallet')}}
 @endsection
 @section("header")
 @endsection

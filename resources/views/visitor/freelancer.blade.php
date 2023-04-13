@@ -89,7 +89,7 @@ Freelancer Profile
     @auth
     <div class="container-fluid py-5 px-3" style="padding-top: 185px !important;">
         <div class="section-header">
-            <h2>{{__('translate.services')}}</h2>
+            <h2>{{__('freelancerprofile.services')}}</h2>
         </div>
     </div>
 
@@ -177,7 +177,7 @@ Freelancer Profile
                         @endif
 
                         @else
-                        <button class="addtochart active"> you paid</button>
+                        <button class="addtochart active"> {{__('translate.you buied')}} </button>
                         @endif
 
 
@@ -214,7 +214,7 @@ Freelancer Profile
 <div class="categories ccs ms-3">
     <div class="container-fluid py-2 px-3 scrollable-container">
         <div class="section-header">
-            <h2>{{__('freelancerpage.photos')}}</h2>
+            <h2>{{__('freelancerprofile.photos')}}</h2>
         </div>
         <button class="pre-btn">
             <i class="fa fa-arrow-left"></i>
@@ -251,7 +251,7 @@ Freelancer Profile
                     @endif
 
                     @else
-                    <button class="addtochart active"> you paid</button>
+                    <button class="addtochart active"> {{__('translate.you buied')}} </button>
                     @endif
 
 
@@ -284,7 +284,7 @@ Freelancer Profile
     <div class="container-fluid d-block">
 
         <div class="section-header px-4">
-            <h2 class="text-black ">{{__('freelancerpage.reviews')}}<span
+            <h2 class="text-black ">{{__('freelancerprofile.reviews')}}<span
                     class="text-black">({{$reviews->count()}})</span></h2>
 
         </div>
@@ -325,7 +325,7 @@ Freelancer Profile
         @endforelse
 
         {{$reviews->links() }}
-        <a href="" class=" text-center showmore">show more</a>
+        <a href="" class=" text-center showmore">{{__('translate.show more')}}</a>
     </div>
 </div>
 
@@ -342,24 +342,24 @@ Freelancer Profile
                 <form action="{{route('user.choseRequestOrReservation',$freelancer->id)}}" id="form-chooserequest"
                     method="POST">
                     @csrf
-                    <h1 class="modal-title fs-5">Request service</h1>
+                    <h1 class="modal-title fs-5">{{__('freelancerprofile.Request service')}}</h1>
 
                     <div>
                         <input type="radio" value="private" id="private" name="requesttype" required>
-                        <label for="private">Request new service</label>
+                        <label for="private"> {{__('freelancerprofile.Request new service')}}</label>
                     </div>
 
                     <div>
                         <input type="radio" value="reservation" id="reservation" name="requesttype" required>
-                        <label for="reservation">Booking for photo shot</label>
+                        <label for="reservation">{{__('freelancerprofile.Booking for photo shot')}}</label>
                     </div>
 
                     <div
                         class="btn-contianer d-flex flex-md-row justify-content-between align-items-center my-3 fullwidthfield flex-column-reverse">
                         <button class="btn-modal modal-color-text border-0" data-bs-dismiss="modal" type="button"
-                            style="width:150px;padding:5px 6px">move back</button>
+                            style="width:150px;padding:5px 6px">{{__('translate.move back')}}</button>
                         <button class="btn-modal btn-model-primary border-0" style="width:150px;padding:5px 6px"
-                            name="submit" type="submit">apply</button>
+                            name="submit" type="submit">{{__('translate.apply')}}</button>
                     </div>
                 </form>
             </div>

@@ -22,6 +22,12 @@ return [
     "older"=>'Older',
     "add new photo"=>'add new photo',
     "add new product"=>'add new product',
+    "freelancer profile"=>'freelancer profile',
+    "Request service"=>'Request service',
+    "Request new service"=>'Request new service',
+    "Booking for photo shot"=>'Booking for photo shot',
+   
+    
 
 
 

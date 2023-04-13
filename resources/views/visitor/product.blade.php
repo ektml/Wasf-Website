@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-product
+{{__('translate.product')}}
 @endsection
 @section("header")
 @endsection
@@ -87,7 +87,7 @@ product
                     @endif
 
                     @else
-                    <button class="btn  btn-modal  my-3 btn-model-primary"> you paid</button>
+                    <button class="btn  btn-modal  my-3 btn-model-primary"> {{__('translate.you buied')}}</button>
                     @endif
 
 
@@ -243,7 +243,7 @@ product
                             @endif
 
                             @else
-                            <button class="addtochart active"> you paid</button>
+                            <button class="addtochart active"> {{__('translate.you buied')}}</button>
                             @endif
 
 
