@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
             "img1"=>['required', 'image'],
             "img2"=>['nullable', 'image'],
             "img3"=>['nullable', 'image'],
-            // "group-a"=>['required','min:1']
+            "group-a"=>['required','min:1']
         ];
     }
 }
