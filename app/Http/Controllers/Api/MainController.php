@@ -342,8 +342,8 @@ class MainController extends Controller
     public function allProductsInCart()
     {
         try{
-            $cart_items = Cart::with('cartsable')->get();
-            $total = Cart::select('price')->get();
+            $cart_items = Cart::with('cartsable')->where('user_id',auth('api')->user()->id)->get();
+            $total = Cart::select('price')->where('user_id',auth('api')->user()->id)->get();
             foreach($cart_items as $key=> $item){
                if( $item->cartsable !=null){
                    $item->cartsable['attachment'] = asset('assets/images/product/'.$item->cartsable['attachment']);

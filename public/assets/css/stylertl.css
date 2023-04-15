@@ -311,13 +311,13 @@ body {
 }
 
 @media (min-width: 767px) {
-    #signup .modal-content {
+    #signup .modal-body {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 @media (min-width: 902px) {
-    #signup .modal-content {
+    #signup .modal-body {
         padding-left: 80px;
         padding-right: 82px;
     }
