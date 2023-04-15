@@ -101,7 +101,10 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        
+
+dd($request);
+
+
        
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);

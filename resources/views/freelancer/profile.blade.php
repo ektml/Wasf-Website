@@ -295,7 +295,7 @@ profile
 
 <script>
     const $categoryCheckboxes = $('.category-checkbox');
-const $serviceCheckboxes = $('.service-checkbox');
+    const $serviceCheckboxes = $('.service-checkbox');
 
 // Add event listener to each service checkbox
 $serviceCheckboxes.on('click', function() {

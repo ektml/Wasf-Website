@@ -73,7 +73,7 @@ Route::get('deleteFile/{id}', [UserController::class, 'deleteFile'])->middleware
 
 
 // Products
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products',[ProductController::class, 'index']);
 Route::post('createProduct', [ProductController::class, 'createProduct'])->middleware('auth:api');
 Route::get('getProduct/{id}', [ProductController::class, 'getProduct']);
 Route::put('editProduct/{id}', [ProductController::class, 'editProduct']);
@@ -120,6 +120,7 @@ Route::get('getPrivateRequests/{freelancer_id}',[OrderController::class,'getPriv
 Route::get('getMyWork/{freelancer_id}',[OrderController::class,'getMyWork'])->middleware('auth:api');
 
 
-//
+//chat
 
 Route::post('getMessages',[ChatController::class,'getMessages'])->middleware('auth:api');
+Route::post('sendMessage',[ChatController::class,'sendMessage'])->middleware('auth:api');

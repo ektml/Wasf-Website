@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Events\ChatMessage;
 use App\Models\chat; 
 use App\Models\User; 
 use App\Models\Requests;
@@ -63,5 +64,47 @@ class ChatController extends Controller
         echo $e;
        return $this->returnError('500', 'get message Failed');
         }     
+    }
+
+
+
+    public function sendMessage(){
+
+        try{
+            $msg=null;
+            $type=$request->type;
+            $messageto=$request->to;
+            $request_id=$request->request_id;
+            $user=auth('api')->user()->id;
+            
+             
+        if($request->type=="request"){
+
+            $order= Requests::findorfail($request->request_id);
+            $msg = $order->chats()->create([
+              'text'=>$request->message,
+              'type'=>trim($request->type),
+              'from'=>$user,
+              'to'=>$request->to,
+            ]);
+
+        }elseif($request->type=="reservation"){
+            $order= Reservation::findorfail($request->request_id);
+            $msg = $order->chats()->create([
+              'text'=>$request->message,
+              'type'=>trim($request->type),
+              'from'=>$user,
+              'to'=>$request->to,
+            ]);
+        }
+
+        event(new ChatMessage($msg,$request->request_id));
+      
+          return $this->returnData(200,"message send successfully " );
+ 
+            }catch(\Exception $e){
+            echo $e;
+           return $this->returnError('500', 'get message Failed');
+            }     
     }
 }

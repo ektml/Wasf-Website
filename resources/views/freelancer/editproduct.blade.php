@@ -87,6 +87,10 @@ edit product
           <label for="inputName" class="pb-2">Service</label>
           <select name="service_id" id="service_id" class="form-control @error('service_id') is-invalid @enderror">
 
+
+            @if()
+
+            @endif
           </select>
           @error('service_id')<div class="alert alert-danger">{{ $message }}</div>@enderror
         </div>
@@ -157,7 +161,6 @@ edit product
                     <div class="info">
                       <h3>
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod temporlorem
-
                       </h3>
                       <div class="size">
                         521kB . PDF
@@ -183,22 +186,22 @@ edit product
 
             <div class="d-flex hlafwidth ">
               <div class="d-flex">
-                <label for="attachment" class="download">
+                <label for="attachment2" class="download img1 ">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class="form-control" id="attachment" name="attachment"
-                  placeholder="persentation title">
+                <input type="file" class=" input-image form-control @error('img1') is-invalid @enderror"
+                  id="attachment2" name="img1" value='{{old('img1')}}' placeholder="persentation title">
               </div>
               <div class="d-flex">
-                <label for="attachment" class="download">
+                <label for="attachment3" class="download img2">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class="form-control" id="attachment" name="attachment"
-                  placeholder="persentation title">
+                <input type="file" class=" input-image form-control @error('img2') is-invalid @enderror"
+                  id="attachment3" name="img2" value='{{old('img2')}}' placeholder="persentation title">
               </div>
               <div class="d-flex">
-                <label for="attachment" class="download">
+                <label for="attachment4" class="download img3">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class="form-control" id="attachment" name="attachment"
-                  placeholder="persentation title">
+                <input type="file" class=" input-image form-control @error('img3') is-invalid @enderror"
+                  id="attachment4" name="img3" value='{{old('img3')}}' placeholder="persentation title">
               </div>
             </div>
 
@@ -277,6 +280,19 @@ edit product
 
 <script>
   $(document).ready(function() {
+
+
+    $('.input-image').each(function(e){
+
+      if(e.val()!=''){
+      $('lebal.'+e.attr('name')).css('color',"red");
+      }
+
+
+    })
+
+
+
         $('#category_id').on('change', function() {
             var CategoryId = $(this).val();
             if (CategoryId) {
