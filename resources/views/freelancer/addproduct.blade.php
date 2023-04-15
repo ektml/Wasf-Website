@@ -57,7 +57,7 @@ add product
                     <select name="category_id" id="category_id"
                         class="form-control SlectBox @error('category_id') is-invalid @enderror"
                         onclick="console.log($(this).val())" onchange="console.log('change is firing')">
-                        <option value="" selected disabled>Choose Category</option>
+                        <option value="" selected>Choose Category</option>
                         @foreach ($categories as $category)
                         @if(app()->getLocale()=='ar')
                         <option value="{{ $category->id }}"> {{ $category->title_ar }}</option>
@@ -74,6 +74,7 @@ add product
                     <label for="inputName" class="pb-2">Service</label>
                     <select name="service_id" id="service_id"
                         class="form-control @error('service_id') is-invalid @enderror">
+                        <option value="" selected>Choose service</option>
 
                     </select>
                     @error('service_id')<div class="alert alert-danger">{{ $message }}</div>@enderror
@@ -208,10 +209,10 @@ add product
                 <div class="d-flex justify-content-center align-items-center flex-column ">
 
                     <button type="submit" class="btn  btn-modal  my-3 px-5  btn-model-primary ">add product</button>
-                  
-                  
-                  </div>
-               
+
+
+                </div>
+
             </form>
         </div>
     </div>
@@ -237,8 +238,9 @@ add product
                     dataType: "json",
                     success: function(data) {
                         $('#service_id').empty();
+                      
                         if(data!='[]'){
-                            console.log(data);
+                            $('#service_id').append(' <option value="" selected>Choose service</option>');
                         $.each(data, function(key, value) {
                             $('#service_id').append('<option value="' +
                                 key + '">' + value + '</option>');
@@ -255,37 +257,6 @@ add product
         });
     });
 </script>
-{{-- <script >
-    $(document).ready(function() {
-        $('#category_id').on('change', function() {
-            var catId = $(this).val();
-            if (catId) {
-                $.ajax({
-                    url: "{{ URL::to('freelancer/category') }}/" + catId,
-type: "GET",
-dataType: "json",
-success: function(data) {
-if(data){
-$('#service_id').removeAttr("disabled");
-console.log($('select[name="service_id"]'))
-$('#service_id').empty();
-$.each(data, function(key, value) {
-$('#service_id').append('<option value="' +
-                                key + '">' + value + '</option>');
-});
-}else{
-$('#service_id').append("<option value''>no service</option>")
-$('#service_id').attr("disabled","disabled");
-}
-
-},
-});
-} else {
-console.log('AJAX load did not work');
-}
-});
-});
-</script> --}}
 
 
 <script>

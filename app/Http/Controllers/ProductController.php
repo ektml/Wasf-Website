@@ -26,7 +26,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
 
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
