@@ -17,16 +17,16 @@ class ProductRequest extends FormRequest
     {
         return [
             "name"=>['required'],
-            "category"=>['required'],
-            "service"=>['nullable'],
+            "category_id"=>['required'],
+            "service_id"=>['nullable'],
             "name"=>['required'],
             "price"=>['required', "numeric"],
             "description"=>['required'],
              "attachment"=>['required', "max:200", "file"],
             "img1"=>['required', 'image'],
-            "img2"=>['nullable', 'image'],
-            "img3"=>['nullable', 'image'],
-            // "group-a"=>['required','min:1']
+            "img2"=>['required', 'image'],
+            "img3"=>['required', 'image'],
+            "group-a"=>['required','min:1']
         ];
     }
 }

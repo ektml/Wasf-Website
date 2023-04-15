@@ -1,6 +1,6 @@
 <div class="head">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container nav2-head">
+        <div class="container-fluid nav2-head">
             <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset("assets/images/newlogo2.png")}}"
                     alt=""></a>
             <form class="search-form  search-home can-hide  px-lg-3 mx-lg-5 " style="display:@yield(" nosearch")"
