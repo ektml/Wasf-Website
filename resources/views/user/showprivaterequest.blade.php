@@ -15,7 +15,8 @@ show private requests
 
 @section("css")
 <link href="{{asset('assets/libs/jquery-bar-rating/themes/css-stars.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars-o.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars-o.css')}}" rel="stylesheet"
+    type="text/css" />
 <link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
@@ -39,7 +40,7 @@ show private requests
             <div class="filter d-flex align-items-baseline">
                 <button class=" filter-button btn d-flex align-items-center justify-content-between">
                     <i class="fa-solid fa-filter px-2 fs-3"></i>
-                    <span >filter by:</span>
+                    <span>filter by:</span>
                 </button>
                 <span class=" px-2">All</span>
             </div>
@@ -48,27 +49,27 @@ show private requests
                 <form action="">
                     <div>
                         <input type="checkbox" name="productsearch" value="all" id="all">
-                        <label for="all" class="bold" >all</label>
+                        <label for="all" class="bold">all</label>
                     </div>
 
                     <div>
                         <input type="checkbox" name="productsearch" value="datadesending" id="datadesending">
-                        <label for="datadesending"class="bold" >data desending</label>
+                        <label for="datadesending" class="bold">data desending</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="pendding"id="pendding" >
-                        <label for="pendding"class="bold" >pendding</label>
+                        <input type="checkbox" name="productsearch" value="pendding" id="pendding">
+                        <label for="pendding" class="bold">pendding</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="active"id="active" >
-                        <label for="active"class="bold" >active</label>
+                        <input type="checkbox" name="productsearch" value="active" id="active">
+                        <label for="active" class="bold">active</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="completed"id="completed" >
-                        <label for="completed"class="bold" >completed</label>
+                        <input type="checkbox" name="productsearch" value="completed" id="completed">
+                        <label for="completed" class="bold">completed</label>
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">
@@ -79,119 +80,145 @@ show private requests
         </div>
 
         <div class="requestlink py-4 d-flex justify-content-evenly align-items-center">
-            <a href="{{route('user.showpublicrequest')}}" class=" fs-4 text-black-50 ">{{__('request.public request')}}</a>
+            <a href="{{route('user.showpublicrequest')}}"
+                class=" fs-4 text-black-50 ">{{__('request.public request')}}</a>
             <a href="{{route('user.showprivaterequest')}}" class="active  fs-4">{{__('request.private request')}}</a>
         </div>
 
-    <div class="requesties d-flx flex-column pt-4">
-        @foreach ($requests as $request)
- 
-
-       @if ($request->status=="Pending" && $request->offer->first())
-       <a  href="#penddingacceptoreject{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-        @elseif($request->status=="Pending")
-        <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-        @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() ) ||$request->status=='Reject' )
-        <a  href="#inprogressenddueprivate{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-        @elseif($request->status=='In Process' )
-        <a  href="#inprogress{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-        @elseif($request->status=='Cancel by customer' )
-        <a  href="#inprogress{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-        @elseif($request->status=='Finished' )
-        <a  href="#finish{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-        @elseif($request->status== 'Completed'  )
-        <a  href="#complete{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-        @else
-
-   <a  href="#"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-       @endif
-            {{-- <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" > --}}
-                <div class="d-flex justify-content-between align-items-baseline show-phone">
-                    <div class="frelacereq d-flex ">
-                        <img src="{{ asset("Admin3/assets/images/users/".App\Models\User::where('id', $request->freelancer_id)->first()->profile_image) }}" class="img-fluid rounded-top" alt="">
-
-                        <div class="freelanereq mx-2">
-                            <h3 class="fw-600">{{App\Models\User::where('id', $request->freelancer_id)->first()->name }}</h3>
-                            <span class="text-black-50">{{$request->random_id}}</span>
-                        </div>
-                    </div>
-
-                        @if($request->status == 'Pending')
-                            <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'In Process')
-                            <p class="status gray text-warning" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Finished')
-                            <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Completed')
-                            <p class="status gray text-black" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Cancel by customer')
-                            <p class="status text-danger" >{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                            @elseif($request->status == 'Reject')
-                            <p class="status text-danger">{{$request->status}}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @endif
-                    </div>
+        <div class="requesties d-flx flex-column pt-4">
+            @foreach ($requests as $request)
 
 
+            @if ($request->status=="Pending" && $request->offer->first())
+            <a href="#penddingacceptoreject{{$request->id}}" data-bs-toggle="modal" role="button"
+                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                    <div class="d-flex ">
-                        <div class="d-flex flex-column px-2">
-                          
-                        <p class="m-0">req.date</p>
-                            <span>{{ date_format($request->created_at,"Y-m-d") }}</span>
-                        </div>
-                        
-                    @if($request->due_date < now()->toDateString())
-                    <div class="d-flex flex-column px-2">
-                        <p class="m-0">Due date</p>
-                        <span class="text-danger">{{$request->due_date }}</span>
-                        <div>
-                        </div>
-                    </div>
-                @else
-                    <div class="d-flex flex-column px-2">
-                        <p class="m-0">Due date</p>
-                        <span>{{ $request->due_date }}</span>
-                        <div>
-                        </div>
-                    </div>
-                @endif
-                
-                @if($request->offer->first() !=null)
-                <div class="d-flex flex-column px-2">
-                    <p class="m-0">price</p>
-                    <span >{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
-                    <div>
-                    </div>
-                </div>
-            @else
-               
-            @endif
-                    </div>
+                @elseif($request->status=="Pending")
+                <a href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button"
+                    class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                    
-                </a>
+                    @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() )
+                        ||$request->status=='Reject' )
+                        <a href="#inprogressenddueprivate{{$request->id}}" data-bs-toggle="modal" role="button"
+                            class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                @include("layouts.component.modal.userprivaterequest.penddingcancel")
-                @include("layouts.component.modal.userprivaterequest.penddingacceptorreject")
-                @include("layouts.component.modal.userRequests.inprogress")
-                @include("layouts.component.modal.userprivaterequest.inprogressudedateprivate")
-                @include("layouts.component.modal.userRequests.chat")
-                @include("layouts.component.modal.userRequests.finish")
-                @include("layouts.component.modal.userRequests.complete")
-                 @include("layouts.component.modal.userRequests.payment")
-                
-                @include("layouts.component.modal.userRequests.review")
-                
-                @include("layouts.component.modal.userRequests.suredelete")
-                  {{-- end model --}}
-                  
-            @endforeach
+                            @elseif($request->status=='In Process' )
+                            <a href="#inprogress{{$request->id}}" data-bs-toggle="modal" role="button"
+                                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                @elseif($request->status=='Cancel by customer' )
+                                <a href="#inprogress{{$request->id}}" data-bs-toggle="modal" role="button"
+                                    class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+                                    @elseif($request->status=='Finished' )
+                                    <a href="#finish{{$request->id}}" data-bs-toggle="modal" role="button"
+                                        class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+                                        @elseif($request->status== 'Completed' )
+                                        <a href="#complete{{$request->id}}" data-bs-toggle="modal" role="button"
+                                            class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                            @else
+
+                                            <a href="#" role="button"
+                                                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                                @endif
+                                                {{-- <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal"
+                                                role="button" class="request d-flex flex-column px-3 py-3
+                                                position-relative mb-5" > --}}
+                                                <div
+                                                    class="d-flex justify-content-between align-items-baseline show-phone">
+                                                    <div class="frelacereq d-flex ">
+                                                        <img src="{{ asset("Admin3/assets/images/users/".App\Models\User::where('id', $request->freelancer_id)->first()->profile_image) }}"
+                                                            class="img-fluid rounded-top" alt="">
+
+                                                        <div class="freelanereq mx-2">
+                                                            <h3 class="fw-600">
+                                                                {{App\Models\User::where('id', $request->freelancer_id)->first()->name }}
+                                                            </h3>
+                                                            <span class="text-black-50">{{$request->random_id}}</span>
+                                                        </div>
+                                                    </div>
+
+                                                    @if($request->status == 'Pending')
+                                                    <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i
+                                                            class="fa-solid fa-circle px-2 "></i></p>
+                                                    @elseif($request->status == 'In Process')
+                                                    <p class="status gray text-warning" data-color="C4C3C3">
+                                                        {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i>
+                                                    </p>
+                                                    @elseif($request->status == 'Finished')
+                                                    <p class="status gray" style="color: rgb(214, 214, 42);"
+                                                        data-color="C4C3C3">{{ $request->status }}<i
+                                                            class="fa-solid fa-circle px-2 "></i></p>
+                                                    @elseif($request->status == 'Completed')
+                                                    <p class="status gray text-black" data-color="C4C3C3">
+                                                        {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i>
+                                                    </p>
+                                                    @elseif($request->status == 'Cancel by customer')
+                                                    <p class="status text-danger">{{ $request->status }}<i
+                                                            class="fa-solid fa-circle px-2 "></i></p>
+                                                    @elseif($request->status == 'Reject')
+                                                    <p class="status text-danger">{{$request->status}}<i
+                                                            class="fa-solid fa-circle px-2 "></i></p>
+                                                    @endif
+                                                </div>
+
+
+
+                                                <div class="d-flex ">
+                                                    <div class="d-flex flex-column px-2">
+
+                                                        <p class="m-0">req.date</p>
+                                                        <span>{{ date_format($request->created_at,"Y-m-d") }}</span>
+                                                    </div>
+
+                                                    @if($request->due_date < now()->toDateString())
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">Due date</p>
+                                                            <span class="text-danger">{{$request->due_date }}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @else
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">Due date</p>
+                                                            <span>{{ $request->due_date }}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+
+                                                        @if($request->offer->where('freelancer_id',$request->freelancer_id)->first()
+                                                        !=null)
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">price</p>
+                                                            <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @else
+
+                                                        @endif
+                                                </div>
+
+
+                                            </a>
+
+                                            @include("layouts.component.modal.userprivaterequest.penddingcancel")
+                                            @include("layouts.component.modal.userprivaterequest.penddingacceptorreject")
+                                            @include("layouts.component.modal.userRequests.inprogress")
+                                            @include("layouts.component.modal.userprivaterequest.inprogressudedateprivate")
+                                            @include("layouts.component.modal.userRequests.chat")
+                                            @include("layouts.component.modal.userRequests.finish")
+                                            @include("layouts.component.modal.userRequests.complete")
+                                            @include("layouts.component.modal.userRequests.payment")
+
+                                            @include("layouts.component.modal.userRequests.review")
+
+                                            @include("layouts.component.modal.userRequests.suredelete")
+                                            {{-- end model --}}
+
+                                            @endforeach
         </div>
     </div>
 </div>
@@ -201,12 +228,12 @@ show private requests
 @endsection
 
 @section("js")
-   
-<script src="{{asset('assets/libs/jquery-bar-rating/jquery.barrating.min.js')}}"></script>
-    <script src="{{asset('assets/js/pages/rating-init.js')}}"></script>
 
-    <script>
-        $(".filter-button").click(function(){
+<script src="{{asset('assets/libs/jquery-bar-rating/jquery.barrating.min.js')}}"></script>
+<script src="{{asset('assets/js/pages/rating-init.js')}}"></script>
+
+<script>
+    $(".filter-button").click(function(){
             $(".filter-items").toggle();
         });
 
@@ -232,7 +259,7 @@ show private requests
 
 
         
-    </script>
+</script>
 
 
 <script>

@@ -27,6 +27,7 @@ return [
     'message'=>'message',
     "Download application"=>'Download application',
     "send"=>"send",
+    "cancel"=>"cancel",
 
     "Sign up"=>"Sign up",
     "By signing up you accept the"=>"By signing up you accept the",

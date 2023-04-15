@@ -29,6 +29,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
+
+        
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);
         $type=$request->file("attachment")->getCLientOriginalExtension();
@@ -63,10 +65,13 @@ class ProductController extends Controller
 
 
     foreach($request['group-a'] as $proprity){
-        $product->proprity()->create([
-            'key'=>$proprity['prop_key'],
-            'value'=>$proprity['prop_value'],
-        ]);
+        if($proprity['prop_key'] !=null &&$proprity['prop_value'] !=null){
+            $product->proprity()->create([
+                'key'=>$proprity['prop_key'],
+                'value'=>$proprity['prop_value'],
+            ]);
+        }
+       
     }
 
     $product->file()->create([
@@ -78,8 +83,6 @@ class ProductController extends Controller
     ]);
        
 
-
-      
        toastr()->success("created susseccfully");
 
         return redirect()->route('freelanc.product.index'); 
@@ -104,8 +107,6 @@ class ProductController extends Controller
 
 dd($request);
 
-
-       
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);
         $type=$request->file("attachment")->getCLientOriginalExtension();

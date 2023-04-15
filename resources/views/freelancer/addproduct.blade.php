@@ -107,13 +107,6 @@ add product
                     @enderror
                 </div>
 
-
-
-
-
-
-
-
                 <div class="propritys mb-3" style="width:100%">
                     <label for="proprety" class="form-label mb-3 " id>properties</label>
 
@@ -154,10 +147,6 @@ add product
                     @enderror
 
                 </div>
-
-
-
-
 
                 {{-- proprity --}}
                 <div class="mb-4">

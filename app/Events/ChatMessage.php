@@ -24,7 +24,7 @@ class ChatMessage implements ShouldBroadcast
     public function __construct($msg, $requestId)
     {
         $this->msg = $msg;
-        $this->requestId = $requestId;
+        $this->requestId= $requestId;
     }
 
     /**

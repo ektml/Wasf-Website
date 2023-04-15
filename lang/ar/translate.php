@@ -29,7 +29,7 @@ return [
   'message'=>'الرسالة',
   "send"=>"إرسال",
   "Download application"=>'تنزيل التطبيق',
-  
+  'cancel' => 'إلغاء',
 
   'All copy writes saved to'=>'جميع حقوق النسخ محفوظة لـ',
   'wasf'=>'وصف',
