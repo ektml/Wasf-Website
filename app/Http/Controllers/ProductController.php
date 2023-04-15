@@ -101,6 +101,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        
        
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);
@@ -121,7 +122,7 @@ class ProductController extends Controller
         $img3=time(). ".".$file_extention;
         $request->img3->move(public_path('assets/images/product/'),$img3);
 
-        $product= Product::create([
+        $product= Product::update([
             'name'=> $request->name,
             "freelancer_id" =>auth()->user()->id,
             'cat_id'=> $request->category_id,
