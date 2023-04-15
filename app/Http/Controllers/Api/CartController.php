@@ -95,7 +95,7 @@ class CartController extends Controller
                         $total=$price-$descount;
                         }
                         
-                      $total= doubleval(number_format($total,2));
+                      $total= round(doubleval(number_format($total,2)),2);
 
 
                   return $this->returnData(201, 'there is discount' ,compact('total','discount'));
