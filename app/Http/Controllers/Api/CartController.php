@@ -48,12 +48,15 @@ class CartController extends Controller
             $walletEnough=true ;
             }
             
-             $total=round($total,2);
+            $total=doubleval(number_format($total,2));
 
             return compact('cartadditems','total','descount','price','discount_key' ,'walletEnough');
         }else{
-
             $total=$price-$descount;
+             if($total < 0){
+                $total=0;
+             }
+           
             
              $total=round($total,2);
 
@@ -92,7 +95,7 @@ class CartController extends Controller
                         $total=$price-$descount;
                         }
                         
-                      $total=number_format($total,2);
+                      $total=doubleval(number_format($total,2));
                   return $this->returnData(201, 'there is discount' ,compact('total','discount'));
              }else{
                  $total=$price;
