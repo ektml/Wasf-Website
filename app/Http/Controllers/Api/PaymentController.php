@@ -230,10 +230,10 @@ class PaymentController extends Controller
                    }
                   $cartController=  new CartController;
                     $paydata= $cartController->calcCartTotal($user_id,$discount);
-                    if(trim($payment->amountFormat,config('moyasar.currency'))!=$paydata['total']){
+                    // if(trim($payment->amountFormat,config('moyasar.currency'))!=$paydata['total']){
                         
-                        $payment_fail=true;
-                    }
+                    //     $payment_fail=true;
+                    // }
 
     
             }elseif(request('status')=='failed'){
