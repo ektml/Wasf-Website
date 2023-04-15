@@ -317,7 +317,7 @@ body {
     }
 }
 @media (min-width: 902px) {
-    #signup .modal-body {
+    #signup .modal-body  {
         padding-left: 80px;
         padding-right: 82px;
     }
