@@ -36,19 +36,25 @@ return [
     'Service'=>'Service',
     'product name'=>'product name',
     'price'=>'price',
+    'Choose service'=>'Choose service',
     'description'=>'description',
     'properties'=>'properties',
+    'attachment'=>'attachment',
     'Maximun upload 200 kB'=>'Maximun upload 200 kB',
     'product pictures'=>'product pictures',
     'add product'=>'add product',
     'edit product'=>'edit product',
     'delete product'=>'delete product',
     'Maximun 3 pictures'=>'Maximun 3 pictures',
+    'are you sure from delete this product'=>'are you sure from delete this product',
 
 
+    'delete'=>'delete',
+    'move back'=>'move back',
    //add photo
 
    'edit photo'=>'edit photo',
+   'add photo'=>'add photo',
    'upload photo'=>'upload photo',
    'photo name'=>'photo name',
    'camera brand'=>'camera brand',
@@ -59,5 +65,6 @@ return [
    'size type'=>'size type',
    'location'=>'location',
    'optional'=>'optional',
+   'are you sure from delete this photo'=>'are you sure from delete this photo',
  
 ];

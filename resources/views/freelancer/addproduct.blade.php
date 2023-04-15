@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-add product
+{{__('freelancerprofile.add product')}}
 @endsection
 @section("header")
 @endsection
@@ -45,7 +45,7 @@ add product
 
         <div class="form px-3">
             <div class="section-header">
-                <h2>add product</h2>
+                <h2>{{__('freelancerprofile.add product')}}</h2>
             </div>
 
             <form class="repeater" action="{{route('freelanc.product.store')}}" method="POST"
@@ -53,7 +53,7 @@ add product
                 @csrf
 
                 <div class="mb-4">
-                    <label for="inputName">Category</label>
+                    <label for="inputName">{{__('freelancerprofile.Category')}}</label>
                     <select name="category_id" id="category_id"
                         class="form-control SlectBox @error('category_id') is-invalid @enderror"
                         onclick="console.log($(this).val())" onchange="console.log('change is firing')">
@@ -71,17 +71,17 @@ add product
                     @error('category_id')<div class="alert alert-danger fs-small">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-4">
-                    <label for="inputName" class="pb-2">Service</label>
+                    <label for="inputName" class="pb-2"> {{__('freelancerprofile.Service')}}</label>
                     <select name="service_id" id="service_id"
                         class="form-control @error('service_id') is-invalid @enderror">
-                        <option value="" selected>Choose service</option>
+                        <option value="" selected>{{__('freelancerprofile.Choose service')}}</option>
 
                     </select>
                     @error('service_id')<div class="alert alert-danger">{{ $message }}</div>@enderror
                 </div>
 
                 <div class="mb-4">
-                    <label for="prodname" class="form-label pd-2">product name</label>
+                    <label for="prodname" class="form-label pd-2">{{__('freelancerprofile.product name')}}</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="prodname"
                         value='{{old('name')}}' name="name" placeholder="e.g wedding card">
                     @error('name')
@@ -90,7 +90,7 @@ add product
                 </div>
 
                 <div class="mb-4">
-                    <label for="price" class="form-label pd-2">price</label>
+                    <label for="price" class="form-label pd-2"> {{__('freelancerprofile.price')}}</label>
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                         value='{{old('price')}}' name="price" placeholder="50 S.R">
                     @error('price')
@@ -99,7 +99,7 @@ add product
                 </div>
 
                 <div class="mb-4">
-                    <label for="description" class="form-label mb-3">description</label>
+                    <label for="description" class="form-label mb-3"> {{__('freelancerprofile.description')}}</label>
                     <input class="form-control @error('description') is-invalid @enderror " id="description"
                         placeholder="Write product description" value='{{old('description')}}' name="description">
                     @error('description')
@@ -108,7 +108,7 @@ add product
                 </div>
 
                 <div class="propritys mb-3" style="width:100%">
-                    <label for="proprety" class="form-label mb-3 " id>properties</label>
+                    <label for="proprety" class="form-label mb-3 " id> {{__('freelancerprofile.properties')}}</label>
 
                     <div data-repeater-list="group-a" class="proprity">
                         <div data-repeater-item class="row ">
@@ -150,9 +150,9 @@ add product
 
                 {{-- proprity --}}
                 <div class="mb-4">
-                    <h5 class="form-label pd-2">attachment</h5>
+                    <h5 class="form-label pd-2"> {{__('freelancerprofile.attachment')}}</h5>
                     <div class="d-flex flex-column flex-nowrap ">
-                        <span class="py-4">Maximun upload 200 kB</span>
+                        <span class="py-4">{{__('freelancerprofile.Maximun upload 200 kB')}}</span>
                         <div class="d-flex">
                             <label for="attachment" class="download">
                                 <i class="fa-solid fa-arrow-down"></i></label>
@@ -167,9 +167,9 @@ add product
                 </div>
 
                 <div class="mb-4">
-                    <h5 class="form-label pd-2">product pictures</h5>
+                    <h5 class="form-label pd-2">{{__('freelancerprofile.product pictures')}}</h5>
                     <div class="d-flex flex-column flex-nowrap ">
-                        <span class="py-4">Maximun 3 pictures</span>
+                        <span class="py-4"> {{__('freelancerprofile.Maximun 3 pictures')}}</span>
                         <div class="d-flex">
                             <div class="d-flex">
                                 <label for="attachment2" class="download">
@@ -197,7 +197,8 @@ add product
                 </div>
                 <div class="d-flex justify-content-center align-items-center flex-column ">
 
-                    <button type="submit" class="btn  btn-modal  my-3 px-5  btn-model-primary ">add product</button>
+                    <button type="submit"
+                        class="btn  btn-modal  my-3 px-5  btn-model-primary ">{{__('freelancerprofile.add product')}}</button>
 
 
                 </div>

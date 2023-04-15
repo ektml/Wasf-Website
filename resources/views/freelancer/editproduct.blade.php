@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-edit product
+{{__('freelancerprofile.edit product')}}
 @endsection
 @section("header")
 @endsection
@@ -54,7 +54,7 @@ edit product
 
     <div class="form px-3 ">
       <div class="section-header">
-        <h2>edit product</h2>
+        <h2> {{__('freelancerprofile.edit product')}}</h2>
       </div>
       <form class="repeater" action="{{route('freelanc.product.update',$product->id)}}" method="POST"
         enctype='mulitpart/form-data'>
@@ -62,7 +62,7 @@ edit product
         @csrf
         @method('PUT')
         <div class="mb-4  hlafwidth">
-          <label for="inputName">Category</label>
+          <label for="inputName">{{__('freelancerprofile.Category')}}</label>
           <select name="category_id" id="category_id"
             class="form-control SlectBox @error('category_id') is-invalid @enderror"
             onclick="console.log($(this).val())" onchange="console.log('change is firing')">
@@ -85,7 +85,7 @@ edit product
           @error('category_id')<div class="alert alert-danger fs-small">{{ $message }}</div>@enderror
         </div>
         <div class="mb-4  hlafwidth">
-          <label for="inputName" class="pb-2">Service</label>
+          <label for="inputName" class="pb-2">{{__('freelancerprofile.Service')}}</label>
           <select name="service_id" id="service_id" class="form-control @error('service_id') is-invalid @enderror">
             @if($product->service_id!=null)
             @if(app()->getLocale()=='ar')
@@ -98,22 +98,22 @@ edit product
             @else
             @endif
           </select>
-          @error('service_id')<div class="alert alert-danger">{{ $message }}</div>@enderror
+          @error('service_id')<div class="alert alert-danger">{{$message}}</div>@enderror
         </div>
         <div class="mb-4 hlafwidth">
-          <label for="price" class="form-label pd-2">price</label>
+          <label for="price" class="form-label pd-2"> {{__('freelancerprofile.price')}}</label>
           <input type="text" class="form-control" id="price" name="price" value="{{$product->price}}"
             placeholder="50 S.R">
 
         </div>
         <div class="mb-4 fullwidth">
-          <label for="description" class="form-label mb-3">description</label>
+          <label for="description" class="form-label mb-3"> {{__('freelancerprofile.description')}}</label>
           <input class="form-control " id="description" value="{{$product->description}}"
             placeholder="Write product description" name="discription">
         </div>
 
         <div class="propritys mb-3" style="width:100%">
-          <label for="proprety" class="form-label mb-3 " id>properties</label>
+          <label for="proprety" class="form-label mb-3 " id>{{__('freelancerprofile.properties')}} </label>
 
           <div data-repeater-list="group-a" class="proprity">
 
@@ -153,12 +153,11 @@ edit product
         </div>
         <div class="mb-4  fullwidth">
 
-          <h5 class="form-label pd-2">attachment</h5>
-
+          <h5 class="form-label pd-2"> {{__('freelancerprofile.attachment')}}</h5>
 
           <div id="file">
             <div class="d-flex flex-column flex-nowrap">
-              <span class="py-4">Maximun upload 200 kB</span>
+              <span class="py-4"> {{__('freelancerprofile.Maximun upload 200 kB')}}</span>
               <div class="row">
                 <div class="accordion-collapse collapse show col-10"
                   aria-labelledby="panelsStayOpen-headingOne flex-grow-1">
@@ -188,7 +187,7 @@ edit product
           </div>
           <div id="addfile">
             <div class="d-flex flex-column flex-nowrap ">
-              <span class="py-4">Maximun upload 200 kB</span>
+              <span class="py-4">{{__('freelancerprofile.Maximun upload 200 kB')}}</span>
               <div class="d-flex">
                 <label for="attachment" class="download">
                   <i class="fa-solid fa-arrow-down"></i></label>
@@ -203,9 +202,9 @@ edit product
         </div>
         <div class="mb-4 halfwidth">
 
-          <h5 class="form-label pd-2">product pictures</h5>
+          <h5 class="form-label pd-2">{{__('freelancerprofile.product pictures')}}</h5>
           <div class="d-flex flex-column flex-nowrap ">
-            <span class="py-4">Maximun 3 pictures</span>
+            <span class="py-4"> {{__('freelancerprofile.Maximun 3 pictures')}}</span>
 
             <div class="d-flex hlafwidth ">
               <div class="d-flex">
@@ -237,11 +236,11 @@ edit product
 
         <div class="d-flex justify-content-center align-items-center flex-column ">
 
-          <button type="submit" class="btn  btn-modal  my-3 px-5  btn-model-primary position-none ">edit
-            product</button>
+          <button type="submit" class="btn  btn-modal  my-3 px-5  btn-model-primary position-none ">
+            {{__('freelancerprofile.edit product')}}</button>
 
           <button type="button" data-bs-toggle='modal' data-bs-target="#suredeleteproduct"
-            class="btn  modal-color-text  d-block my-3 px-5 ">delete product</button>
+            class="btn  modal-color-text  d-block my-3 px-5 "> {{__('freelancerprofile.delete product')}}</button>
 
 
         </div>
@@ -266,18 +265,12 @@ edit product
         <form action="{{route('freelanc.product.destroy',$product->id)}}" method="POST">
           @csrf
           @method("DELETE")
-          <h1 class="modal-title fs-5">are you sure from delete this photo</h1>
-
-
-
-
-
-
+          <h1 class="modal-title fs-5">{{__('freelancerprofile.are you sure from delete this product')}}</h1>
 
           <div class="btn-contianer d-flex  justify-content-between  align-items-center my-3">
 
-            <button class="btn  btn-modal modal-color-text border-0">move back</button>
-            <button class="btn  btn-modal btn-model-primary" type="submit">delete</button>
+            <button class="btn  btn-modal modal-color-text border-0">{{__('freelancerprofile.move back')}}</button>
+            <button class="btn  btn-modal btn-model-primary" type="submit">{{__('freelancerprofile.delete')}}</button>
 
           </div>
 

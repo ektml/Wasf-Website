@@ -105,8 +105,28 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
-dd($request);
+      $request->validate([
+        "name"=>['required'],
+        "category_id"=>['required'],
+        "service_id"=>['nullable'],
+        "name"=>['required'],
+        "price"=>['required', "numeric"],
+        "description"=>['required'],
+         "attachment"=>['required', "max:200", "file"],
+        "img1"=>['required', 'image'],
+        "img2"=>['required', 'image'],
+        "img3"=>['required', 'image'],
+        "group-a"=>['required','min:1']
+      ]);
 
+
+
+
+
+       
+        if($request->service_id ){
+
+        }
         $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);
         $type=$request->file("attachment")->getCLientOriginalExtension();

@@ -27,6 +27,7 @@ return [
 // add product
 "Category"=>"الفئة",
 'Service'=>'الخدمة',
+'Choose service' => 'اختر الخدمة',
 'product name'=>'اسم المنتج',
 'price'=>'السعر',
 'description'=>'الوصف',
@@ -37,10 +38,12 @@ return [
 'edit product'=>'تعديل المنتج',
 'delete product'=>'حذف المنتج',
 'Maximun 3 pictures'=>'الحد الأقصى للصور 3',
-
+'are you sure from delete this product' => 'هل أنت متأكد من حذف هذا المنتج؟',
+'attachment' => 'مرفق',
   
 //add photo
 'edit photo'=>'تعديل الصورة',
+'add photo' => 'إضافة صورة',
 'upload photo'=>'تحميل الصورة',
 'photo name'=>'اسم الصورة',
 'camera brand'=>'علامة الكاميرا',
@@ -51,7 +54,11 @@ return [
 'size type'=>'نوع الحجم',
 'location'=>'الموقع',
 'optional'=>'اختياري',
+'are you sure from delete this photo' => 'هل أنت متأكد من حذف هذه الصورة؟',
 
+
+'delete' => 'حذف',
+'move back' => 'الرجوع',
 
 
 "freelancer profile"=>'ملف تعريف العامل المستقل',
