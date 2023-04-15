@@ -105,6 +105,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
+       
       $request->validate([
         "name"=>['required'],
         "category_id"=>['required'],
@@ -112,39 +113,59 @@ class ProductController extends Controller
         "name"=>['required'],
         "price"=>['required', "numeric"],
         "description"=>['required'],
-         "attachment"=>['required', "max:200", "file"],
-        "img1"=>['required', 'image'],
-        "img2"=>['required', 'image'],
-        "img3"=>['required', 'image'],
-        "group-a"=>['required','min:1']
+         "attachment"=>['nullable', "max:200", "file"],
+        "img1"=>['nullable', 'image'],
+        "img2"=>['nullable', 'image'],
+        "img3"=>['nullable', 'image'],
+        // "group-a"=>['nullable','min:2']
       ]);
+      dd($request);
+
+      $file_update=false;
 
 
-
-
+     
 
        
-        if($request->service_id ){
-
+        if($request->attachment){
+            $request->attachment=$product->attachment;
+           
+        }else{
+            $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
+            $size=number_format($request->file("attachment")->getSize()/ 1024,2);
+            $type=$request->file("attachment")->getCLientOriginalExtension();
+            $file_extention = $request->file("attachment")->getCLientOriginalExtension();
+            $attachment_name=time(). ".".$file_extention;
+            $request->file("attachment")->move(public_path('front/upload/files/'),$attachment_name);
+            $file_update=true;
         }
-        $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
-        $size=number_format($request->file("attachment")->getSize()/ 1024,2);
-        $type=$request->file("attachment")->getCLientOriginalExtension();
-        $file_extention = $request->file("attachment")->getCLientOriginalExtension();
-        $attachment_name=time(). ".".$file_extention;
-        $request->file("attachment")->move(public_path('front/upload/files/'),$attachment_name);
 
+        if($request->img1){
+        $img1=$product->img1;
+        }else{
         $file_extention=$request->file("img1")->getCLientOriginalExtension();
         $img1=time(). ".".$file_extention;
         $request->img1->move(public_path('assets/images/product/'),$img1);
 
-        $file_extention=$request->file("img2")->getCLientOriginalExtension();
-        $img2=time(). ".".$file_extention;
-        $request->img2->move(public_path('assets/images/product/'),$img2);
+        }
+        if($request->img2){
+        $img2=$product->img2;
+        }else{
 
+            $file_extention=$request->file("img2")->getCLientOriginalExtension();
+            $img2 =time(). ".".$file_extention;
+            $request->img2->move(public_path('assets/images/product/'),$img2);
+
+        }
+        if($request->img3){
+
+       $img3=$product->img3;
+        }else{
         $file_extention=$request->file("img3")->getCLientOriginalExtension();
         $img3=time(). ".".$file_extention;
         $request->img3->move(public_path('assets/images/product/'),$img3);
+        }
+       
 
         $product= Product::update([
             'name'=> $request->name,
@@ -160,11 +181,27 @@ class ProductController extends Controller
         ]);
 
 
+        if($file_update){
+
+    $product->file()->update([
+        'name'=> $name,
+        'user_id'=>auth()->user()->id,
+        'type'=>$type,
+        'url'=> $attachment_name,
+        'size'=>$size,
+    ]);
+        }
+
+
     foreach($request['group-a'] as $proprity){
-        $product->proprity()->create([
-            'key'=>$proprity['prop_key'],
-            'value'=>$proprity['prop_value'],
-        ]);
+        if($proprity['prop_key']!=null && $proprity['prop_value']!=null){
+
+            $product->proprity()->update([
+                'key'=>$proprity['prop_key'],
+                'value'=>$proprity['prop_value'],
+            ]);
+        }
+        
     } 
 
     }

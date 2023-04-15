@@ -79,7 +79,7 @@ class CartController extends Controller
              $discount=null;
              if(isset($request->price)&& isset($request->promo)){
                  
-                 $price = $request->price;
+                $price = $request->price;
                 $discount=Discount::where('key',$request->promo)->first(); 
                 
                   if ($discount) {
@@ -95,7 +95,7 @@ class CartController extends Controller
                         $total=$price-$descount;
                         }
                         
-                      $total= var_dump(number_format($total,2));
+                      $total= doubleval(number_format($total,2));
 
 
                   return $this->returnData(201, 'there is discount' ,compact('total','discount'));
