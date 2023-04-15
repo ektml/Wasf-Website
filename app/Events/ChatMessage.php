@@ -40,4 +40,5 @@ class ChatMessage implements ShouldBroadcast
     public function broadcastAs() {
         return 'new-message';
     }
+    
 }

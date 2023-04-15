@@ -7,7 +7,9 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\PhotoController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\ChatController;
 use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\StripePaymentController;
@@ -47,9 +49,10 @@ Route::get('addServiceToFreelancer/{cat_id}/{serv_id}', [MainController::class, 
 
 
 // Cart
-Route::get('allProductsInCart',[MainController::class, 'allProductsInCart'])->middleware('auth:api');
-Route::get('cartBankPay/{discount_key?}',[PaymentController::class, 'cartBankPay']);
-Route::get('cartCalcDiscount',[PaymentController::class, 'cartBankPay']);
+Route::get('allProductsInCart',[MainController::class, 'allProductsInCart'])->middleware('auth:api')->middleware('auth:api');
+Route::get('cartBankPay/{user_id}/{discount_key?}',[PaymentController::class, 'cartBankPay']);
+Route::get('checkCartPay/{total}',[PaymentController::class,'checkCartPay'])->middleware('auth:api');
+Route::post('cartCalcDiscount',[CartController::class, 'cartCalcDiscount'])->middleware('auth:api');
 
 
 
@@ -117,4 +120,6 @@ Route::get('getPrivateRequests/{freelancer_id}',[OrderController::class,'getPriv
 Route::get('getMyWork/{freelancer_id}',[OrderController::class,'getMyWork'])->middleware('auth:api');
 
 
+//
 
+Route::post('getMessages',[ChatController::class,'getMessages'])->middleware('auth:api');

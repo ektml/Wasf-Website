@@ -278,4 +278,5 @@ class RequestController extends Controller
         $edit_request = $request->update(['status'=>"Cancel by customer"]);
         return redirect()->back()->with(['state'=>"cancel", "id"=>$id]);
     }
+    
 }
