@@ -68,7 +68,7 @@ class ChatController extends Controller
 
 
 
-    public function sendMessage(){
+    public function sendMessage(Request $request){
 
         try{
             $msg=null;
