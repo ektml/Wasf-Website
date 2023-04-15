@@ -60,7 +60,7 @@ profile page
         <div class="hoverdiv d-flex justify-content-around align-items-baseline py-3">
           <div class="wall d-flex flex-column">
             <p class="total">Total</p>
-            <P class="number">{{$user->wallet->first()->total}}<span>
+            <P class="number">{{$user->wallet->total}}<span>
                 SR
               </span>
             </P>
