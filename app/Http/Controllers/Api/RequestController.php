@@ -117,7 +117,7 @@ class RequestController extends Controller
             
             $this->validate($request, [
                 'category_id' => 'required',
-                'service_id' => 'required',
+                'service_id' => 'nullable',
                 'title' => 'required|string',
                 'description' => 'required',
                 'attachment' => 'required',
