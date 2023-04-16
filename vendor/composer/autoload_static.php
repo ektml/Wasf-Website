@@ -595,12 +595,18 @@ class ComposerStaticInitfc53a0158a7290f23b48ed464b60d48b
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Events\\ChatMessage' => __DIR__ . '/../..' . '/app/Events/ChatMessage.php',
         'App\\Events\\NotificationAdd' => __DIR__ . '/../..' . '/app/Events/NotificationAdd.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Api\\ApiResponseTrait' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ApiResponseTrait.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
+        'App\\Http\\Controllers\\Api\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CartController.php',
+        'App\\Http\\Controllers\\Api\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ChatController.php',
         'App\\Http\\Controllers\\Api\\FreelancerOrder' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/FreelancerOrder.php',
         'App\\Http\\Controllers\\Api\\MainController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/MainController.php',
+        'App\\Http\\Controllers\\Api\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/NotificationController.php',
+        'App\\Http\\Controllers\\Api\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/OrderController.php',
+        'App\\Http\\Controllers\\Api\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PaymentController.php',
         'App\\Http\\Controllers\\Api\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProductController.php',
         'App\\Http\\Controllers\\Api\\RequestController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/RequestController.php',
         'App\\Http\\Controllers\\Api\\ReservationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ReservationController.php',

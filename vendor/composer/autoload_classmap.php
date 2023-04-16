@@ -7,12 +7,18 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\ChatMessage' => $baseDir . '/app/Events/ChatMessage.php',
     'App\\Events\\NotificationAdd' => $baseDir . '/app/Events/NotificationAdd.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Api\\ApiResponseTrait' => $baseDir . '/app/Http/Controllers/Api/ApiResponseTrait.php',
     'App\\Http\\Controllers\\Api\\AuthController' => $baseDir . '/app/Http/Controllers/Api/AuthController.php',
+    'App\\Http\\Controllers\\Api\\CartController' => $baseDir . '/app/Http/Controllers/Api/CartController.php',
+    'App\\Http\\Controllers\\Api\\ChatController' => $baseDir . '/app/Http/Controllers/Api/ChatController.php',
     'App\\Http\\Controllers\\Api\\FreelancerOrder' => $baseDir . '/app/Http/Controllers/Api/FreelancerOrder.php',
     'App\\Http\\Controllers\\Api\\MainController' => $baseDir . '/app/Http/Controllers/Api/MainController.php',
+    'App\\Http\\Controllers\\Api\\NotificationController' => $baseDir . '/app/Http/Controllers/Api/NotificationController.php',
+    'App\\Http\\Controllers\\Api\\OrderController' => $baseDir . '/app/Http/Controllers/Api/OrderController.php',
+    'App\\Http\\Controllers\\Api\\PaymentController' => $baseDir . '/app/Http/Controllers/Api/PaymentController.php',
     'App\\Http\\Controllers\\Api\\ProductController' => $baseDir . '/app/Http/Controllers/Api/ProductController.php',
     'App\\Http\\Controllers\\Api\\RequestController' => $baseDir . '/app/Http/Controllers/Api/RequestController.php',
     'App\\Http\\Controllers\\Api\\ReservationController' => $baseDir . '/app/Http/Controllers/Api/ReservationController.php',

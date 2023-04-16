@@ -33,19 +33,19 @@ class ProductController extends Controller
         $size=number_format($request->file("attachment")->getSize()/ 1024,2);
         $type=$request->file("attachment")->getCLientOriginalExtension();
         $file_extention = $request->file("attachment")->getCLientOriginalExtension();
-        $attachment_name=time(). ".".$file_extention;
+        $attachment_name=time(). "5.".$file_extention;
         $request->file("attachment")->move(public_path('front/upload/files/'),$attachment_name);
 
-        $file_extention=$request->file("img1")->getCLientOriginalExtension();
-        $img1=time(). ".".$file_extention;
+        $img1_extention=$request->file("img1")->getCLientOriginalExtension();
+        $img1= time(). "1.".$img1_extention;
         $request->img1->move(public_path('assets/images/product/'),$img1);
 
-        $file_extention=$request->file("img2")->getCLientOriginalExtension();
-        $img2=time(). ".".$file_extention;
+        $img2_extention=$request->file("img2")->getCLientOriginalExtension();
+        $img2=time(). "2.".$img2_extention;
         $request->img2->move(public_path('assets/images/product/'),$img2);
 
-        $file_extention=$request->file("img3")->getCLientOriginalExtension();
-        $img3=time(). ".".$file_extention;
+        $img3_extention=$request->file("img3")->getCLientOriginalExtension();
+        $img3=time(). "3.".$img3_extention;
         $request->img3->move(public_path('assets/images/product/'),$img3);
 
         $product= Product::create([
@@ -128,7 +128,7 @@ class ProductController extends Controller
             $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
             $size=number_format($request->file("attachment")->getSize()/ 1024,2);
             $type=$request->file("attachment")->getCLientOriginalExtension();
-            $attachment_name=time(). ".".$type;
+            $attachment_name=time(). "5.".$type;
             $request->file("attachment")->move(public_path('front/upload/files/'),$attachment_name);
             $file_update=true;
         }
@@ -137,7 +137,7 @@ class ProductController extends Controller
         $img1=$product->img1;
         }else{
         $file_extention=$request->file("img1")->getCLientOriginalExtension();
-        $img1=time(). ".".$file_extention;
+        $img1=time(). "1.".$file_extention;
         $request->img1->move(public_path('assets/images/product/'),$img1);
 
         }
@@ -146,7 +146,7 @@ class ProductController extends Controller
         }else{
 
             $file_extention=$request->file("img2")->getCLientOriginalExtension();
-            $img2 =time(). ".".$file_extention;
+            $img2 =time(). "2.".$file_extention;
             $request->img2->move(public_path('assets/images/product/'),$img2);
 
         }
@@ -154,7 +154,7 @@ class ProductController extends Controller
        $img3=$product->img3;
         }else{
         $file_extention=$request->file("img3")->getCLientOriginalExtension();
-        $img3=time(). ".".$file_extention;
+        $img3=time(). "3.".$file_extention;
         $request->img3->move(public_path('assets/images/product/'),$img3);
         }
      
@@ -184,12 +184,12 @@ class ProductController extends Controller
     ]);
         }
 
-        $product->proprity()->delete();
+       
         
     foreach($request['group-a'] as $proprity){
         if($proprity['prop_key']!=null && $proprity['prop_value']!=null){
 
-            $product->proprity()->create([
+            $product->proprity()->updateOrCreate([
                 'key'=>$proprity['prop_key'],
                 'value'=>$proprity['prop_value'],
             ]);

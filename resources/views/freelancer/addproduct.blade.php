@@ -178,21 +178,21 @@
                             <div class="d-flex">
                                 <label for="attachment2" class="download">
                                     <i class="fa-regular fa-image"></i></label>
-                                <input type="file" class="form-control @error('img1') is-invalid @enderror"
+                                <input type="file" class="form-control"
                                     id="attachment2" name="img1" value='{{old('img1')}}'
                                     placeholder="persentation title">
                             </div>
                             <div class="d-flex">
                                 <label for="attachment3" class="download">
                                     <i class="fa-regular fa-image"></i></label>
-                                <input type="file" class="form-control @error('img2') is-invalid @enderror"
+                                <input type="file" class="form-control "
                                     id="attachment3" name="img2" value='{{old('img2')}}'
                                     placeholder="persentation title">
                             </div>
                             <div class="d-flex">
                                 <label for="attachment4" class="download">
                                     <i class="fa-regular fa-image"></i></label>
-                                <input type="file" class="form-control @error('img3') is-invalid @enderror"
+                                <input type="file" class="form-control "
                                     id="attachment4" name="img3" value='{{old('img3')}}'
                                     placeholder="persentation title">
                             </div>
