@@ -36,11 +36,13 @@
 
                 <div class="d-flex justify-content-between">
                     <p class=" mb-0">service</p>
-                    @if(App\Models\Service::where('id', $request->service_id)->exists())
-                    <p class="fw-900 mb-0">{{ App\Models\Service::where('id', $request->service_id)->first()->service_en }}</p>
-                    @else
-                    
-                    @endif
+                    @if( $request->service_id!=null)
+              @if (App::getLocale() =="ar")
+              {{ App\Models\Service::where('id', $request->service_id)->first()->service_ar }}</p>
+            @else
+            {{ App\Models\Service::where('id', $request->service_id)->first()->service_en }}</p>
+            @endif
+            @endif
                 </div>
 
                 <div class="d-flex justify-content-between">

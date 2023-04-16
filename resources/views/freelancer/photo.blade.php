@@ -125,7 +125,7 @@ photo
                     <div class="proprity py-4" >
                         <h2  class="bold">{{__('freelancerprofile.properties')}}</h2>
                         <ul >
-                            <li>camera: {{$photo->camera_brand}}</li>
+                            <li>{{__('freelancerprofile.camera brand')}}: {{$photo->camera_brand}}</li>
                             <li>camra lens:{{$photo->lens_type}} </li>
                             <li>size: {{$photo->size_width}} {{$photo->size_height}}{{$photo->size_type}}</li>
                             

@@ -113,6 +113,9 @@ return [
 
   'no products'=>'لا يوجد منتجات',
   'no freelancers'=>'لا يوجد أصحاب عمل',
+  'similar products'=>'المنتجات المماثلة',
+  
+  'similar photos'=>'الصور المماثلة', 
 
 
 ];

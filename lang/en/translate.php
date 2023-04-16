@@ -112,7 +112,11 @@ return [
     
      'no products'=>'no products',
      'no freelancers'=>'no freelancers',
-
+     
+     'similar products'=>'similar products',
+     'similar photos'=>'similar photos',
+ 
+    
    
      
 ];

@@ -150,9 +150,9 @@
                     {{$photo->description}}
                 </div>
                 <div class="proprity py-4">
-                    <h2 class="bold">proprities</h2>
+                    <h2 class="bold">{{__('freelancerprofile.properties')}}</h2>
                     <ul>
-                        <li>camera: {{$photo->camera_brand}}</li>
+                        <li>{{__('freelancerprofile.camera brand')}}: {{$photo->camera_brand}}</li>
                         <li>camra lens:{{$photo->lens_type}} </li>
                         <li>size: {{$photo->size_width}} {{$photo->size_height}}{{$photo->size_type}}</li>
 
@@ -203,7 +203,7 @@
 
         <div class="similar ">
             <div class="section-header d-flex  ">
-                <h2 class="me-auto">similar photos</h2>
+                <h2 class="me-auto">{{__('translate.similar photos')}}</h2>
 
 
             </div>
@@ -231,14 +231,14 @@
                             @if(!$s->sells()->where('user_id',auth()->user()->id)->exists())
                             @if ($s->carts()->where('user_id',auth()->user()->id)->exists())
                             <button class="addtochart active" data-id="{{$s->id}}" onclick="addcart(this)"
-                                data-type='photo'>in cart</button>
+                                data-type='photo'>{{__('translate.in cart')}}</button>
                             @else
                             <button class="addtochart" data-id="{{$s->id}}" onclick="addcart(this)"
                                 data-type='photo'>{{__('translate.addtocart')}}</button>
                             @endif
 
                             @else
-                            <button class="addtochart active"> you paid</button>
+                            <button class="addtochart active">{{__('translate.you buied')}}</button>
                             @endif
 
 
@@ -269,7 +269,7 @@
 
 
                     @empty
-                    <span>no photo</span>
+                    <span>{{__('translate.no photos')}}</span>
                     @endforelse
 
 

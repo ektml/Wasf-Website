@@ -180,7 +180,7 @@
             </div>
             <div class="description  col-lg-6 col-md-6 col-sm-12  d-flex flex-column ">
                 <div class="price">{{$product->price}}<span class="curancy">
-                        S.R
+                        {{__('translate.S.R')}}
                     </span>
 
                 </div>
@@ -188,11 +188,11 @@
                     {{$product->description}}
                 </div>
                 <div class="proprity py-4">
-                    <h2>proprities</h2>
+                    <h2>{{__('freelancerprofile.properties')}}</h2>
                     <ul>
-                        <li>File type: PDF, PSD</li>
-                        <li>Programs used: illustrator, InDesign </li>
-                        <li>File size: A4</li>
+                        @foreach ( $product->proprity()->get() as $proprity )
+                        <li>{{$proprity->key}}: {{$proprity->value}}</li>
+                        @endforeach
 
                     </ul>
                 </div>
@@ -202,7 +202,7 @@
 
         <div class="similar ">
             <div class="section-header d-flex  ">
-                <h2 class="me-auto">similar products</h2>
+                <h2 class="me-auto">{{__('translate.similar products')}}</h2>
 
                 {{-- <a href="{{route('products',['cat_id'=>$product->cat_id,'subcat_id'=>$product->service_id])}}"
                 class="flex-1">See all</a> --}}
@@ -274,7 +274,7 @@
 
 
                     @empty
-                    <span>no product</span>
+                    <span>{{__('translate.no products')}}</span>
                     @endforelse
 
 

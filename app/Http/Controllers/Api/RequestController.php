@@ -132,7 +132,7 @@ class RequestController extends Controller
             'description.required' => 'Description is required',
             'due_date.required' => 'Due Date is required',
         ]);
-        
+
         $random_id = strtoupper('#'.substr(str_shuffle(uniqid()),0,6));
             while(Requests::where('random_id', $random_id )->exists()){
                 $random_id = strtoupper('#'.substr(str_shuffle(uniqid()),0,6));
