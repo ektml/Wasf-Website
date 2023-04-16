@@ -67,4 +67,9 @@ return [
    'optional'=>'optional',
    'are you sure from delete this photo'=>'are you sure from delete this photo',
    'no file'=> 'no file',
+
+   "cashout"=>'cashout',
+
+   'edit profile'=>'edit profile',
+
 ];

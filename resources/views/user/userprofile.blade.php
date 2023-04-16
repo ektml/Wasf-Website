@@ -59,13 +59,15 @@ profile page
 
         <div class="hoverdiv d-flex justify-content-around align-items-baseline py-3">
           <div class="wall d-flex flex-column">
-            <p class="total">{{__('freelancerprofile.Total')}} </p>
+            <p class="total">{{__('translate.total')}} </p>
             <P class="number">{{$user->wallet->total}}<span>
                 {{__('translate.S.R')}}
               </span>
             </P>
           </div>
-          <button class="btn" data-bs-target="#cashout" data-bs-toggle="modal" type="button">cashout</button>
+          <button class="btn" data-bs-target="#cashout" data-bs-toggle="modal" type="button">
+            {{__('freelancerprofile.cashout')}}
+          </button>
         </div>
       </div>
 

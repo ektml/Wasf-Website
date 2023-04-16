@@ -72,6 +72,7 @@ class MainController extends Controller
 
     public function contactUs()
     {
+        
         try{
             $contactUs = ContactUs::all();
             return $this->returnData(201, 'ContactUs Info Returned Successfully', $contactUs);
