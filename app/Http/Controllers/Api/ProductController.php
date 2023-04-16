@@ -44,7 +44,7 @@ class ProductController extends Controller
         try {
             $request->validate([
                 'cat_id' => 'required',
-                'service_id' => 'required',
+                'service_id' => 'nullable',
                 'name' => 'required',
                 'price' => 'required',
                 'description' => 'required',
