@@ -85,7 +85,7 @@
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="prodname"
                         value='{{old('name')}}' name="name" placeholder="e.g wedding card">
                     @error('name')
-                    <span class="text-red">{{$message}}</span>
+                    <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
 
@@ -94,7 +94,7 @@
                     <input type="text" class="form-control @error('price') is-invalid @enderror" id="price"
                         value='{{old('price')}}' name="price" placeholder="50 S.R">
                     @error('price')
-                    <span class="text-red">{{$message}}</span>
+                    <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
 
@@ -103,7 +103,7 @@
                     <input class="form-control @error('description') is-invalid @enderror " id="description"
                         placeholder="Write product description" value='{{old('description')}}' name="description">
                     @error('description')
-                    <span class="text-red">{{$message}}</span>
+                    <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
 
@@ -127,6 +127,10 @@
 
                             </div>
 
+                            @error('group-a')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+
 
 
                             <div class="col-2 align-self-center">
@@ -143,7 +147,7 @@
                     <input data-repeater-create type="button"
                         class="btn add-propity btn-success   border-0 mt-3 mt-lg-0" value="Add" />
                     @error('group-a')
-                    <span class="text-red">{{$message}}</span>
+                    <span class="text-danger">{{$message}}</span>
                     @enderror
 
                 </div>
@@ -160,7 +164,7 @@
                                 id="attachment" name="attachment" value='{{old('attachment')}}'
                                 placeholder="persentation title">
                             @error('file')
-                            <span class="text-red">{{$message}}</span>
+                            <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>

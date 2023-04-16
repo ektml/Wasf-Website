@@ -317,7 +317,7 @@ body {
     }
 }
 @media (min-width: 902px) {
-    #signup .modal-body  {
+    #signup .modal-body {
         padding-left: 80px;
         padding-right: 82px;
     }
@@ -593,10 +593,16 @@ nav .container-fluid {
     height: 80px;
 }
 
+.nav-y {
+    flex-direction: row-reverse;
+}
 /* end navbar */
 
 /* nav2 */
 
+ul.navbar-nav.me-auto.mb-2.mb-lg-0 {
+    flex-direction: row-reverse;
+}
 .head {
     position: absolute;
     top: 0;

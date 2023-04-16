@@ -115,7 +115,7 @@ photo
     </div>
                 <div class="description  col-lg-7 col-md-6 col-sm-12  d-flex flex-column ">
                     <div class="price bold fs-3">{{$photo->price}}<span class="curancy fs-6">
-                        S.R
+                        {{__('translate.S.R')}}
                     </span>
 
                     </div>
@@ -123,7 +123,7 @@ photo
                         {{$photo->description}}
                     </div>
                     <div class="proprity py-4" >
-                        <h2  class="bold">proprities</h2>
+                        <h2  class="bold">{{__('freelancerprofile.properties')}}</h2>
                         <ul >
                             <li>camera: {{$photo->camera_brand}}</li>
                             <li>camra lens:{{$photo->lens_type}} </li>

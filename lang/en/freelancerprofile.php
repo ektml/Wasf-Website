@@ -66,5 +66,5 @@ return [
    'location'=>'location',
    'optional'=>'optional',
    'are you sure from delete this photo'=>'are you sure from delete this photo',
- 
+   'no file'=> 'no file',
 ];

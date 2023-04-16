@@ -18,7 +18,7 @@
         </div>
 
         <div class="nav-x">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex nav-y">
                 <a href="{{ route('home') }}"
                     class=" d-inline-block align-self-center ms-2 px-2{{ Request::is('home*') ? 'active' : '' }}">{{__('translate.home')}}</a>
                 <a href="{{ route('products') }}"

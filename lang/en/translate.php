@@ -109,6 +109,8 @@ return [
      'fail delete from cart'=> 'fail delete from cart ',
      ' already add cart'=> 'already added to  cart',
      'search'=> 'search',
+    
+
    
      
 ];

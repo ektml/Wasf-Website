@@ -65,6 +65,6 @@ return [
 "Request service"=>'طلب خدمة',
 "Request new service"=>'طلب خدمة جديدة',
 "Booking for photo shot"=>'حجز جلسة تصوير فوتوغرافي',
-
+'no file' => 'لا يوجد ملف',
 
 ];

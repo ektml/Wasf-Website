@@ -39,7 +39,6 @@
   }
 
   #addfile {
-
     display: none;
   }
 </style>
@@ -57,8 +56,11 @@
         <h2> {{__('freelancerprofile.edit product')}}</h2>
       </div>
       <form class="repeater" action="{{route('freelanc.product.update',$product->id)}}" method="POST"
-        enctype='mulitpart/form-data'>
+        enctype='multipart/form-data'>
 
+        @foreach ($errors->all() as $message)
+        {{ $message}}
+        @endforeach
         @csrf
         @method('PUT')
         <div class="mb-4  hlafwidth">
@@ -100,16 +102,30 @@
           </select>
           @error('service_id')<div class="alert alert-danger">{{$message}}</div>@enderror
         </div>
+        <div class="mb-4">
+          <label for="prodname" class="form-label pd-2">{{__('freelancerprofile.product name')}}</label>
+          <input type="text" class="form-control @error('name') is-invalid @enderror" id="prodname"
+            value='{{$product->name}}' name="name" placeholder="e.g wedding card">
+          @error('name')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
+        </div>
         <div class="mb-4 hlafwidth">
           <label for="price" class="form-label pd-2"> {{__('freelancerprofile.price')}}</label>
           <input type="text" class="form-control" id="price" name="price" value="{{$product->price}}"
             placeholder="50 S.R">
 
+          @error('price')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
         </div>
         <div class="mb-4 fullwidth">
           <label for="description" class="form-label mb-3"> {{__('freelancerprofile.description')}}</label>
           <input class="form-control " id="description" value="{{$product->description}}"
-            placeholder="Write product description" name="discription">
+            placeholder="Write product description" name="description">
+          @error('description')
+          <span class="text-danger">{{$message}}</span>
+          @enderror
         </div>
 
         <div class="propritys mb-3" style="width:100%">
@@ -133,7 +149,6 @@
 
               <div class="col-2 align-self-center">
                 <div class="d-grid">
-                  {{-- <input data-repeater-delete type="button" class="btn btn-primary delete-propity" value="delete"/> --}}
                   <button data-repeater-delete type="button" class="btn delete-propity">
                     <i class="fa-solid fa-minus fa-lg" style="color: #e82517;"></i>
                   </button>
@@ -147,7 +162,7 @@
           <input data-repeater-create type="button" class="btn add-propity btn-success   border-0 mt-3 mt-lg-0"
             value="Add" />
           @error('group-a')
-          <span class="text-red">{{$message}}</span>
+          <span class="text-danger">{{$message}}</span>
           @enderror
 
         </div>
@@ -165,14 +180,19 @@
                     <div class="file d-flex ">
                       <div class="details d-flex ">
                         <div class="img">
-                          <i class="fa-regular fa-file-word"></i>
+                          <i class="fa-regular fa-file"></i>
                         </div>
+                        @if($product->file()->first())
                         <div class="info">
                           <h3> {{$product->file()->first()->name}}</h3>
                           <div class="size">
                             {{$product->file()->first()->size}} . {{$product->file()->first()->type}}
                           </div>
                         </div>
+
+                        @else
+                        {{__('freelancerprofile.no file')}}
+                        @endif
                       </div>
                       <div class="tool">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -194,7 +214,7 @@
                 <input type="file" @error('attachment') is-invalid @enderror class="form-control" id="attachment"
                   name="attachment" value='{{$product->attachment}}' placeholder="persentation title">
                 @error('file')
-                <span class="text-red">{{$message}}</span>
+                <span class="text-danger">{{$message}}</span>
                 @enderror
               </div>
             </div>
@@ -210,20 +230,23 @@
               <div class="d-flex">
                 <label for="attachment2" class="download img1 ">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class=" input-image form-control @error('img1') is-invalid @enderror"
-                  id="attachment2" name="img1" value='{{$product->img4}}' placeholder="persentation title">
+                <input type="file" class=" input-image form-control" id="attachment2" name="img1"
+                  value='{{$product->img1}}' placeholder="persentation title">
+                @error('img1')<div class="alert alert-danger">{{$message}}</div>@enderror
               </div>
               <div class="d-flex">
                 <label for="attachment3" class="download img2">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class=" input-image form-control @error('img2') is-invalid @enderror"
-                  id="attachment3" name="img2" value='{{$product->img2}}' placeholder="persentation title">
+                <input type="file" class=" input-image form-control " id="attachment3" name="img2"
+                  value='{{$product->img2}}' placeholder="persentation title">
+                @error('img2')<div class="alert alert-danger">{{$message}}</div>@enderror
               </div>
               <div class="d-flex">
                 <label for="attachment4" class="download img3">
                   <i class="fa-regular fa-image"></i></label>
-                <input type="file" class=" input-image form-control @error('img3') is-invalid @enderror"
-                  id="attachment4" name="img3" value='{{$product->img3}}' placeholder="persentation title">
+                <input type="file" class=" input-image form-control " id="attachment4" name="img3"
+                  value='{{$product->img3}}' placeholder="persentation title">
+                @error('img3')<div class="alert alert-danger">{{$message}}</div>@enderror
               </div>
             </div>
 

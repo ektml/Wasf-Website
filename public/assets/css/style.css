@@ -601,6 +601,10 @@ nav .container-fluid {
     max-width: 100%;
 }
 
+ul.navbar-nav.me-auto.mb-2.mb-lg-0 {
+    flex-direction: row-reverse;
+}
+
 @media (min-width: 767px) {
     .head {
         padding-left: 20px;
@@ -622,6 +626,10 @@ nav .container-fluid {
 }
 .head .navbar-header .nav-x .dropdown-menu {
     left: 44px !important;
+}
+
+.nav-y {
+    flex-direction: row-reverse;
 }
 
 .head .logo {
