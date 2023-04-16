@@ -73,6 +73,11 @@ class AuthController extends Controller
             'token' => $token,
             'user' => $user
         ], 201);
+
+        Wallet::create([
+            'user_id'=> $user->id,
+            'total'=>0,
+            ]);
     }
 
 

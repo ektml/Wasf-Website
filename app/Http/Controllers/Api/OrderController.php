@@ -20,10 +20,10 @@ class OrderController extends Controller
             
             $price=null;
             
-            $requests = Requests::where('type', 'public')->where('freelancer_id',$freelancer_id)->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
+            $requests = Requests::where('type', 'public')->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             
-            foreach($requests as $key =>$request){
+            foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
             
               if(!strpos($request->user->profile_image, "Admin3/assets/images/users/")){
@@ -35,13 +35,8 @@ class OrderController extends Controller
                 $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
             
               }
-              
-             
-                        
+                 
               }
-
-          
-            
                    foreach($request['offer'] as $offer){
                   
                   
@@ -52,8 +47,6 @@ class OrderController extends Controller
                         $offer['freelancer']->profile_image= asset('Admin3/assets/images/users/'. $offer['freelancer']->profile_image);
                     }
                     
-                    
-           
             }
                    
                    if($request->freelancer_id !=null){
@@ -63,9 +56,7 @@ class OrderController extends Controller
                        
                         $request->price=null;
                    }
-                   
-                   
-                                 
+                     
                  if($request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
                      
                      $del=false;
@@ -82,7 +73,7 @@ class OrderController extends Controller
                 
                 if($del){
                      
-                  $requests->forget($key);
+                  $requests->forget($request);
                   $del=false;
                 }
                 

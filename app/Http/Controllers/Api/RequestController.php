@@ -113,8 +113,7 @@ class RequestController extends Controller
     public function createRequest(Request $request)
     {
         try{
-            
-            
+        
             $this->validate($request, [
                 'category_id' => 'required',
                 'service_id' => 'nullable',
