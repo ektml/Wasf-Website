@@ -100,7 +100,7 @@ class OrderController extends Controller
             
             $requests = Requests::where('type', 'private')->where('freelancer_id',$freelancer_id)->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
-            foreach($requests as $key =>$request){
+            foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
             
               if(!strpos($request->user->profile_image, "Admin3/assets/images/users/")){
