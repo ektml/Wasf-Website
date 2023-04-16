@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Wallet;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +32,13 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone'=>['required','min:10','unique:'.User::class],
+            'phone'=>['required','min:9',Rule::unique('users', 'phone')->where(function ($query) {
+                return $query;
+            })],
+            
+            'policy'=>['required']
         ]);
 
         $user = User::create([

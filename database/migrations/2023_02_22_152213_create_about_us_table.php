@@ -9,7 +9,8 @@ return new class extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
-            $table->text('paragraph');
+            $table->text('paragraph_ar');
+            $table->text('paragraph_en');
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('size_height');
             $table->enum('size_type', ['px', 'rem', 'inch'])->default('px');
             $table->string('location')->nullable();
+            $table->integer('view')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

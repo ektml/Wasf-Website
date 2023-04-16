@@ -15,7 +15,6 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->string('title', 50);
-            $table->string('attachment', 50);
             $table->text('description');
             $table->date('due_date');
             $table->enum('type', ['public', 'private'])->default('public');

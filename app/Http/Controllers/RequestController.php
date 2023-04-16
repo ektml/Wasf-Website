@@ -38,18 +38,18 @@ class RequestController extends Controller
     public function choseRequestOrReservation($id)
     {
         if(request()->requesttype=='private'){
-            $freelancer = User::find($id);
-            $categories = Category::all();
-            return view('user.requestprivateservice', compact('freelancer','categories'));
+           
+            return redirect()->route('user.requestprivate',$id);
         }else{
 
-            $freelancer = User::find($id);
-            $categories = Category::all();
-            return view('user.requestreservation', compact('freelancer'));
+            return redirect()->route('user.requestreservation',$id);
 
         }
         
     }
+
+
+
 
 
 
@@ -67,8 +67,7 @@ class RequestController extends Controller
             'category_id' => 'required',
             'service_id' => 'nullable',
             'title' => 'required|string',
-            'attachment' => 'required',
-            // 'attachment' => 'required|mimes:pdf,word',
+             'attachment' => 'required|file|max:200',
             'description' => 'required',
             'due_date' => 'required|date',
             'type' => [\Illuminate\Validation\Rule::in(['public','private'])]

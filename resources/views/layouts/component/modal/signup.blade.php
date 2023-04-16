@@ -86,22 +86,24 @@
             <div class="form-outline mb-2 fullwidthinput d-flex ">
 
               <input type="checkbox" name="policy" id="policy" style="
-    width: 20px;
-    margin: 0 10px;
-">
+                                width: 20px;
+                                margin: 0 10px;
+                            ">
               <label class="form-label" for="policy" for="confirm-pass">{{__('translate.Sign up')}} <a href="#"
                   class="privacy">{{__('translate.Term of service')}}</a>
-                 {{__('translate.and')}}<a href="#" class="privacy">{{__('translate.Privacy policy')}}</a>
+                {{__('translate.and')}}<a href="#" class="privacy">{{__('translate.Privacy policy')}}</a>
               </label>
 
-
+              @error('policy')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
 
             </div>
 
 
 
             <!-- Submit button -->
-            <div class="btn-contianer d-flex justify-between align-items-center">
+            <div class="btn-contianer d-flex justify-content-center align-items-center">
               {{-- <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">sign up</button> --}}
               <button class="btn  btn-modal  my-3 btn-model-primary" type="submit">{{__('translate.Sign up')}}</button>
               {{-- <button  class="btn  btn-modal  my-3 btn-model-primary"
