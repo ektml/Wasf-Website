@@ -53,6 +53,7 @@ return [
 
 
 
+
   //cart
   'cart'=>'عربة التسوق',
 'shopping cart'=>"عربة التسوق",
@@ -110,6 +111,8 @@ return [
   'search'=> 'بحث',
 
 
+  'no products'=>'لا يوجد منتجات',
+  'no freelancers'=>'لا يوجد أصحاب عمل',
 
 
 ];

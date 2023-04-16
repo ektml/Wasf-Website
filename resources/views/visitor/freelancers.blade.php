@@ -313,7 +313,7 @@ freelancers
 
                 @endauth
                 @empty
-                no freelancers
+                {{__('translate.no freelancers')}}
                 @endforelse
             </div>
             <div class="text-end p-4">

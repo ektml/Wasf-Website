@@ -110,6 +110,8 @@ return [
      ' already add cart'=> 'already added to  cart',
      'search'=> 'search',
     
+     'no products'=>'no products',
+     'no freelancers'=>'no freelancers',
 
    
      

@@ -207,7 +207,7 @@
                 <!-- card -->
                 @empty
 
-                <div class="text-center w-100"> no product </div>
+                <div class="text-center w-100"> {{__('translate.no products')}}</div>
                 @endforelse
             </div>
 
