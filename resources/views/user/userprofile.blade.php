@@ -1,13 +1,14 @@
 @extends("layouts.home.index")
 
 @section("og-title")
+{{ Auth::user()->name }}
 @endsection
 @section("og-description")
 @endsection
 @section("og-image")
 @endsection
 @section("title")
-profile page
+{{__('freelancerprofile.user profile ')}}
 @endsection
 @section("header")
 @endsection
@@ -101,7 +102,7 @@ profile page
                     @endif
 
                     <span>{{$wh->total}}</span>
-                    <span>RS</span>
+                    <span>{{__('translate.SR')}}</span>
                   </div>
                 </button>
               </h2>
@@ -109,36 +110,26 @@ profile page
                 aria-labelledby="panelsStayOpen-headingOne">
                 <div class="accordion-body">
                   <div style="max-width:100%">
-
-
-
-
-
                   </div>
                 </div>
               </div>
             </div>
-
             @empty
-
             @endforelse
           </div>
         </div>
       </div>
     </div>
-
-
     <div class="files d-flex">
       <div class="section-header width-0 p-2">
-        <h2>Files</h2>
+        <h2>{{__('freelancerprofile.Files')}}</h2>
       </div>
-
       <div class="accordion" id="accordionPanelsStayOpenExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="panelsStayOpen-headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#newfile"
               aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-              <span class="px-2">New</span>
+              <span class="px-2">{{__('freelancerprofile.new')}}</span>
 
             </button>
           </h2>
@@ -186,7 +177,7 @@ profile page
           <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
               data-bs-target="#last-monthfile" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-              <span class="px-2"> Last month</span>
+              <span class="px-2">{{__('freelancerprofile.last month')}} </span>
             </button>
           </h2>
           <div id="last-monthfile" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
@@ -228,7 +219,7 @@ profile page
           <h2 class="accordion-header" id="panelsStayOpen-headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#oldfile"
               aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-              <span class="px-2"> Older</span>
+              <span class="px-2"> {{__('freelancerprofile.older')}}</span>
             </button>
           </h2>
           <div id="oldfile" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">

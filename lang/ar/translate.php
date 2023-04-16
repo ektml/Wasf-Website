@@ -12,6 +12,15 @@ return [
   "Sign out"=>'تسجيل الخروج',
   "requests"=>'الطلبات',
   "switch to freelancer account"=>"التحويل إلى حساب مستقل",
+  "Get free freelancer account" => "الحصول على حساب مستقل مجاني",
+"Improve your work" => "تحسين عملك",
+"start" => "بدء",
+"ID number" => "رقم الهوية",
+"Business register" => "تسجيل تجاري",
+"Get a freelancer account with all features that help you to improve your work"=>"احصل على حساب مستقل يحتوي على جميع الميزات التي تساعدك على تحسين عملك.",
+"You can use Ma'roof number" => "يمكنك استخدام رقم معروف",
+"Deal immediately with your customer" => "التعامل مباشرة مع العميل الخاص بك",
+"Get a freelancer account with all features that help you to improve your work" => "الحصول على حساب مستقل يحتوي على جميع الميزات التي تساعدك على تحسين عملك",
   "profile"=>"الملف الشخصي",
   "language"=>"اللغة",
   "orders"=>"الطلبات",
@@ -40,6 +49,7 @@ return [
 
   // sort 
   'sort by'=> 'ترتيب حسب',
+  'filter by' => 'فلتر بالـ',
   'apply'=> 'تطبيق',
   'highest rating'=>'التقييم الأعلى',
   'more project'=>'المزيد من المشاريع',
@@ -65,6 +75,7 @@ return [
 'checkout'=>'الدفع',
 'your cart is empty'=>'عربة التسوق الخاصة بك فارغة......',
 'S.R'=>'ر.س',
+'SR'=>'رس',
 'payment method'=>'طريقة الدفع',
 
 
@@ -117,5 +128,14 @@ return [
 
   'User profile'=>'ملف تعريفي للمستخدم',
 
+  'Bio' => 'السيرة الذاتية',
+
+  "change password"=>"تغيير كلمة المرور",
+  "confirm new password"=>"تأكيد كلمة المرور الجديدة",
+  "New password"=>"كلمة المرور الجديدة",
+  "current password"=>"كلمة المرور الحالية",
+  "edit password"=>"تعديل كلمة المرور",
+  "update"=>"تحديث",
+  'Reservation List' => 'قائمة الحجوزات',
 
 ];

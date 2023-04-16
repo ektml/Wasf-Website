@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="fullname2">Full Name</label>
+                        <label class="form-label" for="fullname2">{{__('translate.fullname')}}</label>
                         <div class="input-icon">
                             <i class="fa-regular fa-user"></i>
                             <input type="text" id="fullname2" class="form-control" name="name"
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="phone2">Phone Number</label>
+                        <label class="form-label" for="phone2">{{__('translate.Phone number')}}</label>
                         <div class="input-icon">
                             <i class="fa fa-mobile"></i>
                             <input type="text" id="phone2" class="form-control" name="phone"
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="email2">Email</label>
+                        <label class="form-label" for="email2">{{__('translate.email')}}</label>
                         <div class="input-icon">
                             <i class="fa-regular fa-envelope"></i>
                             <input type="email" id="email2" class="form-control" name="email"
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="bio">Bio</label>
+                        <label class="form-label" for="bio">{{__('translate.Bio')}}</label>
                         <input type="text" id="bio" class="form-control" name="bio" value="{{ Auth::user()->bio }}" />
                         @error("bio")
                         <span class="error-message"> {{$message}}</span>
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="id_number">ID Number</label>
+                        <label class="form-label" for="id_number"> {{__('translate.ID number')}}</label>
                         <input type="text" id="id_number" class="form-control" name="id_number"
                             value="{{ Auth::user()->id_number }}" />
                         @error("id_number")
@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="form-outline mb-2 halfwidthinput">
-                        <label class="form-label" for="bs">Business Number</label>
+                        <label class="form-label" for="bs"> {{__('translate.Business register')}}</label>
                         <input type="text" id="email2" class="form-control" name="business_register"
                             value="{{ Auth::user()->business_register }}" />
                         @error("business_register")
@@ -97,8 +97,9 @@
                     <!-- Submit button -->
                     <div class="btn-contianer d-flex justify-content-space align-items-center mt-3">
                         <button class="modal-color-text " data-bs-target="#changepassord" data-bs-toggle="modal"
-                            type="button">change password</button>
-                        <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">update</button>
+                            type="button">{{__('translate.change password')}}</button>
+                        <button type="submit"
+                            class="btn  btn-modal  my-3 btn-model-primary">{{__('translate.update')}}</button>
                     </div>
                 </form>
             </div>
@@ -114,19 +115,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h1 class="modal-title fs-5">Edit password</h1>
+                <h1 class="modal-title fs-5"> {{__('translate.edit password')}}</h1>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
                     <!-- Password input -->
                     <div class="form-outline mb-2">
-                        <label class="form-label" for="currentpassword">current password</label>
+                        <label class="form-label" for="currentpassword">{{__('translate.current password')}}</label>
                         <div class="input-icon">
                             <i class="fa fa-lock"></i>
                             <input type="password" id="currentpassword" class="form-control" name="currentpassword" />
                         </div>
                         <div class="form-outline mb-2">
-                            <label class="form-label" for="newpassword">New password</label>
+                            <label class="form-label" for="newpassword">{{__('translate.New password')}}</label>
                             <div class="input-icon">
                                 <i class="fa fa-lock"></i>
                                 <input type="password" id="newpassword" class="form-control" name="password" />
@@ -134,7 +135,8 @@
 
                         </div>
                         <div class="form-outline mb-2">
-                            <label class="form-label" for="confirm-pass2">confirm new password</label>
+                            <label class="form-label" for="confirm-pass2">
+                                {{__('translate.confirm new password')}}</label>
                             <div class="input-icon">
                                 <i class="fa fa-lock"></i>
                                 <input type="password" id="confirm-pass2" class="form-control"
@@ -145,7 +147,8 @@
 
                         <!-- Submit button -->
                         <div class="btn-contianer d-flex justify-content-center align-items-center">
-                            <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">Update</button>
+                            <button type="submit"
+                                class="btn  btn-modal  my-3 btn-model-primary">{{__('translate.update')}}</button>
 
                         </div>
 
@@ -153,7 +156,7 @@
                         <!-- Register buttons -->
                         <div class="text-center">
                             <button class="modal-color-text
-        " data-bs-dismiss="modal" aria-label="Close" type="button">cancel</button></p>
+        " data-bs-dismiss="modal" aria-label="Close" type="button">{{__('translate.cancel')}}</button></p>
                         </div>
                 </form>
 

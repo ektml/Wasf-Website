@@ -40,7 +40,7 @@ show private requests
             <div class="filter d-flex align-items-baseline">
                 <button class=" filter-button btn d-flex align-items-center justify-content-between">
                     <i class="fa-solid fa-filter px-2 fs-3"></i>
-                    <span>filter by:</span>
+                    <span>{{__('translate.filter by')}}:</span>
                 </button>
                 <span class=" px-2">All</span>
             </div>
@@ -73,7 +73,7 @@ show private requests
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">
-                        <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">apply</button>
+                        <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">{{__('translate.apply')}}</button>
                     </div>
                 </form>
             </div>

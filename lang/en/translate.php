@@ -12,6 +12,16 @@ return [
     "reservations"=>'reservations',
     'notification'=>'notification',
     "switch to freelancer account"=>"switch to freelancer account",
+    "Get free freelancer account"=>"Get free freelancer account",
+    "Improve your work"=>"Improve your work",
+    "start"=>"start",
+    "ID number"=>"ID number",
+    "Get a freelancer account with all features that help you to improve your work"=>"Get a freelancer account with all features that help you to improve your work",
+    "Business register"=>"Business register",
+    "You can use Ma'roof number"=>"You can use Ma'roof number",
+    "Deal immediately with your customer"=>"Deal immediately with your customer",
+    "Get a freelancer account with all features that help you to improve your work"=>"Get a freelancer account with all features that help you to improve your work",
+
     "profile"=>"Profile",
     "language"=>"language",
     "orders"=>"orders",
@@ -45,6 +55,13 @@ return [
     "Log in"=>"Log in",
     "Not a member?"=>"Not a member?",
     
+    "change password"=>"change password",
+    "confirm new password"=>"confirm new password",
+    "New password"=>"New password",
+    "current password"=>"current password",
+    "edit password"=>"Edit password",
+    "update"=>"update",
+
     "Please, log in to request new service"=>"Please, log in to request new service",
 
     
@@ -91,6 +108,7 @@ return [
 'checkout'=>'checkout',
 'your cart is empty'=>'your cart is empty......',
 'S.R'=>'S.R',
+'SR'=>'SR',
 'payment method'=>'payment method',
 'Notifications'=>'Notifications',
 'move back'=>'move back',
@@ -115,8 +133,12 @@ return [
      
      'similar products'=>'similar products',
      'similar photos'=>'similar photos',
-     'user profile '=>'user profile ',
- 
+     'Bio'=>'Bio',
+     
+     'Reservation List'=>'Reservation List',
+     'filter by'=>'filter by',
+     
+
     
    
      

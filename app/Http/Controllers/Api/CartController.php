@@ -60,7 +60,7 @@ class CartController extends Controller
             
              $total=round($total,2);
 
-           if(User::findOrFail($user_id)->wallet->total >=$total){
+           if(idUser::findOrFail($user_)->wallet->total >=$total){
             $walletEnough=true ;
            }
          

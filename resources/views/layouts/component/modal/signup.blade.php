@@ -99,19 +99,13 @@
               @enderror
 
             </div>
-
-
-
             <!-- Submit button -->
             <div class="btn-contianer d-flex justify-content-center align-items-center">
               {{-- <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">sign up</button> --}}
               <button class="btn  btn-modal  my-3 btn-model-primary" type="submit">{{__('translate.Sign up')}}</button>
               {{-- <button  class="btn  btn-modal  my-3 btn-model-primary"
  data-bs-target="#otp" data-bs-toggle="modal" type="button">sign up</button> --}}
-
             </div>
-
-
             <!-- Register buttons -->
             <div class="text-center">
               <p>{{__('translate.have an account?')}}

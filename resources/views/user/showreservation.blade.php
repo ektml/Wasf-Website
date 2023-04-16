@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-Reservations
+{{__('translate.Reservation List')}}
 @endsection
 @section("header")
 @endsection
@@ -15,7 +15,8 @@ Reservations
 
 @section("css")
 <link href="{{asset('assets/libs/jquery-bar-rating/themes/css-stars.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars-o.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars-o.css')}}" rel="stylesheet"
+    type="text/css" />
 <link href="{{asset('assets/libs/jquery-bar-rating/themes/fontawesome-stars.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/libs/@fullcalendar/core/main.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/libs/@fullcalendar/daygrid/main.min.css')}}" rel="stylesheet" type="text/css" />
@@ -25,46 +26,44 @@ Reservations
 <link href="{{asset('assets/css/clndr.css')}}" rel="stylesheet">
 
 <style>
- td{
-    border:none !important;
- }
+    td {
+        border: none !important;
+    }
 
 
- /* @media(max-width:767px){
+    /* @media(max-width:767px){
 
 .modal-body p{
   font-size: 12px;
 }
 } */
 
- .header-day{
-    background-color: #fff;
-    color:#000 !important;
-    font-weight: 900 !important;
-    font-size: 14px !important;
-    text-align: center !important;
- }
- .header-days td{
-    border:none;
- }
- .clndr-controls{
-    border-radius:12px  12px  0 0 ;
-    background-color: #f26b1de8;
-    color:#fff;
-    padding:20px 10px;
- }
- .clndr tr{
-    margin-bottom:3px;
- }
- /* .clndr tbody td{
+    .header-day {
+        background-color: #fff;
+        color: #000 !important;
+        font-weight: 900 !important;
+        font-size: 14px !important;
+        text-align: center !important;
+    }
+
+    .header-days td {
+        border: none;
+    }
+
+    .clndr-controls {
+        border-radius: 12px 12px 0 0;
+        background-color: #f26b1de8;
+        color: #fff;
+        padding: 20px 10px;
+    }
+
+    .clndr tr {
+        margin-bottom: 3px;
+    }
+
+    /* .clndr tbody td{
     border-radius: 5px;
  } */
-
-
-
-
-
-
 </style>
 @endsection
 
@@ -86,127 +85,153 @@ Reservations
 
         <div class="cal1"></div>
 
-    <div class="section-header ">
-        <h3 class="text-black">Reservation List</h3>
-    </div>
-    <div class="requesties d-flx flex-column pt-4">
-@foreach ($reservations as $request)
-@if ($request->status=="Pending" && $request->offer->first())
-<a  href="#userReservationPendingAceptOrReject{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
- {{-- @elseif($request->status=="Pending" && $request->date_time < now())
- <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-r elative mb-5" > --}}
- @elseif($request->status=="Pending")
- <a href="#reservpending{{ $request->id }}" data-bs-toggle="modal" role="button"class="request d-flex flex-column px-3 py-3 position-relative mb-5">
-
-
- @elseif($request->status=='Waiting')
- <a  href="#userreservationwaitandinprogress{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
- 
-
- @elseif($request->status =='Cancel by customer' ||  $request->status =='reject' )
-
-
- <a  href="#canceleduserreservation{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-    
- @elseif($request->status =='Finished' )
-
- <a  href="#userfinishedreservation{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-
- @elseif($request->status == 'Completed' )
- <a  href="#usercompletedreservation{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-
- @elseif($request->status == 'Rejected' )
- <a  href="#userRejectedreservation{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
- @elseif($request->status == 'Posted by freelancer' )
- <a  href="#posted{{$request->id}}" data-bs-toggle="modal"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
- @else
-
-<a  href="#"  role="button" class="request  d-flex  flex-column px-3 py-3 position-relative mb-5" >
-
-@endif
- 
-        <div class="d-flex justify-content-between align-items-baseline" style="margin-bottom: 35px;">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <h3 class="reservation-id">{{ $request->random_id}} </h3>
-            </div>
-            @if($request->status == 'Pending')
-                            <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-            
-                            @elseif( $request->status == 'Waiting'  && $request->date_time==now()->toDateString() && ($request->from<=now() ||$request->to <=now()))
-                            <p class=" status inprogress " data-color="C4C3C3">In process<i class="fa-solid fa-circle px-2 "></i></p>
-
-                            @elseif($request->status == 'Waiting' )
-                            <p class="status inprogress">{{ $request->status}}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Finished')
-                            <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Completed')
-                            <p class="status gray text-black" data-color="C4C3C3">{{ $request->status}}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Cancel by customer'||$request->status == 'reject' ||$request->status == 'Rejected')
-                            <p class="status text-danger" >{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @elseif($request->status == 'Posted by freelancer')
-                            <p class="status text-black-50"style="word-break:keep-all" >{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
-                        @endif
+        <div class="section-header ">
+            <h3 class="text-black">{{__('translate.Reservation List')}}</h3>
         </div>
+        <div class="requesties d-flx flex-column pt-4">
+            @foreach ($reservations as $request)
+            @if ($request->status=="Pending" && $request->offer->first())
+            <a href="#userReservationPendingAceptOrReject{{$request->id}}" data-bs-toggle="modal" role="button"
+                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-        <div class="d-flex">
-                
-                    
-            @if($request->date_time < now()->toDateString())
-            <div class="d-flex flex-column px-2">
-                <p class="m-0">Reserve date</p>
-                <span class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
-                <div>
-                </div>
-            </div>
-        @else
-            <div class="d-flex flex-column px-2">
-                <p class="m-0">Reserve date </p>
-                <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
-                <div>
-                </div>
-            </div>
-        @endif
-        
-    
-        
-        @if($request->offer->first() !=null)
-        <div class="d-flex flex-column px-2">
-            <p class="m-0">Price</p>
-            <span >{{$request->offer->first()->price }}</span>
-            <div>
-            </div>
-        </div>
-    @else
-       
-    @endif
-        </div>
-    </a>
+                {{-- @elseif($request->status=="Pending" && $request->date_time < now())
+ <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button" class="request d-flex flex-column px-3
+                py-3 position-r elative mb-5" > --}}
+                @elseif($request->status=="Pending")
+                <a href="#reservpending{{ $request->id }}" data-bs-toggle="modal" role="button"
+                    class="request d-flex flex-column px-3 py-3 position-relative mb-5">
 
 
+                    @elseif($request->status=='Waiting')
+                    <a href="#userreservationwaitandinprogress{{$request->id}}" data-bs-toggle="modal" role="button"
+                        class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+
+                        @elseif($request->status =='Cancel by customer' || $request->status =='reject' )
+
+
+                        <a href="#canceleduserreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+                            class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+
+                            @elseif($request->status =='Finished' )
+
+                            <a href="#userfinishedreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+                                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+
+                                @elseif($request->status == 'Completed' )
+                                <a href="#usercompletedreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+                                    class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+
+                                    @elseif($request->status == 'Rejected' )
+                                    <a href="#userRejectedreservation{{$request->id}}" data-bs-toggle="modal"
+                                        role="button"
+                                        class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                        @elseif($request->status == 'Posted by freelancer' )
+                                        <a href="#posted{{$request->id}}" data-bs-toggle="modal" role="button"
+                                            class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                            @else
+
+                                            <a href="#" role="button"
+                                                class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
+
+                                                @endif
+
+                                                <div class="d-flex justify-content-between align-items-baseline"
+                                                    style="margin-bottom: 35px;">
+                                                    <div class="d-flex justify-content-between align-items-baseline">
+                                                        <h3 class="reservation-id">{{ $request->random_id}} </h3>
+                                                    </div>
+                                                    @if($request->status == 'Pending')
+                                                    <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i
+                                                            class="fa-solid fa-circle px-2 "></i></p>
+
+                                                    @elseif( $request->status == 'Waiting' &&
+                                                    $request->date_time==now()->toDateString() && ($request->from<=now()
+                                                        ||$request->to <=now())) <p class=" status inprogress "
+                                                            data-color="C4C3C3">In process<i
+                                                                class="fa-solid fa-circle px-2 "></i></p>
+
+                                                            @elseif($request->status == 'Waiting' )
+                                                            <p class="status inprogress">{{ $request->status}}<i
+                                                                    class="fa-solid fa-circle px-2 "></i></p>
+                                                            @elseif($request->status == 'Finished')
+                                                            <p class="status gray" style="color: rgb(214, 214, 42);"
+                                                                data-color="C4C3C3">{{ $request->status }}<i
+                                                                    class="fa-solid fa-circle px-2 "></i></p>
+                                                            @elseif($request->status == 'Completed')
+                                                            <p class="status gray text-black" data-color="C4C3C3">
+                                                                {{ $request->status}}<i
+                                                                    class="fa-solid fa-circle px-2 "></i></p>
+                                                            @elseif($request->status == 'Cancel by
+                                                            customer'||$request->status == 'reject' ||$request->status
+                                                            == 'Rejected')
+                                                            <p class="status text-danger">{{ $request->status }}<i
+                                                                    class="fa-solid fa-circle px-2 "></i></p>
+                                                            @elseif($request->status == 'Posted by freelancer')
+                                                            <p class="status text-black-50" style="word-break:keep-all">
+                                                                {{ $request->status }}<i
+                                                                    class="fa-solid fa-circle px-2 "></i></p>
+                                                            @endif
+                                                </div>
+
+                                                <div class="d-flex">
+
+
+                                                    @if($request->date_time < now()->toDateString())
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">Reserve date</p>
+                                                            <span
+                                                                class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @else
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">Reserve date </p>
+                                                            <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @endif
+
+
+
+                                                        @if($request->offer->first() !=null)
+                                                        <div class="d-flex flex-column px-2">
+                                                            <p class="m-0">Price</p>
+                                                            <span>{{$request->offer->first()->price }}</span>
+                                                            <div>
+                                                            </div>
+                                                        </div>
+                                                        @else
+
+                                                        @endif
+                                                </div>
+                                            </a>
 
 
 
 
 
 
-    {{--  SHOW MODAL BASED ON REQUEST STATUS --}}
 
 
-    
-    @if ($request->status=="Pending" && $request->offer->first())
-    @include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
-    @include("layouts.component.modal.userresrvationrequest.rejectoffer")
-    @include("layouts.component.modal.userresrvationrequest.payment")
+                                            {{--  SHOW MODAL BASED ON REQUEST STATUS --}}
 
-    <script>
 
-        Moyasar.init({
+
+                                            @if ($request->status=="Pending" && $request->offer->first())
+                                            @include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
+                                            @include("layouts.component.modal.userresrvationrequest.rejectoffer")
+                                            @include("layouts.component.modal.userresrvationrequest.payment")
+
+                                            <script>
+                                                Moyasar.init({
 
         element: '#pay{{$request->id}} .visa',  
         amount: {{ App\Models\Reservation::findorfail($request->id)->offer()->first()->price  }}* 100,
@@ -224,54 +249,56 @@ Reservations
         });
 
   
-         </script>
-     {{-- @elseif($request->status=="Pending" && $request->date_time< now()) --}}
+                                            </script>
+                                            {{-- @elseif($request->status=="Pending" && $request->date_time< now()) --}}
 
-     @elseif($request->status=="Pending")
-     @include("layouts.component.modal.userresrvationrequest.reservpending")
-     @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
-    
-     @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() ) ||$request->status=='Reject' )
-     
-    
-     @elseif($request->status=='Waiting' )
-     @include("layouts.component.modal.userresrvationrequest.waitandinprogress")
-     @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
+                                            @elseif($request->status=="Pending")
+                                            @include("layouts.component.modal.userresrvationrequest.reservpending")
+                                            @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
 
-     
-     @elseif($request->status=='Cancel by customer' || $request->status=='reject' )
-     @include("layouts.component.modal.userresrvationrequest.canceled")
+                                            @elseif(($request->status=='In Process' && $request->due_date < now()->
+                                                toDateString() ) ||$request->status=='Reject' )
 
-     @elseif($request->status=='Rejected' )
-     @include("layouts.component.modal.userresrvationrequest.Rejected")
-  
 
-     @elseif($request->status=='Finished' )
-     @include("layouts.component.modal.userresrvationrequest.finished")
-     {{-- @elseif($request->status == 'Cancel by customer'|| $request->status == 'cancel by freelancer')
+                                                @elseif($request->status=='Waiting' )
+                                                @include("layouts.component.modal.userresrvationrequest.waitandinprogress")
+                                                @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
+
+
+                                                @elseif($request->status=='Cancel by customer' ||
+                                                $request->status=='reject' )
+                                                @include("layouts.component.modal.userresrvationrequest.canceled")
+
+                                                @elseif($request->status=='Rejected' )
+                                                @include("layouts.component.modal.userresrvationrequest.Rejected")
+
+
+                                                @elseif($request->status=='Finished' )
+                                                @include("layouts.component.modal.userresrvationrequest.finished")
+                                                {{-- @elseif($request->status == 'Cancel by customer'|| $request->status == 'cancel by freelancer')
      @include("layouts.component.modal.userresrvationrequest.canceled") --}}
-    
-     
-     @elseif($request->status=='Completed' )
-     @include("layouts.component.modal.userresrvationrequest.review")
-     @include("layouts.component.modal.userresrvationrequest.completed") 
-     @elseif($request->status=='Posted by freelancer' )
-     @include("layouts.component.modal.userresrvationrequest.postedreservation")
-    
-    
-     @else
-    
-    
-    
-    @endif
+
+
+                                                @elseif($request->status=='Completed' )
+                                                @include("layouts.component.modal.userresrvationrequest.review")
+                                                @include("layouts.component.modal.userresrvationrequest.completed")
+                                                @elseif($request->status=='Posted by freelancer' )
+                                                @include("layouts.component.modal.userresrvationrequest.postedreservation")
+
+
+                                                @else
 
 
 
-@include("layouts.component.modal.userRequests.chat")
+                                                @endif
 
-{{-- @include("layouts.component.modal.userresrvationrequest.reservpending")
+
+
+                                                @include("layouts.component.modal.userRequests.chat")
+
+                                                {{-- @include("layouts.component.modal.userresrvationrequest.reservpending")
 @include("layouts.component.modal.userresrvationrequest.surdeletereservation") --}}
-{{--  
+                                                {{--  
 @include("layouts.component.modal.userRequests.payment")
 @include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
 @include("layouts.component.modal.userresrvationrequest.waitwithcancel")
@@ -280,10 +307,10 @@ Reservations
 @include("layouts.component.modal.userresrvationrequest.completed") --}}
 
 
-@endforeach
+                                                @endforeach
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -299,24 +326,22 @@ Reservations
 <!-- plugin js -->
 
 {{-- <script src="{{asset('assets/libs/jquery-ui-dist/jquery-ui.min.js')}}"></script>
-<script src="{{asset('assets/libs/@fullcalendar/core/main.min.js')}}"></script> 
- <script src="{{asset('assets/libs/@fullcalendar/bootstrap/main.min.js')}}"></script>
+<script src="{{asset('assets/libs/@fullcalendar/core/main.min.js')}}"></script>
+<script src="{{asset('assets/libs/@fullcalendar/bootstrap/main.min.js')}}"></script>
 <script src="{{asset('assets/libs/@fullcalendar/daygrid/main.min.js')}}"></script>
 <script src="{{asset('assets/libs/@fullcalendar/timegrid/main.min.js')}}"></script>
 <script src="{{asset('assets/libs/@fullcalendar/interaction/main.min.js')}}"></script>
 <!-- Calendar init -->
- <script src="{{asset('assets/js/pages/calendar.init.js')}}"></script> --}}
+<script src="{{asset('assets/js/pages/calendar.init.js')}}"></script> --}}
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script> --}}
 <script src="{{asset('assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js"></script>
 
 
- <script>
-
-
-@if(Session::has('state') && Session::get('state')=="paydone")
+<script>
+    @if(Session::has('state') && Session::get('state')=="paydone")
 $(document).ready(function() {
 
     $('#paydone').modal('show');
@@ -512,11 +537,11 @@ $(document).ready(function() {
 @endif
 
 
- </script>
+</script>
 
 
 <script>
- $(document).ready( function() {
+    $(document).ready( function() {
    var calendars ={};
    var events = [
        @foreach ($reservations as $request)

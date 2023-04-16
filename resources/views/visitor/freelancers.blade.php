@@ -158,10 +158,8 @@ freelancers
 
                         <div class="txt">{{ $freelancer->bio }}</div>
                         <div class="service">
-                            <div class="d-flex service-head" style="">service:</div>
+                            <div class="d-flex service-head" style=""> {{__('freelancerprofile.services')}} : </div>
                             <div class="d-flex flex-wrap ">
-
-
                                 @if($freelancer->freelancerService->first() !=null)
                                 @foreach ($freelancer->freelancerService as $serv)
 
@@ -204,19 +202,22 @@ freelancers
                     <div class="totals">
                         <div class="projects">
                             <i class="fa-solid fa-list-check"></i>
-                            <p>{{ App\Models\Requests::where('freelancer_id', $freelancer->id)->where('status','Completed')->count() }}<sub>projects</sub>
+                            <p>{{ App\Models\Requests::where('freelancer_id', $freelancer->id)->where('status','Completed')->count() }}<sub>
+                                    {{__('freelancerprofile.projects')}}</sub>
                             </p>
                         </div>
 
                         <div class="productstotal">
                             <i class="fa-solid fa-dollar-sign"></i>
-                            <p>{{ App\Models\Product::where('freelancer_id', $freelancer->id)->count() }}<sub>products</sub>
+                            <p>{{ App\Models\Product::where('freelancer_id', $freelancer->id)->count() }}<sub>
+                                    {{__('freelancerprofile.products')}}</sub>
                             </p>
                         </div>
 
                         <div class="photos">
                             <i class="fa-solid fa-image"></i>
-                            <p>{{ App\Models\Photo::where('freelancer_id', $freelancer->id)->count() }}<sub>photos</sub>
+                            <p>{{ App\Models\Photo::where('freelancer_id', $freelancer->id)->count() }}<sub>
+                                    {{__('freelancerprofile.photos')}}</sub>
                             </p>
                         </div>
                     </div>
@@ -247,7 +248,7 @@ freelancers
 
                         <div class="txt">{{ $freelancer->bio }}</div>
                         <div class="service">
-                            <div class="d-flex service-head" style="">service:</div>
+                            <div class="d-flex service-head" style="">{{__('freelancerprofile.services')}} : </div>
                             <div class="d-flex flex-wrap ">
 
 
@@ -293,19 +294,22 @@ freelancers
                     <div class="totals">
                         <div class="projects">
                             <i class="fa-solid fa-list-check"></i>
-                            <p>{{ App\Models\Requests::where('freelancer_id', $freelancer->id)->count() }}<sub>projects</sub>
+                            <p>{{ App\Models\Requests::where('freelancer_id', $freelancer->id)->count() }}<sub>
+                                    {{__('freelancerprofile.projects')}}</sub>
                             </p>
                         </div>
 
                         <div class="productstotal">
                             <i class="fa-solid fa-dollar-sign"></i>
-                            <p>{{ App\Models\Product::where('freelancer_id', $freelancer->id)->count() }}<sub>products</sub>
+                            <p>{{ App\Models\Product::where('freelancer_id', $freelancer->id)->count() }}<sub>
+                                    {{__('freelancerprofile.products')}} </sub>
                             </p>
                         </div>
 
                         <div class="photos">
                             <i class="fa-solid fa-image"></i>
-                            <p>{{ App\Models\Photo::where('freelancer_id', $freelancer->id)->count() }}<sub>photos</sub>
+                            <p>{{ App\Models\Photo::where('freelancer_id', $freelancer->id)->count() }}<sub>
+                                    {{__('freelancerprofile.photos')}}</sub>
                             </p>
                         </div>
                     </div>

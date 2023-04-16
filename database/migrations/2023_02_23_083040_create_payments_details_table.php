@@ -10,7 +10,7 @@ return new class extends Migration
         Schema::create('payments_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('freelancer_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('freelancer_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
