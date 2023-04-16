@@ -120,12 +120,8 @@ class OrderController extends Controller
           
             
                    foreach($request['offer'] as $offer){
-                  
-                  
                     $offer['freelancer']= User::find($offer->freelancer_id);
-                    
                     if(!strpos($offer['freelancer']->profile_image,'Admin3/assets/images/users/')){
-                        
                         $offer['freelancer']->profile_image= asset('Admin3/assets/images/users/'. $offer['freelancer']->profile_image);
                     }
                     
