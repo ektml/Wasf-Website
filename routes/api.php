@@ -117,7 +117,7 @@ Route::get('getPublicRequests/{freelancer_id}',[OrderController::class,'getPubli
 
 Route::get('getPrivateRequests/{freelancer_id}',[OrderController::class,'getPrivateRequests'])->middleware('auth:api');
 
-Route::get('getMyWork/{freelancer_id}',[OrderController::class,'getMyWork'])->middleware('auth:api');
+Route::get('getMyWork/{freelancer_id}',[FreelancerOrder::class,'getMyWork'])->middleware('auth:api');
 
 
 //chat

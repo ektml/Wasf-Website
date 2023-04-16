@@ -115,6 +115,7 @@ return [
      
      'similar products'=>'similar products',
      'similar photos'=>'similar photos',
+     'user profile '=>'user profile ',
  
     
    

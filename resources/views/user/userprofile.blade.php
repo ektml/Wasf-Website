@@ -25,7 +25,7 @@ profile page
 <div class="userprofile">
   <div class="container">
     <div class="section-header ">
-      <h2>user profile </h2>
+      <h2> {{__('translate.User profile')}} </h2>
     </div>
 
     <div class="row personinfo">
@@ -54,14 +54,14 @@ profile page
     <div class="waltinfo d-flex flex-sm-wrap mb-5">
       <div class="flex-grow-1 cash">
         <div class="section-header ">
-          <h2>wallet </h2>
+          <h2>{{__('freelancerprofile.wallet')}} </h2>
         </div>
 
         <div class="hoverdiv d-flex justify-content-around align-items-baseline py-3">
           <div class="wall d-flex flex-column">
-            <p class="total">Total</p>
+            <p class="total">{{__('freelancerprofile.Total')}} </p>
             <P class="number">{{$user->wallet->total}}<span>
-                SR
+                {{__('translate.S.R')}}
               </span>
             </P>
           </div>
@@ -71,7 +71,7 @@ profile page
 
       <div class="flex-grow-1 hestory">
         <div class="section-header ">
-          <h2>wallet history </h2>
+          <h2>{{__('freelancerprofile.wallet history')}} </h2>
         </div>
 
         <div class="hest mx-2">

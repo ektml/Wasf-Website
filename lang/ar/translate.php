@@ -117,5 +117,7 @@ return [
   
   'similar photos'=>'الصور المماثلة', 
 
+  'User profile'=>'ملف تعريفي للمستخدم',
+
 
 ];

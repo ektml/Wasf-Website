@@ -224,10 +224,7 @@ class RequestController extends Controller
         }
     }
     
-    
-    
-    
-    
+
     public function changeStatus($id)
     {
         try{
@@ -262,7 +259,7 @@ class RequestController extends Controller
     {
         $request = Requests::find($id);
          if($request->payment()->where('freelancer_id', $request->freelancer_id)->first()){
-        
+            
             $total_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->total;
             $edit_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->update([
                 'status'=>"refund"
