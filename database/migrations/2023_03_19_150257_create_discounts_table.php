@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('by',['%','$']);
             $table->boolean('is_oneuse');
             $table->integer('max_use');
-            $table->integer('count_use');
+            $table->integer('count_use')->defualt(0);
             $table->timestamps();
         });
     }

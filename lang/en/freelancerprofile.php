@@ -70,6 +70,6 @@ return [
 
    "cashout"=>'cashout',
 
-   'edit profile'=>'edit profile',
+   'edit profile'=>'Edit Profile',
 
 ];

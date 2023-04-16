@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers\Api;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-use App\Models\User;
 use Validator;
+use App\Models\User;
+use App\Models\Wallet;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Api\ApiResponseTrait;
 
 class AuthController extends Controller
@@ -67,6 +68,12 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
   
+        Wallet::create([
+            'user_id'=> $user->id,
+            'total'=>0,
+            ]);
+
+            
         return response()->json([
             'status' =>200,
             'message' =>'User Successfully Registered',
@@ -74,10 +81,7 @@ class AuthController extends Controller
             'user' => $user
         ], 201);
 
-        Wallet::create([
-            'user_id'=> $user->id,
-            'total'=>0,
-            ]);
+        
     }
 
 

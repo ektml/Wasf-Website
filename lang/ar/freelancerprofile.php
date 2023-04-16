@@ -67,4 +67,5 @@ return [
 "Booking for photo shot"=>'حجز جلسة تصوير فوتوغرافي',
 'no file' => 'لا يوجد ملف',
 "cashout" => "سحب الرصيد",
+'edit profile'=>'تعديل الملف الشخصي',
 ];

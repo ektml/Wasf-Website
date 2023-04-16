@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->double('price');
             $table->double('total');
-            $table->foreignId('discount_id')->references('id')->on('discounts')->nullable();
+            $table->foreignId('discount_id')->nullable()->references('id')->on('discounts');
             $table->timestamps();
         });
     }

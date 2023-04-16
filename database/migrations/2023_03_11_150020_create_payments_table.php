@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('total', 10, 2);
             $table->string('discount')->default(0);
             $table->morphs('paymentsable');
+            $table->string('visapay_id')->nullable();
             $table->timestamps();
         });
     }

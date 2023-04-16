@@ -52,10 +52,8 @@ return [
   'newest'=>'الأحدث',
 
 
-
-
   //cart
-  'cart'=>'عربة التسوق',
+'cart'=>'عربة التسوق',
 'shopping cart'=>"عربة التسوق",
 'order summery'=>'ملخص الطلب',
 'promo code is actived'=>'تم تفعيل رمز الخصم',
