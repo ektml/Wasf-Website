@@ -17,7 +17,7 @@ return new class extends Migration
             $table->dateTime('from');
             $table->dateTime('to');
             $table->string('location')->nullable();
-            $table->enum('status', ['Pending', 'Waiting', 'In Process', 'Finished', 'Accepted', 'Rejected', 'Completed', 'Cancel by customer', 'Cancel by freelancer','Posted by freelancer'])->default('Pending');
+            $table->enum('status', ['Pending', 'Waiting', 'In Process', 'Finished', 'Accepted', 'Rejected', 'Completed', 'Cancel by customer', 'Cancel by freelancer','Posted by freelancer'.'reject'])->default('Pending');
             $table->timestamps();
         });
     }
