@@ -116,7 +116,7 @@ class FreelancerOrder extends Controller
 
 
                     if($p->status =='Pending' && $p->offer->where('freelancer_id', $freelancer_id)->first() == null){
-                        $p->user->profile_image = asset('Admin3/assets/images/users/'.$p->user->profile_image);
+                       
                         continue;
                     }elseif( $p->status =='Pending' && in_array($p->offer->where('freelancer_id', $freelancer_id)->first()->status,['reject'])){
                     continue;
