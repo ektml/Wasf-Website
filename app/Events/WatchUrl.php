@@ -19,9 +19,11 @@ class WatchUrl
      *
      * @return void
      */
-    public function __construct($w)
+    // product or photo that want treger
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**

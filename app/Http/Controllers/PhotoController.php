@@ -132,6 +132,7 @@ class PhotoController extends Controller
         // })->limit(4)->get();
 
         $similar=Photo::all();
+        event(new WatchUrl($photo));
         return view('visitor.photo', compact('freelancer', 'photo', "similar"));
     }
 

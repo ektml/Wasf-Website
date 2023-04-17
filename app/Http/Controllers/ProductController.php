@@ -4,6 +4,7 @@ use App\Models\Like;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Service;
+use App\Events\WatchUrl;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -326,6 +327,7 @@ class ProductController extends Controller
         $similar=Product::where(function($q) use($product){
             $q->where('cat_id',$product->cat_id)->orWhere("service_id",$product->serivce_id);
         })->limit(4)->get();
+        event(new WatchUrl($product));
         return view('visitor.product',compact('similar','product'));
     }
 
