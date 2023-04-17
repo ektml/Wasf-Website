@@ -10,7 +10,7 @@
           <div class="div d-flex justify-content-start px-4">
               <div class="d-flex flex-column">
                 <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-                <span class="text-black-50">pending</span>
+                <span class="text-black-50">{{__('requests.'.$request->status)}}</span>
               </div>
               <div class="align-slef-end" style="
     flex-grow: 1;
@@ -62,13 +62,13 @@
 
           
           <div class="d-flex flex-column px-3 bg-blue ">
-            <span class="flex-grow-1 fs-5 font-bold ">description</span>
+            <span class="flex-grow-1 fs-5 font-bold "> {{__('request.description')}}</span>
             <p class="flex-grow-1">{{ $request->description }}</p>
         </div>
 
   
         <div class="d-flex flex-column px-3">
-          <p class="fs-5 font-bold">attachment</p>
+          <p class="fs-5 font-bold"> {{__('request.attachment')}}</p>
           <div class="d-flex flex-column px-2 ">
             @foreach (  $request->file()->get() as $file)
             <a class="file d-flex mb-2" href="{{route('download',$file->url)}}">
@@ -87,7 +87,7 @@
             </div>
       </div>
           <div class="btn-contianer d-flex flex-column justify-between align-items-center my-3">
-            <button class="btn  btn-modal btn-model-primary" type="button" data-bs-toggle="modal" data-bs-target="#sendofferforrequest{{$request->id}}"  >offer</button>
+            <button class="btn  btn-modal btn-model-primary" type="button" data-bs-toggle="modal" data-bs-target="#sendofferforrequest{{$request->id}}"  >{{__('request.offer')}}</button>
             
            
              </div>

@@ -10,13 +10,13 @@
               <div class="modal-body">
     
                 <div class="text-center">
-                    <h1 class=""  style="color:var(--orange-color)">Services</h1>
+                    <h1 class=""  style="color:var(--orange-color)"> {{__('freelancerprofile.Services')}}</h1>
                 </div>
 
                 <form action="{{route('freelanc.addservice')}}" id="form-freelanc-service" method="POST">
                 @csrf
                     <div class="halfwidthinput">
-                    <p class="bold">categories</p>
+                    <p class="bold"> {{__('translate.categories')}}</p>
                     </div>
                  <!-- phone input -->
                 

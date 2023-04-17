@@ -39,15 +39,15 @@
                     
 
                     @if($request->status == 'Pending')
-                    <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status gray" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'In Process')
-                    <p class="status inprogress" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status inprogress" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'Waiting')
-                    <p class="status inprogress" data-color="C4C3C3">{{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status inprogress" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'Finished')
                     <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">{{ $request->status}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status== 'Completed')
-                    <p class="status gray text-black" data-color="C4C3C3">{{$request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status gray text-black" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @endif
                 </div>
 

@@ -219,7 +219,7 @@
 
             <input type="hidden" name="paytype" value="apay">
             <div class="btn-contianer d-flex justify-content-center align-items-center">
-              <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">checkout</button>
+              <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">{{__("translate.pay")}}</button>
 
             </div>
 
@@ -233,8 +233,7 @@
 
               <img src="{{asset('assets/images/wallet.png')}}" alt="wallet not enought" style="width:100px">
 
-              <p style="color:#011C26;" class="text-center py-3">Your wallet is empty
-                or haven't enough balance</p>
+              <p style="color:#011C26;" class="text-center py-3">{{__("translate.Your wallet is empty or haven't enough balance")}}</p>
             </div>
 
           </div>
@@ -251,7 +250,7 @@
 
 
               <div class="btn-contianer d-flex justify-content-center align-items-center">
-                <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">checkout</button>
+                <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">{{__("translate.pay")}}</button>
 
               </div>
 

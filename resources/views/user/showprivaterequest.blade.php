@@ -49,7 +49,7 @@ show private requests
                 <form action="">
                     <div>
                         <input type="checkbox" name="productsearch" value="all" id="all">
-                        <label for="all" class="bold">all</label>
+                        <label for="all" class="bold">{{__('translate.all')}}</label>
                     </div>
 
                     <div>
@@ -73,7 +73,8 @@ show private requests
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">
-                        <button type="submit" class=" border-0 btn-modal  my-3 btn-model-primary ">{{__('translate.apply')}}</button>
+                        <button type="submit"
+                            class=" border-0 btn-modal  my-3 btn-model-primary ">{{__('translate.apply')}}</button>
                     </div>
                 </form>
             </div>
@@ -140,25 +141,28 @@ show private requests
                                                     </div>
 
                                                     @if($request->status == 'Pending')
-                                                    <p class="status gray" data-color="C4C3C3">{{ $request->status }}<i
+                                                    <p class="status gray" data-color="C4C3C3">
+                                                        {{__('requests.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'In Process')
                                                     <p class="status gray text-warning" data-color="C4C3C3">
-                                                        {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i>
+                                                        {{__('requests.'.$request->status)}}<i
+                                                            class="fa-solid fa-circle px-2 "></i>
                                                     </p>
                                                     @elseif($request->status == 'Finished')
                                                     <p class="status gray" style="color: rgb(214, 214, 42);"
-                                                        data-color="C4C3C3">{{ $request->status }}<i
+                                                        data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'Completed')
                                                     <p class="status gray text-black" data-color="C4C3C3">
-                                                        {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i>
+                                                        {{__('requests.'.$request->status)}}<i
+                                                            class="fa-solid fa-circle px-2 "></i>
                                                     </p>
                                                     @elseif($request->status == 'Cancel by customer')
                                                     <p class="status text-danger">{{ $request->status }}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'Reject')
-                                                    <p class="status text-danger">{{$request->status}}<i
+                                                    <p class="status text-danger">{{__('requests.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @endif
                                                 </div>
@@ -168,20 +172,20 @@ show private requests
                                                 <div class="d-flex ">
                                                     <div class="d-flex flex-column px-2">
 
-                                                        <p class="m-0">req.date</p>
+                                                        <p class="m-0">{{__('requests.req.date')}}</p>
                                                         <span>{{ date_format($request->created_at,"Y-m-d") }}</span>
                                                     </div>
 
                                                     @if($request->due_date < now()->toDateString())
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">Due date</p>
+                                                            <p class="m-0">{{__('requests.Due date')}}</p>
                                                             <span class="text-danger">{{$request->due_date }}</span>
                                                             <div>
                                                             </div>
                                                         </div>
                                                         @else
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">Due date</p>
+                                                            <p class="m-0">{{__('requests.Due date')}}</p>
                                                             <span>{{ $request->due_date }}</span>
                                                             <div>
                                                             </div>
@@ -191,7 +195,7 @@ show private requests
                                                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first()
                                                         !=null)
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">price</p>
+                                                            <p class="m-0">{{__('requests.price')}}</p>
                                                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                                                             <div>
                                                             </div>

@@ -8,9 +8,9 @@
               </div>
               <div class="modal-body p-3">
       <form>
-        <h1 class="modal-title fs-5  top-0"  style="text-align: center;">By rejecting this offer the freelancer can send you another one
+        <h1 class="modal-title fs-5  top-0"  style="text-align: center;"> {{__('request.By rejecting this offer the freelancer can send you another one')}} 
             </h1>
-            <p class="text-black-50" style="text-align: center;"> Do you want to receive new offer or cancel whole reserve? </p>
+            <p class="text-black-50" style="text-align: center;">  {{__('request.Do you want to receive new offer or cancel whole reserve?')}} </p>
   
         
        
@@ -22,12 +22,13 @@
             <form action="{{route('user.reservation.cancel',$request->id)}}" method="POST">
 
 
-                <button type="submit" class="btn  btn-modal modal-color-text border-0">cancel reservation</button>
+                <button type="submit" class="btn  btn-modal modal-color-text border-0">
+                    {{__('request.cancel reservation')}}  </button>
 
             </form>
             <form action="{{route('user.reservation.rejectOffer',$request->id)}}" method="POST">
             @csrf
-                <button class="btn  btn-modal btn-model-primary" type="submit">recive new offer</button>
+                <button class="btn  btn-modal btn-model-primary" type="submit">{{__('request.recive new offer')}}</button>
 
             </form>
            

@@ -136,6 +136,17 @@ return [
   "current password"=>"كلمة المرور الحالية",
   "edit password"=>"تعديل كلمة المرور",
   "update"=>"تحديث",
-  'Reservation List' => 'قائمة الحجوزات',
+  'Reservation List'=>'قائمة الحجوزات',
+'filter by'=>'تصفية بواسطة',
+"Your wallet is empty or haven't enough balance"=>"محفظتك فارغة أو ليست لديك رصيد كافٍ",
+'pay'=>'الدفع',
+'payment successfully'=>'تم الدفع بنجاح',
+'continue shopping'=>'الاستمرار في التسوق',
+'added to cart successfully'=>'تمت الإضافة إلى السلة بنجاح',
+'Cash out'=>'سحب الأموال',
+'Bank name'=>'اسم البنك',
+'Account number'=>'رقم الحساب',
+'IBAN'=>'IBAN',
+'Transfer'=>'تحويل',
 
 ];

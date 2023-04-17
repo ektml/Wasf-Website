@@ -13,10 +13,10 @@
 
                        @if( $request->status == 'Waiting'  && $request->date_time==now()->toDateString() && ($request->from<=now() ||$request->to <=now()))
 
-                    <span class="inprogress">In process</span>
+                    <span class="inprogress">{{__('requests.In Process')}}</span>
 
                     @else
-                    <span class="inprogress">Waiting</span>
+                    <span class="inprogress">{{__('requests.waiting')}}</span>
                     @endif
                     </div>
 
@@ -58,10 +58,10 @@
                     <p class="fw-900 mb-0 text-black"><i class="fa fa-location"></i>{{ $request->location }}</p>
                 </div>
 
-                <h5 class="text-black border-top pt-2">Total price</h5>
+                <h5 class="text-black border-top pt-2">{{__('translate.SR')}}</h5>
                 <div class="d-flex justify-content-between">
-                    <p class=" mb-0">Price</p>
-                    <p class="fw-900 mb-0 text-black">{{$request->offer->first()->price}}<span class="text-black-50 mx-1">SR</span></p>
+                    <p class=" mb-0">{{__('translate.SR')}}</p>
+                    <p class="fw-900 mb-0 text-black">{{$request->offer->first()->price}}<span class="text-black-50 mx-1">{{__('translate.SR')}}</span></p>
                 </div>
                 <div class="btn-contianer d-flex flex-column justify-content-center align-items-center my-3">
 

@@ -106,6 +106,7 @@ return [
 'total'=>'total',
 'start shopping now'=>'start shopping now',
 'checkout'=>'checkout',
+
 'your cart is empty'=>'your cart is empty......',
 'S.R'=>'S.R',
 'SR'=>'SR',
@@ -137,8 +138,21 @@ return [
      
      'Reservation List'=>'Reservation List',
      'filter by'=>'filter by',
+     "Your wallet is empty or haven't enough balance"=>"Your wallet is empty or haven't enough balance",
+     'filter by'=>'filter by',
      
+     'pay'=>'checkout',
+     'payment successfully'=>'payment successfully',
+     'continue shopping'=>'continue shopping',
+     'added to cart successfully'=>'added to cart successfully',
+     'Cash out'=>'Cash out',
+     'Bank name'=>'Bank name',
+     'Account number'=>'Account number',
+     'IBAN'=>'IBAN',
+     'Transfer'=>'Transfer',
+    
 
+   
     
    
      

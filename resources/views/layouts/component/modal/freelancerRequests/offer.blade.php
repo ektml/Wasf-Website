@@ -27,12 +27,12 @@
         @endif
         ' />
         <div class="my-3" >
-            <h5 class="font-size-15 mb-3">write your offer</h5>
+            <h5 class="font-size-15 mb-3"> {{__('translate.write your offer')}}</h5>
             <input type="text" id="offer" class="form-control" name="offer" />
         </div>
     
     <div class="btn-contianer d-flex justify-between align-items-center">
-   <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">send</button>
+   <button type="submit" class="btn  btn-modal  my-3 btn-model-primary "> {{__('translate.send')}}</button>
   
     </div>
    

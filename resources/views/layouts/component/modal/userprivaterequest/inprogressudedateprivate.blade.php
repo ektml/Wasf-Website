@@ -95,7 +95,7 @@
                 <div class="btn-contianer d-flex flex-column justify-between align-items-center my-3">
 
                     <button class="btn text-black-50 border-0" type="button" data-bs-toggle="modal"
-                        data-bs-target="#suredelete{{$request->id}}">cancel this service</button>
+                        data-bs-target="#suredelete{{$request->id}}">{{__('request.cancel this service')}}</button>
                 </div>
             </div>
         </div>

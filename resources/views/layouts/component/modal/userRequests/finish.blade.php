@@ -10,7 +10,7 @@
                 <div class="div d-flex justify-content-start px-4">
                     <div class="d-flex flex-column">
                         <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-                        <span class="inprogress">{{ $request->status }}</span>
+                        <span class="inprogress">{{__('requests.'.$request->status)}}</span>
                     </div>
 
                     <div class="align-slef-end" style="flex-grow: 1; display: flex; align-items: center; justify-content: flex-end;">
@@ -22,12 +22,12 @@
 
                 <div class="d-flex flex-column px-5">
                     <div class="d-flex justify-content-between">
-                        <p class=" mb-0" >category</p>
+                        <p class=" mb-0" >{{__('request.category')}}</p>
                         <p class="fw-900 mb-0">{{ App\Models\Category::where('id', $request->category_id)->first()->title_en }}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <p class=" mb-0">service</p>
+                        <p class=" mb-0">{{__('request.service')}}</p>
                         @if( $request->service_id!=null)
                         @if (App::getLocale() =="ar")
                         {{ App\Models\Service::where('id', $request->service_id)->first()->service_ar }}</p>
@@ -38,23 +38,23 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <p class=" mb-0" >title</p>
+                        <p class=" mb-0" >{{__('request.title')}}</p>
                         <p class="fw-900 mb-0">{{ $request->title }}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <p class=" mb-0">due date</p>
+                        <p class=" mb-0">{{__('request.due date')}}</p>
                         <p class="fw-900 mb-0 ">{{ $request->due_date }}</p>
                     </div>
                 </div>
 
                 <div class="d-flex flex-column px-3 bg-blue ">
-                    <span class="flex-grow-1 fs-5 font-bold ">description</span>
+                    <span class="flex-grow-1 fs-5 font-bold ">{{__('request.description')}}</span>
                     <p class="flex-grow-1 ">{{ $request->description }}</p>
                 </div>
 
                 <div class="d-flex flex-column px-3">
-                    <p class="fs-5 font-bold">attachment</p>
+                    <p class="fs-5 font-bold">{{__('request.attachment')}}</p>
                     <div class="d-flex flex-column px-2 ">
                         @foreach (  $request->file()->get() as $file)
                         <a class="file d-flex mb-2" href="{{route('download',$file->url)}}">
@@ -76,7 +76,7 @@
                 <div class="btn-contianer d-flex flex-column justify-between align-items-center my-3">
                     <form action="{{route('user.completerequest',$request->id)}}" method="GET">
 
-                        <button class=" btn-accept border-0 btn-modal rounded-pill mx-2"type="submit" >complete</button>
+                        <button class=" btn-accept border-0 btn-modal rounded-pill mx-2"type="submit" > {{__('request.complete')}}</button>
                       
                       </form>
                 </div>
