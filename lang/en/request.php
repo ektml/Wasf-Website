@@ -50,6 +50,7 @@ return [
      "new orders"=>"new orders",
      "private orders"=>"private orders",
      "Total price"=>"Total price",
+     "offer"=>"offer",
      
 
 

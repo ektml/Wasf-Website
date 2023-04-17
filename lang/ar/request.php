@@ -48,6 +48,7 @@ return [
     "new orders"=>"طلبات جديدة",
     "private orders"=>"طلبات خاصة",
     "Total price"=>"السعر الإجمالي",
+    "offer" =>  "اضافة عرض",
    
 
      // reservation 
