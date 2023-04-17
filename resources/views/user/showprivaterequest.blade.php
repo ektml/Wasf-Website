@@ -267,28 +267,7 @@ show private requests
 
 
 <script>
-    // $('#offerPending').on('show.bs.modal', function(event) {
-    //     var button = $(event.relatedTarget)
-    //     console.log(button)
-    //     var id = button.data('id')
-    //     var category_id = button.data('category_id')
-    //     var service_id = button.data('service_id')
-    //     var title = button.data('title')
-    //     var due_date = button.data('due_date')
-    //     var description = button.data('description')
-    //     var attachment = button.data('attachment')
-    //     var modal = $(this)
-    //     modal.find('.modal-body #id').val(id);
-    //     modal.find('.modal-body #category_id').val(category_id);
-    //     modal.find('.modal-body #service_id').val(service_id);
-    //     modal.find('.modal-body #title').val(title);
-    //     modal.find('.modal-body #due_date').val(due_date);
-    //     modal.find('.modal-body #description').val(description);
-    //     modal.find('.modal-body #attachment').val(attachment);
-    // })
-
-
-// get message 
+    // get message 
 
 $(document).ready(function () {
 $('.chat').on('show.bs.offcanvas',function(){
@@ -324,8 +303,10 @@ const channel = pusher.subscribe('chats')
 channel.bind('new-message', function (data) {
     if(!data?.msg) return
     const { msg, requestId } = data
-    
-    createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ? "right" : "left")
+    if(msg.type==type && (msg.from===myId ||msg.to===myId)&&requestId==request_id){
+        createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ? "right" : "left")
+    }
+   
 });
 
 var olddata =0;

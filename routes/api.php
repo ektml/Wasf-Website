@@ -129,4 +129,4 @@ Route::post('sendMessage',[ChatController::class,'sendMessage'])->middleware('au
 
 // offer
 
-Route::post('sendOffer/{$id}',[RequestController::class,'sendOffer'])->middleware('auth:api');
+Route::post('sendOffer/{id}',[RequestController::class,'sendOffer'])->middleware('auth:api');
