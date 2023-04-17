@@ -145,7 +145,7 @@ show public request
                 offer
             </button>
         </div>
-        @include("layouts.component.modal.userRequests.offer")
+       
         @include("layouts.component.modal.userRequests.payment")
         @else
 
