@@ -60,7 +60,7 @@ class OrderController extends Controller
                  if($request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
                      
                      $del=false;
-                if($request->type =='public' && $request->status =='Pending' && in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
+                if($request->type =='public' && $request->status =='Pending' &&$request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first() && in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
                    
                    $del=true;
                 }
@@ -71,12 +71,9 @@ class OrderController extends Controller
 
                 }
                 
-                if($del){
+                if(!$del){
                   // $requests->forget($request);
                   $list[]=$request;
-                  $del=false;
-                }else{
-                  
                 }
                 
                         } 
