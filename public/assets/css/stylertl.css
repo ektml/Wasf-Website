@@ -2724,7 +2724,7 @@ button .number {
     position: absolute;
     border-radius: 12px;
     top: -19px;
-    left: -13px;
+    right: -13px;
 }
 .freelanceroffer .info i {
     color: var(--section-color);
