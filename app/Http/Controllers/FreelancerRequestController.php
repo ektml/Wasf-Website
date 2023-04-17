@@ -19,7 +19,7 @@ class FreelancerRequestController extends Controller
        $publics=[];
 
 
-        $privatesx =  Requests::where('type','private')->where("status",'Pending')->where('freelancer_id',$user_id)->get();
+        $privatesx =  Requests::where('type','private')->where('user_id','!=',$user_id)->where("status",'Pending')->where('freelancer_id',$user_id)->get();
 
 
 
@@ -37,7 +37,7 @@ class FreelancerRequestController extends Controller
             array_push($privates,$p);
         }
         $publicsx=Requests::where('type','public')->where('status','Pending'
-        )->whereNull('freelancer_id')->where('user_id','!=',$freelancer_id)->get();
+        )->whereNull('freelancer_id')->where('user_id','!=',$user_id)->get();
 
 
         foreach( $publicsx as $p){
@@ -118,7 +118,7 @@ else{
         $user_id=auth()->user()->id; 
 
         $privates= Requests::where(function($q)use( $user_id){
-           $q->where('freelancer_id',$user_id)->orWhere('freelancer_id',null);
+           $q->where('freelancer_id',$user_id)->where('user_id','!=',$user_id)->orWhere('freelancer_id',null);
         })->orderBy('status')->get();
 
         $result=[];

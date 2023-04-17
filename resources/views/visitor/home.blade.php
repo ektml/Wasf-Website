@@ -23,7 +23,7 @@
     <i class="fa-solid fa-plus"></i>
 </a>
 @endauth
-
+@auth
 <div class="messages pt-3">
     <div class="container py-3">
         <div class="row">
@@ -59,6 +59,8 @@
 </div>
 
 
+@endauth
+
 
 <div class="categories pt-3">
     <div class="container py-3 scrollable-container">
@@ -86,7 +88,7 @@
         </div>
     </div>
 </div> <!-- End Category Section -->
-
+@auth
 <div class="freelancers pt-3">
     <div class="container py-3 scrollable-container">
         <div class="section-header row">
@@ -130,7 +132,7 @@
         </div>
     </div>
 </div><!-- end freelnce -->
-
+@endauth
 <!-- start about us -->
 <div class="abouts pt-3">
     <div class="container py-3">
@@ -140,7 +142,8 @@
         <div class="about-data">
             <div
                 style=" border-image-width:10px;border-image: url('assets/images/navbg.png') 30 30 round; display:flex;align-items:center;justify-content:center;padding:20px">
-                <img src="{{asset("assets/images/newlogo2.png")}}" alt=""></div>
+                <img src="{{asset("assets/images/newlogo2.png")}}" alt="">
+            </div>
 
             <div class="about-text ">
                 @if (app()->getLocale()=='ar')

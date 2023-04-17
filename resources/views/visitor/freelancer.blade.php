@@ -22,6 +22,7 @@ Freelancer Profile
 @section("content")
 @auth
 
+@if($freelancer->id!=auth()->user()->id)
 @if($freelancer->is_photographer == 0)
 <a href="{{ route('user.requestprivate', $freelancer->id) }}" class="addrequesticon">
     <i class="fa-solid fa-plus"></i>
@@ -37,7 +38,7 @@ Freelancer Profile
     <i class="fa-solid fa-plus"></i>
 </a>
 @endauth
-
+@endif
 
 <div class="products-page py-5">
     <div class="container">

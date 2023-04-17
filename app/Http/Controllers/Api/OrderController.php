@@ -82,7 +82,6 @@ class OrderController extends Controller
                        
                    
                         if(!$del){
-                          // $requests->forget($request);
                           $list[]=$request;
                         }else{
                           $del=false;
@@ -140,16 +139,19 @@ class OrderController extends Controller
                    
                    
                       if($request->type =='private' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
-                         if($request->type =='private' && $request->status =='Pending' && in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
+                         if( in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['reject'])){
                     
-                  $requests->forget($key);
-
+                          continue;
+                         
                 }
+               }else{
+                continue;
                } 
             
+               $list[]=$request;
             }
            
-            return $this->returnData(200, 'Requests Returned Successfully', $requests);
+            return $this->returnData(200, 'Requests Returned Successfully', $list);
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'Requests Returned Failed');
