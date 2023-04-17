@@ -51,6 +51,7 @@ return [
      "private orders"=>"private orders",
      "Total price"=>"Total price",
      "offer"=>"offer",
+     "offers"=>"offers",
      "write your offer"=>"write your offer",
      
 

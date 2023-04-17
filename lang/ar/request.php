@@ -50,7 +50,7 @@ return [
     "Total price"=>"السعر الإجمالي",
     "offer" =>  "اضافة عرض",
     "write your offer" => "اكتب عرضك",
-   
+    "offers" => "العروض",
 
      // reservation 
 
