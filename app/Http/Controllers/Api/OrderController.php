@@ -84,7 +84,7 @@ class OrderController extends Controller
             
             }
            
-            return $this->returnData(200, 'Requests Returned Successfully', $requests);
+            return $this->returnData(200, 'Requests Returned Successfully', $list);
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'Requests Returned Failed');
