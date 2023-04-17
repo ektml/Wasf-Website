@@ -49,6 +49,7 @@ return [
     "private orders"=>"طلبات خاصة",
     "Total price"=>"السعر الإجمالي",
     "offer" =>  "اضافة عرض",
+    "write your offer" => "اكتب عرضك",
    
 
      // reservation 
