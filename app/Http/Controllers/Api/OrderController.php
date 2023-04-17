@@ -76,7 +76,7 @@ class OrderController extends Controller
                   // $requests->forget($request);
                   $del=false;
                 }else{
-                  $list[]=$request;
+                  array_push($list,$request);
                 }
                 
                         } 
