@@ -77,7 +77,9 @@
                   <span class="text-black-50">{{$request->random_id}}</span>
                 </div>
               </div>
-              <p class="status gray" data-color="C4C3C3"><i class="fa-solid fa-circle px-2 "></i></p>
+              <p class="status gray" data-color="C4C3C3"><i class="fa-solid fa-circle px-2 "></i>
+                {{__('requests.'.$request->status)}}
+              </p>
             </div>
             <div class="d-flex ">
               <div class="d-flex flex-column px-2">

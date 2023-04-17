@@ -39,7 +39,7 @@
 
     <div class="requestlink py-4 d-flex justify-content-evenly align-items-center">
       <a href="{{route('freelanc.neworder')}}" class=" fs-4 text-black-50 "> {{__('request.new orders')}}</a>
-      <a href="{{route('freelanc.mywork')}}" class="active  fs-4"> {{__('request.mywork')}}mywork</a>
+      <a href="{{route('freelanc.mywork')}}" class="active  fs-4"> {{__('request.mywork')}}</a>
     </div>
 
 
