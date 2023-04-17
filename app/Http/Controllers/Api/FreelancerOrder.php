@@ -104,13 +104,16 @@ class FreelancerOrder extends Controller
 
             if($freelancer_id == auth('api')->user()->id){
                 $privates = Requests::with('user', 'freelancer','category', 'service', 'offer', 'file')->where(function($q)use($freelancer_id){
-                $q->where('freelancer_id', $freelancer_id)->orWhere('freelancer_id', null);
+                $q->where('freelancer_id', $freelancer_id)->orWhere('freelancer_id',null);
                 })->orderBy('status')->get();
 
+               
                 $result = [];
+                
 
                 foreach($privates as $p){
                     $p['attachment'] = asset('front/upload/files/'.$p->file()->first()->url);
+
 
                     if($p->status =='Pending' && $p->offer->where('freelancer_id', $freelancer_id)->first() == null){
                         $p->user->profile_image = asset('Admin3/assets/images/users/'.$p->user->profile_image);
@@ -118,6 +121,9 @@ class FreelancerOrder extends Controller
                     }elseif( $p->status =='Pending' && in_array($p->offer->where('freelancer_id', $freelancer_id)->first()->status,['reject'])){
                     continue;
                 }
+                if(!strpos($p->user->profile_image, "Admin3/assets/images/users/")){
+                    $p->user->profile_image = asset('Admin3/assets/images/users/'.$p->user->profile_image);
+                  }
                 array_push($result, $p);
             }
                 return $this->returnData(200, 'My Work Of Requests Returned Successfully', $result);

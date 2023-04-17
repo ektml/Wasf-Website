@@ -105,7 +105,7 @@ class OrderController extends Controller
             
             $price=null;
             
-            $requests = Requests::where('type', 'private')->where('freelancer_id',$freelancer_id)->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
+            $requests = Requests::where('type', 'private')->where('freelancer_id',$freelancer_id)->where('status','Pending')->where('user_id',"!=",$freelancer_id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
