@@ -142,10 +142,10 @@ class OrderController extends Controller
                           continue;  
                          }
                }else{
-                continue;
+                $list[]=$request;
                } 
             
-               $list[]=$request;
+               
             }
            
             return $this->returnData(200, 'Requests Returned Successfully', $list);
