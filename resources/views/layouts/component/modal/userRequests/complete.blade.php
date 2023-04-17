@@ -11,10 +11,10 @@
                     <div class="d-flex flex-column">
                         <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
                         @if ($request->status =="Completed")
-                        <span class="text-black">{{__('requests.'.$request->status)}}</span>
+                        <span class="text-black">{{__('request.'.$request->status)}}</span>
 
                         @elseif ($request->status =="Cancel by customer")
-                        <span class="text-danger">{{__('requests.'.$request->status)}}</span>
+                        <span class="text-danger">{{__('request.'.$request->status)}}</span>
 
                         @endif
                     </div>

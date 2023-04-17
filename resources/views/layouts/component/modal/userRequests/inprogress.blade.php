@@ -12,10 +12,10 @@
                         <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
 
                         @if ( $request->status =='Cancel by customer'  )
-                        <span class="cancel  text-danger">{{__('requests.'.$request->status)}}</span>
+                        <span class="cancel  text-danger">{{__('request.'.$request->status)}}</span>
                         
                         @else
-                        <span class="inprogress text-warning">{{__('requests.'.$request->status)}}</span>
+                        <span class="inprogress text-warning">{{__('request.'.$request->status)}}</span>
                         @endif
                         
                     </div>

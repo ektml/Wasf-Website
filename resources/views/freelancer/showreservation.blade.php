@@ -172,35 +172,35 @@
                                                             $request->date_time==now()->toDateString() &&
                                                             ($request->from<=now() ||$request->to <=now())) <p
                                                                     class="status inprogress" data-color="C4C3C3">
-                                                                    {{__('requests.In Process')}}<i
+                                                                    {{__('request.In Process')}}<i
                                                                         class="fa-solid fa-circle px-2 "></i></p>
                                                                     @elseif($request->status == 'Waiting')
 
                                                                     <p class="status inprogress">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                                     @elseif($request->status == 'In Process')
                                                                     <p class="status gray text-warning"
                                                                         data-color="C4C3C3">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                                     @elseif($request->status == 'Finished')
                                                                     <p class="status gray"
                                                                         style="color: rgb(214, 214, 42);"
                                                                         data-color="C4C3C3">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                                     @elseif($request->status == 'Completed')
 
                                                                     <p class="status gray text-black"
                                                                         data-color="C4C3C3">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                                     @elseif($request->status == 'Posted by freelancer')
 
                                                                     <p class="status gray text-black-50"
                                                                         data-color="C4C3C3">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
 
                                                                     @elseif($request->status == 'Cancel by
@@ -208,7 +208,7 @@
                                                                     ||$request->status == 'Rejected'||
                                                                     $request->status=='Cancel by freelancer')
                                                                     <p class="status text-danger">
-                                                                        {{__('requests.'.$request->status)}}<i
+                                                                        {{__('request.'.$request->status)}}<i
                                                                             class="fa-solid fa-circle px-2 "></i></p>
 
                                                                     @endif
@@ -218,7 +218,7 @@
 
                                                             @if($request->date_time < now()->toDateString())
                                                                 <div class="d-flex flex-column px-2">
-                                                                    <p class="m-0">{{__('requests.Reserve date')}}</p>
+                                                                    <p class="m-0">{{__('request.Reserve date')}}</p>
                                                                     <span
                                                                         class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
                                                                     <div>
@@ -226,7 +226,7 @@
                                                                 </div>
                                                                 @else
                                                                 <div class="d-flex flex-column px-2">
-                                                                    <p class="m-0">{{__('requests.Reserve date')}} </p>
+                                                                    <p class="m-0">{{__('request.Reserve date')}} </p>
                                                                     <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
                                                                     <div>
                                                                     </div>
@@ -235,7 +235,7 @@
 
                                                                 @if($request->offer->first() !=null)
                                                                 <div class="d-flex flex-column px-2">
-                                                                    <p class="m-0">{{__('requests.Reserve date')}}</p>
+                                                                    <p class="m-0">{{__('request.Reserve date')}}</p>
                                                                     <span>{{$request->offer->first()->price }}</span>
                                                                     <div>
                                                                     </div>
