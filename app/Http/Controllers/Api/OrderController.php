@@ -71,14 +71,14 @@ class OrderController extends Controller
 
                 }
                 
-                if(!$del){
-                  // $requests->forget($request);
-                  $list[]=$request;
-                }
+                
                 
                         } 
                    
-            
+                        if(!$del){
+                          // $requests->forget($request);
+                          $list[]=$request;
+                        }
             }
            
             return $this->returnData(200, 'Requests Returned Successfully', $list);
