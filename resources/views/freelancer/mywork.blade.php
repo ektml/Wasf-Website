@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-{{__('requests.mywork')}}
+{{__('request.mywork')}}
 @endsection
 @section("header")
 @endsection
@@ -98,7 +98,7 @@
                   <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                       class="fa-solid fa-circle px-2 "></i></p>
                   @elseif($request->status == 'In Process')
-                  <p class="status gray text-warning" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                  <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                       class="fa-solid fa-circle px-2 "></i></p>
                   @elseif($request->status == 'Finished')
                   <p class="status finish " data-color="C4C3C3">{{__('request.'.$request->status)}}<i

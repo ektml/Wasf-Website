@@ -14,13 +14,13 @@
 
 
                         @if ( $request->status =='Cancel by customer')
-                        <span class="cancel  text-danger"> {{__('requests.cancel')}}</span>
+                        <span class="cancel  text-danger"> {{__('request.cancel')}}</span>
                         @elseif($request->status =='Finished')
-                        <span class="finish "> {{__('requests.'.$request->status)}}</span>
+                        <span class="finish "> {{__('request.'.$request->status)}}</span>
                         @elseif($request->status =='Completed')
-                        <span class="text-black text-warning"> {{__('requests.'.$request->status)}}</span>
+                        <span class="text-black text-warning"> {{__('request.'.$request->status)}}</span>
                         @elseif($request->status =='Pending')
-                        <span class="text-black-50 text-warning"> {{__('requests.'.$request->status)}}</span>
+                        <span class="text-black-50 text-warning"> {{__('request.'.$request->status)}}</span>
                         @else
 
                         @endif

@@ -11,7 +11,7 @@
         <div class="div d-flex justify-content-start px-4">
           <div class="d-flex flex-column">
             <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-            <span class="text-black-50">{{__('requests.Pending')}}</span>
+            <span class="text-black-50">{{__('request.Pending')}}</span>
           </div>
           <div class="align-slef-end" style="
     flex-grow: 1;

@@ -164,36 +164,36 @@ show public request
                 </div>
 
                 @if($request->status == 'Pending')
-                <p class="status gray" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                         class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'In Process')
-                <p class="status gray text-warning" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                         class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'Finished')
                 <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">
-                    {{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
+                    {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                 @elseif($request->status == 'Completed')
-                <p class="status gray text-black" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                <p class="status gray text-black" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                         class="fa-solid fa-circle px-2 "></i></p>
                 @endif
             </div>
 
             <div class="d-flex ">
                 <div class="d-flex flex-column px-2">
-                    <p class="m-0"> {{__('requests.req.date')}}</p>
+                    <p class="m-0"> {{__('request.req.date')}}</p>
                     <span>{{date_format($request->created_at,"Y-m-d")}}</span>
                 </div>
                 {{-- @if($request->due_date < now()) --}}
                 @if($request->due_date < now()->toDateString())
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0"> {{__('requests.Due date')}}</p>
+                        <p class="m-0"> {{__('request.Due date')}}</p>
                         <span class="text-danger">{{ $request->due_date }}</span>
                         <div>
                         </div>
                     </div>
                     @else
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0"> {{__('requests.Due date')}}</p>
+                        <p class="m-0"> {{__('request.Due date')}}</p>
                         <span>{{ $request->due_date }}</span>
                         <div>
                         </div>
@@ -202,7 +202,7 @@ show public request
 
                     @if($request->offer->where('freelancer_id',$request->freelancer_id)->first() !=null)
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0">{{__('requests.price')}}</p>
+                        <p class="m-0">{{__('request.price')}}</p>
                         <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                         <div>
                         </div>
@@ -230,35 +230,35 @@ show public request
                     </div>
 
                     @if($request->status == 'Pending')
-                    <p class="status gray" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'In Process')
-                    <p class="status gray text-warning" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Finished')
                     <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">
                         {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Completed')
-                    <p class="status gray text-black" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-black" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @endif
                 </div>
 
                 <div class="d-flex ">
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0">{{__('requests.req.date')}}</p>
+                        <p class="m-0">{{__('request.req.date')}}</p>
                         <span>{{date_format($request->created_at,"Y-m-d")}}</span>
                     </div>
                     @if($request->due_date < now()->toDateString())
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span class="text-danger">{{ $request->due_date }}</span>
                             <div>
                             </div>
                         </div>
                         @else
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span>{{ $request->due_date }}</span>
                             <div>
                             </div>
@@ -267,7 +267,7 @@ show public request
 
                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first() !=null)
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.price')}}</p>
+                            <p class="m-0">{{__('request.price')}}</p>
                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                             <div>
                             </div>
@@ -300,20 +300,20 @@ show public request
 
                 <div class="d-flex ">
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0">{{__('requests.req.date')}}</p>
+                        <p class="m-0">{{__('request.req.date')}}</p>
                         <span>{{date_format($request->created_at,"Y-m-d")}}</span>
                     </div>
                     {{-- @if($request->due_date < now()) --}}
                     @if($request->due_date < now()->toDateString())
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span class="text-danger">{{$request->due_date }}</span>
                             <div>
                             </div>
                         </div>
                         @else
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span>{{ $request->due_date }}</span>
                             <div>
                             </div>
@@ -322,7 +322,7 @@ show public request
 
                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first() !=null)
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.price')}}</p>
+                            <p class="m-0">{{__('request.price')}}</p>
                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                             <div>
                             </div>
@@ -349,36 +349,36 @@ show public request
                     </div>
 
                     @if($request->status == 'Pending')
-                    <p class="status gray" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'In Process')
-                    <p class="status gray text-warning" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Finished')
                     <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">
-                        {{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
+                        {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Completed')
-                    <p class="status gray text-black" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-black" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @endif
                 </div>
 
                 <div class="d-flex ">
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0">{{__('requests.req.date')}}</p>
+                        <p class="m-0">{{__('request.req.date')}}</p>
                         <span>{{ date_format($request->created_at,"Y-m-d")}}</span>
                     </div>
                     {{-- @if($request->due_date < now()) --}}
                     @if($request->due_date < now()->toDateString())
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span class="text-danger">{{ $request->due_date }}</span>
                             <div>
                             </div>
                         </div>
                         @else
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span>{{ $request->due_date }}</span>
                             <div>
                             </div>
@@ -387,7 +387,7 @@ show public request
 
                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first() !=null)
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.price')}}</p>
+                            <p class="m-0">{{__('request.price')}}</p>
                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                             <div>
                             </div>
@@ -417,38 +417,38 @@ show public request
                     </div>
 
                     @if($request->status == 'Pending')
-                    <p class="status gray" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'In Process')
-                    <p class="status gray text-warning" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Finished')
                     <p class="status gray" style="color: rgb(214, 214, 42);" data-color="C4C3C3">
-                        {{__('requests.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
+                        {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Completed')
-                    <p class="status gray text-black" data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                    <p class="status gray text-black" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Cancel by customer')
-                    <p class="status text-danger">{{__('requests.cancel')}}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status text-danger">{{__('request.cancel')}}<i class="fa-solid fa-circle px-2 "></i></p>
                     @endif
                 </div>
 
                 <div class="d-flex ">
                     <div class="d-flex flex-column px-2">
-                        <p class="m-0">{{__('requests.req.date')}}</p>
+                        <p class="m-0">{{__('request.req.date')}}</p>
                         <span>{{ date_format($request->created_at,"Y-m-d")}}</span>
                     </div>
                     {{-- @if($request->due_date < now()) --}}
                     @if($request->due_date < now()->toDateString())
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span class="text-danger">{{ $request->due_date }}</span>
                             <div>
                             </div>
                         </div>
                         @else
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.Due date')}}</p>
+                            <p class="m-0">{{__('request.Due date')}}</p>
                             <span>{{ $request->due_date }}</span>
                             <div>
                             </div>
@@ -457,7 +457,7 @@ show public request
 
                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first() !=null)
                         <div class="d-flex flex-column px-2">
-                            <p class="m-0">{{__('requests.price')}}</p>
+                            <p class="m-0">{{__('request.price')}}</p>
                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                             <div>
                             </div>
@@ -487,7 +487,7 @@ show public request
                             <div class="div d-flex justify-content-start px-4">
                                 <div class="d-flex flex-column">
                                     <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-                                    <span class="text-black-50">{{__('requests.Pending')}}</span>
+                                    <span class="text-black-50">{{__('request.Pending')}}</span>
                                 </div>
                             </div>
 
@@ -551,7 +551,7 @@ show public request
                         <div class="modal-footer">
                             <button class="btn  btn-modal  my-3 btn-model-primary"
                                 data-bs-target="#freelaceroffers{{$request->id}}" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">{{__('requests.offers')}}
+                                data-bs-dismiss="modal">{{__('request.offers')}}
                             </button>
                         </div>
                     </div>
@@ -572,7 +572,7 @@ show public request
                             <div class="div d-flex justify-content-start px-4">
                                 <div class="d-flex flex-column">
                                     <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-                                    <span class="text-warning">{{__('requests.'.$request->status)}}</span>
+                                    <span class="text-warning">{{__('request.'.$request->status)}}</span>
                                 </div>
 
                                 <div class="align-slef-end"

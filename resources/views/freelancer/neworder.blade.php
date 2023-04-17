@@ -83,11 +83,11 @@
             </div>
             <div class="d-flex ">
               <div class="d-flex flex-column px-2">
-                <p class="m-0">{{__('requests.req.date')}}</p>
+                <p class="m-0">{{__('request.req.date')}}</p>
                 <span>{{date_format($request->created_at,"Y-m-d") }}</span>
               </div>
               <div class=" d-flex flex-column px-2">
-                <p class="m-0">{{__('requests.Due.date')}}</p>
+                <p class="m-0">{{__('request.Due.date')}}</p>
                 <span>{{ $request->due_date }}</span>
                 <div>
                 </div>
@@ -97,7 +97,7 @@
 
               @if($request->offer->where('freelancer_id',auth()->user()->id)->first()!=null )
               <div class="d-flex flex-column px-2">
-                <p class="m-0">{{__('requests.price')}}</p>
+                <p class="m-0">{{__('request.price')}}</p>
                 <span>{{$request->offer->where('freelancer_id',auth()->user()->id)->first()->price }}</span>
                 <div>
                 </div>
@@ -153,15 +153,15 @@
                 <span class="text-black-50">{{$request->random_id}}</span>
               </div>
             </div>
-            <p class="status gray" data-color="C4C3C3">{{$request->status}}<i class="fa-solid fa-circle px-2 "></i></p>
+            <p class="status gray" data-color="C4C3C3"> {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
           </div>
           <div class="d-flex ">
             <div class="d-flex flex-column px-2">
-              <p class="m-0">{{__('requests.req.date')}}</p>
+              <p class="m-0">{{__('request.req.date')}}</p>
               <span>{{date_format($request->created_at,"Y-m-d") }}</span>
             </div>
             <div class=" d-flex flex-column px-2">
-              <p class="m-0">{{__('requests.req.date')}}</p>
+              <p class="m-0">{{__('request.req.date')}}</p>
               <span>{{ $request->due_date }}</span>
               <div>
               </div>
@@ -171,7 +171,7 @@
 
             @if($request->offer->where('freelancer_id',auth()->user()->id)->first()!=null )
             <div class="d-flex flex-column px-2">
-              <p class="m-0">{{__('requests.price')}}</p>
+              <p class="m-0">{{__('request.price')}}</p>
               <span>{{$request->offer->where('freelancer_id',auth()->user()->id)->first()->price }}</span>
               <div>
               </div>

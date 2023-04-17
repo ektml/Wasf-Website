@@ -13,10 +13,10 @@
 
                        @if( $request->status == 'Waiting'  && $request->date_time==now()->toDateString() && ($request->from<=now() ||$request->to <=now()))
 
-                    <span class="inprogress">{{__('requests.In Process')}}</span>
+                    <span class="inprogress">{{__('request.In Process')}}</span>
 
                     @else
-                    <span class="inprogress">{{__('requests.waiting')}}</span>
+                    <span class="inprogress">{{__('request.waiting')}}</span>
                     @endif
                     </div>
 

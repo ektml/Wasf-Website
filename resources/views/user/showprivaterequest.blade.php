@@ -142,27 +142,27 @@ show private requests
 
                                                     @if($request->status == 'Pending')
                                                     <p class="status gray" data-color="C4C3C3">
-                                                        {{__('requests.'.$request->status)}}<i
+                                                        {{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'In Process')
                                                     <p class="status gray text-warning" data-color="C4C3C3">
-                                                        {{__('requests.'.$request->status)}}<i
+                                                        {{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i>
                                                     </p>
                                                     @elseif($request->status == 'Finished')
                                                     <p class="status gray" style="color: rgb(214, 214, 42);"
-                                                        data-color="C4C3C3">{{__('requests.'.$request->status)}}<i
+                                                        data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'Completed')
                                                     <p class="status gray text-black" data-color="C4C3C3">
-                                                        {{__('requests.'.$request->status)}}<i
+                                                        {{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i>
                                                     </p>
                                                     @elseif($request->status == 'Cancel by customer')
                                                     <p class="status text-danger">{{ $request->status }}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'Reject')
-                                                    <p class="status text-danger">{{__('requests.'.$request->status)}}<i
+                                                    <p class="status text-danger">{{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @endif
                                                 </div>
@@ -172,20 +172,20 @@ show private requests
                                                 <div class="d-flex ">
                                                     <div class="d-flex flex-column px-2">
 
-                                                        <p class="m-0">{{__('requests.req.date')}}</p>
+                                                        <p class="m-0">{{__('request.req.date')}}</p>
                                                         <span>{{ date_format($request->created_at,"Y-m-d") }}</span>
                                                     </div>
 
                                                     @if($request->due_date < now()->toDateString())
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.Due date')}}</p>
+                                                            <p class="m-0">{{__('request.Due date')}}</p>
                                                             <span class="text-danger">{{$request->due_date }}</span>
                                                             <div>
                                                             </div>
                                                         </div>
                                                         @else
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.Due date')}}</p>
+                                                            <p class="m-0">{{__('request.Due date')}}</p>
                                                             <span>{{ $request->due_date }}</span>
                                                             <div>
                                                             </div>
@@ -195,7 +195,7 @@ show private requests
                                                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first()
                                                         !=null)
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.price')}}</p>
+                                                            <p class="m-0">{{__('request.price')}}</p>
                                                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
                                                             <div>
                                                             </div>

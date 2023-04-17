@@ -10,7 +10,7 @@
           <div class="div d-flex justify-content-start px-4">
               <div class="d-flex flex-column">
                 <h3 class="mb-0 font-bold">{{$request->random_id}}</h3>
-                <span class="inprogress">{{__('requests.'.$request->status)}}</span>
+                <span class="inprogress">{{__('request.'.$request->status)}}</span>
               </div>
               <div class="align-slef-end" style="
     flex-grow: 1;

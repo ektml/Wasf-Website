@@ -13,11 +13,11 @@
                         <h3 class="mb-0 font-bold">{{ $request->random_id }}</h3>
 
                         @if($request->status== 'Cancel by customer')
-                        <span class="status text-danger">{{__('requests.cancel')}}</span>
+                        <span class="status text-danger">{{__('request.cancel')}}</span>
                         @elseif($request->status== 'reject')
-                        <span class="status text-danger"> {{__('requests.'.$request->status)}}</span>
+                        <span class="status text-danger"> {{__('request.'.$request->status)}}</span>
                         @else
-                        <span class="status text-danger">{{__('requests.cancel')}}</span>
+                        <span class="status text-danger">{{__('request.cancel')}}</span>
                         @endif
                     </div>
 

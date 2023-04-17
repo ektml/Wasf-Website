@@ -147,34 +147,34 @@
                                                         <h3 class="reservation-id">{{ $request->random_id}} </h3>
                                                     </div>
                                                     @if($request->status == 'Pending')
-                                                    <p class="status gray" data-color="C4C3C3"> {{__('requests.'.$request->status)}}<i
+                                                    <p class="status gray" data-color="C4C3C3"> {{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
 
                                                     @elseif( $request->status == 'Waiting' &&
                                                     $request->date_time==now()->toDateString() && ($request->from<=now()
                                                         ||$request->to <=now())) <p class=" status inprogress "
-                                                            data-color="C4C3C3"> {{__('requests.In Process')}}<i
+                                                            data-color="C4C3C3"> {{__('request.In Process')}}<i
                                                                 class="fa-solid fa-circle px-2 "></i></p>
 
                                                             @elseif($request->status == 'Waiting' )
-                                                            <p class="status inprogress"> {{__('requests.'.$request->status)}}<i
+                                                            <p class="status inprogress"> {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Finished')
                                                             <p class="status gray" style="color: rgb(214, 214, 42);"
-                                                                data-color="C4C3C3"> {{__('requests.'.$request->status)}}<i
+                                                                data-color="C4C3C3"> {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Completed')
                                                             <p class="status gray text-black" data-color="C4C3C3">
-                                                                {{__('requests.'.$request->status)}}<i
+                                                                {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Cancel by
                                                             customer'||$request->status == 'reject' ||$request->status
                                                             == 'Rejected')
-                                                            <p class="status text-danger"> {{__('requests.'.$request->status)}}<i
+                                                            <p class="status text-danger"> {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Posted by freelancer')
                                                             <p class="status text-black-50" style="word-break:keep-all">
-                                                                {{__('requests.'.$request->status)}}<i
+                                                                {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @endif
                                                 </div>
@@ -184,7 +184,7 @@
 
                                                     @if($request->date_time < now()->toDateString())
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.Reserve date')}}</p>
+                                                            <p class="m-0">{{__('request.Reserve date')}}</p>
                                                             <span
                                                                 class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
                                                             <div>
@@ -192,7 +192,7 @@
                                                         </div>
                                                         @else
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.Reserve date')}} </p>
+                                                            <p class="m-0">{{__('request.Reserve date')}} </p>
                                                             <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
                                                             <div>
                                                             </div>
@@ -203,7 +203,7 @@
 
                                                         @if($request->offer->first() !=null)
                                                         <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('requests.Reserve date')}}</p>
+                                                            <p class="m-0">{{__('request.Reserve date')}}</p>
                                                             <span>{{$request->offer->first()->price }}</span>
                                                             <div>
                                                             </div>
