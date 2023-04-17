@@ -279,7 +279,7 @@ class RequestController extends Controller
 
 
 
-    public function sendOffer($id){
+    public function sendOffer(Request $request,$id){
         try{
          $flag=false;
          $user_id=auth('api')->user()->id;
