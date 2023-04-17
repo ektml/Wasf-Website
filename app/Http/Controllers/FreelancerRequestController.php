@@ -99,10 +99,14 @@ class FreelancerRequestController extends Controller
 
 
 if($flag){
-
+    toastr()->success('offer is send');
     return redirect()->back()->with('message','offer is send');
 }
 
+else{
+    toastr()->error('offer send fail');
+    return redirect()->back();
+}
 
     }
 
