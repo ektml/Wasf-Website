@@ -78,7 +78,7 @@
                 </div>
               </div>
               <p class="status gray" data-color="C4C3C3"><i class="fa-solid fa-circle px-2 "></i>
-                {{__('requests.'.$request->status)}}
+                {{__('request.'.$request->status)}}
               </p>
             </div>
             <div class="d-flex ">
