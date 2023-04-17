@@ -58,9 +58,13 @@ class OrderController extends Controller
                         $request->price=null;
                    }
                      
+
+
+                   if($request->user_id==$freelancer_id){
+                    continue;
+                   }
                  if($request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
                      
-                   
                 if($request->type =='public' && $request->status =='Pending' &&$request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first() && in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
                    
                    $del=true;
@@ -72,13 +76,14 @@ class OrderController extends Controller
 
                 }
 
-                if($request->user_id==$freelancer_id){
-                  $del=true;
-                }
+               
+               
                 
                         }else{
                           $list[]=$request;
                         }
+
+                       
                    
                         if(!$del){
                           // $requests->forget($request);
