@@ -77,14 +77,14 @@ show public request
                     </div>
 
                     <div>
-                        <input type="checkbox" name="search[]" value="active" id="active" @if
-                            (in_array('active',$filter)) checked @endif>
+                        <input type="checkbox" name="search[]" value="active" id="active"
+                            @if(in_array('active',$filter)) checked @endif>
                         <label for="active" class="bold">active</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="search[]" value="completed" id="completed" @if
-                            (in_array('completed',$filter)) checked @endif>
+                        <input type="checkbox" name="search[]" value="completed" id="completed"
+                            @if(in_array('completed',$filter)) checked @endif>
                         <label for="completed" class="bold">completed</label>
                     </div>
 
