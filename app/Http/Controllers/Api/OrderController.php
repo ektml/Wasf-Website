@@ -19,7 +19,7 @@ class OrderController extends Controller
        try{
             
             $price=null;
-            
+            $list=[];
             $requests = Requests::where('type', 'public')->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             
@@ -75,6 +75,8 @@ class OrderController extends Controller
                      
                   // $requests->forget($request);
                   $del=false;
+                }else{
+                  $list[]=$request;
                 }
                 
                         } 
