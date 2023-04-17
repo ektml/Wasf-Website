@@ -294,7 +294,7 @@
             </div>
           </div>
 
-          <h4 class="inprogress"> successfully</h4>
+          <h4 class="inprogress"> {{__('translate.payment successfully')}}</h4>
 
         </div>
       </div>

@@ -117,6 +117,7 @@ return [
 
 
     'edit password' => 'Edit password',
+    'User profile' => 'User Profile',
     'edit profile' => 'Edit profile',
     'public request' => 'public request',
     'private request' => 'private request',

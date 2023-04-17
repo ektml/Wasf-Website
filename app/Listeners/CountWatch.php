@@ -26,6 +26,6 @@ class CountWatch
      */
     public function handle(WatchUrl $event)
     {
-        //
+        
     }
 }

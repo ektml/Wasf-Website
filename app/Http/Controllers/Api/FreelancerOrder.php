@@ -107,10 +107,7 @@ class FreelancerOrder extends Controller
                 $q->where('freelancer_id', $freelancer_id)->orWhere('freelancer_id',null);
                 })->orderBy('status')->get();
 
-               
                 $result = [];
-                
-
                 foreach($privates as $p){
                     $p['attachment'] = asset('front/upload/files/'.$p->file()->first()->url);
 
@@ -126,9 +123,9 @@ class FreelancerOrder extends Controller
                   }
                 array_push($result, $p);
             }
-                return $this->returnData(200, 'My Work Of Requests Returned Successfully', $result);
+                return $this->returnData(200,'My Work Of Requests Returned Successfully', $result);
             }else{
-                return $this->returnError(403, 'UnAuthenticated');
+                return $this->returnError(403,'UnAuthenticated');
             }
         }catch(\Exception $e){
             echo $e;

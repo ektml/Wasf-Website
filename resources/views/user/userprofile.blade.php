@@ -8,7 +8,7 @@
 @section("og-image")
 @endsection
 @section("title")
-{{__('freelancerprofile.user profile ')}}
+{{__('translate.User profile')}}
 @endsection
 @section("header")
 @endsection
