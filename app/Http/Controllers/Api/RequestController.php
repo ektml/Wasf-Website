@@ -275,4 +275,59 @@ class RequestController extends Controller
         return redirect()->back()->with(['state'=>"cancel", "id"=>$id]);
     }
     
+    
+
+
+
+    public function sendOffer($id){
+        try{
+         $flag=false;
+         $user_id=auth('api')->user()->id;
+      $request->validate([
+        'offer'=>['required'],
+        'type'=>['required'],
+      ]);
+     
+      if($request->type ==="request"){
+         $order=Requests::find($id);
+         $order->offer()->create([
+          'type'=>"request",
+           'freelancer_id'=>$user_id,
+           'price'=>$request->offer,
+           'status'=>'pending',
+        
+         ]);
+       
+         $flag=true;
+     
+      }elseif($request->type === "reservation"){
+         $order=Reservation::find($id);
+         $order->offer()->create([
+          'type'=>"reservation",
+           'freelancer_id'=>$user_id,
+           'price'=>$request->offer,
+           'status'=>'pending',
+        
+         ]);
+     
+         $flag=true;
+      }
+     
+     
+     if($flag){
+     
+        return $this->returnData(200, ' offer send Successfully');
+    }else{
+        return $this->returnError(400, "offer send fail");
+    }
+     
+        }catch(\Excetion $e){
+            echo $e;
+            return $this->returnError(400, ' offer send Failed');
+     
+        }
+     
+     
+         }
+
 }

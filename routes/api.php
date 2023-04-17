@@ -125,3 +125,8 @@ Route::get('getMyWork/{freelancer_id}',[FreelancerOrder::class,'getMyWork'])->mi
 
 Route::post('getMessages',[ChatController::class,'getMessages'])->middleware('auth:api');
 Route::post('sendMessage',[ChatController::class,'sendMessage'])->middleware('auth:api');
+
+
+// offer
+
+Route::post('sendOffer/{$id}',[RequestController::class,'sendOffer'])->middleware('auth:api');
