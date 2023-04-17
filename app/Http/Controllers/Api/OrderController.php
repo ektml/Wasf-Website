@@ -21,7 +21,7 @@ class OrderController extends Controller
             $price=null;
             $del=false;
             $list=[];
-            $requests = Requests::where('type', 'public')->where('status','Pending')->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
+            $requests = Requests::where('type', 'public')->where('status','Pending')->where('user_id','!=',$freelancer_id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             
             foreach($requests as $request){
@@ -60,9 +60,7 @@ class OrderController extends Controller
                      
 
 
-                   if($request->user_id==$freelancer_id){
-                    continue;
-                   }
+                   
                  if($request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
                      
                 if($request->type =='public' && $request->status =='Pending' &&$request->type =='public' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first() && in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
@@ -79,8 +77,6 @@ class OrderController extends Controller
                
                
                 
-                        }else{
-                          $list[]=$request;
                         }
 
                        

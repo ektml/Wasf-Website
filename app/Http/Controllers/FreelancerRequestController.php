@@ -37,7 +37,7 @@ class FreelancerRequestController extends Controller
             array_push($privates,$p);
         }
         $publicsx=Requests::where('type','public')->where('status','Pending'
-        )->whereNull('freelancer_id')->get();
+        )->whereNull('freelancer_id')->where('user_id','!=',$freelancer_id)->get();
 
 
         foreach( $publicsx as $p){
