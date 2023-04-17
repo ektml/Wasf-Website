@@ -99,7 +99,8 @@ class OrderController extends Controller
   
   
   public function getPrivateRequests($freelancer_id){
-      
+
+    $list=[];
         try{
             
             $price=null;
