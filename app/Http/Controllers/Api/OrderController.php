@@ -71,6 +71,10 @@ class OrderController extends Controller
                     
 
                 }
+
+                if($request->user_id==$freelancer_id){
+                  $del=true;
+                }
                 
                         }else{
                           $list[]=$request;
