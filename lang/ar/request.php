@@ -44,7 +44,7 @@ return [
     "send"=>"إرسال",
     "are you sure from cancling this request"=>"هل أنت متأكد من إلغاء هذا الطلب؟",
    
-    "mywork"=>"عملي",
+    "mywork"=>"اعمالي",
     "new orders"=>"طلبات جديدة",
     "private orders"=>"طلبات خاصة",
     "Total price"=>"السعر الإجمالي",
