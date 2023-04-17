@@ -134,17 +134,13 @@ class OrderController extends Controller
                    if($request->freelancer_id !=null && $request->offer()->where('freelancer_id',$request->freelancer_id)->first()){
                        $request->price= $request->offer()->where('freelancer_id',$request->freelancer_id)->first()->price ;
                    }else{
-                       
                         $request->price=null;
-                   }
-                   
-                   
+                        }
+
                       if($request->type =='private' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
-                         if( in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['reject'])){
-                    
-                          continue;
-                         
-                }
+                         if( in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
+                          continue;  
+                         }
                }else{
                 continue;
                } 
