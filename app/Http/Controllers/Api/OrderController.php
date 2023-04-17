@@ -73,9 +73,10 @@ class OrderController extends Controller
                 
                 if($del){
                   // $requests->forget($request);
+                  $list[]=$request;
                   $del=false;
                 }else{
-                  $list[]=$request;
+                  
                 }
                 
                         } 
