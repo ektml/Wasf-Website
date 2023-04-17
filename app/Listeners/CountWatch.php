@@ -26,9 +26,8 @@ class CountWatch
      */
     public function handle(WatchUrl $event)
     {
-        $count=$event->data->view;
+        $count= $event->data->view;
         $count++;
-
         $event->data->update([
             'view'=>$count,
         ]);

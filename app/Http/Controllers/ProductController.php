@@ -324,6 +324,7 @@ class ProductController extends Controller
     function usershowproduct($id)
     {
         $product= Product::findOrFail($id);
+        
         $similar=Product::where(function($q) use($product){
             $q->where('cat_id',$product->cat_id)->orWhere("service_id",$product->serivce_id);
         })->limit(4)->get();

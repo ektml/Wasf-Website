@@ -13,14 +13,14 @@ use Illuminate\Queue\SerializesModels;
 class WatchUrl
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $data;
     /**
      * Create a new event instance.
      *
      * @return void
      */
     // product or photo that want treger
-    public $data;
+    
     public function __construct($data)
     {
         $this->data = $data;
