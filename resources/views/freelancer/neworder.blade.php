@@ -117,7 +117,7 @@
           @include("layouts.component.modal.userRequests.chat")
           @else
           @include("layouts.component.modal.freelancerRequests.pendingwithcancel")
-
+          @include("layouts.component.modal.freelancerRequests.offer")
           @include("layouts.component.modal.userRequests.chat")
           @endif
 
@@ -153,7 +153,8 @@
                 <span class="text-black-50">{{$request->random_id}}</span>
               </div>
             </div>
-            <p class="status gray" data-color="C4C3C3"> {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
+            <p class="status gray" data-color="C4C3C3"> {{__('request.'.$request->status)}}<i
+                class="fa-solid fa-circle px-2 "></i></p>
           </div>
           <div class="d-flex ">
             <div class="d-flex flex-column px-2">
@@ -196,8 +197,8 @@
 
 
         @endforeach
-</div>
-</div>
+    </div>
+  </div>
 </div>
 
 
@@ -211,8 +212,7 @@
 
 
 <script>
-
-// get message 
+  // get message 
 
 
 $(document).ready(function () {
