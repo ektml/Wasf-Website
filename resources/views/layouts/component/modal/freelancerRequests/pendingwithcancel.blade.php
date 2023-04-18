@@ -74,7 +74,7 @@
           <p class="flex-grow-1">{{ $request->description }}</p>
         </div>
 
-      </div>
+      
 
 
       <div class="d-flex flex-column px-3">
@@ -137,7 +137,7 @@
 
     </div>
 
-  </div>
+    </div>
 </div>
 @if($request->type=='private')
 <div style="position:fixed ; bottom:0;right:0; font-size:30px">
