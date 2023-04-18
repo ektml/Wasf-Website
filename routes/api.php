@@ -65,7 +65,7 @@ Route::put('editCustomer/{id}', [UserController::class, 'editCustomer']);
 
 
 // Freelancers
-Route::get('allFreelancers', [UserController::class, 'allFreelancers']);
+Route::get('allFreelancers/{id?}', [UserController::class, 'allFreelancers']);
 Route::get('getFreelancerById/{id}', [UserController::class, 'getFreelancerById']);
 Route::put('editFreelancer/{id}', [UserController::class, 'editFreelancer']);
 Route::get('allFiles/{id}', [UserController::class, 'allFiles']);
