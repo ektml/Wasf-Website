@@ -185,7 +185,36 @@ product
 
 
 
+
+        <div class="card-body row pb-4">
+            <div class="d-flex justify-content-baseline align-items-center col-lg-6 col-sm-12 col-xs-12 chart-static">
+
+                <div id="productview"></div>
+
+                <div class="div px-3 static-info">
+                    <h3 class="bold">
+                        {{ $product->view }}
+                    </h3>
+                    <p class="text-black-50">{{__('freelancerprofile.views')}}</p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-baseline align-items-center  col-lg-6 col-sm-12 col-xs-12 chart-static">
+                <div id="productsell"></div>
+
+
+                <div class="div px-3 static-info">
+                    <h3 class="bold">
+                        {{ $product->sells()->count() }}</h3>
+                    <p class="text-black-50">{{__('freelancerprofile.sell')}}</p>
+                </div>
+            </div>
+
+
+        </div>
     </div>
+
+</div>
 
 </div>
 </div>
@@ -196,4 +225,88 @@ product
 
 @section("js")
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+    // product
+
+    let view=createchart({{ $product->view }},"{{__('freelancerprofile.views')}}",["#f26b1d"])
+    let sells=createchart( {{ $product->sells()->count() }},"{{__('freelancerprofile.sell')}}",["#f26b1d"])
+    var chart = new ApexCharts(document.querySelector("#productview"), view);
+        chart.render();
+    var chart = new ApexCharts(document.querySelector("#productsell"), sells);
+        chart.render();
+
+
+
+    function createchart( count , name, color ){
+
+    var options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [count],
+  colors: color,
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        // background: "#293450",
+        total: {
+                show: true,
+                label: 'Total',
+                formatter: function (w) {
+                  return 249;
+                }
+              }
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#000",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#000",
+          fontSize: "30px",
+          show: true,
+          formatter: function (val) {
+            return val 
+          }
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#f26b1d"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: [name]
+};
+
+return options;
+    }
+
+       
+</script>
 @endsection

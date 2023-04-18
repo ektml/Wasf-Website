@@ -26,6 +26,7 @@ return [
     "Request service"=>'Request service',
     "Request new service"=>'Request new service',
     "Booking for photo shot"=>'Booking for photo shot',
+
    
     
 
@@ -71,6 +72,8 @@ return [
    "cashout"=>'cashout',
 
    'edit profile'=>'Edit Profile',
+   'views'=>'views',
+   'sell'=>'sell',
 
 
  
