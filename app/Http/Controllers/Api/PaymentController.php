@@ -150,7 +150,7 @@ class PaymentController extends Controller
 
 
 
-
+   
 
 
 
@@ -187,9 +187,6 @@ class PaymentController extends Controller
     $disvalue=0;
     $payment_fail=false;
 
-
-   
-    
                 if ($request->id && $request->status =='paid') {
              
                     $paymentService = new \Moyasar\Providers\PaymentService();
@@ -307,5 +304,7 @@ $payments = Payment::where('user_id',auth('api')->user()->id)
     }           
 }
    
+
+
 
 }
