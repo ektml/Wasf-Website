@@ -96,8 +96,8 @@ Route::get('/addOrRemovePhotoLikes/{id}',[PhotoController::class, 'addOrRemovePh
 
 
 // Requests
-Route::get('publicRequests', [RequestController::class, 'publicRequests']);
-Route::get('privateRequests', [RequestController::class, 'privateRequests']);
+Route::get('publicRequests/{id}', [RequestController::class, 'publicRequests']);
+Route::get('privateRequests{id}', [RequestController::class, 'privateRequests']);
 Route::post('createRequest', [RequestController::class, 'createRequest']);      // Requests
 Route::get('getPublicRequestById/{id}', [RequestController::class, 'getPublicRequestById']);
 Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateRequestById']);

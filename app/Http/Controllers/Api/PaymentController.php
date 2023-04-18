@@ -30,6 +30,8 @@ class PaymentController extends Controller
     //for request only
     function walletpay( Request $request)
     {
+
+        try{
         $offer_id=$request->offer;
         $request_id=$request->request_id;
         $offer_price= Offer::where('id',$offer_id)->first()->price;
@@ -74,6 +76,12 @@ class PaymentController extends Controller
         }else{
             return redirect()->back()->with(["message" => "payfail",'content'=>'money not enough']);
         }
+
+        
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400,'some thing went wrong');
+    }
     }
 
 

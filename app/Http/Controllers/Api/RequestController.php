@@ -13,12 +13,12 @@ class RequestController extends Controller
     use ApiResponseTrait;
 
 
-    public function publicRequests(Request $request)
+    public function publicRequests(Request $request ,$id)
     {
         try{
             
             $price=null;
-            $requests = Requests::where('type', 'public')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
+            $requests = Requests::where('type', 'public')->where('user_id',$id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
             
             foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
@@ -71,10 +71,10 @@ class RequestController extends Controller
 
 
 
-    public function privateRequests(Request $request)
+    public function privateRequests(Request $request,$id)
     {
         try{
-            $requests = Requests::where('type', 'private')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
+            $requests = Requests::where('type', 'private')->where('user_id',$id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
             
             // $requests = Requests::where('type', 'private')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
             
