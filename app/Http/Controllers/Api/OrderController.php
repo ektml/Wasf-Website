@@ -137,13 +137,18 @@ class OrderController extends Controller
                         $request->price=null;
                         }
 
+
                       if($request->type =='private' && $request->status =='Pending' && $request->offer->where('freelancer_id',$freelancer_id)->first()!=null){
+
                          if( in_array($request->offer->where('freelancer_id',$freelancer_id)->first()->status,['accept','pending'])){
                           continue;  
-                         }
-               }else{
-                $list[]=$request;
-               } 
+                   
+                              }else{
+                                $list[]=$request;
+                              }
+                                }else{
+                                  $list[]=$request;
+                                } 
             
                
             }
