@@ -86,15 +86,16 @@ profile
                         <div class="card-body row">
                             <div
                                 class="d-flex justify-content-baseline align-items-center col-lg-6 col-sm-12 col-xs-12 chart-static">
-                                <div class="text-center" dir="ltr">
+                                {{-- <div class="text-center" dir="ltr">
                                     <input class="knob" data-width="200" data-height="200" data-linecap=round
                                         data-fgColor="#4AB0D9" value="20" data-skin="tron" data-angleOffset="100"
                                         data-readOnly=true data-thickness=".1" />
-                                </div>
+                                </div> --}}
+                                <div id="productcount"></div>
 
                                 <div class="div px-3 static-info">
                                     <h3 class="bold">
-                                        {{ \App\Models\Product::where('freelancer_id', Auth::user()->id)->count() }}
+                                        {{ $product_count }}
                                     </h3>
                                     <p class="text-black-50">{{__('freelancerprofile.products')}}</p>
                                 </div>
@@ -102,32 +103,37 @@ profile
 
                             <div
                                 class="d-flex justify-content-baseline align-items-center  col-lg-6 col-sm-12 col-xs-12 chart-static">
-                                <div class="text-center" dir="ltr">
+                                <div id="photocount"></div>
+                                {{-- <div class="text-center" dir="ltr">
                                     <input class="knob" data-width="200" data-height="200" data-linecap=round
                                         data-fgColor="#D4D949" value="12" data-skin="tron" data-angleOffset="100"
                                         data-readOnly=true data-thickness=".1" />
-                                </div>
+                                </div> --}}
 
                                 <div class="div px-3 static-info">
                                     <h3 class="bold">
-                                        {{ App\Models\Photo::where('freelancer_id', Auth::user()->id)->count() }}</h3>
+                                        {{ $photo_count }}</h3>
                                     <p class="text-black-50">{{__('freelancerprofile.photos')}}</p>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 d-flex justify-content-center col-12  ">
-                    <div class="card  ">
-                        <div class="card-body card-body-bar">
+
+                    <div class="card w-100 ">
+                        <div class="card-body card-body">
                             <h4 class="card-title bold">{{__('freelancerprofile.top 5 sales')}}</h4>
-                            <div id="sparkline2" data-colors="[&quot;#ffb88fb8&quot;]" class="text-center"><canvas
-                                    style="display: inline-block; width: 231px; height: 200px; vertical-align: top;"
-                                    width="231" height="200"></canvas></div>
+
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>
+
+
             </div> <!-- end col -->
         </div> <!-- end row -->
     </div>
@@ -287,11 +293,9 @@ profile
 
 <script src="{{asset('assets/js/pages/jquery-knob.init.js')}}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
-<script src="{{asset('assets/libs/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
-
-<script src="{{asset('assets/js/pages/sparklines.init.js')}}"></script>
 
 <script>
     const $categoryCheckboxes = $('.category-checkbox');
@@ -321,5 +325,263 @@ $categoryCheckboxes.on('click', function() {
 });
 
 
+
+
+
+</script>
+
+
+
+<script>
+    var count=[]
+    var names=[];
+  @foreach ($sell_top as $top)
+count.push({{$top->sells()->count()}})
+names.push('{{$top->name}}')
+
+  @endforeach
+  function padArrayWithZeros(arr, desiredLength) {
+ 
+  if (arr.length < desiredLength) {
+    const zerosToAdd = desiredLength - arr.length;
+    for (let i = 0; i < zerosToAdd; i++) {
+      arr.push(0);
+    }
+  }
+  return arr;
+}
+
+var selles=padArrayWithZeros(count,5);
+var options = {
+          series: [{
+          name: 'Inflation',
+          data: selles,
+        }],
+          chart: {
+          height: 200,
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val ;
+          },
+          offsetY: -20,
+          style: {
+            fontSize: '12px',
+            colors: ["#f26b1d"]
+          }
+        },
+        
+        xaxis: {
+          categories: names,
+          position: 'bottom',
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            fill: {
+              type: 'gradient',
+              gradient: {
+                colorFrom: '#D8E3F0',
+                colorTo: '#BED1E6',
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              }
+            }
+          },
+          tooltip: {
+            enabled: false,
+          }
+        },
+        yaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: true,
+            formatter: function (val) {
+              return val ;
+            }
+          }
+        
+        },
+        background:'#333',
+        title: {
+          text: "{{__('freelancerprofile.top 5 sales')}}",
+          floating: true,
+          offsetY: 330,
+          align: 'top',
+          style: {
+            color: '#444'
+          }
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+        
+</script>
+
+
+
+
+<script>
+    var options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [{{$photo_count}}],
+  colors: ["#d4d949"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        // background: "#293450",
+        total: {
+                show: true,
+                label: 'Total',
+                formatter: function (w) {
+                  return 249;
+                }
+              }
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#000",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#000",
+          fontSize: "30px",
+          show: true,
+          formatter: function (val) {
+            return val 
+          }
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#f26b1d"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["{{__('freelancerprofile.photos')}}"]
+};
+
+        var chart = new ApexCharts(document.querySelector("#photocount"), options);
+        chart.render();
+</script>
+
+
+
+
+<script>
+    // product
+ 
+    var options = {
+  chart: {
+    height: 280,
+    type: "radialBar",
+  },
+
+  series: [{{$product_count}}],
+  colors: ["#f26b1d"],
+  plotOptions: {
+    radialBar: {
+      hollow: {
+        margin: 0,
+        size: "70%",
+        // background: "#293450",
+        total: {
+                show: true,
+                label: 'Total',
+                formatter: function (w) {
+                  return 249;
+                }
+              }
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#000",
+          fontSize: "13px"
+        },
+        value: {
+          color: "#000",
+          fontSize: "30px",
+          show: true,
+          formatter: function (val) {
+            return val 
+          }
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#f26b1d"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ["{{__('freelancerprofile.products')}}"]
+};
+
+
+        var chart = new ApexCharts(document.querySelector("#productcount"), options);
+        chart.render();
 </script>
 @endsection

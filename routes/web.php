@@ -96,9 +96,7 @@ Route::prefix("freelancer")->name("freelanc.")->middleware('auth','is_freelancer
         return view("freelancer.products");
     });
 
-    Route::get("/profile",function(){
-        return view("freelancer.profile");
-    })->name("profile");
+    Route::get("/profile",[FreelancerController::class,'FreelancerProfile'])->name("profile");
 
 
     Route::get("/mywork",function(){

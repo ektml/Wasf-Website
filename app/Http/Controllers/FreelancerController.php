@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Selled;
-use Illuminate\Http\Request;
 use  Carbon\Carbon;
+use App\Models\Photo;
+use App\Models\Selled;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 class FreelancerController extends Controller
 {
@@ -71,6 +73,29 @@ class FreelancerController extends Controller
 return view('freelancer.files',compact('files_current','files_lastmonth','files_old'));
 
 
+
+    }
+
+
+    public function FreelancerProfile(){
+     
+        $user_id=auth()->user()->id;
+        $top_sell_name=[];
+        $top_sell_total=[];
+        $product_count=Product::where('freelancer_id',$user_id)->count();
+        $photo_count=Photo::where('freelancer_id',$user_id)->count();
+        //  $selled_top=Selled::all()->where(function($q) use($user_id) {
+        //     return   $q->selledsable->where('freelancer_id',$user_id);
+        //  })->sortByDesc(function($e) use($user_id){
+        //     return $e->selledsable->count();
+        //  })->take(5);
+        
+         $sell_top=Product::all()->where('freelancer_id',$user_id)->sortByDesc(function ($e){
+            return $e->sells()->count();
+        })->take(5);
+
+
+        return view('freelancer.profile',compact('product_count','photo_count','sell_top'));
 
     }
 }
