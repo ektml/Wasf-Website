@@ -102,8 +102,9 @@ Route::post('createRequest', [RequestController::class, 'createRequest']);      
 Route::get('getPublicRequestById/{id}', [RequestController::class, 'getPublicRequestById']);
 Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateRequestById']);
 Route::post('changeStatus/{id}', [RequestController::class, 'changeStatus']);
-Route::post('requestWalletPay',[PaymentController::class,'requestWalletPay']);
+Route::post('requestWalletPay/{user_id}',[PaymentController::class,'requestWalletPay']);
 Route::post('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
+Route::post('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 
 
 

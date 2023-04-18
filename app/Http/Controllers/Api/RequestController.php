@@ -255,25 +255,6 @@ class RequestController extends Controller
     
     
     
-    public function cancelRequest($id)
-    {
-        $request = Requests::find($id);
-         if($request->payment()->where('freelancer_id', $request->freelancer_id)->first()){
-            
-            $total_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->total;
-            $edit_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->update([
-                'status'=>"refund"
-            ]);
-
-           $current_wallet = User::findOrFail(auth()->user()->id)->wallet->total;
-            $current_wallet += $total_pay;
-            $edit_offer = Requests::findorfail($id)->offer()->where('freelancer_id', $request->freelancer_id)->update([
-                "status"=>'reject',
-            ]);
-        }
-        $edit_request = $request->update(['status'=>"Cancel by customer"]);
-        return redirect()->back()->with(['state'=>"cancel", "id"=>$id]);
-    }
     
     
 
@@ -329,5 +310,38 @@ class RequestController extends Controller
      
      
          }
+
+
+         
+    public function cancelRequest($id)
+    {
+
+
+        try{
+            $request = Requests::find($id);
+            if($request->payment()->where('freelancer_id', $request->freelancer_id)->first()){
+               
+               $total_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->total;
+               $edit_pay = $request->payment()->where('freelancer_id', $request->freelancer_id)->first()->update([
+                   'status'=>"refund"
+               ]);
+   
+              $current_wallet = User::findOrFail(auth()->user()->id)->wallet->total;
+               $current_wallet += $total_pay;
+               $edit_offer = Requests::findorfail($id)->offer()->where('freelancer_id', $request->freelancer_id)->update([
+                   "status"=>'reject',
+               ]);
+           }
+           $edit_request = $request->update(['status'=>"Cancel by customer"]);
+
+           return $this->returnData(200, 'Request Cancelled Successfully');
+        }catch(\Exception $e){
+
+            echo $e;
+            return $this->returnError(400, 'Request Returned Failed');
+        }
+
+       
+    }
 
 }
