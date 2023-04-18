@@ -131,7 +131,7 @@ class PaymentController extends Controller
     }
 
     
-    if( $edit_offer && $edit_request && $edit_pay &&$edit_wallet ){
+    if( $edit_offer && $edit_request && $edit_pay ){
         $freelancer = User::find($freelancer_id);
         $user_create = $id;
         $request=Requests::find($request_id);
