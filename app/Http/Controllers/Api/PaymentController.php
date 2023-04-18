@@ -28,16 +28,18 @@ class PaymentController extends Controller
 
 
     //for request only
-    function walletpay( Request $request)
+    function requestWalletPay( Request $request)
     {
-
         try{
         $offer_id=$request->offer;
         $request_id=$request->request_id;
+
+      
+
         $offer_price= Offer::where('id',$offer_id)->first()->price;
         $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
 
-        if($this->getuserwallet()>=$offer_price){
+        if($this->getuserwallet()>=$offer_price ){
             $total_wallet_after_pay=$this->getuserwallet()-$offer_price;
             $edit_offer= Requests::findorfail($request_id)->offer()->where('id',$offer_id)->update([
                 "status"=>'active',
@@ -69,20 +71,90 @@ class PaymentController extends Controller
             $user_create = auth()->user()->id;
             $request=Requests::find($request_id);
             Notification::send($freelancer, new AcceptOffer($user_create,$request_id, 'request', $request->random_id));
-            return redirect()->back()->with(["message" => 'paydone']);
+            return $this->returnData(201, 'pay done  Successfully');
         }else{
-            return redirect()->back()->with(["message" => "payfail",'content'=>'some thing went wrong']);
+            return $this->returnError(400,'some thing went wrong');
         }
         }else{
-            return redirect()->back()->with(["message" => "payfail",'content'=>'money not enough']);
+            return $this->returnError(400,'some thing went wrong');
         }
 
-        
+
     }catch(\Exception $e){
         echo $e;
         return $this->returnError(400,'some thing went wrong');
     }
     }
+
+
+
+    public function requestBankPay(){
+      try{
+
+        
+        $offer_id=request()->offer_id;
+        $request_id=request()->request_id;
+        $offer_price= Offer::where('id',$offer_id)->first()->price;
+        $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
+        $edit_offer =null;
+       $edit_request =null;
+       $edit_pay =null;
+        
+        
+        if (request()->id && request()->status=='paid') {
+            $paymentService = new \Moyasar\Providers\PaymentService();
+            $payment = $paymentService->fetch(request()->id);
+       
+           
+       if(trim($payment->amountFormat,config('moyasar.currency'))==$offer_price){
+        
+        $visa_pay_id=$payment->id;
+        $edit_offer= Requests::findorfail($request_id)->offer()->where('id',$offer_id)->update([
+             "status"=>'active',
+         ]);
+         $edit_other_offer=Requests::findorfail($request_id)->offer()->where('id',"!=",$offer_id)->update([
+             "status"=>'reject',
+         ]);
+ 
+ 
+         $edit_request=Requests::findorfail($request_id)->update([
+             'freelancer_id'=>$freelancer_id,
+             'status'=>"In Process"
+         ]);
+         $edit_pay =Requests::findorfail($request_id)->payment()->create([
+          'user_id'=>auth()->user()->id,
+          'freelancer_id'=>$freelancer_id,
+          "status"=>'pending',
+          "pay_type"=>'bank',
+          "total"=>$offer_price,
+          "visapay_id"=> $visa_pay_id
+         ]);
+       }
+      
+    
+
+    }
+
+    
+    if( $edit_offer && $edit_request && $edit_pay &&$edit_wallet ){
+        $freelancer = User::find($freelancer_id);
+        $user_create = auth()->user()->id;
+        $request=Requests::find($request_id);
+        Notification::send($freelancer, new AcceptOffer($user_create,$request_id, 'request', $request->random_id));
+        return $this->returnData(201, 'pay done  Successfully');
+    }else{
+        return $this->returnError(400,'some thing went wrong');
+    }
+    
+
+            }catch(\Exception $e){
+                echo $e;
+                return $this->returnError(400,'some thing went wrong');
+            }
+
+    }
+
+
 
 
 
@@ -102,7 +174,7 @@ class PaymentController extends Controller
 
     static function getuserwallet()
     {
-        return User::findOrFail(auth()->user()->id)->wallet->total;
+        return User::findOrFail(auth('api')->user()->id)->wallet->total;
     }
     
     

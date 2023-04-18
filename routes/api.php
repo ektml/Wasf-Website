@@ -97,11 +97,14 @@ Route::get('/addOrRemovePhotoLikes/{id}',[PhotoController::class, 'addOrRemovePh
 
 // Requests
 Route::get('publicRequests/{id}', [RequestController::class, 'publicRequests']);
-Route::get('privateRequests{id}', [RequestController::class, 'privateRequests']);
+Route::get('privateRequests/{id}', [RequestController::class, 'privateRequests']);
 Route::post('createRequest', [RequestController::class, 'createRequest']);      // Requests
 Route::get('getPublicRequestById/{id}', [RequestController::class, 'getPublicRequestById']);
 Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateRequestById']);
 Route::post('changeStatus/{id}', [RequestController::class, 'changeStatus']);
+Route::post('requestWalletPay',[PaymentController::class,'requestWalletPay']);
+Route::post('requestBankPay',[PaymentController::class,'requestBankPay']);
+
 
 
 
