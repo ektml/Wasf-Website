@@ -28,7 +28,7 @@ class PaymentController extends Controller
 
 
     //for request only
-    function requestWalletPay( Request $request)
+    function requestWalletPay( Request $request ,$user_id)
     {
         try{
         $offer_id=$request->offer;
@@ -39,8 +39,8 @@ class PaymentController extends Controller
         $offer_price= Offer::where('id',$offer_id)->first()->price;
         $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
 
-        if($this->getuserwallet()>=$offer_price ){
-            $total_wallet_after_pay=$this->getuserwallet()-$offer_price;
+        if($this->getuserwallet($user_id)>=$offer_price ){
+            $total_wallet_after_pay=$this->getuserwallet($user_id)-$offer_price;
             $edit_offer= Requests::findorfail($request_id)->offer()->where('id',$offer_id)->update([
                 "status"=>'active',
             ]);
@@ -55,20 +55,20 @@ class PaymentController extends Controller
             ]);
 
             $edit_pay =Requests::findorfail($request_id)->payment()->create([
-                'user_id'=>auth()->user()->id,
+                'user_id'=>$user_id,
                 'freelancer_id'=>$freelancer_id,
                 "status"=>'purchase',
                 "pay_type"=>'wallet',
                 "total"=>$offer_price,
             ]);
 
-            $edit_wallet=User::findOrFail(auth()->user()->id)->wallet()->update([
+            $edit_wallet=User::findOrFail($user_id)->wallet()->update([
                 "total" => $total_wallet_after_pay
             ]);
 
         if( $edit_offer && $edit_request && $edit_pay &&$edit_wallet ){
             $freelancer = User::find($freelancer_id);
-            $user_create = auth()->user()->id;
+            $user_create = $user_id;
             $request=Requests::find($request_id);
             Notification::send($freelancer, new AcceptOffer($user_create,$request_id, 'request', $request->random_id));
             return $this->returnData(201, 'pay done  Successfully');
@@ -88,12 +88,9 @@ class PaymentController extends Controller
 
 
 
-    public function requestBankPay(){
+    public function requestBankPay($id,$request_id,$offer_id){
       try{
 
-        
-        $offer_id=request()->offer_id;
-        $request_id=request()->request_id;
         $offer_price= Offer::where('id',$offer_id)->first()->price;
         $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
         $edit_offer =null;
@@ -122,7 +119,7 @@ class PaymentController extends Controller
              'status'=>"In Process"
          ]);
          $edit_pay =Requests::findorfail($request_id)->payment()->create([
-          'user_id'=>auth()->user()->id,
+          'user_id'=>$id,
           'freelancer_id'=>$freelancer_id,
           "status"=>'pending',
           "pay_type"=>'bank',
@@ -131,14 +128,12 @@ class PaymentController extends Controller
          ]);
        }
       
-    
-
     }
 
     
     if( $edit_offer && $edit_request && $edit_pay &&$edit_wallet ){
         $freelancer = User::find($freelancer_id);
-        $user_create = auth()->user()->id;
+        $user_create = $id;
         $request=Requests::find($request_id);
         Notification::send($freelancer, new AcceptOffer($user_create,$request_id, 'request', $request->random_id));
         return $this->returnData(201, 'pay done  Successfully');
@@ -146,7 +141,6 @@ class PaymentController extends Controller
         return $this->returnError(400,'some thing went wrong');
     }
     
-
             }catch(\Exception $e){
                 echo $e;
                 return $this->returnError(400,'some thing went wrong');
@@ -172,9 +166,9 @@ class PaymentController extends Controller
         return false;
     }
 
-    static function getuserwallet()
+    static function getuserwallet($user_id)
     {
-        return User::findOrFail(auth('api')->user()->id)->wallet->total;
+        return User::findOrFail($user_id)->wallet->total;
     }
     
     

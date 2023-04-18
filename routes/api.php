@@ -103,7 +103,7 @@ Route::get('getPublicRequestById/{id}', [RequestController::class, 'getPublicReq
 Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateRequestById']);
 Route::post('changeStatus/{id}', [RequestController::class, 'changeStatus']);
 Route::post('requestWalletPay',[PaymentController::class,'requestWalletPay']);
-Route::post('requestBankPay',[PaymentController::class,'requestBankPay']);
+Route::post('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
 
 
 
