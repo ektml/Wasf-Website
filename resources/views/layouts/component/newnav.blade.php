@@ -127,6 +127,10 @@
                     <a class="dropdown-item" href="{{route("freelanc.neworder")}}"><i
                             class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
                             class="align-middle">{{__('translate.orders')}}</span></a>
+                    <a class="dropdown-item" href="{{route("user.showpublicrequest")}}"><i
+                            class="fa-brands fa-squarespace font-size-18 align-middle me-1 text-muted"></i> <span
+                            class="align-middle">{{__('translate.requests')}}</span></a>
+
                     <form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -150,8 +154,8 @@
     <div class="layout"></div>
     <div class="carve">
         <form class="search-form d-flex flex-grow-1 px-lg-3 " style="display:@yield(" nosearch")" role="search">
-            <input class="form-control me-2 " type='text' id="search" placeholder="{{__('translate.search')}}" aria-label="Search"
-                name="search">
+            <input class="form-control me-2 " type='text' id="search" placeholder="{{__('translate.search')}}"
+                aria-label="Search" name="search">
             <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 
         </form>

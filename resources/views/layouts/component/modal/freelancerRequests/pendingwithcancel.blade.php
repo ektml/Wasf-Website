@@ -122,19 +122,10 @@
       <div class="btn-contianer d-flex flex-column justify-content-center align-items-center my-3">
         <form action="{{route('freelanc.requests.cancel',$request->id)}}" method="GET">
           @csrf
-
-
           <button class="btn-cormoz btn-modal border-0" type="submit">{{__('request.cancel')}}</button>
         </form>
-
-
-
-
       </div>
-
       @endif
-
-
     </div>
 
     </div>

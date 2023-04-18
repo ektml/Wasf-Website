@@ -89,7 +89,6 @@ show private requests
         <div class="requesties d-flx flex-column pt-4">
             @foreach ($requests as $request)
 
-
             @if ($request->status=="Pending" && $request->offer->first())
             <a href="#penddingacceptoreject{{$request->id}}" data-bs-toggle="modal" role="button"
                 class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
@@ -193,7 +192,8 @@ show private requests
                                                         @endif
 
                                                         @if($request->offer->where('freelancer_id',$request->freelancer_id)->first()
-                                                        !=null)
+                                                        !=null &&
+                                                        $request->offer->where('freelancer_id',$request->freelancer_id)->first()->status!='reject')
                                                         <div class="d-flex flex-column px-2">
                                                             <p class="m-0">{{__('request.price')}}</p>
                                                             <span>{{$request->offer->where('freelancer_id',$request->freelancer_id)->first()->price }}</span>
