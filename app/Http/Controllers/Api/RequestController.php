@@ -88,11 +88,14 @@ class RequestController extends Controller
               }
               
          
-              if($request->offer()->exists()){
+              if($request->offer()->exists() &&   $request->offer()->first()->status !='reject' ){
                    $request->price=$request->offer()->first()->price;
               }else{
                  $request->price=null;
               }
+
+
+
              
             }
             
