@@ -273,7 +273,7 @@ class RequestController extends Controller
 
      
          $order=Requests::find($id);
-         if($order->offer()->first()==null){
+         if($order->offer()->where('freelacer_id',$user_id)->first()==null){
             $order->offer()->where('freelacer_id',$user_id)->create([
                 'type'=>"request",
                  'freelancer_id'=>$user_id,
