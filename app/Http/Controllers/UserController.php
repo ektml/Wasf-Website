@@ -35,6 +35,7 @@ class UserController extends Controller
                     ->where('service_id',request()->subcat_id)->get();
                     $freelancer_detail = collect();
                     foreach ($freelancers as $freelancer) {
+                        
                         $data = User::find($freelancer->freelancer_id);
                         $freelancer_detail->push($data);
                     }

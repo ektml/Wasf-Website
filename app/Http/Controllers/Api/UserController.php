@@ -52,7 +52,7 @@ class UserController extends Controller
     public function allFreelancers(Request $request)
     {
         try{
-            $freelancers = User::where('type', 'freelancer')->get();
+            $freelancers = User::where('type', 'freelancer') ->where('id',"!=",auth('api')->user()->id)->get();
             foreach ($freelancers as $freelancer){
                 $freelancer->profile_image = asset('Admin3/assets/images/users/'.$freelancer->profile_image);
             }
