@@ -319,7 +319,7 @@ $.ajax({
     
     if(data['action']=="add"){
         $(e).addClass("active");
-    }else if(data['action']=="delete"){
+    }else if(data['action'] == "delete"){
         $(e).removeClass("active");
 
     }
