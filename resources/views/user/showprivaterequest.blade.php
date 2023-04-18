@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-show private requests
+{{__('request.show private requests')}}
 @endsection
 @section("header")
 @endsection
@@ -158,7 +158,7 @@ show private requests
                                                             class="fa-solid fa-circle px-2 "></i>
                                                     </p>
                                                     @elseif($request->status == 'Cancel by customer')
-                                                    <p class="status text-danger">{{ $request->status }}<i
+                                                    <p class="status text-danger">{{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
                                                     @elseif($request->status == 'Reject')
                                                     <p class="status text-danger">{{__('request.'.$request->status)}}<i

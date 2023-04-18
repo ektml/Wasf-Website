@@ -53,6 +53,8 @@ return [
      "offer"=>"offer",
      "offers"=>"offers",
      "write your offer"=>"write your offer",
+     "show private requests"=>"show private requests",
+     "show public requests"=>"show public requests",
      
 
 

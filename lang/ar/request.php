@@ -52,6 +52,10 @@ return [
     "write your offer" => "اكتب عرضك",
     "offers" => "العروض",
 
+
+    "show private requests" => "عرض الطلبات الخاصة",
+    "show public requests" => "عرض الطلبات العامة",
+
      // reservation 
 
 

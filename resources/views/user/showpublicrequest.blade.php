@@ -7,7 +7,7 @@
 @section("og-image")
 @endsection
 @section("title")
-show public request
+{{__('request.show public requests')}}
 @endsection
 @section("header")
 @endsection
