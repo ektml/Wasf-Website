@@ -271,13 +271,22 @@ class RequestController extends Controller
      
       if($request->type ==="request"){
 
+     
          $order=Requests::find($id);
-         $order->offer()->updateOrCreate([
-          'type'=>"request",
-           'freelancer_id'=>$user_id,
-           'price'=>$request->offer,
-           'status'=>'pending',
-         ]);
+         if($order->offer()->first()==null){
+            $order->offer()->where('freelacer_id',$user_id)->create([
+                'type'=>"request",
+                 'freelancer_id'=>$user_id,
+                 'price'=>$request->offer,
+                 'status'=>'pending',
+               ]);
+         }else{
+            $order->offer()->where('freelacer_id',$user_id)->update([
+                 'price'=>$request->offer,
+                 'status'=>'pending',
+               ]);
+         }
+        
        
          $flag=true;
      
