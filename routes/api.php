@@ -104,7 +104,7 @@ Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateR
 Route::post('changeStatus/{id}', [RequestController::class, 'changeStatus']);
 Route::post('requestWalletPay/{user_id}',[PaymentController::class,'requestWalletPay']);
 Route::post('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
-Route::post('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
+Route::get('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 
 
 
