@@ -49,7 +49,7 @@ profile
                             @endif</span>
                     </div>
                     <a href="#editfreelancerprofile" data-bs-toggle="modal"
-                        style="display: flex;flex-grow:1;align-items: center;justify-content:flex-end;padding: 0 33px;font-size: 18px;position: absolute;top: 48px;right: -5px;">
+                        class="editfreelancerprofile">
                         <i class="fa fa-edit" style="color: #000;"></i>
                     </a>
                 </div>
@@ -86,11 +86,7 @@ profile
                         <div class="card-body row">
                             <div
                                 class="d-flex justify-content-baseline align-items-center col-lg-6 col-sm-12 col-xs-12 chart-static">
-                                {{-- <div class="text-center" dir="ltr">
-                                    <input class="knob" data-width="200" data-height="200" data-linecap=round
-                                        data-fgColor="#4AB0D9" value="20" data-skin="tron" data-angleOffset="100"
-                                        data-readOnly=true data-thickness=".1" />
-                                </div> --}}
+                              
                                 <div id="productcount"></div>
 
                                 <div class="div px-3 static-info">
@@ -104,11 +100,7 @@ profile
                             <div
                                 class="d-flex justify-content-baseline align-items-center  col-lg-6 col-sm-12 col-xs-12 chart-static">
                                 <div id="photocount"></div>
-                                {{-- <div class="text-center" dir="ltr">
-                                    <input class="knob" data-width="200" data-height="200" data-linecap=round
-                                        data-fgColor="#D4D949" value="12" data-skin="tron" data-angleOffset="100"
-                                        data-readOnly=true data-thickness=".1" />
-                                </div> --}}
+                              
 
                                 <div class="div px-3 static-info">
                                     <h3 class="bold">

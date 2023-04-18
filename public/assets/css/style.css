@@ -2462,6 +2462,18 @@ button .number {
     align-self: center;
 }
 
+
+.editfreelancerprofile{
+    display: flex;
+    flex-grow:1;
+    align-items: center;
+    justify-content:flex-end;
+    padding: 0 33px;
+    font-size: 18px;
+    position: absolute;
+    top: 48px;
+    right: -5px;
+}
 #imageprofile {
     visibility: hidden;
 }

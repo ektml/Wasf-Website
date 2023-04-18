@@ -406,26 +406,26 @@ $data="";
 
 
 
-   public  function checkoutvisaid(){
+//    public  function checkoutvisaid(){
 
-        $request=Requests::find(request()->request_id);
+//         $request=Requests::find(request()->request_id);
 
-        $price= Offer::find(request()->offer_id)->first()->price;
-         $Hp = new HayperpayController();
+//         $price= Offer::find(request()->offer_id)->first()->price;
+//          $Hp = new HayperpayController();
      
-      $num=number_format($price, 2, '.', '');
-       $res= $Hp->checkout($num);
+//       $num=number_format($price, 2, '.', '');
+//        $res= $Hp->checkout($num);
      
      
-         $view = view('layouts.payment.privateRequestHayperpay')->with(['responseData' => $res ,'request_id'=>request()->request_id,'offer_id'=>request()->offer_id])
-         ->renderSections();
+//          $view = view('layouts.payment.privateRequestHayperpay')->with(['responseData' => $res ,'request_id'=>request()->request_id,'offer_id'=>request()->offer_id])
+//          ->renderSections();
       
-      return response()->json([
-         'status' => true,
-         'content' => $view['main']
-      ]);
+//       return response()->json([
+//          'status' => true,
+//          'content' => $view['main']
+//       ]);
 
-    }
+//     }
 
     function  completeRequest($id){
 

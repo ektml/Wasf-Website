@@ -310,12 +310,9 @@ class RequestController extends Controller
      
      
          }
-
-
          
     public function cancelRequest($id)
     {
-
 
         try{
             $request = Requests::find($id);
@@ -343,5 +340,58 @@ class RequestController extends Controller
 
        
     }
+
+
+    function rejectOfferRequest(Request $request){
+   try{
+       $request_id= $request->request_id;
+       $freelancer_id=$request->freelancer_id;
+       $requests=Requests::findOrFail($request_id);
+        $requests->offer()->where('freelancer_id',$freelancer_id)->update([
+       'status'=>'reject'
+       ]);
+    return $this->returnData(200, 'Request reject Successfully');
+
+    }catch(\Exception $e){
+          echo $e;
+          return $this->returnError(400, 'Request reject fail');
+    }
+
+        }
+
+
+        function  completeRequest($id){
+            try{
+            $re = Requests::findOrFail($id);
+            $freelnacer_id=$re->freelancer_id;
+            $offer_price=$re->offer()->where('freelancer_id',$freelnacer_id)->first()->price;
+              
+            $wallet=User::findOrFail($freelnacer_id)->wallet->total;
+    
+            $wallet+=$offer_price;
+            Requests::findorfail($id)->update([
+                "status"=>"Completed",
+                
+              ]);
+    
+            $re->payment()->where('freelancer_id', $freelnacer_id)->update([
+            'status'=>'purchase'
+            ]);
+    
+              $edit_wallet=User::findOrFail( $freelnacer_id)->wallet()->update([
+                "total"=> $wallet
+               ]);
+          
+    
+     return $this->returnData(200, 'Request complete Successfully');
+
+    }catch(\Exception $e){
+          echo $e;
+          return $this->returnError(400, 'Request complete fail');
+    }
+            
+    
+        }
+
 
 }

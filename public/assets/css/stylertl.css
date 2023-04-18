@@ -2755,6 +2755,18 @@ button .number {
     height: 32px;
     font-size: 12px;
 }
+
+.editfreelancerprofile{
+    display: flex;
+    flex-grow:1;
+    align-items: center;
+    justify-content:flex-end;
+    padding: 0 33px;
+    font-size: 18px;
+    position: absolute;
+    top: 48px;
+    left: -5px;
+}
 /* ######## end  show request   ############# */
 
 /*  */
