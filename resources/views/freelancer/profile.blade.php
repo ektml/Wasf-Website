@@ -293,7 +293,7 @@ profile
 
 <script src="{{asset('assets/js/pages/jquery-knob.init.js')}}"></script>
 
-c
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
 
@@ -444,9 +444,6 @@ var options = {
 
 
 <script>
-
-
-
     var options = {
   chart: {
     height: 280,
