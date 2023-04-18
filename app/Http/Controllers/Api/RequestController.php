@@ -270,20 +270,20 @@ class RequestController extends Controller
       ]);
      
       if($request->type ==="request"){
+
          $order=Requests::find($id);
-         $order->offer()->create([
+         $order->offer()->updateOrCreate([
           'type'=>"request",
            'freelancer_id'=>$user_id,
            'price'=>$request->offer,
            'status'=>'pending',
-        
          ]);
        
          $flag=true;
      
       }elseif($request->type === "reservation"){
          $order=Reservation::find($id);
-         $order->offer()->create([
+         $order->offer()->updateOrCreate([
           'type'=>"reservation",
            'freelancer_id'=>$user_id,
            'price'=>$request->offer,
