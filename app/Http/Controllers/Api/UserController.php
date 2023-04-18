@@ -49,7 +49,7 @@ class UserController extends Controller
 
 
 
-    public function allFreelancers($id)
+    public function allFreelancers($id=null)
     {
         try{
 
