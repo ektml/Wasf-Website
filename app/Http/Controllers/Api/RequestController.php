@@ -369,7 +369,7 @@ class RequestController extends Controller
        $user_create=$requests->user_id;
    
      Notification::send($freelancer, new RejectOffer($user_create,$requests->id,'request',  $requests->random_id));
-    $flag=true;
+    
     return $this->returnData(200, 'Request reject Successfully');
 
     }catch(\Exception $e){
