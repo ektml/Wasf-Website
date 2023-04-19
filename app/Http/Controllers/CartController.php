@@ -425,13 +425,17 @@ if($payment_fail){
             if(PaymentController::getuserwallet()  >=$total){
             $walletEnough=true ;
             }
-
-
+   
+            if($total < 0){
+                $total=0;
+             }
             return compact('cartadditems','total','descount','price','discount_key' ,'walletEnough');
         }else{
 
             $total=$price-$descount;
-
+            if($total < 0){
+                $total=0;
+             }
            if(PaymentController::getuserwallet()  >=$total){
             $walletEnough=true ;
            }

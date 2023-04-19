@@ -54,20 +54,24 @@ class ProductController extends Controller
                 'img3' => 'required',
             ]);
 
+           
             $file_extension = $request->file("attachment")->getCLientOriginalExtension();
-            $file_name = time(). "." .$file_extension;
+            $name= explode(".",$request->file("attachment")->getCLientOriginalName())[0];
+            $size=number_format($request->file("attachment")->getSize()/ 1024,2);
+            $type=$request->file("attachment")->getCLientOriginalExtension();
+            $file_name = time(). "1." .$file_extension;
             $request->file("attachment")->move(public_path('front/upload/files/'), $file_name);
 
             $file_extension = $request->file("img1")->getCLientOriginalExtension();
-            $img1 = time(). "." .$file_extension;
+            $img1 = time(). "2." .$file_extension;
             $request->file("img1")->move(public_path('assets/images/product/'), $img1);
 
             $file_extension = $request->file("img2")->getCLientOriginalExtension();
-            $img2 = time(). "." .$file_extension;
+            $img2 = time(). "3." .$file_extension;
             $request->file("img2")->move(public_path('assets/images/product/'), $img2);
 
             $file_extension = $request->file("img3")->getCLientOriginalExtension();
-            $img3 = time(). "." .$file_extension;
+            $img3 = time(). "4." .$file_extension;
             $request->file("img3")->move(public_path('assets/images/product/'), $img3);
 
             if(Auth::user()->type == 'freelancer'){
@@ -83,6 +87,15 @@ class ProductController extends Controller
                 'img2' => $img2,
                 'img3' => $img3,
             ]);
+
+            $product->file()->create([
+                'name'=> $name,
+                'user_id'=>auth()->user()->id,
+                'type'=>$type,
+                'url'=> $file_name,
+                'size'=>$size,
+            ]);
+            
                 $product['attachment'] = asset('front/upload/files/'.$file_name);
                 $product['img1'] = asset('assets/images/product/'.$img1);
                 $product['img2'] = asset('assets/images/product/'.$img2);

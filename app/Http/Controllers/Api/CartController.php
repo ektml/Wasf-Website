@@ -49,7 +49,9 @@ class CartController extends Controller
             }
             
             $total=doubleval(number_format($total,2));
-
+            if($total < 0){
+                $total=0;
+             }
             return compact('cartadditems','total','descount','price','discount_key' ,'walletEnough');
         }else{
             $total=$price-$descount;

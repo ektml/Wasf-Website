@@ -224,32 +224,51 @@ class PaymentController extends Controller
                        'total'=>$paydata['total'],
                         ]);
                     foreach($paydata['cartadditems'] as $data ){
-                       $item =$data->cartsable;
-                      $item->sells()->create([
-                       "user_id"=>$user_id,
-                       "type"=>$data->type,
-                       'price'=>$data->price,
-                       'card_order_id'=>$order->id
-                        ]);
-                
-                       $tot= User::findOrFail($item->freelancer_id)->wallet->total ;
-                       $tot+= $data->price;
-                        User::findOrfail($item->freelancer_id)->wallet()->update([
-                            "total"=> $tot,
+                        $item =$data->cartsable;
+                        $selled= $item->sells()->create([
+                          "user_id"=>auth()->user()->id,
+                          "type"=>$data->type,
+                          'price'=>$data->price,
+                          'card_order_id'=>$order->id
                            ]);
-                      
+                   
+                           foreach($item->file()->get() as $files){
+                               $selled->file()->create([
+                                   'name'=>$files->name,
+                                   'user_id'=>auth()->user()->id,
+                                   'type'=>$files->type,
+                                   'url'=>$files->url,
+                                   'size'=>$files->size,
+                               ]);
+                   
+                           }
+                          
+                          $tot= User::findOrFail($item->freelancer_id)->wallet->total ;
+                          $tot+= $data->price;
+                           User::findOrfail($item->freelancer_id)->wallet()->update([
+                               "total"=> $tot,
+                              ]);
+                         
+                   
+                              $order->payment()->create([
+                               'freelancer_id'=>$item->freelancer_id,
+                               'pay_type'=>$pay_type,
+                               "status"=>'purchase',
+                               'total'=>$data->price,
+                               // 'discount'=>$disvalue,
+                               'visapay_id'=>$visa_pay_id,
+                       
+                           ]);
                      }
                 
                      $order->payment()->create([
-                        'user_id'=>$user_id,
-                        'pay_type'=>'bank',
+                        'user_id'=>auth()->user()->id,
+                        'pay_type'=>$pay_type,
                         "status"=>'purchase',
                         'total'=>$paydata['total'],
                         'discount'=>$disvalue,
                         'visapay_id'=>$visa_pay_id,
-                
                     ]);
-                
                 // update payment description in moyasar
                  $payment->update('order is '.$order->id);
                  
