@@ -133,5 +133,25 @@ class FreelancerOrder extends Controller
             return $this->returnError(400, 'My Work Of Requests Returned Failed');
         }
     }
+
+
+    public function finishRequest($id){
+        try{
+            
+           $requests= Requests::findorfail($id);
+           if($requests->freelancer_id==auth('api')->user()->id){
+            $requests->update([
+                "status"=>"Finished",
+              ]);
+              return $this->returnData(200,'Request Finished Successfully');
+           }else{
+            return $this->returnError(400, 'you not allowed to access this request');
+           }
+          
+           
+        }catch(\Exception $e){
+            return $this->returnError(400, 'Request Finished Failed');
+        }
+    }
     
 }

@@ -106,7 +106,9 @@ Route::post('requestWalletPay/{user_id}',[PaymentController::class,'requestWalle
 Route::get('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
 Route::get('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 Route::post('rejectOfferRequest',[RequestController::class,'rejectOfferRequest']);
-Route::get('completeRequest/{id}',[RequestController::class,'completeRequest']);
+Route::get('completeRequest/{id}',[RequestController::class,'completeRequest'])->middleware('auth:api');
+
+Route::get('finishRequest/{id}',[FreelancerOrder::class,'finishRequest'])->middleware('auth:api');
 
 
 

@@ -116,10 +116,10 @@ else{
 
     public function getmywork(){
         $user_id=auth()->user()->id; 
-
+        $ignor=['Cancel by Customer'];
         $privates= Requests::where(function($q)use( $user_id){
            $q->where('freelancer_id',$user_id)->where('user_id','!=',$user_id)->orWhere('freelancer_id',null);
-        })->orderBy('status')->get();
+        })->whereNotIn('status',$ignor)->orderBy('status')->get();
 
         $result=[];
 
