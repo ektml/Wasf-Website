@@ -295,7 +295,7 @@ class UserController extends Controller
         $files_current=[];
         foreach($fc as $f){
             $selled_id=$f->id;
-           $f=$f->selledsable()->withTrashed()->first()->file()->first();
+           $f=$f->file()->first();
               $f->url = asset('front/upload/files/'.$f->url);
               $f->selled_id=$selled_id;
             $files_current[]=$f;
@@ -308,7 +308,7 @@ class UserController extends Controller
         ->get();
         foreach($fl as $f){
              $selled_id=$f->id;
-             $f=$f->selledsable()->withTrashed()->first()->file()->first();
+             $f=$f->file()->first();
               $f->url = asset('front/upload/files/'.$f->url);
               $f->selled_id=$selled_id;
           $files_lastmonth[]=$f;
@@ -322,7 +322,7 @@ class UserController extends Controller
             $files_old=[];
         foreach($f0 as $f){
              $selled_id=$f->id;
-             $f=$f->selledsable()->withTrashed()->first()->file()->first();
+             $f=$f->file()->first();
               $f->url = asset('front/upload/files/'.$f->url);
                $f->selled_id=$selled_id;
             $files_old[]=$f;

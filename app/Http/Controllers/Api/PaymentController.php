@@ -252,7 +252,7 @@ class PaymentController extends Controller
                    
                               $order->payment()->create([
                                'freelancer_id'=>$item->freelancer_id,
-                               'pay_type'=>$pay_type,
+                               'pay_type'=>'bank',
                                "status"=>'purchase',
                                'total'=>$data->price,
                                // 'discount'=>$disvalue,
