@@ -414,5 +414,37 @@ class RequestController extends Controller
         }
 
 
+        public function review($id,Request $req)
+        {
+            try{
+
+                $req->validate([
+                    'rate'=>['required'],
+                    'pragraph'=>['required'],
+
+                ]);
+            if($requests->freelancer_id==auth('api')->user()->id){
+            $request=Requests::find($id);
+            $freelancer_id=$request->freelancer_id;
+            $request=Requests::find($id);
+            $s= $request->review()->create([
+                  'freelancer_id'=>$freelancer_id,
+                  'rate'=> $req->rate,
+                  'pragraph'=> $req->pragraph,
+                  'user_id'=>auth('api')->user()->id,
+            ]);
+            return $this->returnData(200, 'Request review Successfully');
+                }else{
+                    return $this->returnError(400, "You can't review this request");
+                }
+
+            }catch(\Exception $e){
+                echo $e;
+                return $this->returnError(400, "You can't review this request");
+            }   
+
+            
+        }
+
 
 }
