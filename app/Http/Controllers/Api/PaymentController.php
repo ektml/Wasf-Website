@@ -263,7 +263,7 @@ class PaymentController extends Controller
                 
                      $order->payment()->create([
                         'user_id'=>$user_id,
-                        'pay_type'=>$pay_type,
+                        'pay_type'=>'bank',
                         "status"=>'purchase',
                         'total'=>$paydata['total'],
                         'discount'=>$disvalue,
