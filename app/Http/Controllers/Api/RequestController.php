@@ -387,17 +387,14 @@ class RequestController extends Controller
             $offer_price=$re->offer()->where('freelancer_id',$freelnacer_id)->first()->price;
               
             $wallet=User::findOrFail($freelnacer_id)->wallet->total;
-    
             $wallet+=$offer_price;
             Requests::findorfail($id)->update([
                 "status"=>"Completed",
-                
               ]);
     
             $re->payment()->where('freelancer_id', $freelnacer_id)->update([
             'status'=>'purchase'
             ]);
-    
               $edit_wallet=User::findOrFail( $freelnacer_id)->wallet()->update([
                 "total"=> $wallet
                ]);
@@ -408,14 +405,10 @@ class RequestController extends Controller
     }catch(\Exception $e){
           echo $e;
           return $this->returnError(400, 'Request complete fail');
-    }
-            
-    
+    }   
+
         }
 
-
-
         
-
 
 }

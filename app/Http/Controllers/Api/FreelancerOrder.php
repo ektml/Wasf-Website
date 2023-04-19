@@ -102,10 +102,11 @@ class FreelancerOrder extends Controller
                 return $this->returnError(404, "Doesn't a Freelancer");
             }
 
+            $ignor=['Cancel by Customer'];
             if($freelancer_id == auth('api')->user()->id){
                 $privates = Requests::with('user', 'freelancer','category', 'service', 'offer', 'file')->where(function($q)use($freelancer_id){
                 $q->where('freelancer_id', $freelancer_id)->orWhere('freelancer_id',null);
-                })->orderBy('status')->get();
+                })->whereNotIn('status',$ignor)->orderBy('status')->get();
 
                 $result = [];
                 foreach($privates as $p){

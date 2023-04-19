@@ -106,6 +106,7 @@ Route::post('requestWalletPay/{user_id}',[PaymentController::class,'requestWalle
 Route::get('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
 Route::get('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 Route::post('rejectOfferRequest',[RequestController::class,'rejectOfferRequest']);
+Route::get('completeRequest/{id}',[RequestController::class,'completeRequest']);
 
 
 
