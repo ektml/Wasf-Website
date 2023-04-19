@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-end chat" tabindex="-1" id="chat{{$request->id}}" aria-labelledby="offcanvasRightLabel"
     data-id={{$request->id}} data-type='
-    @if(isset($request->type) && in_array($request->type,[' public','private'])) request @else reservation @endif '
+    @if(isset($request->type) && in_array($request->type,['public','private'])) request @else reservation @endif '
     data-to="
     @if(auth()->user()->id ==$request->user_id)
     {{$request->freelancer_id}}
