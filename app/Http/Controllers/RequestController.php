@@ -186,7 +186,21 @@ if($request->type=='public'){
         $filter=[];
        
         if(isset(request()->search)){
-            $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();         
+            $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
+            
+                 if( in_array('pending',request()->search) && in_array('completed',request()->search)){
+                    $requests =$requests->where(function($q){
+return $q->where('status','Pending')->orWhere('status','Completed');
+                    });
+                    array_push($filter,'pending');
+                    array_push($filter,'completed');
+                 }elseif(in_array('pending',request()->search)){
+                    $requests =$requests->where('status','Pending');
+                  array_push($filter,'pending');
+                 }elseif(in_array('completed',request()->search)){
+                    $requests =$requests->where('status','Pending');
+                    array_push($filter,'completed');
+                 }
                 if(in_array('datedesending',request()->search)){
                     $requests =$requests->sortByDesc('due_date');
                     array_push($filter,'datedesending');

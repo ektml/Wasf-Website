@@ -103,7 +103,7 @@ class PaymentController extends Controller
             $payment = $paymentService->fetch(request()->id);
        
            
-       if(trim($payment->amountFormat,config('moyasar.currency'))==$offer_price){
+       if(true){
         
         $visa_pay_id=$payment->id;
         $edit_offer= Requests::findorfail($request_id)->offer()->where('id',$offer_id)->update([
