@@ -417,11 +417,9 @@ class RequestController extends Controller
         public function requestReview($id,Request $req)
         {
             try{
-
                 $req->validate([
                     'rate'=>['required'],
                     'pragraph'=>['required'],
-
                 ]);
             $request = Requests::findOrFail($id);
             if($request->user_id==auth('api')->user()->id){
