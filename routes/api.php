@@ -107,9 +107,10 @@ Route::get('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::cla
 Route::get('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 Route::post('rejectOfferRequest',[RequestController::class,'rejectOfferRequest']);
 Route::get('completeRequest/{id}',[RequestController::class,'completeRequest'])->middleware('auth:api');
-
-Route::get('finishRequest/{id}',[FreelancerOrder::class,'finishRequest'])->middleware('auth:api');
 Route::post('requestReview/{id}',[RequestController::class,'requestReview'])->middleware('auth:api');
+
+
+
 
 
 
@@ -129,6 +130,8 @@ Route::get('getPublicRequests/{freelancer_id}',[OrderController::class,'getPubli
 Route::get('getPrivateRequests/{freelancer_id}',[OrderController::class,'getPrivateRequests'])->middleware('auth:api');
 
 Route::get('getMyWork/{freelancer_id}',[FreelancerOrder::class,'getMyWork'])->middleware('auth:api');
+
+Route::get('finishRequest/{id}',[FreelancerOrder::class,'finishRequest'])->middleware('auth:api');
 
 
 //chat
