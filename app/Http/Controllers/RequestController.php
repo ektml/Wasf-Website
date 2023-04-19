@@ -524,7 +524,7 @@ $data="";
 
        $freelancer= Requests::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id);
        $user_create=auth()->user()->id;
-        Notification::send($freelancer, new RejectOffer($user_create,$id,'request',  $requests->random_id));
+        Notification::send($freelancer, new RejectOffer($user_create,$id,'request',  $request->random_id));
 
    }
    $request->blacklist()->create([
