@@ -34,7 +34,7 @@
                 </h5>
                     
 
-                    @if($request->status == ' Pending') <p class="status text-black-50">
+                    @if($request->status == 'Pending') <p class="status text-black-50">
     {{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2"></i></p>
     @elseif($request->status == 'In Process')
     <p class="status inprogress">{{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
@@ -46,6 +46,9 @@
     @elseif($request->status== 'Completed')
     <p class="status gray text-black" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
             class="fa-solid fa-circle px-2 "></i></p>
+            @else
+            <p class="status gray text-danger" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
+                class="fa-solid fa-circle px-2 "></i></p>
     @endif
 </div>
 

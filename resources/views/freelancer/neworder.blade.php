@@ -313,7 +313,7 @@ el.text
 scrollToBottom();
 
 }else{
-
+  
     conversation.html(data['message']);
 
 }
