@@ -26,7 +26,7 @@ class FreelancerController extends Controller
         ->whereYear('created_at', $currentYear)->get();
         $files_current=[];
         foreach($fc as $f){
-            $files_current[]=$f->selledsable()->withTrashed()->first()->file()->first();
+            $files_current[]=$f->file()->first()->file()->first();
    
         }
       
@@ -36,7 +36,7 @@ class FreelancerController extends Controller
         ->whereYear('created_at', $currentYear)
         ->get();
         foreach($fl as $f){
-            $files_lastmonth[]=$f->selledsable()->withTrashed()->first()->file()->first();
+            $files_lastmonth[]=$f->file()->first()->file()->first();
 
         }
        
@@ -46,7 +46,7 @@ class FreelancerController extends Controller
             ])->get();
             $files_old=[];
         foreach($f0 as $f){
-            $files_old[]=$f->selledsable()->withTrashed()->first()->file()->first();
+            $files_old[]=$f->file()->first()->file()->first();
 
         }
       
