@@ -345,8 +345,8 @@ class CartController extends Controller
             'freelaner_id'=>$item->freelancer_id,
             'pay_type'=>$pay_type,
             "status"=>'purchase',
-            'total'=> $data->price,
-            'discount'=>$disvalue,
+            'total'=>$data->price,
+            // 'discount'=>$disvalue,
             'visapay_id'=>$visa_pay_id,
     
         ]);
