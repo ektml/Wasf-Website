@@ -109,7 +109,7 @@ Route::post('rejectOfferRequest',[RequestController::class,'rejectOfferRequest']
 Route::get('completeRequest/{id}',[RequestController::class,'completeRequest'])->middleware('auth:api');
 
 Route::get('finishRequest/{id}',[FreelancerOrder::class,'finishRequest'])->middleware('auth:api');
-Route::post('requestReview/{id}',[FreelancerOrder::class,'requestReview'])->middleware('auth:api');
+Route::post('requestReview/{id}',[RequestController::class,'requestReview'])->middleware('auth:api');
 
 
 
