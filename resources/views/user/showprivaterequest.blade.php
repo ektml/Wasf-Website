@@ -298,9 +298,13 @@ function createMessage(text, date, rl) {
     msg.append(msg2)
     conversation.append(msg)
 
-    conversation.scrollTop = conversation.scrollHeight;
+    scrollToBottom();
     
 }
+
+function scrollToBottom() {
+    conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, 500);
+    }
 
 const channel = pusher.subscribe('chats')
 channel.bind('new-message', function (data) {
@@ -364,7 +368,7 @@ el.text
 
 });
 
-
+scrollToBottom();
 
 if( Object.keys(data).length >olddata){
 
