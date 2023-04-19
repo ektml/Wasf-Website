@@ -424,7 +424,7 @@ class RequestController extends Controller
 
                 ]);
             $request = Requests::findOrFail($id);
-            if($request->freelancer_id==auth('api')->user()->id){
+            if($request->user_id==auth('api')->user()->id){
             $freelancer_id=$request->freelancer_id;
             $s= $request->review()->create([
                   'freelancer_id'=>$freelancer_id,
