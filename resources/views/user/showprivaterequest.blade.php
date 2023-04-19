@@ -302,6 +302,8 @@ function createMessage(text, date, rl) {
     
 }
 
+
+
 function scrollToBottom() {
     conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, 500);
     }
@@ -310,8 +312,12 @@ const channel = pusher.subscribe('chats')
 channel.bind('new-message', function (data) {
     if(!data?.msg) return
     const { msg, requestId } = data
+    const options = {
+  hour12: true,
+  timeZone: "{{config('app.timezone')}}"
+};
     if(msg.type==type && (msg.from===myId ||msg.to===myId)&&requestId==request_id){
-        createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ?  "left":"right")
+        createMessage(msg.text, new Date(msg.created_at).toLocaleTimeString('en-US', options), msg.from === myId ?  "left":"right")
     }
 
    
