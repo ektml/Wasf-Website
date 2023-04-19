@@ -2737,6 +2737,7 @@ button .number {
 
 .freelaceroffers .buttoncontainer {
     top: 5px;
+    flex-direction: row-reverse;
 }
 .freelaceroffers .buttoncontainer .rej {
     background-color: var(--primary-color);

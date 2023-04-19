@@ -354,12 +354,12 @@ $data="";
         <input type="hidden" name="freelancer_id" value="'.$re->freelancer_id.'">
         <input type="hidden"  name="_token" value='.csrf_token().'>
 
-        <button class="btn rej rounded-pill px-3 py-2 " type="submit"> reject</button>
+        <button class="btn rej rounded-pill px-3 py-2 " type="submit"> '.__("request.reject").'</button>
         </form>
 
 
         <form action="'. route("user.acceptoffertopay",[$re->id,$id]) .'" method="GET">
-        <button class="btn accept rounded-pill px-3 py-2" >accept</button>
+        <button class="btn accept rounded-pill px-3 py-2" >'.__('request.accept').'</button>
         </form>
 
         </div>
