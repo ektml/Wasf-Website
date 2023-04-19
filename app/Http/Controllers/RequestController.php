@@ -393,7 +393,6 @@ $data="";
     'status'=>'reject'
     ]);
 
-
     $freelancer= User::find($freelancer_id);
     $user_create=auth()->user()->id;
    
@@ -507,7 +506,7 @@ $data="";
 
     public function searchNewOffer($id){
         $request=Requests::find($id);
-
+$freelanc_id=$request->freelancer_id;
         if($request->payment()->where('freelancer_id',$request->freelancer_id)->first()){
        
        $total_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->total;
@@ -531,7 +530,7 @@ $data="";
        ]);  
        
        
-       $freelancer= Requests::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id)->get();
+       $freelancer= User::findorfail($freelanc_id);
        $user_create=auth()->user()->id;
         Notification::send($freelancer, new RejectOffer($user_create,$id,'request',  $request->random_id));
        toastr()->success('edit done successfully');
@@ -541,5 +540,6 @@ $data="";
 
 
 }
+
 //onsubmit="event.preventDefault(); return rejectoffer(this)"
 
