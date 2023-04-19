@@ -387,6 +387,7 @@ $data="";
     // $request_id=$request->request_id;
     $request_id= request("request_id");
     $freelancer_id=request("freelancer_id");
+    
 
     $requests=Requests::findOrFail($request_id);
      $requests->offer()->where('freelancer_id',$freelancer_id)->update([
@@ -401,6 +402,7 @@ $data="";
 
     return JSON_encode($flag);
     }
+
 
 
     function acceptoffertopay($id ,$re){

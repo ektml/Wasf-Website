@@ -6,6 +6,8 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\requests\RejectOffer;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
 
 class RequestController extends Controller
@@ -362,6 +364,12 @@ class RequestController extends Controller
         $requests->offer()->where('freelancer_id',$freelancer_id)->update([
        'status'=>'reject'
        ]);
+
+       $freelancer= User::find($freelancer_id);
+       $user_create=$requests->user_id;
+   
+     Notification::send($freelancer, new RejectOffer($user_create,$requests->id,'request',  $requests->random_id));
+    $flag=true;
     return $this->returnData(200, 'Request reject Successfully');
 
     }catch(\Exception $e){
@@ -404,6 +412,10 @@ class RequestController extends Controller
             
     
         }
+
+
+
+        
 
 
 }
