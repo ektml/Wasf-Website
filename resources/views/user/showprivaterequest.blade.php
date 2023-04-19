@@ -330,7 +330,13 @@ mesageto=mesageto.trim();
 setTimeout(getmessage, 0);
 // var getmes =setInterval(getmessage,3000);
 
+
 function getmessage() { 
+
+    const options = {
+  hour12: true,
+  timeZone: "{{config('app.timezone')}}"
+};
 $.ajax({
 url: "{{URL::to('user/chat')}}",
 type: "GET",
@@ -361,7 +367,7 @@ el.text
 message2=  '<div class="leftcont"> <div class="chat-txt leftside"> <p>'+
 el.text
        +' </p> <span>'+
-        new Date(el.created_at).toLocaleTimeString() +
+        new Date(el.created_at).toLocaleTimeString('en-US', options) +
         '</span> </div> </div>';
 
         conversation.append(message2);
