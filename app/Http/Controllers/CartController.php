@@ -342,7 +342,7 @@ class CartController extends Controller
       
 
            $order->payment()->create([
-            'freelaner_id'=>$item->freelancer_id,
+            'freelancer_id'=>$item->freelancer_id,
             'pay_type'=>$pay_type,
             "status"=>'purchase',
             'total'=>$data->price,
