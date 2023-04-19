@@ -312,12 +312,12 @@ const channel = pusher.subscribe('chats')
 channel.bind('new-message', function (data) {
     if(!data?.msg) return
     const { msg, requestId } = data
-    const options = {
-  hour12: true,
-  timeZone: "{{config('app.timezone')}}"
-};
+//     const options = {
+//   hour12: true,
+//   timeZone: "{{config('app.timezone')}}"
+// };
     if(msg.type==type && (msg.from===myId ||msg.to===myId)&&requestId==request_id){
-        createMessage(msg.text, new Date(msg.created_at).toLocaleTimeString('en-US', options), msg.from === myId ?  "left":"right")
+        createMessage(msg.text, new Date(msg.created_at).toLocaleTimeString(), msg.from === myId ?  "left":"right")
     }
 
    
@@ -333,10 +333,7 @@ setTimeout(getmessage, 0);
 
 function getmessage() { 
 
-    const options = {
-  hour12: true,
-  timeZone: "{{config('app.timezone')}}"
-};
+
 $.ajax({
 url: "{{URL::to('user/chat')}}",
 type: "GET",
@@ -354,7 +351,7 @@ let message= " ";
 message=  '<div class="rightcont"> <div class="chat-txt rightside"> <p>'+
 el.text
        +' </p> <span>'+
-        new Date(el.created_at).toLocaleTimeString() 
+        new Date(el.created_at).toLocaleTimeString()
        +
         '</span> </div> </div>';
 
@@ -367,7 +364,7 @@ el.text
 message2=  '<div class="leftcont"> <div class="chat-txt leftside"> <p>'+
 el.text
        +' </p> <span>'+
-        new Date(el.created_at).toLocaleTimeString('en-US', options) +
+        new Date(el.created_at).toLocaleTimeString() +
         '</span> </div> </div>';
 
         conversation.append(message2);

@@ -257,7 +257,7 @@ channel.bind('new-message', function (data) {
     if(!data?.msg) return
     const { msg, requestId } = data
     if(msg.type==type && (msg.from===myId ||msg.to===myId)&&requestId==request_id){
-        createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ?  "left":"right")
+        createMessage(msg.text, new Date(msg.created_at).toLocaleTimeString(), msg.from === myId ?  "left":"right")
     }
 
    
@@ -313,7 +313,7 @@ el.text
 scrollToBottom();
 
 }else{
-  
+
     conversation.html(data['message']);
 
 }
