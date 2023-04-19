@@ -13,4 +13,9 @@ class Selled extends Model
     public function selledsable(){
         return $this->morphTo();
     }
+
+    public function file()
+    {
+        return $this->morphMany(File::class,'filesable');
+    }
 }
