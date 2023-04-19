@@ -521,11 +521,6 @@ $data="";
            "status"=>'reject',
        ]);
 
-
-       $freelancer= Requests::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id);
-       $user_create=auth()->user()->id;
-        Notification::send($freelancer, new RejectOffer($user_create,$id,'request',  $request->random_id));
-
    }
    $request->blacklist()->create([
     'freelancer_id'=>$request->freelancer_id
@@ -533,7 +528,12 @@ $data="";
        $edit_request= $request->update([
            'status'=>"Pending",
            'freelancer_id'=> null,
-       ]);       
+       ]);  
+       
+       
+       $freelancer= Requests::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id)->get();
+       $user_create=auth()->user()->id;
+        Notification::send($freelancer, new RejectOffer($user_create,$id,'request',  $request->random_id));
        toastr()->success('edit done successfully');
        return redirect()->back()->with(['state'=>"pending","id"=>$id]);
 

@@ -19,7 +19,7 @@ class RejectOffer extends Notification
     private  $message_ar=" ";
  
 
-     public function __construct($user_create,$request,$type ,$random_id)
+     public function __construct($user_create,$request,$type,$random_id)
     {
         $this->user_create=$user_create;
         $this->request_id=$request;
