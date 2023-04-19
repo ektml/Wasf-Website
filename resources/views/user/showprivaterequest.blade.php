@@ -297,6 +297,8 @@ function createMessage(text, date, rl) {
     msg2.append(span)
     msg.append(msg2)
     conversation.append(msg)
+
+    conversation.scrollTop = conversation.scrollHeight;
     
 }
 
