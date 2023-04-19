@@ -382,9 +382,9 @@ class RequestController extends Controller
 
         function  completeRequest($id){
             try{
-
-        if($requests->freelancer_id==auth('api')->user()->id){
-            $re = Requests::findOrFail($id);
+         $re = Requests::findOrFail($id);
+        if($re->freelancer_id== auth('api')->user()->id){
+           
             $freelnacer_id=$re->freelancer_id;
             $offer_price=$re->offer()->where('freelancer_id',$freelnacer_id)->first()->price;
               
@@ -414,7 +414,7 @@ class RequestController extends Controller
         }
 
 
-        public function review($id,Request $req)
+        public function requestReview($id,Request $req)
         {
             try{
 
@@ -423,10 +423,9 @@ class RequestController extends Controller
                     'pragraph'=>['required'],
 
                 ]);
-            if($requests->freelancer_id==auth('api')->user()->id){
-            $request=Requests::find($id);
+            $request = Requests::findOrFail($id);
+            if($request->freelancer_id==auth('api')->user()->id){
             $freelancer_id=$request->freelancer_id;
-            $request=Requests::find($id);
             $s= $request->review()->create([
                   'freelancer_id'=>$freelancer_id,
                   'rate'=> $req->rate,
