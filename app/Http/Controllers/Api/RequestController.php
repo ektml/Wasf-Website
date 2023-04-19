@@ -382,6 +382,8 @@ class RequestController extends Controller
 
         function  completeRequest($id){
             try{
+
+        if($requests->freelancer_id==auth('api')->user()->id){
             $re = Requests::findOrFail($id);
             $freelnacer_id=$re->freelancer_id;
             $offer_price=$re->offer()->where('freelancer_id',$freelnacer_id)->first()->price;
@@ -391,24 +393,26 @@ class RequestController extends Controller
             Requests::findorfail($id)->update([
                 "status"=>"Completed",
               ]);
-    
+
+
             $re->payment()->where('freelancer_id', $freelnacer_id)->update([
             'status'=>'purchase'
             ]);
               $edit_wallet=User::findOrFail( $freelnacer_id)->wallet()->update([
                 "total"=> $wallet
                ]);
-          
-    
-     return $this->returnData(200, 'Request complete Successfully');
+               return $this->returnData(200, 'Request complete Successfully');
+            }else{
+                return $this->returnError(400, "You can't complete this request");
+            }
 
     }catch(\Exception $e){
           echo $e;
-          return $this->returnError(400, 'Request complete fail');
+          return $this->returnError(400, "You can't complete this request");
     }   
 
         }
 
-        
+
 
 }
