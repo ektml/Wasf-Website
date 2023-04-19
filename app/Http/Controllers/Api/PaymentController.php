@@ -226,7 +226,7 @@ class PaymentController extends Controller
                     foreach($paydata['cartadditems'] as $data ){
                         $item =$data->cartsable;
                         $selled= $item->sells()->create([
-                          "user_id"=>auth()->user()->id,
+                          "user_id"=>$user_id,
                           "type"=>$data->type,
                           'price'=>$data->price,
                           'card_order_id'=>$order->id
@@ -235,7 +235,7 @@ class PaymentController extends Controller
                            foreach($item->file()->get() as $files){
                                $selled->file()->create([
                                    'name'=>$files->name,
-                                   'user_id'=>auth()->user()->id,
+                                   'user_id'=>$user_id,
                                    'type'=>$files->type,
                                    'url'=>$files->url,
                                    'size'=>$files->size,

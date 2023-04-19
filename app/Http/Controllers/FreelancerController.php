@@ -27,7 +27,7 @@ class FreelancerController extends Controller
         $files_current=[];
         foreach($fc as $f){
             $files_current[]=$f->file()->first();
-            dd($f->file()->first());
+            
    
         }
       
