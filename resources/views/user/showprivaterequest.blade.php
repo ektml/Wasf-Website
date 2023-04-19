@@ -370,14 +370,7 @@ el.text
 
 scrollToBottom();
 
-if( Object.keys(data).length >olddata){
 
-$('.conversation').scrollTop($('.conversation')[0].scrollHeight);
-olddata=Object.keys(data).length;
-}
-$('.chat').on('hide.bs.offcanvas',function(){
-// clearInterval(getmes);
-});
 
 
 }else{

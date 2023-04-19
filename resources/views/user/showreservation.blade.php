@@ -385,19 +385,59 @@ $(document).ready(function() {
 
 
 $(document).ready(function () {
-$('.chat').on('show.bs.offcanvas',function(){
+    $('.chat').on('show.bs.offcanvas',function(){
 
+var myId = {{auth()->id()}}
 var request_id= $(this).attr('data-id');
 var type= $(this).attr('data-type');
 var mesageto= $(this).attr('data-to');
 var conversation =$(this).find('.conversation')
 // console.log(.append("asdsdas"));
+
+function createMessage(text, date, rl) {
+    const msg = document.createElement("div")
+    msg.classList.add(`${rl}cont`)
+    
+    const msg2 = document.createElement("div")
+    msg2.classList.add("chat-txt")
+    msg2.classList.add(`${rl}side`)
+    
+    const p = document.createElement("p")
+    const span = document.createElement("span")
+    
+    p.textContent = text
+    span.textContent = date
+    
+    msg2.append(p)
+    msg2.append(span)
+    msg.append(msg2)
+    conversation.append(msg)
+
+    scrollToBottom();
+    
+}
+
+function scrollToBottom() {
+    conversation.animate({ scrollTop: conversation.prop('scrollHeight') }, 500);
+    }
+
+const channel = pusher.subscribe('chats')
+channel.bind('new-message', function (data) {
+    if(!data?.msg) return
+    const { msg, requestId } = data
+    if(msg.type==type && (msg.from===myId ||msg.to===myId)&&requestId==request_id){
+        createMessage(msg.text, new Date(msg.created_at).toDateString(), msg.from === myId ?  "left":"right")
+    }
+
+   
+});
+
 var olddata =0;
 type=type.trim();
 
 mesageto=mesageto.trim();
 setTimeout(getmessage, 0);
-var getmes =setInterval(getmessage,3000);
+// var getmes =setInterval(getmessage,3000);
 
 function getmessage() { 
 $.ajax({
@@ -443,16 +483,9 @@ el.text
 
 });
 
+scrollToBottom();
 
 
-if( Object.keys(data).length >olddata){
-
-$('.conversation').scrollTop($('.conversation')[0].scrollHeight);
-olddata=Object.keys(data).length;
-}
-$('.chat').on('hide.bs.offcanvas',function(){
-clearInterval(getmes);
-});
 
 
 }else{
@@ -484,7 +517,6 @@ function sendmessage(e){
             dataType: "json",
             success: function(data) {
             if(data){
-                console.log(data);
                 $(e).find('.messageinput').val(' ');
 
             }else{
@@ -496,9 +528,6 @@ function sendmessage(e){
             });
         
   
-
-
-
 }
 
 
