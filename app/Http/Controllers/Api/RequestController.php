@@ -383,7 +383,7 @@ class RequestController extends Controller
         function  completeRequest($id){
             try{
          $re = Requests::findOrFail($id);
-        if($re->freelancer_id== auth('api')->user()->id){
+        if($re->user_id== auth('api')->user()->id){
            
             $freelnacer_id=$re->freelancer_id;
             $offer_price=$re->offer()->where('freelancer_id',$freelnacer_id)->first()->price;
