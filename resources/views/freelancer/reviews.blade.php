@@ -40,7 +40,7 @@
         </div>
 
 
-        @forelse ( App\Models\Review::where('freelancer_id',auth()->user()->id) as $review )
+        @forelse ( App\Models\Review::where('freelancer_id',auth()->user()->id)->get() as $review )
         <div class="review freelanc ">
 
             <div class="image">
@@ -72,7 +72,7 @@
             </div>
         </div>
         @empty
-
+        {{ __('freelancerprofile.no reviews')}}
         @endforelse
         <a href="" class=" text-center showmore"> {{ __('freelancerprofile.show more')}}</a>
     </div>

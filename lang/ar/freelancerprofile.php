@@ -11,6 +11,7 @@ return [
 "wallet"=>'المحفظة',
 "statics"=>'الإحصائيات',
 "Reviews"=>'التقييمات',
+"no reviews" => "لا توجد تقييمات",
 "see all"=>'عرض الكل',
 "top 5 sales"=>'أفضل 5 مبيعات',
 "wallet history"=>'سجل المحفظة',

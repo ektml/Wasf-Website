@@ -16,6 +16,7 @@ return [
     "Files"=>'Files',
     "My Files"=>'My Files',
     "Reviews"=>'Reviews',
+    "no reviews"=>'NO Reviews',
     "see all"=>'see all',
     "new"=>'New',
     "last month"=>'Last Month',
