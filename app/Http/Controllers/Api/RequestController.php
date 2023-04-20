@@ -35,7 +35,7 @@ class RequestController extends Controller
             
               }
               if($request->review->first()!=null){
-                $request->review=$request->review->get();
+                $request->review=$request->review;
               }else{
                 $request->review=null;
               }
