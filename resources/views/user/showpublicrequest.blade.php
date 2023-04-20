@@ -410,16 +410,19 @@
                 <div class="d-flex justify-content-between align-items-baseline show-phone">
                     @if ($request->freelancer_id)
                     <div class="frelacereq d-flex ">
+                       
                         <img src="{{ asset('Admin3/assets/images/users/'.App\Models\User::where('id', $request->freelancer_id)->first()->profile_image) }}"
                             class="img-fluid rounded-top" alt="">
-
+                          @endif
                         <div class="freelanereq mx-2">
                             <h3 class="fw-600">
+                                @if ($request->freelancer_id)
                                 {{ App\Models\User::where('id', $request->freelancer_id)->first()->name }}</h3>
+                                @endif
                             <span class="text-black-50">{{$request->random_id}}</span>
                         </div>
                     </div>
-                    @endif
+               
 
 
                     @if($request->status == 'Pending')
