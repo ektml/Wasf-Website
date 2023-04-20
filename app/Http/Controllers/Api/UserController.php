@@ -294,7 +294,7 @@ class UserController extends Controller
         ->whereYear('created_at', $currentYear)->get();
         $files_current=[];
         foreach($fc as $f){
-              foreach($f->file() as $file){
+              foreach($f->file()->get() as $file){
                 $file->url = asset('front/upload/files/'.$file->url);
                 $files_current[]=$file;
               }
