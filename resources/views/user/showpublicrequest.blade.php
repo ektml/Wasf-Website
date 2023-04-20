@@ -399,7 +399,9 @@
                 </div>
             </a>
             @include("layouts.component.modal.userRequests.complete")
+            @if($request->freelancer_id)
             @include("layouts.component.modal.userRequests.review")
+            @endif
             @include("layouts.component.modal.userRequests.chat")
 
             @elseif($request->status == 'Cancel by customer')
