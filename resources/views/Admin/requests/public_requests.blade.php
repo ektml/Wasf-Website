@@ -56,7 +56,10 @@
                                 @endif
 
                                 <td>{{ $request->category->title_ar }} - {{ $request->category->title_en }}</td>
+                                @if ($request->service->first()!=null)
                                 <td>{{ $request->service->service_ar }} - {{ $request->service->service_en }}</td>
+                                @endif
+                                
                                 <td>{{ $request->title }}</td>
                                 <td>{{ $request->attachment }}</td>
                                 <td>{{ $request->description }}</td>
