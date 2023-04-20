@@ -53,9 +53,7 @@ class RequestController extends Controller
                        
                    }
                    
-                   
                    if($request->freelancer_id !=null){
-                       
                        $request->price= $request->offer()->where('freelancer_id',$request->freelancer_id)->first()->price ;
                    }else{
                         $request->price=null;
