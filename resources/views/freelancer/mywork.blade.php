@@ -159,12 +159,11 @@
               @elseif($request->status=='Completed')
               @include("layouts.component.modal.freelancerRequests.allstatus")
               @include("layouts.component.modal.userRequests.chat")
-
               @else
+              
               @include("layouts.component.modal.freelancerRequests.allstatus")
               @include("layouts.component.modal.userRequests.chat")
               @include("layouts.component.modal.freelancerRequests.offer")
-
               @endif
 
 

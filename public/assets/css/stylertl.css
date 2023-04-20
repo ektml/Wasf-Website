@@ -2447,6 +2447,7 @@ button .number {
     font-weight: 600;
     color: #000;
     margin-bottom: 0;
+    word-break: break-all;
 }
 .file .details .info {
     flex-grow: 1;
@@ -3428,4 +3429,18 @@ textarea:focus {
     width: 34%;
     align-items: center;
     justify-content: flex-start;
+}
+
+
+.fileTool a{
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fileTool i{
+    margin-left:5px;
+    margin-right:5px;
+    font-size: 18px;
 }
