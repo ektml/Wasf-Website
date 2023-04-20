@@ -341,10 +341,13 @@ class UserController extends Controller
     function deleteFile($id){
         
          try{
-          
+          if(File::find($id)->user_id==auth('api')->user()->id){
             $d=File::destroy($id);
-            
-             return $this->returnData(200, 'Files deleted Successfully');
+            return $this->returnData(200, 'Files deleted Successfully');
+          }else{
+            return $this->returnError(404, 'Files Not Found');
+          }
+           
             
        
      }catch(\Exception $e){
