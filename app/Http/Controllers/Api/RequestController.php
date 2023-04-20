@@ -62,7 +62,7 @@ class RequestController extends Controller
                    }
                    
                   
-                    $request->reviews =$request->review->first();
+                
                 
             
             }
