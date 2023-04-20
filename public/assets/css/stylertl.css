@@ -3422,3 +3422,10 @@ textarea:focus {
     align-items: center;
     justify-content: flex-end;
 }
+
+.cal1 .clndr .clndr-controls .clndr-control-button.rightalign {
+    text-align: right;
+    width: 34%;
+    align-items: center;
+    justify-content: flex-start;
+}
