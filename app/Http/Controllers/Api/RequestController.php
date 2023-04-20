@@ -64,7 +64,7 @@ class RequestController extends Controller
                    if($request->review->count() > 0){
                     $request->review=$request->review;
                   }else{
-                    $request->review = null;
+                    $request->review ="null";
                   }   
             
             }
