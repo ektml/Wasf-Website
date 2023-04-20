@@ -34,11 +34,7 @@ class RequestController extends Controller
                 $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
             
               }
-              if($request->review){
-                $request->review=$request->review;
-              }else{
-                $request->review=null;
-              }
+             
 
               }
 
@@ -65,7 +61,11 @@ class RequestController extends Controller
                         $request->price=null;
                    }
                    
-                  
+                   if($request->review->count()){
+                    $request->review=$request->review;
+                  }else{
+                    $request->review=null;
+                  }   
             
             }
            
