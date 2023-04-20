@@ -104,7 +104,7 @@
 
         <div class="requesties d-flx flex-column pt-4">
             @foreach ($requests as $request)
-            @if(!$request->freelancer_id && $request->status=='Pending'  )
+            @if(!$request->freelancer_id && $request->status=='Pending' )
             <div class="request offer d-flex flex-column px-3 py-3 position-relative mb-5"
                 style="    margin-bottom: 63px !important;">
                 <a href="#offerPending{{ $request->id }}" data-bs-toggle="modal" role="button">
@@ -230,16 +230,16 @@
                     </div>
 
                     @if($request->status == 'Pending')
-                    <p class="status gray" >{{__('request.'.$request->status)}}<i
-                            class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status gray">{{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i>
+                    </p>
                     @elseif($request->status == 'In Process')
                     <p class="status gray text-warning" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Finished')
-                    <p class="status " style="color: rgb(214, 214, 42);" >
+                    <p class="status " style="color: rgb(214, 214, 42);">
                         {{ $request->status }}<i class="fa-solid fa-circle px-2 "></i></p>
                     @elseif($request->status == 'Completed')
-                    <p class="status  text-black" >{{__('request.'.$request->status)}}<i
+                    <p class="status  text-black">{{__('request.'.$request->status)}}<i
                             class="fa-solid fa-circle px-2 "></i></p>
                     @endif
                 </div>
@@ -294,7 +294,8 @@
                         </div>
                     </div>
 
-                    <p class="status finish">{{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i></p>
+                    <p class="status finish">{{__('request.'.$request->status)}}<i class="fa-solid fa-circle px-2 "></i>
+                    </p>
 
                 </div>
 
@@ -405,6 +406,7 @@
             <a href="#complete{{ $request->id }}" data-bs-toggle="modal"
                 class="request d-flex flex-column px-3 py-3 position-relative mb-5">
                 <div class="d-flex justify-content-between align-items-baseline show-phone">
+                    @if ($request->freelancer_id)
                     <div class="frelacereq d-flex ">
                         <img src="{{ asset('Admin3/assets/images/users/'.App\Models\User::where('id', $request->freelancer_id)->first()->profile_image) }}"
                             class="img-fluid rounded-top" alt="">
@@ -415,6 +417,8 @@
                             <span class="text-black-50">{{$request->random_id}}</span>
                         </div>
                     </div>
+                    @endif
+
 
                     @if($request->status == 'Pending')
                     <p class="status gray" data-color="C4C3C3">{{__('request.'.$request->status)}}<i
@@ -612,13 +616,10 @@
                                     <p class="fw-900 mb-0 deadline">{{ $request->due_date }}</p>
                                 </div>
                             </div>
-
                             <div class="d-flex flex-column px-3 bg-blue ">
                                 <span class="flex-grow-1 fs-5 font-bold ">{{__('request.description')}}</span>
                                 <p class="flex-grow-1">{{ $request->description }}</p>
                             </div>
-
-
                             <div class="d-flex flex-column px-3">
                                 <p class="fs-5 font-bold">{{__('request.attachment')}}</p>
                                 <div class="d-flex flex-column px-2 ">
@@ -637,12 +638,8 @@
                                     </a> <!-- end offerPending modal -->
 
                                     @endforeach
-
                                 </div>
-
                             </div>
-
-
                             <div class="btn-contianer d-flex flex-column justify-between align-items-center my-3">
                                 <form action="{{route('user.searchnewoffer',$request->id)}}" method='POST'>
                                     @csrf
