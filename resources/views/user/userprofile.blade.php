@@ -140,7 +140,7 @@
 
               @foreach ($files_current as $curfile )
               <div class="file d-flex ">
-                <div class="details d-flex ">
+                <div class="details d-flex">
                   <div class="img">
                     @if($curfile->type=='word')
                     <i class="fa-regular fa-file-word"></i>
@@ -155,7 +155,6 @@
                   <div class="info">
                     <h3>
                       {{$curfile->name}}
-
                     </h3>
                     <div class="size">
                       {{$curfile->size}} . {{$curfile->type}}
@@ -163,9 +162,9 @@
                   </div>
 
                 </div>
-                <div class="tool">
+                <button class="tool">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+                </button>
               </div>
               @endforeach
 

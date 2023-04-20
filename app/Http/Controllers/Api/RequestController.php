@@ -261,9 +261,6 @@ class RequestController extends Controller
     
     
     
-    
-
-
 
     public function sendOffer(Request $request,$id){
         try{
@@ -325,6 +322,7 @@ class RequestController extends Controller
      
          }
          
+         //both public -private
     public function cancelRequest($id)
     {
 
@@ -355,7 +353,7 @@ class RequestController extends Controller
        
     }
 
-
+//both public -private
     function rejectOfferRequest(Request $request){
    try{
        $request_id= $request->request_id;
@@ -379,8 +377,8 @@ class RequestController extends Controller
 
         }
 
-
-        function  completeRequest($id){
+       //both public -private
+        function completeRequest($id){
             try{
          $re = Requests::findOrFail($id);
         if($re->user_id== auth('api')->user()->id){
@@ -414,6 +412,7 @@ class RequestController extends Controller
         }
 
 
+        //both public -private
         public function requestReview($id,Request $req)
         {
             try{
@@ -442,6 +441,9 @@ class RequestController extends Controller
 
             
         }
+
+
+        
 
 
 }

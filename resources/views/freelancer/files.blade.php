@@ -71,9 +71,9 @@
                   </div>
 
                 </div>
-                <div class="tool">
+                <button class="tool">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+                </button>
               </div>
               @endforeach
 

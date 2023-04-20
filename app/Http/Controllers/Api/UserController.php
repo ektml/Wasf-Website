@@ -338,12 +338,12 @@ class UserController extends Controller
         }
     }
     
-    function deleteFile($id){
+    function deleteFile($selled,$id){
         
          try{
-        if(Selled::find($id)){
+        if(Selled::find($selled) && Selled::find($selled)->file()->id==$id){
             
-            $d=Selled::destroy($id);
+            $d=File::destroy($id);
             
              return $this->returnData(200, 'Files deleted Successfully');
             
@@ -373,7 +373,6 @@ class UserController extends Controller
                 echo $e;
                 return $this->returnError(400, 'wallet returned Failed');
             }
-      
     }
 
 }
