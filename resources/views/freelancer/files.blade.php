@@ -24,7 +24,6 @@
 
 
 @section("content")
-
 <div class="files">
   <div class="container">
     <div class="files d-flex">
@@ -46,15 +45,15 @@
             <div class="accordion-body d-flex flex-column">
 
 
-              @foreach ($files_current as $curfile )
+              @foreach ($files_current as $file )
               <div class="file d-flex ">
                 <div class="details d-flex ">
                   <div class="img">
-                    @if($curfile->type=='word')
+                    @if($file->type=='word')
                     <i class="fa-regular fa-file-word"></i>
-                    @elseif($curfile->type=='pptx' ||$curfile->type=='ppt')
+                    @elseif($file->type=='pptx' ||$file->type=='ppt')
                     <i class="fa-regular fa-file-powerpoint"></i>
-                    @elseif($curfile->type =='pdf')
+                    @elseif($file->type =='pdf')
                     <i class="fa-regular fa-file-pdf"></i>
                     @else
                     <i class="fa-regular fa-file"></i>
@@ -62,11 +61,10 @@
                   </div>
                   <div class="info">
                     <h3>
-                      {{$curfile->name}}
-
+                      {{$file->name}}
                     </h3>
                     <div class="size">
-                      {{$curfile->size}} . {{$curfile->type}}
+                      {{$file->size}} . {{$file->type}}
                     </div>
                   </div>
 
@@ -76,7 +74,6 @@
                 </button>
               </div>
               @endforeach
-
 
             </div>
           </div>
@@ -90,15 +87,15 @@
           </h2>
           <div id="last-monthfile" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
             <div class="accordion-body">
-              @foreach ($files_lastmonth as $lastfile )
+              @foreach ($files_lastmonth as $file )
               <div class="file d-flex ">
                 <div class="details d-flex ">
                   <div class="img">
-                    @if($lastfile->type=='word')
+                    @if($file->type=='word')
                     <i class="fa-regular fa-file-word"></i>
-                    @elseif($lastfile->type=='pptx' ||$lastfile->type=='ppt')
+                    @elseif($file->type=='pptx' ||$file->type=='ppt')
                     <i class="fa-regular fa-file-powerpoint"></i>
-                    @elseif($lastfile->type =='pdf')
+                    @elseif($file->type =='pdf')
                     <i class="fa-regular fa-file-pdf"></i>
                     @else
                     <i class="fa-regular fa-file"></i>
@@ -106,11 +103,11 @@
                   </div>
                   <div class="info">
                     <h3>
-                      {{$lastfile->name}}
+                      {{$file->name}}
 
                     </h3>
                     <div class="size">
-                      {{$lastfile->size}} . {{$lastfile->type}}
+                      {{$file->size}} . {{$file->type}}
                     </div>
                   </div>
 
@@ -132,15 +129,15 @@
           </h2>
           <div id="oldfile" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
             <div class="accordion-body">
-              @foreach ($files_old as $lastfile )
+              @foreach ($files_old as $file )
               <div class="file d-flex ">
                 <div class="details d-flex ">
                   <div class="img">
-                    @if($lastfile->type=='word')
+                    @if($file->type=='word')
                     <i class="fa-regular fa-file-word"></i>
-                    @elseif($curfile->type=='pptx' ||$curfile->type=='ppt')
+                    @elseif($file->type=='pptx' ||$file->type=='ppt')
                     <i class="fa-regular fa-file-powerpoint"></i>
-                    @elseif($lastfile->type =='pdf')
+                    @elseif($file->type =='pdf')
                     <i class="fa-regular fa-file-pdf"></i>
                     @else
                     <i class="fa-regular fa-file"></i>
@@ -148,11 +145,11 @@
                   </div>
                   <div class="info">
                     <h3>
-                      {{$lastfile->name}}
+                      {{$file->name}}
 
                     </h3>
                     <div class="size">
-                      {{$lastfile->size}} . {{$lastfile->type}}
+                      {{$file->size}} . {{$file->type}}
                     </div>
                   </div>
 

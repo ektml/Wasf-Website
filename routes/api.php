@@ -70,7 +70,7 @@ Route::get('allFreelancers/{id?}', [UserController::class, 'allFreelancers']);
 Route::get('getFreelancerById/{id}', [UserController::class, 'getFreelancerById']);
 Route::put('editFreelancer/{id}', [UserController::class, 'editFreelancer']);
 Route::get('allFiles/{id}', [UserController::class, 'allFiles']);
-Route::get('deleteFile/{selled_id}/{id}', [UserController::class, 'deleteFile'])->middleware('auth:api');
+Route::get('deleteFile/{id}', [UserController::class, 'deleteFile'])->middleware('auth:api');
 
 
 

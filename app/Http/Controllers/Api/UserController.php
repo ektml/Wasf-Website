@@ -338,19 +338,14 @@ class UserController extends Controller
         }
     }
     
-    function deleteFile($selled,$id){
+    function deleteFile($id){
         
          try{
-        if(Selled::find($selled) && Selled::find($selled)->file()->id==$id){
-            
+          
             $d=File::destroy($id);
             
              return $this->returnData(200, 'Files deleted Successfully');
             
-        }else{
-             return $this->returnError(400, 'Files not found');
-        }
-        
        
      }catch(\Exception $e){
             echo $e;
