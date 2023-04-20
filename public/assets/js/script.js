@@ -1,7 +1,15 @@
 var preload = document.getElementById("preloading");
-window.addEventListener("load", function () {
-  $("#preloading").fadeOut();
-});
+
+setTimeout(loader(),100);
+
+function loader(){
+  window.addEventListener("load", function () {
+    $("#preloading").fadeOut();
+  });
+}
+
+
+
 
 $(document).ready(function () {
   const productContainers = [...document.querySelectorAll(".scrollable")];
