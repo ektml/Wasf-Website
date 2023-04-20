@@ -3413,3 +3413,8 @@ textarea:focus {
     color: #c0c0c0;
     border: none;
 }
+.clndr-control-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
