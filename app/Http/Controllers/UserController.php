@@ -292,41 +292,34 @@ class UserController extends Controller
         ->whereYear('created_at', $currentYear)->get();
         $files_current=[];
         foreach($fc as $f){
-            $files_current[]=$f->file()->first();
-   
+            foreach($f->file()->get() as $file){
+               
+                $files_current[]=$file;
+              }
         }
       
-        // $files_current= Files::where('user_id', $user_id)->whereMonth('created_at', $currentMonth)
-        // ->whereYear('created_at', $currentYear)
-        // ->get();
         $files_lastmonth=[];
         $fl=Selled::where('user_id',$user_id)->whereMonth('created_at', $lastMonth)
         ->whereYear('created_at', $currentYear)
         ->get();
         foreach($fl as $f){
-            $files_lastmonth[]=$f->file()->first();
-
+            foreach($f->file()->get() as $file){      
+                $files_lastmonth[]=$file;
+              }
         }
-        // $files_lastmonth= Files::where('user_id', $user_id)->whereMonth('created_at', $lastMonth)
-        // ->whereYear('created_at', $currentYear)
-        // ->get();
-
-
+      
         $f0=Selled::where('user_id',$user_id)->whereNotBetween('created_at', [
                 Carbon::createFromDate($currentYear, $lastMonth,1),
                 Carbon::createFromDate($currentYear, $currentMonth,31)
             ])->get();
             $files_old=[];
         foreach($f0 as $f){
-            $files_old[]=$f->file()->first();
-
+           
+            foreach($f->file()->get() as $file){      
+                $files_old[]=$file;
+              }
         }
-        // $files_old=Files::where('user_id',$user_id)->whereNotBetween('created_at', [
-        //     Carbon::createFromDate($currentYear, $lastMonth,1),
-        //     Carbon::createFromDate($currentYear, $currentMonth,31)
-            
-        // ])
-        // ->get();
+      
 
 
 

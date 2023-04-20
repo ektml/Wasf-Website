@@ -26,7 +26,10 @@ class FreelancerController extends Controller
         ->whereYear('created_at', $currentYear)->get();
         $files_current=[];
         foreach($fc as $f){
-            $files_current[]=$f->file()->first();
+            foreach($f->file()->get() as $file){
+               
+                $files_current[]=$file;
+              }
             
    
         }
@@ -37,7 +40,9 @@ class FreelancerController extends Controller
         ->whereYear('created_at', $currentYear)
         ->get();
         foreach($fl as $f){
-            $files_lastmonth[]=$f->file()->first();
+            foreach($f->file()->get() as $file){      
+                $files_lastmonth[]=$file;
+              }
 
         }
        
@@ -47,29 +52,12 @@ class FreelancerController extends Controller
             ])->get();
             $files_old=[];
         foreach($f0 as $f){
-            $files_old[]=$f->file()->first();
+            foreach($f->file()->get() as $file){      
+                $files_old[]=$file;
+              }
 
         }
-      
-
-
-
-    //     $wallet_history=Payment::all();
-    //     $user_wallet_hestory=[];
-    //     foreach($wallet_history as $wr){
-
-    //  if($wr->user_id == $user_id){
-
-    //   array_push( $user_wallet_hestory,$wr);
-
-    // }
-
-    //  if($wr->freelancer_id == $user_id && ($wr->status=="purchase")){
-      
-    //     array_push($user_wallet_hestory,$wr);
-    // }
-
-    //     }
+    
       
 return view('freelancer.files',compact('files_current','files_lastmonth','files_old'));
 

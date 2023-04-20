@@ -299,7 +299,6 @@ class UserController extends Controller
                 $files_current[]=$file;
               }
               
-   
         }
       
         $files_lastmonth=[];
@@ -307,12 +306,11 @@ class UserController extends Controller
         ->whereYear('created_at', $currentYear)
         ->get();
         foreach($fl as $f){
-             $selled_id=$f->id;
-             $f=$f->file()->first();
-              $f->url = asset('front/upload/files/'.$f->url);
-              $f->selled_id=$selled_id;
-          $files_lastmonth[]=$f;
-
+          foreach($f->file()->get() as $file){
+            $file->url = asset('front/upload/files/'.$file->url);
+            $files_lastmonth[]=$file;
+          }
+          
         }
    
         $f0=Selled::where('user_id',$user_id)->whereNotBetween('created_at', [
@@ -321,14 +319,10 @@ class UserController extends Controller
             ])->get();
             $files_old=[];
         foreach($f0 as $f){
-             $selled_id=$f->id;
-             $f=$f->file()->first();
-              $f->url = asset('front/upload/files/'.$f->url);
-               $f->selled_id=$selled_id;
-            $files_old[]=$f;
-            
-           
-
+            foreach($f->file()->get() as $file){
+                $file->url = asset('front/upload/files/'.$file->url);
+                $files_old[]=$file;
+              }
         }
 
           return $this->returnData(200, 'Files Returned Successfully', compact('files_current','files_lastmonth','files_old'));
