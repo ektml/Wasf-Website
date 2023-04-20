@@ -34,7 +34,7 @@ class RequestController extends Controller
                 $request->freelancer->profile_image = asset('Admin3/assets/images/users/'.$request->freelancer->profile_image);
             
               }
-              if($request->review->first()!=null){
+              if($request->review){
                 $request->review=$request->review;
               }else{
                 $request->review=null;
