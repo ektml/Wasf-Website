@@ -2461,6 +2461,9 @@ button .number {
     width: 5%;
     text-align: center;
     align-self: center;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 #imageprofile {
