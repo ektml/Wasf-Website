@@ -20,7 +20,7 @@ class RequestController extends Controller
         try{
             
             $price=null;
-            $requests = Requests::where('type', 'public')->where('user_id',$id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer'])->get();
+            $requests = Requests::where('type', 'public')->where('user_id',$id)->orderBy('status')->with(['user', 'freelancer', 'category', 'service', 'file', 'offer','review'])->get();
             
             foreach($requests as $request){
             $request['attachment'] = asset('front/upload/files/'.$request->file()->first()->url);
