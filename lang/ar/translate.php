@@ -150,4 +150,6 @@ return [
 'IBAN'=>'IBAN',
 'Transfer'=>'تحويل',
 
+'delete' => 'حذف',
+'download' => 'تحميل',
 ];

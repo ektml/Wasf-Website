@@ -157,6 +157,7 @@ return [
    
     //
 
-   
+    'delete'=>'delete',
+    'download'=>'download',
      
 ];

@@ -405,7 +405,18 @@ return redirect()->route('freelanc.profile');
 
 public function  deleteFile($id){
 
-    
+    if(File::find($id)->exsists()){
+        File::destroy($id);
+
+        toastr()->success('delete successfully');
+        ;
+    }
+    else{
+        toastr()->error('delete fail');
+       
+    }
+
+    return  redirect()->back();
 }
 
 
