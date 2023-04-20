@@ -359,4 +359,21 @@ class UserController extends Controller
     }
     
 
+
+
+    public function getWallet(){
+        try{
+            $user_id=auth('api')->user()->id;
+                $user=  User::findorfail($user_id);
+                $total_wallet=$user->wallet->total;
+                return $this->returnData(200, 'wallet returned  Successfully', $total_wallet);
+                
+           
+         }catch(\Exception $e){
+                echo $e;
+                return $this->returnError(400, 'wallet returned Failed');
+            }
+      
+    }
+
 }

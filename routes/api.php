@@ -61,6 +61,7 @@ Route::post('cartCalcDiscount',[CartController::class, 'cartCalcDiscount'])->mid
 Route::put('switchToFreelancerAccount/{user_id}', [UserController::class, 'switchToFreelancerAccount']);
 Route::get('getCustomerById/{id}', [UserController::class, 'getCustomerById']);
 Route::put('editCustomer/{id}', [UserController::class, 'editCustomer']);
+Route::get('getWallet',[UserController::class,'getWallet'])->middleware('auth:api');
 
 
 
