@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade modal-uk" id="fileTool{{$file}}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+<div class="modal fade modal-uk" id="fileTool{{$file->id}}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
     tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
