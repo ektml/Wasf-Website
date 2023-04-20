@@ -166,6 +166,7 @@
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
               </div>
+              @include('layouts.component.modal.fileTool')
               @endforeach
 
 
@@ -206,10 +207,11 @@
                   </div>
 
                 </div>
-                <div class="tool">
+                <button class="tool">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+                </button>
               </div>
+              @include('layouts.component.modal.fileTool')
               @endforeach
             </div>
           </div>
@@ -248,10 +250,11 @@
                   </div>
 
                 </div>
-                <div class="tool">
+                <button class="tool">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
+                </button>
               </div>
+              @include('layouts.component.modal.fileTool')
               @endforeach
             </div>
           </div>
