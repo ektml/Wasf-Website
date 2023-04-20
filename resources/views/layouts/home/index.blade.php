@@ -25,7 +25,7 @@
     </head>
     <body>
 
-    {{-- <div id="preloading"></div> --}}
+    <div id="preloading"></div>
     <div id="layout-wrapper">
 
     @include("layouts.component.newnav")
