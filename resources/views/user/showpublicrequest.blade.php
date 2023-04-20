@@ -408,9 +408,9 @@
             <a href="#complete{{ $request->id }}" data-bs-toggle="modal"
                 class="request d-flex flex-column px-3 py-3 position-relative mb-5">
                 <div class="d-flex justify-content-between align-items-baseline show-phone">
-                    @if ($request->freelancer_id)
+                    
                     <div class="frelacereq d-flex ">
-                       
+                        @if ($request->freelancer_id)
                         <img src="{{ asset('Admin3/assets/images/users/'.App\Models\User::where('id', $request->freelancer_id)->first()->profile_image) }}"
                             class="img-fluid rounded-top" alt="">
                           @endif
