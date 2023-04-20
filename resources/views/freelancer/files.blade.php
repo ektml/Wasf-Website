@@ -69,7 +69,7 @@
                   </div>
 
                 </div>
-                <button class="tool" bs->
+                <button class="tool" data-bs-target="fileTool{{$file->id}}" data-bs-toggle="modal">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
               </div>
@@ -113,7 +113,7 @@
                   </div>
 
                 </div>
-                <button class="tool">
+                <button class="tool" data-bs-target="fileTool{{$file->id}}" data-bs-toggle="modal">
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
               </div>
