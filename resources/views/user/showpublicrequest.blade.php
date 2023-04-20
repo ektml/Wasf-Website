@@ -104,7 +104,7 @@
 
         <div class="requesties d-flx flex-column pt-4">
             @foreach ($requests as $request)
-            @if(!$request->freelancer_id )
+            @if(!$request->freelancer_id && $request->status=='Pending'  )
             <div class="request offer d-flex flex-column px-3 py-3 position-relative mb-5"
                 style="    margin-bottom: 63px !important;">
                 <a href="#offerPending{{ $request->id }}" data-bs-toggle="modal" role="button">
