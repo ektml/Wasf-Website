@@ -78,7 +78,7 @@ class RequestController extends Controller
     public function privateRequests(Request $request,$id)
     {
         try{
-            $requests = Requests::where('type', 'private')->where('user_id',$id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file','offer'])->get();
+            $requests = Requests::where('type', 'private')->where('user_id',$id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file','offer','review'])->get();
             
             // $requests = Requests::where('type', 'private')->where('user_id',auth('api')->user()->id)->orderBy('status')->with(['user','freelancer', 'category', 'service', 'file'])->get();
             

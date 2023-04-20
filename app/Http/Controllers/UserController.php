@@ -403,6 +403,11 @@ return redirect()->route('freelanc.profile');
 }
 
 
+public function  deleteFile($id){
+
+    
+}
+
 
 
 
