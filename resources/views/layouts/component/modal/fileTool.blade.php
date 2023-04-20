@@ -8,8 +8,13 @@
         <div class="modal-body">
 
         
-            <a href="">
+            <a href="{{route('download',$file->url)}}">
                 <i></i>
+                download
+            </a>
+            <a href="{{route('',$file->id)}}">
+                <i></i>
+                delete
             </a>
         </div>
   

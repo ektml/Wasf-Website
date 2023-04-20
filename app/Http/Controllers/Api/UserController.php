@@ -294,11 +294,11 @@ class UserController extends Controller
         ->whereYear('created_at', $currentYear)->get();
         $files_current=[];
         foreach($fc as $f){
-            $selled_id=$f->id;
-           $f=$f->file()->first();
-              $f->url = asset('front/upload/files/'.$f->url);
-              $f->selled_id=$selled_id;
-            $files_current[]=$f;
+              foreach($f->file() as $file){
+                $file->url = asset('front/upload/files/'.$file->url);
+                $files_current[]=$file;
+              }
+              
    
         }
       

@@ -147,6 +147,7 @@ Route::prefix("freelancer")->name("freelanc.")->middleware('auth','is_freelancer
 
     //profile
     Route::get("/files", [FreelancerController::class, 'FreelancerFiles'])->name("files");
+   
 
     Route::get("/wallet",[UserController::class,'freelancerwallet'])->name("wallet");
 
@@ -156,6 +157,7 @@ Route::prefix("freelancer")->name("freelanc.")->middleware('auth','is_freelancer
     })->name("reviews");
 
     Route::post('service/add',[FreelancerServiceController::class,'addservice'])->name('addservice');
+
 
 });
 
@@ -225,6 +227,8 @@ Route::prefix("user")->name("user.")->middleware('auth')->group(function(){
     Route::get('/acceptoffertopay/{id}/{re}', [RequestController::class, 'acceptoffertopay'])->name("acceptoffertopay");
 
     Route::post('/search/newoffer/{id}', [RequestController::class, 'searchNewOffer'])->name("searchnewoffer");
+
+    Route::get('/deleteFile/{id}',[]);
 
     // payment
 
