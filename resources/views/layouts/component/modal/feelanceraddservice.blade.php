@@ -76,7 +76,7 @@
    
     
     <div class="btn-contianer d-flex flex-column justify-content-center align-items-center">
-   <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">save</button>
+   <button type="submit" class="btn  btn-modal  my-3 btn-model-primary "> {{__('translate.save')}} </button>
   
     </div>
 

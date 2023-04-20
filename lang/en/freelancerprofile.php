@@ -35,6 +35,7 @@ return [
     // add product
     "Category"=>"Category",
     'Service'=>'Service',
+    'Services'=>'Services',
     'product name'=>'product name',
     'price'=>'price',
     'Choose service'=>'Choose service',

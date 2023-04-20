@@ -27,6 +27,7 @@ return [
 // add product
 "Category"=>"الفئة",
 'Service'=>'الخدمة',
+'Services' => 'الخدمات',
 'Choose service' => 'اختر الخدمة',
 'product name'=>'اسم المنتج',
 'price'=>'السعر',

@@ -1508,6 +1508,7 @@ footer .row + p {
 .service .service-head {
     font-size: 20px !important;
     font-weight: 900 !important;
+    min-width: fit-content;
     /* margin: 0;
     margin-left: 20px; */
 }

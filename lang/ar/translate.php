@@ -118,6 +118,7 @@ return [
   'fail delete from cart'=> "فشل حذف المنتج",
   ' already add cart'=> 'المنتج موجود مسبقا في السلة',
   'search'=> 'بحث',
+  'save' => 'حفظ',
 
 
   'no products'=>'لا يوجد منتجات',
