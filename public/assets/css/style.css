@@ -421,11 +421,15 @@ input[type="checkbox"] {
     height: 67px;
 }
 
+.navbar-nav  .nav-item{
+    padding-left:0.5rem;
+    }
 @media (min-width: 992px) {
     .navbar .collapse {
         flex-basis: 0 !important;
         flex-grow: 0 !important;
-    }
+        min-width:fit-content;
+      }
 }
 
 @media (max-width: 992px) {
