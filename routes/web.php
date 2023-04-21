@@ -228,7 +228,7 @@ Route::prefix("user")->name("user.")->middleware('auth')->group(function(){
 
     Route::post('/search/newoffer/{id}', [RequestController::class, 'searchNewOffer'])->name("searchnewoffer");
 
-    Route::get('/deleteFile/{id}',[UserController::class,''])->name('deletefile');
+    Route::get('/deleteFile/{id}',[UserController::class,'deleteFile'])->name('deletefile');
 
     // payment
 
