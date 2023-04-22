@@ -224,7 +224,7 @@ body {
         var(--bs-border-color) 100%
     );
     cursor: pointer;
-    z-index: 8;
+    z-index: 0;
 }
 
 .pre-btn {
