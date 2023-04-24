@@ -210,6 +210,7 @@ if($request->type=='public'){
                     unset($searchOptions['In Process']);
                     unset($searchOptions['Finished']);
                 }
+                $filter=$searchOptions;
                 $requests=$requests->paginate(20);
 
         }else{
@@ -256,7 +257,7 @@ if($request->type=='public'){
                     unset($searchOptions['Finished']);
                 }
                 $requests=$requests->paginate(20);
-
+                $filter=$searchOptions;
         }else{
             $requests = Requests::where('type', 'private')->where("user_id", auth()->user()->id)->orderBy('status')->get();
             $requests=$requests->paginate(20);
