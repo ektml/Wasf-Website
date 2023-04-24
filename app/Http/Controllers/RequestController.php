@@ -205,6 +205,7 @@ if($request->type=='public'){
                     array_push( $searchOptions,'datedesending');
                 }
                
+                dd($searchOptions);
                 if(in_array('active',$filter)){
                     array_push( $searchOptions,'active');
                     unset($searchOptions['In Process']);
