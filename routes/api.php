@@ -122,6 +122,7 @@ Route::get('allReservations',  [ReservationController::class, 'allReservations']
 Route::post('createBookingPhotoShot/{freelancer_id}', [ReservationController::class, 'createBookingPhotoShot']); // Create Reservation
 Route::get('getReservationById/{id}', [ReservationController::class, 'getReservationById'])->middleware('auth:api');
 Route::post('changeReservationStatus/{id}', [ReservationController::class, 'changeReservationStatus']);
+Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReservation']);
 
 
 // order

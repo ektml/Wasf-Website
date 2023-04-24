@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers\Api;
-use App\Models\User;
 use  Carbon\Carbon;
+use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
+use App\Notifications\reservation\CancelReservationByCustomer;
 
 class ReservationController extends Controller
 {
@@ -113,6 +115,40 @@ class ReservationController extends Controller
         }catch(\Exception $e){
             echo $e;
             return $this->returnError(400, 'Reservation Returned Failed');
+        }
+    }
+
+    public function cancelReservation($id){
+     
+        try{
+
+            $request=Reservation::find($id);
+
+            if($request->payment()->where('freelancer_id',$request->freelancer_id)->first()){
+           
+           $total_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->total;
+           $edit_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->update([
+               'status'=>"refund"
+           ]);
+   
+          $current_wallet= User::findOrFail(auth('api')->user()->id)->wallet->total;
+           $current_wallet+= $total_pay;
+           $edit_offer= Reservation::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id)->update([
+               "status"=>'reject',
+           ]);
+       }
+           $edit_request= $request->update([
+               'status'=>"Cancel by customer"
+           ]);
+   
+           $to = $request->freelancer_id;
+           $user_create=auth('api')->user()->id;
+            Notification::send($to, new CancelReservationByCustomer($user_create,$id,'reservation',  $request->random_id));
+            return $this->returnData(200, 'Reservation cancel Successfully');
+         
+        }catch(\Exception $e){
+         echo $e;
+         return $this->returnError(400, 'Reservation cancel Failed');
         }
     }
 }
