@@ -71,9 +71,9 @@
                     </div>
 
                     <div>
-                        <input type="checkbox" name="search[]" value="Pendding" id="pendding"
-                            @if(in_array('Pendding',$filter)) checked @endif>
-                        <label for="pendding" class="bold">pendding</label>
+                        <input type="checkbox" name="search[]" value="Pending" id="pendding"
+                            @if(in_array('Pending',$filter)) checked @endif>
+                        <label for="pendding" class="bold">pending</label>
                     </div>
 
                     <div>

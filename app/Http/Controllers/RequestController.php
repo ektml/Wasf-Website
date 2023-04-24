@@ -191,7 +191,7 @@ if($request->type=='public'){
                 array_push($filter,'In Process');
                 array_push($filter,'Finished');
             }
-            dd($filter);
+          
             $searchOptions = array_intersect($validSearchOptions , $filter);
             $requests = Requests::where('type', 'public')
                                 ->where("user_id", auth()->user()->id)
