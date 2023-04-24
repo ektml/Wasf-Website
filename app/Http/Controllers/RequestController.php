@@ -187,10 +187,11 @@ if($request->type=='public'){
             // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
             $filter=request()->search;
             $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
-            if(in_array('active',request()->search)){
+            if(in_array('active',$filter)){
                 array_push($filter,'In Process');
                 array_push($filter,'Finished');
             }
+            dd($filter);
             $searchOptions = array_intersect($validSearchOptions , $filter);
             $requests = Requests::where('type', 'public')
                                 ->where("user_id", auth()->user()->id)
