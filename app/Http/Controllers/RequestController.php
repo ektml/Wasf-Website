@@ -181,18 +181,18 @@ if($request->type=='public'){
     public function publicRequests()
     {
 
-        $filter=[];
+        $filters=[];
        
         if(isset(request()->search)){
             // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
             $filter=request()->search;
             $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
-            if(in_array('active',$filter)){
-                array_push($filter,'In Process');
-                array_push($filter,'Finished');
+            if(in_array('active',$filters)){
+                array_push($filters,'In Process');
+                array_push($filters,'Finished');
             }
           
-            $searchOptions = array_intersect($validSearchOptions , $filter);
+            $searchOptions = array_intersect($validSearchOptions , $filters);
             $requests = Requests::where('type', 'public')
                                 ->where("user_id", auth()->user()->id)
                                 ->when(count($searchOptions), function ($query) use ($searchOptions) {
@@ -207,13 +207,12 @@ if($request->type=='public'){
                 }
                
                 
-                if(in_array('active',$filter)){
+                if(in_array('active',$filters)){
                     $aa=['In Process','Finished'];
                     array_push( $searchOptions,'active');
                     $searchOptions = array_diff($aa,$searchOptions);
                 }
-                $filter=array();
-                $filter=$filter+$searchOptions;
+              
                 $requests=$requests->paginate(20);
 
         }else{
@@ -230,19 +229,19 @@ if($request->type=='public'){
 
     public function privateRequests()
     {
-        $filters=[];
+        $searchs=[];
         $filter=[];
        
         if(isset(request()->search)){
             // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
             $filter=request()->search;
             $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
-            if(in_array('active',$filters)){
-                array_push($filters,'In Process');
-                array_push($filters,'Finished');
+            if(in_array('active',$searchs)){
+                array_push($searchs,'In Process');
+                array_push($searchs,'Finished');
             }
           
-            $searchOptions = array_intersect($validSearchOptions , $filters);
+            $searchOptions = array_intersect($validSearchOptions , $searchs);
             $requests = Requests::where('type', 'private')
                                 ->where("user_id", auth()->user()->id)
                                 ->when(count($searchOptions), function ($query) use ($searchOptions) {
@@ -255,7 +254,7 @@ if($request->type=='public'){
                     array_push( $searchOptions,'datedesending');
                 }
                
-                if(in_array('active',$filters)){
+                if(in_array('active',$searchs)){
                     $aa=['In Process','Finished'];
                     array_push( $filter,'active');
                     $filter = array_diff($aa,$filter);
