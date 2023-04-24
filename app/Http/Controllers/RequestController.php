@@ -226,9 +226,43 @@ if($request->type=='public'){
 
     public function privateRequests()
     {
-        $requests = Requests::where('type', 'private')->where("user_id", auth()->user()->id)->orderBy('status')->get();
+        $filter=[];
+       
+        if(isset(request()->search)){
+            // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
+            $filter=request()->search;
+            $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
+            if(in_array('active',$filter)){
+                array_push($filter,'In Process');
+                array_push($filter,'Finished');
+            }
+          
+            $searchOptions = array_intersect($validSearchOptions , $filter);
+            $requests = Requests::where('type', 'private')
+                                ->where("user_id", auth()->user()->id)
+                                ->when(count($searchOptions), function ($query) use ($searchOptions) {
+                                    return $query->whereIn('status', $searchOptions);
+                                })
+                                ->get();
+               
+                if(in_array('datedesending',request()->search)){
+                    $requests =$requests->sortByDesc('created_at');
+                    array_push( $searchOptions,'datedesending');
+                }
+               
+                if(in_array('active',$filter)){
+                    array_push( $searchOptions,'active');
+                    unset($searchOptions['In Process']);
+                    unset($searchOptions['Finished']);
+                }
+                $requests=$requests->paginate(20);
 
-        return view('user.showprivaterequest', compact('requests'));
+        }else{
+            $requests = Requests::where('type', 'private')->where("user_id", auth()->user()->id)->orderBy('status')->get();
+            $requests=$requests->paginate(20);
+        }
+
+        return view('user.showprivaterequest', compact('requests','filter'));
     }
 
 

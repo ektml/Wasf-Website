@@ -42,39 +42,50 @@
                     <i class="fa-solid fa-filter px-2 fs-3"></i>
                     <span>{{__('translate.filter by')}}:</span>
                 </button>
-                <span class=" px-2">All</span>
+                @foreach ( $filter as $f )
+
+                <span class=" px-2">{{ $f }} </span>
+                @if(!$loop->last)
+                ,
+                @endif
+                @endforeach
             </div>
 
             <div class="filter-items">
-                <form action="">
+                <form action="{{route('user.showprivaterequest')}}">
                     <div>
-                        <input type="checkbox" name="productsearch" value="all" id="all">
+                        <input type="checkbox" name="search[]" value="all" id="all" @if (in_array('newest',$filter))
+                            checked @endif>
                         <label for="all" class="bold">{{__('translate.all')}}</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="datadesending" id="datadesending">
-                        <label for="datadesending" class="bold">data desending</label>
+                        <input type="checkbox" name="search[]" value="datedesending" id="datedesending"
+                            @if(in_array('datedesending',$filter)) checked @endif>
+                        <label for="datedesending" class="bold">date desending</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="pendding" id="pendding">
-                        <label for="pendding" class="bold">pendding</label>
+                        <input type="checkbox" name="search[]" value="Pending" id="pendding"
+                            @if(in_array('Pending',$filter)) checked @endif>
+                        <label for="pendding" class="bold">pending</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="active" id="active">
+                        <input type="checkbox" name="search[]" value="active" id="active"
+                            @if(in_array('active',$filter)) checked @endif>
                         <label for="active" class="bold">active</label>
                     </div>
 
                     <div>
-                        <input type="checkbox" name="productsearch" value="completed" id="completed">
-                        <label for="completed" class="bold">completed</label>
+                        <input type="checkbox" name="search[]" value="Completed" id="completed"
+                            @if(in_array('Completed',$filter)) checked @endif>
+                        <label for="Completed" class="bold">completed</label>
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">
-                        <button type="submit"
-                            class=" border-0 btn-modal  my-3 btn-model-primary ">{{__('translate.apply')}}</button>
+                        <button type="submit" class="border-0 btn-modal  my-3 btn-model-primary">
+                            {{__('translate.apply')}}</button>
                     </div>
                 </form>
             </div>
