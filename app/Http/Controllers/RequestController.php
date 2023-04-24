@@ -185,13 +185,13 @@ if($request->type=='public'){
        
         if(isset(request()->search)){
             // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
-            
+            $filter=request()->search;
             $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
             if(in_array('active',request()->search)){
-                array_push(request()->search,'In Process');
-                array_push(request()->search,'Finished');
+                array_push($filter,'In Process');
+                array_push($filter,'Finished');
             }
-            $searchOptions = array_intersect($validSearchOptions , request()->search);
+            $searchOptions = array_intersect($validSearchOptions , $filter);
             $requests = Requests::where('type', 'public')
                                 ->where("user_id", auth()->user()->id)
                                 ->when(count($searchOptions), function ($query) use ($searchOptions) {
@@ -204,7 +204,7 @@ if($request->type=='public'){
                     array_push( $searchOptions,'datedesending');
                 }
                
-                if(in_array('active',request()->search)){
+                if(in_array('active',$filter)){
                     array_push( $searchOptions,'active');
                     unset($searchOptions['In Process']);
                     unset($searchOptions['Finished']);
