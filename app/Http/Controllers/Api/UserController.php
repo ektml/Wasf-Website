@@ -366,5 +366,6 @@ class UserController extends Controller
                 return $this->returnError(400, 'wallet returned Failed');
             }
     }
+    
 
 }

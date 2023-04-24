@@ -184,39 +184,34 @@ if($request->type=='public'){
         $filter=[];
        
         if(isset(request()->search)){
-            $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
+            // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
             
-                 if( in_array('pending',request()->search) && in_array('completed',request()->search)){
-                    $requests =$requests->where(function($q){
-return $q->where('status','Pending')->orWhere('status','Completed');
-                    });
-                    array_push($filter,'pending');
-                    array_push($filter,'completed');
-                 }elseif(in_array('pending',request()->search)){
-                    $requests =$requests->where('status','Pending');
-                  array_push($filter,'pending');
-                 }elseif(in_array('completed',request()->search)){
-                    $requests =$requests->where('status','Pending');
-                    array_push($filter,'completed');
-                 }
+            $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
+            if(in_array('active',request()->search)){
+                array_push(request()->search,'In Process');
+                array_push(request()->search,'Finished');
+            }
+            $searchOptions = array_intersect($validSearchOptions , request()->search);
+            $requests = Requests::where('type', 'public')
+                                ->where("user_id", auth()->user()->id)
+                                ->when(count($searchOptions), function ($query) use ($searchOptions) {
+                                    return $query->whereIn('status', $searchOptions);
+                                })
+                                ->get();
+               
                 if(in_array('datedesending',request()->search)){
-                    $requests =$requests->sortByDesc('due_date');
-                    array_push($filter,'datedesending');
+                    $requests =$requests->sortByDesc('created_at');
+                    array_push( $searchOptions,'datedesending');
                 }
-                if(in_array('pendding',request()->search)){
-                    $requests =$requests->where('status','Pending');
-                    array_push($filter,'pendding');
-                }
-                if(in_array('datadesending',request()->search)){
-                    $requests =$requests->sortByDesc('due_date');
-                }
-                if(in_array('datadesending',request()->search)){
-                    $requests =$requests->sortByDesc('due_date');
+               
+                if(in_array('active',request()->search)){
+                    array_push( $searchOptions,'active');
+                    unset($searchOptions['In Process']);
+                    unset($searchOptions['Finished']);
                 }
                 $requests=$requests->paginate(20);
 
         }else{
-
             $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();
             $requests=$requests->paginate(20);
         }

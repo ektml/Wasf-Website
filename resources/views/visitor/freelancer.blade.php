@@ -190,7 +190,7 @@ Freelancer Profile
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <h5 class="card-title"><a href="{{route('product',$product->id)}}">{{ $product->name }}</a></h5>
                         <div class="freelancer-info d-flex align-items-center ">
                             <div class="image">
                                 <img src="{{ asset("Admin3/assets/images/users/".$freelancer->profile_image) }}" alt="">
@@ -264,7 +264,7 @@ Freelancer Profile
                 </div>
 
                 <div class="card-body d-flex justify-content-between">
-                    <h5 class="card-title">{{ $photo->name }}</h5>
+                    <h5 class="card-title"><a href="{{route('photo',$photo->id)}}">{{ $photo->name }}</a></h5>
 
                     <div class="prod-likes ">
                         <i class="fa-solid fa-heart align-self-center"></i>
