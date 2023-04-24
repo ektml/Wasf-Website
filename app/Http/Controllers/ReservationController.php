@@ -320,7 +320,6 @@ return redirect()->back()->with(["state"=>'Waiting','id'=>$id]);
 
     function finish($id){
 
-
         Reservation::findorfail($id)->update([
           "status"=>"Finished",
           

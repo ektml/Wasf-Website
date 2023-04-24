@@ -59,7 +59,16 @@ class FreelancerReservationController extends Controller
     
     }
     
-    public function finish(){
-
+    public function finish($id){
+          try{
+            Reservation::findorfail($id)->update([
+                "status"=>"Finished",
+              ]);
+            return $this->returnData(200, 'reservation finish  Successfully');
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, "reservation finish failed");
+        }
+        
     }
 }
