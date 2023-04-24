@@ -210,6 +210,8 @@ if($request->type=='public'){
                     unset($searchOptions['In Process']);
                     unset($searchOptions['Finished']);
                 }
+
+                dd($searchOptions);
                 $filter=array();
                 $filter=$filter+$searchOptions;
                 $requests=$requests->paginate(20);
