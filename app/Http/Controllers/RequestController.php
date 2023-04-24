@@ -261,6 +261,7 @@ if($request->type=='public'){
                 }
                 $filter=array();
                 $filter=$filter+$searchOptions;
+                dd($filter);
                 $requests=$requests->paginate(20);
              
         }else{
