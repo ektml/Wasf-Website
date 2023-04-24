@@ -201,18 +201,17 @@ if($request->type=='public'){
                                 ->get();
                
                 if(in_array('datedesending',request()->search)){
+                
                     $requests =$requests->sortByDesc('created_at');
                     array_push( $searchOptions,'datedesending');
                 }
                
-                dd($searchOptions);
+                
                 if(in_array('active',$filter)){
+                    $aa=['In Process','Finished'];
                     array_push( $searchOptions,'active');
-                    unset($searchOptions['In Process']);
-                    unset($searchOptions['Finished']);
+                    $searchOptions = array_diff($aa,$searchOptions);
                 }
-
-                dd($searchOptions);
                 $filter=array();
                 $filter=$filter+$searchOptions;
                 $requests=$requests->paginate(20);
@@ -256,12 +255,14 @@ if($request->type=='public'){
                 }
                
                 if(in_array('active',$filter)){
+                    $aa=['In Process','Finished'];
                     array_push( $searchOptions,'active');
-                    unset($searchOptions['In Process']);
-                    unset($searchOptions['Finished']);
+                    $searchOptions = array_diff($aa,$searchOptions);
                 }
+                $filter=array();
+                $filter=$filter+$searchOptions;
                 $requests=$requests->paginate(20);
-                $filter=$searchOptions;
+             
         }else{
             $requests = Requests::where('type', 'private')->where("user_id", auth()->user()->id)->orderBy('status')->get();
             $requests=$requests->paginate(20);
