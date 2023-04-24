@@ -71,8 +71,8 @@
                     </div>
 
                     <div>
-                        <input type="checkbox" name="search[]" value="pendding" id="pendding"
-                            @if(in_array('pendding',$filter)) checked @endif>
+                        <input type="checkbox" name="search[]" value="Pendding" id="pendding"
+                            @if(in_array('Pendding',$filter)) checked @endif>
                         <label for="pendding" class="bold">pendding</label>
                     </div>
 
@@ -83,9 +83,9 @@
                     </div>
 
                     <div>
-                        <input type="checkbox" name="search[]" value="completed" id="completed"
-                            @if(in_array('completed',$filter)) checked @endif>
-                        <label for="completed" class="bold">completed</label>
+                        <input type="checkbox" name="search[]" value="Completed" id="completed"
+                            @if(in_array('Completed',$filter)) checked @endif>
+                        <label for="Completed" class="bold">completed</label>
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">
