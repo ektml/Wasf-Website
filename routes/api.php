@@ -128,7 +128,8 @@ Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReser
 
 
 //free;ancer reservation 
-Route::get('sendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
+Route::post('sendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
+Route::post('editOffer/{id}', [FreelancerReservationController::class, 'editOffer'])->middleware('auth:api');
 
 
 // order

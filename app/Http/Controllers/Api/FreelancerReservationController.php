@@ -36,8 +36,30 @@ class FreelancerReservationController extends Controller
       
     }
 
-
+    public function editOffer($id){
+        try{
+        $reservation=Reservation::findorfail($id);
+        if($reservation->status=='Rejected'&& $reservation->offer->first()->status=='reject' ){
+            $reservation->update([
+                'status'=>'Pending',
+            ]);
+    
+            $reservation->offer()->first()->update([
+             'status'=>'pending',
+             'price'=>request()->offer,
+             
+            ]);
+    
+        }
+        return $this->returnData(200, 'offer send  Successfully');
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400, "offer not send");
+    }
+    
+    }
+    
     public function finish(){
-        
+
     }
 }
