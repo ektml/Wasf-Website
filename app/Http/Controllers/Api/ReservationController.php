@@ -138,10 +138,10 @@ class ReservationController extends Controller
            ]);
        }
            $edit_request= $request->update([
-               'status'=>"Cancel by customer"
+               'status'=>"Cancel by customer",
            ]);
    
-           $to = $request->freelancer_id;
+           $to = User::find($request->freelancer_id);
            $user_create=auth('api')->user()->id;
             Notification::send($to, new CancelReservationByCustomer($user_create,$id,'reservation',  $request->random_id));
             return $this->returnData(200, 'Reservation cancel Successfully');

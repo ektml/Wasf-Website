@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\StripePaymentController;
+use App\Http\Controllers\Api\FreelancerReservationController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -122,7 +123,12 @@ Route::get('allReservations',  [ReservationController::class, 'allReservations']
 Route::post('createBookingPhotoShot/{freelancer_id}', [ReservationController::class, 'createBookingPhotoShot']); // Create Reservation
 Route::get('getReservationById/{id}', [ReservationController::class, 'getReservationById'])->middleware('auth:api');
 Route::post('changeReservationStatus/{id}', [ReservationController::class, 'changeReservationStatus']);
-Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReservation']);
+Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReservation'])->middleware('auth:api');
+
+
+
+//free;ancer reservation 
+Route::get('sendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
 
 
 // order

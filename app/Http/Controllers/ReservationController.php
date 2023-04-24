@@ -96,7 +96,7 @@ class ReservationController extends Controller
             'status'=>"Cancel by customer"
         ]);
 
-        $to = $request->freelancer_id;
+        $to = User::find($request->freelancer_id);
         $user_create=auth()->user()->id;
          Notification::send($to, new CancelReservationByCustomer($user_create,$id,'reservation',  $request->random_id));
         return redirect()->back()->with(['state'=>"canceledInfirst","id"=>$id]);
