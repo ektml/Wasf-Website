@@ -38,7 +38,35 @@ class FreelancerReservationController extends Controller
 
         }catch(\Exception $e){
             echo $e;
-            return $this->returnError(400, "offer not send");
+            return $this->returnError(400, "Reservations Returned fail");
+        }
+    }
+
+
+    public function getFreelancerMyReservation(){
+
+        try{
+            $re=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->with(
+            'offer','user'
+            )->get();
+
+            $reservation=[];
+            foreach($re as $reserv){
+
+                if($reserv->status =='Pending' && in_array($reserv->offer->first()->status ,['reject'])){
+                      continue;
+                }else{
+                    $reservation[]= $reserv;
+                }
+
+
+            }
+
+            return $this->returnData(200, 'Reservations Returned Successfully',$reservation);
+
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, "Reservations Returned fail");
         }
     }
     function sendOffer(Request $request ,$id){
