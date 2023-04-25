@@ -130,7 +130,7 @@ Route::post('reservationReview/{id}', [ReservationController::class, 'reservatio
 Route::get('reservationEnoughtWallet/{id}', [ReservationController::class, 'reservationEnoughtWallet'])->middleware('auth:api');
 Route::get('ReservationRejectOffer/{id}', [ReservationController::class,'ReservationRejectOffer'])->middleware('auth:api');
 Route::get('acceptOfferReservation/{id}/{userid}', [ReservationController::class,'acceptReservation']);
-Route::get('checkPayReservation/{id}/{total}', [ReservationController::class,'checkPayReservation']);
+Route::get('checkPayReservation/{id}/{total}', [ReservationController::class,'checkPayReservation'])->middleware('auth:api');
 
 //freelancer reservation 
 Route::post('ReservationSendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
