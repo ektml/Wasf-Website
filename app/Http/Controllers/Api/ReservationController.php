@@ -179,9 +179,9 @@ class ReservationController extends Controller
             if (request('id') && request('status')=='paid') {
                 $paymentService=new \Moyasar\Providers\PaymentService();
                 $payment=$paymentService->fetch($request->id);
-                if(trim($payment->amountFormat,config('moyasar.currency'))==$offer_total){
+               
                     $request->paytype='visa';
-                }
+                
              }
         if($request->paytype=='wallet'){
             $total_wallet_after_pay= User::findOrFail($user_id)->wallet()->total - $total;
