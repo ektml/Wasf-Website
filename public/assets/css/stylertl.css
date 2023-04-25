@@ -1399,7 +1399,8 @@ footer .row + p {
     height: 43px;
     border-radius: 43px;
     bottom: 35px;
-    left: 53px;
+    left: 50%;
+    transform: translateX(-50%);
     color: #fff;
     display: none;
 }
