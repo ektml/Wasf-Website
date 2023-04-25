@@ -23,7 +23,7 @@ class RejectOffer extends Notification
      public function __construct($user_create,$reservation_id,$type ,$random_id)
     {
         $this->user_create=$user_create;
-        $this->reservation_id=$request_id;
+        $this->reservation_id=$reservation_id;
         $this->type=$type;
         $this->random_id=$random_id;
         $this->message_en =  "Your offer in reservation " . $this->random_id . " has been rejected by " . User::find($user_create)->name;
