@@ -9,7 +9,7 @@
             <div class="modal-body">
             <form action="{{route('user.reservation.review', $request->id)}}" method="POST">
                 @csrf
-                <h1 class="modal-title fs-5" >{{__('translate.review')}}  {{App\Models\User::where('id', $request->freelancer_id)->first()->name}}</h1>
+                <h1 class="modal-title fs-5" >{{__('request.review')}}  {{App\Models\User::where('id', $request->freelancer_id)->first()->name}}</h1>
 
                 <div>
                     <div class="br-wrapper br-theme-fontawesome-stars">
@@ -24,12 +24,12 @@
                 </div>
 
                 <div class="my-3" >
-                    <h5 class="font-size-15 mb-3">{{__('translate.review')}} </h5>
+                    <h5 class="font-size-15 mb-3">{{__('request.review')}} </h5>
                     <textarea required="" class="form-control" rows="5" name="pragraph" value="write review"></textarea>
                 </div>
 
                 <div class="btn-contianer d-flex justify-between align-items-center">
-                    <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">{{__('translate.Rate')}}</button>
+                    <button type="submit" class="btn  btn-modal  my-3 btn-model-primary ">{{__('request.Rate')}}</button>
                 </div>
             </form>
           

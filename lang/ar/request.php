@@ -40,6 +40,7 @@ return [
     "cancel this service"=>"إلغاء هذه الخدمة",
     "cancel this reservation"=>"إلغاء هذا الحجز",
     "your review"=>"تقييمك",
+    "review" =>"تقييم",
     "Rate"=>"التقييم",
     "complete"=>"اكتمال",
     "write your offer"=>"اكتب عرضك",

@@ -70,6 +70,8 @@ return [
     "co."=>'co.',
     'google play'=>'google play',
     'apple store'=>'apple store',
+    "review"=>"review",
+    "Rate"=>"Rate",
 
 
     // sort 

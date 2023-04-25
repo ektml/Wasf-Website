@@ -42,6 +42,9 @@ return [
      "cancel this service"=>"cancel this service",
      "cancel this reservation"=>"cancel this reservation",
      "your review"=>"your review",
+     "review"=>"review",
+
+
      "Rate"=>"Rate",
      "complete"=>"complete",
      "write your offer"=>"write your offer",

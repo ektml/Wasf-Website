@@ -45,7 +45,8 @@ return [
   "co."=>'ش.م.م.',
   'google play'=>'متجر جوجل بلاي',
   'apple store'=>'متجر ابل',
-
+  "review" =>"تقييم",
+  "Rate"=>"التقييم",
 
   // sort 
   'sort by'=> 'ترتيب حسب',
