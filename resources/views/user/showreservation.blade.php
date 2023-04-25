@@ -102,6 +102,7 @@
                 {{-- @elseif($request->status=="Pending" && $request->date_time < now())
  <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button" class="request d-flex flex-column px-3
                 py-3 position-r elative mb-5" > --}}
+                {{$request}}
                 @elseif($request->status=="Pending")
                 <a href="#reservpending{{ $request->id }}" data-bs-toggle="modal" role="button"
                     class="request d-flex flex-column px-3 py-3 position-relative mb-5">
@@ -305,7 +306,7 @@
 
                                                 @include("layouts.component.modal.userRequests.chat")
 
-          
+
 
 
                                                 @endforeach
