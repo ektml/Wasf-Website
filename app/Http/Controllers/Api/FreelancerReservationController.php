@@ -81,7 +81,7 @@ class FreelancerReservationController extends Controller
             return $this->returnError(400, "Reservations Returned fail");
         }
     }
-    function sendOffer(Request $request ,$id){
+    function sendOffer(Request $request,$id){
         
         try{
             $user_id=auth('api')->user()->id;

@@ -192,7 +192,7 @@ class ReservationController extends Controller
            }else{
         
            }
-           
+
            if($payed){
         
              $reservation->offer()->first()->update([
@@ -227,4 +227,33 @@ class ReservationController extends Controller
         }
         
     }
+
+    public function ReservationRejectOffer($id){
+      try{
+        $reservation=Reservation::findorfail($id);
+    
+        if($reservation->status=='Pending'&&  $reservation->offer->first()->status=='pending' ){
+            $reservation->update([
+                'status'=>'Rejected',
+            ]);
+    
+            $reservation->offer()->first()->update([
+             'status'=>'reject',
+             
+            ]);
+    
+            $to = $reservation->freelancer_id;
+            $user_create=auth()->user()->id;
+             Notification::send($to, new RejectOffer($user_create,$id,'reservation',  $reservation->random_id));
+    
+        }
+    
+        return $this->returnError(400, 'Reservation Accept Failed');
+        
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400, 'Reservation Accept Failed');
+    }
+}
+    
 }
