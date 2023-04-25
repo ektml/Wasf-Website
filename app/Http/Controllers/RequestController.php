@@ -186,7 +186,7 @@ if($request->type=='public'){
        
         if(isset(request()->search)){
             // $requests = Requests::where('type', 'public')->where("user_id", auth()->user()->id)->orderBy('status')->get();  
-            $$searchs=request()->search;
+            $searchs=request()->search;
             $validSearchOptions = ['Pending', 'Completed','In Process','Finished'];
             if(in_array('active',$searchs)){
                 array_push($searchs,'In Process');
