@@ -66,7 +66,7 @@
                 @if($request->offer->first()->created_at->add(\Carbon\CarbonInterval::hours(3))>now())
 
                 <div class="btn-contianer d-flex flex-column justify-content-center align-items-center my-3">
-                    <p class="craz-color fw-light">{{__('translate.You have 3 hours to cancel the reservation')}}</p>
+                    <p class="craz-color fw-light">{{__('request.You have 3 hours to cancel the reservation')}}</p>
                     <button class="btn-cormoz btn-modal border-0" type="button" data-bs-toggle="modal"
                         data-bs-target="#suredelete">{{__('translate.cancel')}}</button>
                 </div>
