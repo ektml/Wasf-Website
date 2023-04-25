@@ -217,7 +217,7 @@
 
                                                             @if($request->offer->first() !=null)
                                                             <div class="d-flex flex-column px-2">
-                                                                <p class="m-0">{{__('request.Reserve date')}}</p>
+                                                                <p class="m-0">{{__('request.price')}}</p>
                                                                 <span>{{$request->offer->first()->price }}</span>
                                                                 <div>
                                                                 </div>
@@ -279,7 +279,7 @@
                                                     @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
 
 
-                                                    @elseif($request->status=='Cancel by customer' ||
+                                             @elseif($request->status=='Cancel by customer' ||
                                                     $request->status=='reject' )
                                                     @include("layouts.component.modal.userresrvationrequest.canceled")
 
