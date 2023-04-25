@@ -124,10 +124,14 @@ Route::post('createBookingPhotoShot/{freelancer_id}', [ReservationController::cl
 Route::get('getReservationById/{id}', [ReservationController::class, 'getReservationById'])->middleware('auth:api');
 Route::post('changeReservationStatus/{id}', [ReservationController::class, 'changeReservationStatus']);
 Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReservation'])->middleware('auth:api');
+Route::get('reservationCompelete/{id}', [ReservationController::class, 'reservationCompelete'])->middleware('auth:api');
+Route::get('Reservationacceptdelay/{id}', [ReservationController::class, 'Reservationacceptdelay'])->middleware('auth:api');
+Route::post('reservationReview/{id}', [ReservationController::class, 'reservationReview'])->middleware('auth:api');
+Route::get('reservationEnoughtWallet/{id}', [ReservationController::class, 'reservationEnoughtWallet'])->middleware('auth:api');
 
 
 
-//free;ancer reservation 
+//freelancer reservation 
 Route::post('ReservationSendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
 Route::post('ReservationEditOffer/{id}', [FreelancerReservationController::class, 'editOffer'])->middleware('auth:api');
 Route::post('ReservationFinish/{id}', [FreelancerReservationController::class, 'finish'])->middleware('auth:api');

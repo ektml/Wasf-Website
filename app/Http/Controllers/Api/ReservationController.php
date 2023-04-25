@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers\Api;
-use  Carbon\Carbon;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -245,9 +245,9 @@ class ReservationController extends Controller
              
             ]);
     
-            $to = $reservation->freelancer_id;
+            $to = User::find($reservation->freelancer_id);
             $user_create=auth('api')->user()->id;
-             Notification::send($to, new RejectOffer($user_create , $id,'reservation',  $reservation->random_id));
+             Notification::send($to, new RejectOffer($user_create ,$id,'reservation',  $reservation->random_id));
     
         }
         return $this->returnData(200, 'Reservation reject  offer successfully');
@@ -258,4 +258,120 @@ class ReservationController extends Controller
     }
 }
     
+
+
+public function Reservationacceptdelay($id){
+try{
+
+    if(Reservation::findorfail($id)->user_id==auth('api')->user()->id){
+        $reservation=Reservation::findorfail($id);
+        $date=$reservation->delay()->first()->delayto;
+        $delayTime = $reservation->delay()->first()->delayto;
+       $to=new Carbon($reservation->to,0);
+       $to=$to->toTimeString();
+        $to=$date . " ". $to;
+        $to=new Carbon($to);
+       $from=new Carbon($reservation->from,0);
+       $from=$from->toTimeString();
+        $from=$date . " ". $from;
+        $from=new Carbon($from);
+       
+       
+       
+       //  Carbon::create()
+        $reservation->update([
+       
+           'status'=>"Waiting",
+           'date_time'=>$reservation->delay()->first()->delayto,
+           'from'=>$to,
+           'to'=>$from
+       
+        ]);
+
+        return $this->returnData(200, 'Reservation Accept delay Successfully');
+    }
+    else{
+        return $this->returnError(400, 'Reservation Accept delay Failed');
+    }
+   
+}catch(\Exception $e){
+    echo $e;
+    return $this->returnError(400, 'Reservation Accept delay Failed');
+}
+
+}
+   
+   
+  
+
+public function reservationCompelete($id){
+
+    try{
+        if(Reservation::findorfail($id)->user_id==auth('api')->user()->id){
+            $re=Reservation::findorfail($id);
+            $freelnacer_id=$re->first()->freelancer_id;
+            $offer_price=$re->offer->first()->price;
+              
+            $wallet=User::findOrFail($freelnacer_id)->wallet->total;
+        
+            $wallet+=$offer_price;
+            $re->update([
+                "status"=>"Completed",
+                
+              ]);
+        
+        
+              $edit_wallet=User::findOrFail($freelnacer_id)->wallet()->update([
+                "total"=> $wallet
+               ]);
+          
+        
+               $re->payment()->where('freelancer_id', $freelnacer_id)->update([
+                'status'=>'purchase'
+                ]);
+    
+                return $this->returnData(200, 'Reservation completed successfully');
+        }else{
+            return $this->returnError(400, 'Reservation completed Failed');
+        }
+    
+
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400, 'Reservation Accept delay Failed');
+    }
+}
+
+public function reservationReview($id,Request $req){
+try{
+    $res=Reservation::find($id);
+    $freelancer_id=$res->freelancer_id;
+    $s= $res->review()->create([
+          'freelancer_id'=>$freelancer_id,
+          'rate'=> $req->rate,
+          'pragraph'=> $req->pragraph,
+          'user_id'=>auth()->user()->id
+        
+    ]);
+
+
+    return $this->returnData(200, 'Reservation review Successfully');
+
+}catch(\Exception $e){
+echo $e;
+return $this->returnError(400, 'Reservation review Failed');
+}
+}
+
+public function reservationEnoughtWallet($id){
+$reservation=Reservation::findorfail($id);
+$price=$reservation->offer()->first()->price;
+$wallet=auth('api')->user()->wallet->total;
+if($wallet>=$price){
+    return $this->returnData(200, 'Reservation Enought Wallet Successfully');
+}else{
+    return $this->returnError(400, 'Reservation Enought Wallet Failed');
+}
+}
+
 }
