@@ -220,10 +220,10 @@ class ReservationController extends Controller
             
              Notification::send($freelancer, new AcceptOffer($user_id,$id,'reservation', $reservation->random_id));
         
-             return $this->returnData(200, 'Reservation payed Successfully');
+             return $this->returnData(200, 'Reservation accept Successfully');
            }
         
-           return $this->returnError(400, 'Reservation payed Failed');
+           return $this->returnError(400, 'Reservation Accept Failed');
         
         }catch(\Exception $e){
             echo $e;
