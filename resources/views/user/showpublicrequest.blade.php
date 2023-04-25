@@ -79,7 +79,7 @@
                     <div>
                         <input type="checkbox" name="search[]" value="active" id="active"
                             @if(in_array('active',$filter)) checked @endif>
-                        <label for="active" class="bold">active</label>
+                        <label for="active" class="bold">{{__('request.active')}}</label>
                     </div>
 
                     <div>
