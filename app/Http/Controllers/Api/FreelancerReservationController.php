@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
 use App\Notifications\reservation\CancelReservationByFreelancer;
 
