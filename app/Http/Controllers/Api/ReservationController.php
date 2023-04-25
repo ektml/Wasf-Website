@@ -233,7 +233,7 @@ class ReservationController extends Controller
       try{
         $reservation=Reservation::findorfail($id);
     
-        if($reservation->status=='Pending'&&  $reservation->offer->first()->status=='pending' ){
+        if($reservation->status=='Pending'&& $reservation->offer->first()->status=='pending' ){
             $reservation->update([
 
                 'status'=>'Rejected',

@@ -128,8 +128,8 @@ Route::get('reservationCompelete/{id}', [ReservationController::class, 'reservat
 Route::get('Reservationacceptdelay/{id}', [ReservationController::class, 'Reservationacceptdelay'])->middleware('auth:api');
 Route::post('reservationReview/{id}', [ReservationController::class, 'reservationReview'])->middleware('auth:api');
 Route::get('reservationEnoughtWallet/{id}', [ReservationController::class, 'reservationEnoughtWallet'])->middleware('auth:api');
-
-
+Route::get('ReservationRejectOffer/{id}', [ReservationController::class,'ReservationRejectOffer'])->middleware('auth:api');
+Route::get('acceptOfferReservation/{id}/{userid}', [ReservationController::class,'acceptReservation']);
 
 //freelancer reservation 
 Route::post('ReservationSendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
@@ -137,8 +137,8 @@ Route::post('ReservationEditOffer/{id}', [FreelancerReservationController::class
 Route::post('ReservationFinish/{id}', [FreelancerReservationController::class, 'finish'])->middleware('auth:api');
 Route::get('getFreelancerReservationNew', [FreelancerReservationController::class, 'getFreelancerReservationNew'])->middleware('auth:api');
 Route::get('getFreelancerMyReservation', [FreelancerReservationController::class, 'getFreelancerMyReservation'])->middleware('auth:api');
-Route::get('acceptOfferReservation/{id}/{userid}', [FreelancerReservationController::class,'acceptReservation']);
-Route::get('ReservationRejectOffer/{id}', [FreelancerReservationController::class,'ReservationRejectOffer'])->middleware('auth:api');
+
+
 
 
 // order
