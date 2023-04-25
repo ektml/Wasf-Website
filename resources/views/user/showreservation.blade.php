@@ -99,130 +99,134 @@
             <a href="#userReservationPendingAceptOrReject{{$request->id}}" data-bs-toggle="modal" role="button"
                 class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                {{-- @elseif($request->status=="Pending" && $request->date_time < now())
- <a  href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button" class="request d-flex flex-column px-3
-                py-3 position-r elative mb-5" > --}}
-                {{$request}}
-                @elseif($request->status=="Pending")
-                <a href="#reservpending{{ $request->id }}" data-bs-toggle="modal" role="button"
-                    class="request d-flex flex-column px-3 py-3 position-relative mb-5">
+                @elseif($request->status=="Pending" && $request->date_time < now()) <a
+                    href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button" class="request d-flex flex-column px-3
+                py-3 position-r elative mb-5">
+
+                    @elseif($request->status=="Pending")
+                    <a href="#reservpending{{ $request->id }}" data-bs-toggle="modal" role="button"
+                        class="request d-flex flex-column px-3 py-3 position-relative mb-5">
 
 
-                    @elseif($request->status=='Waiting')
-                    <a href="#userreservationwaitandinprogress{{$request->id}}" data-bs-toggle="modal" role="button"
-                        class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
-
-
-                        @elseif($request->status =='Cancel by customer' || $request->status =='reject' )
-
-
-                        <a href="#canceleduserreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+                        @elseif($request->status=='Waiting')
+                        <a href="#userreservationwaitandinprogress{{$request->id}}" data-bs-toggle="modal" role="button"
                             class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
 
-                            @elseif($request->status =='Finished' )
+                            @elseif($request->status =='Cancel by customer' || $request->status =='reject' )
 
-                            <a href="#userfinishedreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+
+                            <a href="#canceleduserreservation{{$request->id}}" data-bs-toggle="modal" role="button"
                                 class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
 
-                                @elseif($request->status == 'Completed' )
-                                <a href="#usercompletedreservation{{$request->id}}" data-bs-toggle="modal" role="button"
+                                @elseif($request->status =='Finished' )
+
+                                <a href="#userfinishedreservation{{$request->id}}" data-bs-toggle="modal" role="button"
                                     class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
 
-                                    @elseif($request->status == 'Rejected' )
-                                    <a href="#userRejectedreservation{{$request->id}}" data-bs-toggle="modal"
+                                    @elseif($request->status == 'Completed' )
+                                    <a href="#usercompletedreservation{{$request->id}}" data-bs-toggle="modal"
                                         role="button"
                                         class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                                        @elseif($request->status == 'Posted by freelancer' )
-                                        <a href="#posted{{$request->id}}" data-bs-toggle="modal" role="button"
+
+                                        @elseif($request->status == 'Rejected' )
+                                        <a href="#userRejectedreservation{{$request->id}}" data-bs-toggle="modal"
+                                            role="button"
                                             class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                                            @else
-
-                                            <a href="#" role="button"
+                                            @elseif($request->status == 'Posted by freelancer' )
+                                            <a href="#posted{{$request->id}}" data-bs-toggle="modal" role="button"
                                                 class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                                                @endif
+                                                @else
 
-                                                <div class="d-flex justify-content-between align-items-baseline"
-                                                    style="margin-bottom: 35px;">
-                                                    <div class="d-flex justify-content-between align-items-baseline">
-                                                        <h3 class="reservation-id">{{ $request->random_id}} </h3>
-                                                    </div>
-                                                    @if($request->status == 'Pending')
-                                                    <p class="status gray" data-color="C4C3C3">
-                                                        {{__('request.'.$request->status)}}<i
-                                                            class="fa-solid fa-circle px-2 "></i></p>
+                                                <a href="#" role="button"
+                                                    class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                                                    @elseif( $request->status == 'Waiting' &&
-                                                    $request->date_time==now()->toDateString() && ($request->from<=now()
-                                                        ||$request->to <=now())) <p class=" status inprogress "
-                                                            data-color="C4C3C3"> {{__('request.In Process')}}<i
+                                                    @endif
+
+                                                    <div class="d-flex justify-content-between align-items-baseline"
+                                                        style="margin-bottom: 35px;">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-baseline">
+                                                            <h3 class="reservation-id">{{ $request->random_id}} </h3>
+                                                        </div>
+                                                        @if($request->status == 'Pending')
+                                                        <p class="status gray" data-color="C4C3C3">
+                                                            {{__('request.'.$request->status)}}<i
                                                                 class="fa-solid fa-circle px-2 "></i></p>
 
-                                                            @elseif($request->status == 'Waiting' )
-                                                            <p class="status inprogress">
-                                                                {{__('request.'.$request->status)}}<i
+                                                        @elseif( $request->status == 'Waiting' &&
+                                                        $request->date_time==now()->toDateString() && ($request->from
+                                                        <=now() ||$request->to <=now())) <p class=" status inprogress "
+                                                                data-color="C4C3C3"> {{__('request.In Process')}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
-                                                            @elseif($request->status == 'Finished')
-                                                            <p class="status gray" style="color: rgb(214, 214, 42);"
-                                                                data-color="C4C3C3">
-                                                                {{__('request.'.$request->status)}}<i
-                                                                    class="fa-solid fa-circle px-2 "></i></p>
-                                                            @elseif($request->status == 'Completed')
-                                                            <p class="status gray text-black" data-color="C4C3C3">
-                                                                {{__('request.'.$request->status)}}<i
-                                                                    class="fa-solid fa-circle px-2 "></i></p>
-                                                            @elseif($request->status == 'Cancel by
-                                                            customer'||$request->status == 'reject' ||$request->status
-                                                            == 'Rejected')
-                                                            <p class="status text-danger">
-                                                                {{__('request.'.$request->status)}}<i
-                                                                    class="fa-solid fa-circle px-2 "></i></p>
-                                                            @elseif($request->status == 'Posted by freelancer')
-                                                            <p class="status text-black-50" style="word-break:keep-all">
-                                                                {{__('request.'.$request->status)}}<i
-                                                                    class="fa-solid fa-circle px-2 "></i></p>
+
+                                                                @elseif($request->status == 'Waiting' )
+                                                                <p class="status inprogress">
+                                                                    {{__('request.'.$request->status)}}<i
+                                                                        class="fa-solid fa-circle px-2 "></i></p>
+                                                                @elseif($request->status == 'Finished')
+                                                                <p class="status gray" style="color: rgb(214, 214, 42);"
+                                                                    data-color="C4C3C3">
+                                                                    {{__('request.'.$request->status)}}<i
+                                                                        class="fa-solid fa-circle px-2 "></i></p>
+                                                                @elseif($request->status == 'Completed')
+                                                                <p class="status gray text-black" data-color="C4C3C3">
+                                                                    {{__('request.'.$request->status)}}<i
+                                                                        class="fa-solid fa-circle px-2 "></i></p>
+                                                                @elseif($request->status == 'Cancel by
+                                                                customer'||$request->status == 'reject'
+                                                                ||$request->status
+                                                                == 'Rejected')
+                                                                <p class="status text-danger">
+                                                                    {{__('request.'.$request->status)}}<i
+                                                                        class="fa-solid fa-circle px-2 "></i></p>
+                                                                @elseif($request->status == 'Posted by freelancer')
+                                                                <p class="status text-black-50"
+                                                                    style="word-break:keep-all">
+                                                                    {{__('request.'.$request->status)}}<i
+                                                                        class="fa-solid fa-circle px-2 "></i></p>
+                                                                @endif
+                                                    </div>
+
+                                                    <div class="d-flex">
+
+
+                                                        @if($request->date_time < now()->toDateString())
+                                                            <div class="d-flex flex-column px-2">
+                                                                <p class="m-0">{{__('request.Reserve date')}}</p>
+                                                                <span
+                                                                    class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
+                                                                <div>
+                                                                </div>
+                                                            </div>
+                                                            @else
+                                                            <div class="d-flex flex-column px-2">
+                                                                <p class="m-0">{{__('request.Reserve date')}} </p>
+                                                                <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
+                                                                <div>
+                                                                </div>
+                                                            </div>
                                                             @endif
-                                                </div>
-
-                                                <div class="d-flex">
 
 
-                                                    @if($request->date_time < now()->toDateString())
-                                                        <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('request.Reserve date')}}</p>
-                                                            <span
-                                                                class="text-danger">{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
-                                                            <div>
+
+                                                            @if($request->offer->first() !=null)
+                                                            <div class="d-flex flex-column px-2">
+                                                                <p class="m-0">{{__('request.Reserve date')}}</p>
+                                                                <span>{{$request->offer->first()->price }}</span>
+                                                                <div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        @else
-                                                        <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('request.Reserve date')}} </p>
-                                                            <span>{{date_format(new dateTime($request->date_time),'d/m/Y')}}</span>
-                                                            <div>
-                                                            </div>
-                                                        </div>
-                                                        @endif
+                                                            @else
 
-
-
-                                                        @if($request->offer->first() !=null)
-                                                        <div class="d-flex flex-column px-2">
-                                                            <p class="m-0">{{__('request.Reserve date')}}</p>
-                                                            <span>{{$request->offer->first()->price }}</span>
-                                                            <div>
-                                                            </div>
-                                                        </div>
-                                                        @else
-
-                                                        @endif
-                                                </div>
-                                            </a>
+                                                            @endif
+                                                    </div>
+                                                </a>
 
 
 
@@ -231,17 +235,17 @@
 
 
 
-                                            {{--  SHOW MODAL BASED ON REQUEST STATUS --}}
+                                                {{--  SHOW MODAL BASED ON REQUEST STATUS --}}
 
 
 
-                                            @if ($request->status=="Pending" && $request->offer->first())
-                                            @include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
-                                            @include("layouts.component.modal.userresrvationrequest.rejectoffer")
-                                            @include("layouts.component.modal.userresrvationrequest.payment")
+                                                @if ($request->status=="Pending" && $request->offer->first())
+                                                @include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
+                                                @include("layouts.component.modal.userresrvationrequest.rejectoffer")
+                                                @include("layouts.component.modal.userresrvationrequest.payment")
 
-                                            <script>
-                                                Moyasar.init({
+                                                <script>
+                                                    Moyasar.init({
 
         element: '#pay{{$request->id}} .visa',  
         amount: {{ App\Models\Reservation::findorfail($request->id)->offer()->first()->price  }}* 100,
@@ -259,57 +263,57 @@
         });
 
   
-                                            </script>
-                                            {{-- @elseif($request->status=="Pending" && $request->date_time< now()) --}}
+                                                </script>
+                                                {{-- @elseif($request->status=="Pending" && $request->date_time< now()) --}}
 
-                                            @elseif($request->status=="Pending")
-                                            @include("layouts.component.modal.userresrvationrequest.reservpending")
-                                            @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
-
-                                            @elseif(($request->status=='In Process' && $request->due_date < now()->
-                                                toDateString() ) ||$request->status=='Reject' )
-
-
-                                                @elseif($request->status=='Waiting' )
-                                                @include("layouts.component.modal.userresrvationrequest.waitandinprogress")
+                                                @elseif($request->status=="Pending")
+                                                @include("layouts.component.modal.userresrvationrequest.reservpending")
                                                 @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
 
-
-                                                @elseif($request->status=='Cancel by customer' ||
-                                                $request->status=='reject' )
-                                                @include("layouts.component.modal.userresrvationrequest.canceled")
-
-                                                @elseif($request->status=='Rejected' )
-                                                @include("layouts.component.modal.userresrvationrequest.Rejected")
+                                                @elseif(($request->status=='In Process' && $request->due_date < now()->
+                                                    toDateString() ) ||$request->status=='Reject' )
 
 
-                                                @elseif($request->status=='Finished' )
-                                                @include("layouts.component.modal.userresrvationrequest.finished")
-                                                {{-- @elseif($request->status == 'Cancel by customer'|| $request->status == 'cancel by freelancer')
+                                                    @elseif($request->status=='Waiting' )
+                                                    @include("layouts.component.modal.userresrvationrequest.waitandinprogress")
+                                                    @include("layouts.component.modal.userresrvationrequest.surdeletereservation")
+
+
+                                                    @elseif($request->status=='Cancel by customer' ||
+                                                    $request->status=='reject' )
+                                                    @include("layouts.component.modal.userresrvationrequest.canceled")
+
+                                                    @elseif($request->status=='Rejected' )
+                                                    @include("layouts.component.modal.userresrvationrequest.Rejected")
+
+
+                                                    @elseif($request->status=='Finished' )
+                                                    @include("layouts.component.modal.userresrvationrequest.finished")
+                                                    {{-- @elseif($request->status == 'Cancel by customer'|| $request->status == 'cancel by freelancer')
      @include("layouts.component.modal.userresrvationrequest.canceled") --}}
 
 
-                                                @elseif($request->status=='Completed' )
-                                                @include("layouts.component.modal.userresrvationrequest.review")
-                                                @include("layouts.component.modal.userresrvationrequest.completed")
-                                                @elseif($request->status=='Posted by freelancer' )
-                                                @include("layouts.component.modal.userresrvationrequest.postedreservation")
+                                                    @elseif($request->status=='Completed' )
+                                                    @include("layouts.component.modal.userresrvationrequest.review")
+                                                    @include("layouts.component.modal.userresrvationrequest.completed")
+                                                    @elseif($request->status=='Posted by freelancer' )
+                                                    @include("layouts.component.modal.userresrvationrequest.postedreservation")
 
 
-                                                @else
-
-
-
-                                                @endif
+                                                    @else
 
 
 
-                                                @include("layouts.component.modal.userRequests.chat")
+                                                    @endif
+
+
+
+                                                    @include("layouts.component.modal.userRequests.chat")
 
 
 
 
-                                                @endforeach
+                                                    @endforeach
 
         </div>
     </div>

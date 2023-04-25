@@ -59,7 +59,6 @@ class ReservationController extends Controller
     {
         $user_id = auth()->user()->id;
         $reservations = Reservation::where('user_id',$user_id)->orderBy('status')->get();
-        dd($reservations);
         return view('user.showreservation', compact('reservations'));
     }
     
