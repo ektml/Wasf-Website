@@ -57,7 +57,7 @@
                 </div>
 
                 <div
-                    class="btn-contianer d-flex flex-lg-row flex-column-reverse justify-content-evenly align-items-center my-3 gap-lg-2 gap-2">
+                    class="btn-contianer  d-flex flex-lg-row flex-column-reverse justify-content-evenly align-items-center my-3 gap-lg-2 gap-2">
                     <form action="{{ route('freelanc.reservation.reject', $request->id) }}" method="GET"
                         style="padding:0 ; margin:0;">
                         @csrf

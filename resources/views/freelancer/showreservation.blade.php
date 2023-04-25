@@ -255,9 +255,9 @@
                                                     @if ($request->status=="Pending" && $request->offer->first())
                                                     @include("layouts.component.modal.freelancerreservation.pendingcancancel")
 
-                                                   
+
                                                     @elseif($request->status=="Pending")
-                                                    @include("layouts.component.modal.freelancerreservation.PendingAcceptOrReject")
+                                                    @include("layouts.component.modal.freelancerreservation.pendingAcceptOrReject")
                                                     @include("layouts.component.modal.freelancerreservation.offer")
 
                                                     {{-- @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() ) ||$request->status=='Rejected' ) --}}
