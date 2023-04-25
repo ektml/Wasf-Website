@@ -117,11 +117,7 @@ $visa_pay_id=null;
         }
      }
 if($request->paytype=='wallet'){
-
-    $total_wallet_after_pay= User::findOrFail($userid)->wallet()->total - $total;
-    $payed=User::findOrFail($userid)->wallet()->update([
-                "total"=>$total_wallet_after_pay,
-               ]);
+    $payed = PaymentController::walletpay2($offer_total);
     $pay_type='wallet';
    }elseif($request->paytype=='visa'){
 
@@ -208,7 +204,7 @@ public function rejectOffer($id){
          
         ]);
 
-      $to = User::find($reservation->freelancer_id);
+        $to = $reservation->freelancer_id;
         $user_create=auth()->user()->id;
          Notification::send($to, new RejectOffer($user_create,$id,'reservation',  $reservation->random_id));
 
@@ -285,8 +281,8 @@ function  compelete($id){
       return  redirect()->back()->with(['message'=>"request update finished",'state'=>"completed",'id'=>$id]);
     
     }else{
-        toastr()->error('completed fail');
-        return  redirect()->back();
+         toastr()->success('completed successfully');
+      return  redirect()->back()->with(['message'=>"request update finished",'state'=>"completed",'id'=>$id]);
     }
 }
 
@@ -412,7 +408,7 @@ public function cancelReservation($id){
    
    $total_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->total;
    $edit_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->update([
-       'status'=>"refund",
+       'status'=>"refund"
    ]);
 
   $current_wallet= User::findOrFail(auth()->user()->id)->wallet->total;
@@ -426,7 +422,7 @@ public function cancelReservation($id){
    ]);
 
 
-   $to = User::findorfail($request->user_id);
+   $to = $request->user_id;
    $user_create=auth()->user()->id;
     Notification::send($to, new CancelReservationByFreelancer($user_create,$id,'reservation',  $request->random_id));
    return redirect()->back()->with(['state'=>"canceled","id"=>$id]);

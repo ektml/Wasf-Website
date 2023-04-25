@@ -165,7 +165,7 @@ class ReservationController extends Controller
     public function acceptReservation(Request $request,$id,$user_id){
 
         try{
-            $reservation=Reservation::findOrFail($id);
+        $reservation=Reservation::findOrFail($id);
         $offer_total=$reservation->offer->first()->price;
         $payed =false;
         $visa_pay_id=null;
@@ -178,7 +178,10 @@ class ReservationController extends Controller
                 }
              }
         if($request->paytype=='wallet'){
-            $payed = PaymentController::walletpay2($offer_total);
+            $total_wallet_after_pay= User::findOrFail($user_id)->wallet()->total - $total;
+            $payed=User::findOrFail($user_id)->wallet()->update([
+                        "total"=>$total_wallet_after_pay,
+                       ]);
             $pay_type='wallet';
            }elseif($request->paytype=='visa'){
         
@@ -260,6 +263,19 @@ class ReservationController extends Controller
     
 
 
+public function checkPayReservation($total){
+    try{
+       if(Payment::where('user_id',auth('api')->user()->id)->latest()->total ==$total){
+           return $this->returnData(200, 'Reservation payed Successfully');
+       }else{
+           return $this->returnError(400, 'Reservation payed Failed');
+       }
+       
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400, 'Reservation Accept Failed');
+    }
+}
 public function Reservationacceptdelay($id){
 try{
 
