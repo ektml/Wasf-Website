@@ -36,4 +36,8 @@ class Reservation extends Model
     public function delay(){
         return $this->hasMany(ReservationDelay::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

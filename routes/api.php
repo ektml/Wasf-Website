@@ -131,6 +131,7 @@ Route::get('cancelReservation/{id}', [ReservationController::class, 'cancelReser
 Route::post('sendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
 Route::post('editOffer/{id}', [FreelancerReservationController::class, 'editOffer'])->middleware('auth:api');
 Route::post('finish/{id}', [FreelancerReservationController::class, 'finish'])->middleware('auth:api');
+Route::get('getFreelancerReservationNew', [FreelancerReservationController::class, 'getFreelancerReservationNew'])->middleware('auth:api');
 
 
 // order
