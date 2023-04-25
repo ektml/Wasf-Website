@@ -266,7 +266,7 @@ class ReservationController extends Controller
 public function checkPayReservation($id,$total){
     try{
        $re=Reservation::findorfail($id);
-       if($re->payment()->latest()->first()->total ==$total){
+       if($re->payment()->latest()->first() !=null&&$re->payment()->latest()->first()->total ==$total){
            return $this->returnData(200, 'Reservation payed Successfully');
        }else{
            return $this->returnError(400, 'Reservation payed Failed');
