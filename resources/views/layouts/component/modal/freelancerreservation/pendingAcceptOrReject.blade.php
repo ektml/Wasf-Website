@@ -23,7 +23,7 @@
 
                 <div class="d-flex flex-column px-5">
                     <div class="d-flex justify-content-between">
-                        <p class="mb-0">{__('request.Customer Name')}}</p>
+                        <p class="mb-0">{{__('request.Customer Name')}}</p>
                         <p class="fw-900 mb-0 text-black">
                             {{ App\Models\User::where('id', $request->user_id)->first()->name }}</p>
                     </div>
@@ -65,7 +65,7 @@
                             class="btn btn-reject border-0 btn-modal rounded-pill " style=' width: 215px;'>
                     </form>
 
-                    <input type="button" name="status" value="{{__('request.accept')}}Accepted"
+                    <input type="button" name="status" value="{{__('request.accept')}}"
                         class="btn btn-accept border-0 btn-modal rounded-pill " style=' width:215px'
                         data-bs-toggle="modal" data-bs-target="#sendofferforreservation{{$request->id}}">
 
