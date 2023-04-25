@@ -230,7 +230,7 @@
 
                                                             @if($request->offer->first() !=null)
                                                             <div class="d-flex flex-column px-2">
-                                                                <p class="m-0">{{__('request.Reserve date')}}</p>
+                                                                <p class="m-0">{{__('request.price')}}</p>
                                                                 <span>{{$request->offer->first()->price }}</span>
                                                                 <div>
                                                                 </div>
