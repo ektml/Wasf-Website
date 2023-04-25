@@ -162,7 +162,7 @@
                                                         </div>
                                                         @if($request->status == 'Pending')
                                                         <p class="status gray" data-color="C4C3C3">
-                                                            {{ $request->status }}<i
+                                                            {{ __("request.".$request->status )}}<i
                                                                 class="fa-solid fa-circle px-2 "></i></p>
 
 
