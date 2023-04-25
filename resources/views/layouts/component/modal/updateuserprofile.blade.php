@@ -99,7 +99,8 @@
                         </div>
 
                         <div class="form-outline mb-2">
-                            <label class="form-label" for="confirm-pass2">{{__('translate.confirm new password')}}</label>
+                            <label class="form-label"
+                                for="confirm-pass2">{{__('translate.confirm new password')}}</label>
                             <div class="input-icon">
                                 <i class="fa fa-lock"></i>
                                 <input type="password" id="confirm-pass2" class="form-control"
@@ -107,8 +108,10 @@
                             </div>
                         </div>
 
-                        <div class="btn-contianer d-flex justify-content-center align-items-center">
-                            <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">{{__('translate.update')}}</button>
+                        <div
+                            class="btn-contianer d-flex flex-column-reverse flex-lg-row  justify-content-center align-items-center">
+                            <button type="submit"
+                                class="btn  btn-modal  my-3 btn-model-primary">{{__('translate.update')}}</button>
                         </div>
 
                         <div class="text-center">

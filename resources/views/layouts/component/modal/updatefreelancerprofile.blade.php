@@ -95,7 +95,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <div class="btn-contianer d-flex justify-content-space align-items-center mt-3">
+                    <div class="btn-contianer d-flex flex-column-reverse flex-lg-row justify-content-space align-items-center mt-3">
                         <button class="modal-color-text " data-bs-target="#changepassord" data-bs-toggle="modal"
                             type="button">{{__('translate.change password')}}</button>
                         <button type="submit"
