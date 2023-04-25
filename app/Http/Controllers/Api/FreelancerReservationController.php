@@ -11,6 +11,28 @@ class FreelancerReservationController extends Controller
 {
     use ApiResponseTrait;
 
+
+
+
+    public function getFreelancerReservationNew(){
+
+        try{
+            $reservation=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->get();
+
+            foreach($reservation as $reserv){
+
+                if($reserv->offer->first() !=null){
+                    
+                }
+            }
+
+            return $this->returnData(200, 'Reservations Returned Successfully',$reservation);
+
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, "offer not send");
+        }
+    }
     function sendOffer(Request $request ,$id){
         
         try{
@@ -71,4 +93,6 @@ class FreelancerReservationController extends Controller
         }
         
     }
+
+
 }
