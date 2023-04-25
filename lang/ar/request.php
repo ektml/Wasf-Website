@@ -56,6 +56,12 @@ return [
     "show private requests" => "عرض الطلبات الخاصة",
     "show public requests" => "عرض الطلبات العامة",
 
+
+
+    "date desending" => "تاريخ تنازلي" ,
+"datedesending" => "تاريخ تنازلي" ,
+"active" => "نشط" ,
+
      // reservation 
 
 

@@ -138,7 +138,7 @@ return [
   "edit password"=>"تعديل كلمة المرور",
   "update"=>"تحديث",
   'Reservation List'=>'قائمة الحجوزات',
-'filter by'=>'تصفية بواسطة',
+'filter by'=>'اختر حسب',
 "Your wallet is empty or haven't enough balance"=>"محفظتك فارغة أو ليست لديك رصيد كافٍ",
 'pay'=>'الدفع',
 'payment successfully'=>'تم الدفع بنجاح',

@@ -44,7 +44,7 @@
                 </button>
                 @foreach ( $filter as $f )
 
-                <span class=" px-2">{{ $f }} </span>
+                <span class=" px-2">{{ __("translate.". $f )}}</span>
                 @if(!$loop->last)
                 ,
                 @endif
@@ -62,25 +62,29 @@
                     <div>
                         <input type="checkbox" name="search[]" value="datedesending" id="datedesending"
                             @if(in_array('datedesending',$filter)) checked @endif>
-                        <label for="datedesending" class="bold">date desending</label>
+                        <label for="datedesending"
+                            class="bold">{{__('request.date desending')}}{{__('request.pending')}}
+                            {{__('request.Completed')}}</label>
                     </div>
 
                     <div>
                         <input type="checkbox" name="search[]" value="Pending" id="pendding"
                             @if(in_array('Pending',$filter)) checked @endif>
-                        <label for="pendding" class="bold">pending</label>
+                        <label for="pendding" class="bold">{{__('request.pending')}}
+                            {{__('request.Completed')}}</label>
                     </div>
 
                     <div>
                         <input type="checkbox" name="search[]" value="active" id="active"
                             @if(in_array('active',$filter)) checked @endif>
-                        <label for="active" class="bold">active</label>
+                        <label for="active" class="bold">{{__('request.active')}}</label>
                     </div>
 
                     <div>
                         <input type="checkbox" name="search[]" value="Completed" id="completed"
                             @if(in_array('Completed',$filter)) checked @endif>
-                        <label for="Completed" class="bold">completed</label>
+                        <label for="Completed" class="bold">{{__('request.pending')}}
+                            {{__('request.Completed')}}</label>
                     </div>
 
                     <div class="btn-contianer d-flex justify-content-center align-items-center">

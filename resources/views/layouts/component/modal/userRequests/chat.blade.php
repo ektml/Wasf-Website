@@ -106,7 +106,7 @@
             @csrf
             <input type="hidden" value="{{$request->id}}" name="request_id">
             <input type="hidden" value='
-        @if(isset($request->type) && in_array($request->type,[' public','private' ])) request @else reservation @endif '  name="type">
+        @if(isset($request->type) && in_array($request->type,['public','private' ])) request @else reservation @endif '  name="type">
         <input type="hidden" value="@if(auth()->user()->id ==$request->user_id)
         {{$request->freelancer_id}}
         @else

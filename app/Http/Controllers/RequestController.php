@@ -200,7 +200,12 @@ if($request->type=='public'){
                                     return $query->whereIn('status', $searchOptions);
                                 })
                                 ->get();
-               
+
+                if(in_array('all',request()->search)){
+                    $requests =Requests::where('type', 'public')
+                    ->where("user_id", auth()->user()->id)->get();
+                    array_push( $searchOptions,'all');
+                }
                 if(in_array('datedesending',request()->search)){
                 
                     $requests =$requests->sortByDesc('created_at');
@@ -253,6 +258,11 @@ if($request->type=='public'){
                                 })
                                 ->get();
                
+                if(in_array('all',request()->search)){
+                    $requests =Requests::where('type', 'private')
+                    ->where("user_id", auth()->user()->id)->get();
+                    array_push( $searchOptions,'all');
+                }
                 if(in_array('datedesending',request()->search)){
                     $requests =$requests->sortByDesc('created_at');
                     array_push( $searchOptions,'datedesending');
