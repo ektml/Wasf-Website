@@ -263,9 +263,9 @@ class ReservationController extends Controller
     
 
 
-public function checkPayReservation($total){
+public function checkPayReservation($id,$total){
     try{
-       if(Payment::where('user_id',auth('api')->user()->id)->latest()->total ==$total){
+       if(Reservation::where('id',$id)->where('user_id',auth('api')->user()->id)->payment->latest()->total ==$total){
            return $this->returnData(200, 'Reservation payed Successfully');
        }else{
            return $this->returnError(400, 'Reservation payed Failed');
