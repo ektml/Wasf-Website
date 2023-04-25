@@ -65,6 +65,10 @@
     border-radius: 5px;
  } */
 </style>
+
+<!-- Add the evo-calendar.css for styling -->
+<link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.2/evo-calendar/css/evo-calendar.min.css" />
 @endsection
 
 @section("nosearch","none !important")
