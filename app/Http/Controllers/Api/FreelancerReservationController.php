@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiResponseTrait;
+use App\Notifications\reservation\CancelReservationByFreelancer;
 
 
 class FreelancerReservationController extends Controller
@@ -141,6 +142,46 @@ class FreelancerReservationController extends Controller
         }
         
     }
+
+
+    public function freelancerCancelReservation($id){
+
+        try{
+
+            $request=Reservation::find($id);
+    
+            if($request->payment()->where('freelancer_id',$request->freelancer_id)->first()){
+           
+           $total_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->total;
+           $edit_pay=$request->payment()->where('freelancer_id',$request->freelancer_id)->first()->update([
+               'status'=>"refund",
+           ]);
+        
+          $current_wallet= User::findOrFail(auth('api')->user()->id)->wallet->total;
+           $current_wallet+= $total_pay;
+           $edit_offer= Reservation::findorfail($id)->offer()->where('freelancer_id',$request->freelancer_id)->update([
+               "status"=>'reject',
+           ]);
+        }
+           $edit_request= $request->update([
+               'status'=>"Cancel by freelancer"
+           ]);
+        
+        
+           $to = User::findorfail($request->user_id);
+           $user_create=auth('api')->user()->id;
+            Notification::send($to, new CancelReservationByFreelancer($user_create,$id,'reservation',  $request->random_id));
+          
+            return $this->returnData(200, 'reservation cancel  Successfully');
+        }
+    
+            
+                catch(\Exception $e){
+        echo $e;
+                    return $this->returnError(400, "reservation cancel failed");
+                }
+            
+        }
 
 
 }

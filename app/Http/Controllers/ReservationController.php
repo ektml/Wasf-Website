@@ -422,7 +422,7 @@ public function cancelReservation($id){
    ]);
 
 
-   $to = $request->user_id;
+   $to = User::findorfail($request->user_id);
    $user_create=auth()->user()->id;
     Notification::send($to, new CancelReservationByFreelancer($user_create,$id,'reservation',  $request->random_id));
    return redirect()->back()->with(['state'=>"canceled","id"=>$id]);
