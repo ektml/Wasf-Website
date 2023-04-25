@@ -349,12 +349,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js"></script>
 
 
-{{-- evo --}}
-<!-- Add jQuery library (required) -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
-<!-- Add the evo-calendar.js for.. obviously, functionality! -->
-<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.2/evo-calendar/js/evo-calendar.min.js"></script>
 
 <script>
     @if(Session::has('state') && Session::get('state')=="paydone")
@@ -733,9 +728,7 @@ calendars.clndr1.forward();
 
 
 
-$("#evoCalendar").evoCalendar({
-    calendarEvents: events,
-  });
+
 
 
 </script>
