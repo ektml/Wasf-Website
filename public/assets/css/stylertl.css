@@ -1747,7 +1747,8 @@ footer .row + p {
 }
 
 .notification .noti .image img {
-    width: 100%;
+    width: 85%;
+    height: 62%;
     border-radius: 50%;
 }
 
