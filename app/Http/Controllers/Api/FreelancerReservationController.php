@@ -25,12 +25,17 @@ class FreelancerReservationController extends Controller
             $reservation=[];
             foreach($re as $reserv){
 
+                if(!stripos($reserv->freelancer->profile_image, "Admin3/assets/images/users/")){
+                    $reserv->freelancer->profile_image = asset('Admin3/assets/images/users/'.$reserv->freelancer->profile_image);
+                }
                 if($reserv->offer->first() !=null  && in_array($reserv->offer->first()->status ,['active','pending'])){
                       continue;
                 }else{
                     $reservation[]= $reserv;
                 }
 
+                
+              
 
             }
 
@@ -53,6 +58,8 @@ class FreelancerReservationController extends Controller
             $reservation=[];
             foreach($re as $reserv){
 
+                if(!stripos($reserv->freelancer->profile_image, "Admin3/assets/images/users/")){
+                    $reserv->freelancer->profile_image = asset('Admin3/assets/images/users/'.$reserv->freelancer->profile_image);}
                 if($reserv->status =='Pending'){
                     if( $reserv->offer->first()!=null && in_array($reserv->offer->first()->status ,['active','pending'])){
                         $reservation[]= $reserv;
