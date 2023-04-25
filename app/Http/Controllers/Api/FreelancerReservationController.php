@@ -53,9 +53,14 @@ class FreelancerReservationController extends Controller
             $reservation=[];
             foreach($re as $reserv){
 
-                if($reserv->status =='Pending' && in_array($reserv->offer->first()->status ,['reject'])){
-                      continue;
-                }else{
+                if($reserv->status =='Pending'){
+                    if( $reserv->offer->first()!=null && in_array($reserv->offer->first()->status ,['active','pending'])){
+                        $reservation[]= $reserv;
+                  }else{
+                    continue;
+                  }
+                }
+                else{
                     $reservation[]= $reserv;
                 }
 
