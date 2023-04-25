@@ -303,6 +303,7 @@ return redirect()->back()->with(["state"=>'Waiting','id'=>$id]);
        'offer'=>['required'],
        
         ]);
+        
         $order=Reservation::find($id);
         $order->offer()->create([
          'type'=>"reservation",

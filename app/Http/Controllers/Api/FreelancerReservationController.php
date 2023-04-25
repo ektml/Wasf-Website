@@ -17,13 +17,18 @@ class FreelancerReservationController extends Controller
     public function getFreelancerReservationNew(){
 
         try{
-            $reservation=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->get();
+            $re=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->with(
+            'offer','user'
+            )->get();
 
-            foreach($reservation as $reserv){
+            $reservation=[];
+            foreach($re as $reserv){
 
-                if($reserv->offer->first() !=null){
-                    
+                if($reserv->offer->first() !=null  && !in_array($reserv->offer->first()->status ,['active','pending'])){
+                    $reservation[]= $reserv;  
                 }
+
+
             }
 
             return $this->returnData(200, 'Reservations Returned Successfully',$reservation);
