@@ -74,7 +74,11 @@ class FreelancerReservationController extends Controller
                     $reservation[]= $reserv;
                 }
 
-
+                if($reserv->status == 'Waiting' &&
+                $reserv->date_time==now()->toDateString() && ($reserv->from<=now()
+                    ||$reserv->to <=now())){
+                      $reserv->status="In Process";
+                    }
             }
 
             return $this->returnData(200, 'Reservations Returned Successfully',$reservation);

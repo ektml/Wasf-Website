@@ -253,10 +253,9 @@
                                                     {{--  SHOW MODAL BASED ON REQUEST STATUS --}}
 
 
-
                                                     @if ($request->status=="Pending" && $request->offer->first())
-
                                                     @include("layouts.component.modal.freelancerreservation.pendingcancancel")
+
                                                     @elseif($request->status=="Pending" && $request->date_time< now())
                                                         @elseif($request->status=="Pending")
                                                         @include("layouts.component.modal.freelancerreservation.PendingAcceptOrReject")

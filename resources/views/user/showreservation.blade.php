@@ -305,15 +305,7 @@
 
                                                 @include("layouts.component.modal.userRequests.chat")
 
-                                                {{-- @include("layouts.component.modal.userresrvationrequest.reservpending")
-@include("layouts.component.modal.userresrvationrequest.surdeletereservation") --}}
-                                                {{--  
-@include("layouts.component.modal.userRequests.payment")
-@include("layouts.component.modal.userresrvationrequest.offeracceptorreject")
-@include("layouts.component.modal.userresrvationrequest.waitwithcancel")
-@include("layouts.component.modal.userresrvationrequest.finished")
-@include("layouts.component.modal.userresrvationrequest.waitandinprogress")
-@include("layouts.component.modal.userresrvationrequest.completed") --}}
+          
 
 
                                                 @endforeach

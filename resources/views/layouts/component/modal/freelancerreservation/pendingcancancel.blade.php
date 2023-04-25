@@ -1,4 +1,4 @@
-<div id="feelancerReservationPendingcancancel{{ $request->id }}" class="modal offers fade" aria-hidden="true"
+<div id="feelancerReservationPendingcancancel{{$request->id }}" class="modal offers fade" aria-hidden="true"
     aria-labelledby="staticBackdropLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
