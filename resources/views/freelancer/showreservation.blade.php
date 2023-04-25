@@ -112,9 +112,8 @@
             <a href="#feelancerReservationPendingcancancel{{$request->id}}" data-bs-toggle="modal" role="button"
                 class="request  d-flex  flex-column px-3 py-3 position-relative mb-5">
 
-                @elseif($request->status=="Pending" && $request->date_time< now()) <a
-                    href="#penddingcancel{{$request->id}}" data-bs-toggle="modal" role="button"
-                    class="request  d-flex  flex-column px-3 py-3 position-r elative mb-5">
+                @elseif($request->status=="Pending" ) <a href="#penddingcancel{{$request->id}}" data-bs-toggle="modal"
+                    role="button" class="request  d-flex  flex-column px-3 py-3 position-r elative mb-5">
                     @elseif($request->status=="Pending")
                     <a href="#feelancerReservationPendingAceptOrReject{{ $request->id }}" data-bs-toggle="modal"
                         role="button" class="request d-flex flex-column px-3 py-3 position-relative mb-5">
@@ -256,49 +255,49 @@
                                                     @if ($request->status=="Pending" && $request->offer->first())
                                                     @include("layouts.component.modal.freelancerreservation.pendingcancancel")
 
-                                                    @elseif($request->status=="Pending" && $request->date_time< now())
-                                                        @elseif($request->status=="Pending")
-                                                        @include("layouts.component.modal.freelancerreservation.PendingAcceptOrReject")
-                                                        @include("layouts.component.modal.freelancerreservation.offer")
+                                                    @elseif($request->status=="Pending")
+                                                    @elseif($request->status=="Pending")
+                                                    @include("layouts.component.modal.freelancerreservation.PendingAcceptOrReject")
+                                                    @include("layouts.component.modal.freelancerreservation.offer")
 
-                                                        {{-- @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() ) ||$request->status=='Rejected' ) --}}
-                                                        @elseif($request->status=='Rejected' )
-                                                        @include("layouts.component.modal.freelancerreservation.offer")
-                                                        @include("layouts.component.modal.freelancerreservation.Rejectedandeditoffer")
+                                                    {{-- @elseif(($request->status=='In Process' && $request->due_date < now()->toDateString() ) ||$request->status=='Rejected' ) --}}
+                                                    @elseif($request->status=='Rejected' )
+                                                    @include("layouts.component.modal.freelancerreservation.offer")
+                                                    @include("layouts.component.modal.freelancerreservation.Rejectedandeditoffer")
 
-                                                        @elseif($request->status=='In Process' )
-
-
-                                                        @elseif($request->status=='Waiting' )
-                                                        @include("layouts.component.modal.freelancerreservation.waitingonly")
-                                                        @include("layouts.component.modal.freelancerreservation.requestdelay")
-
-                                                        @elseif($request->status=='reject' )
-                                                        @include("layouts.component.modal.freelancerreservation.rejected")
-                                                        @elseif($request->status=='Posted by freelancer' )
-                                                        @include("layouts.component.modal.freelancerreservation.posted")
-
-                                                        @elseif($request->status=='Cancel by customer' )
-                                                        @include("layouts.component.modal.userresrvationrequest.canceled")
-                                                        @elseif($request->status=='Finished' )
-                                                        @include("layouts.component.modal.freelancerreservation.finished")
-                                                        @elseif($request->status=='Completed' )
-                                                        @include("layouts.component.modal.freelancerreservation.completed")
-                                                        @elseif($request->status == 'Cancel by customer'||
-                                                        $request->status == 'Cancel by freelancer')
-                                                        @include("layouts.component.modal.userresrvationrequest.canceled")
-
-                                                        @else
+                                                    @elseif($request->status=='In Process' )
 
 
+                                                    @elseif($request->status=='Waiting' )
+                                                    @include("layouts.component.modal.freelancerreservation.waitingonly")
+                                                    @include("layouts.component.modal.freelancerreservation.requestdelay")
 
-                                                        @endif
+                                                    @elseif($request->status=='reject' )
+                                                    @include("layouts.component.modal.freelancerreservation.rejected")
+                                                    @elseif($request->status=='Posted by freelancer' )
+                                                    @include("layouts.component.modal.freelancerreservation.posted")
 
-                                                        @include("layouts.component.modal.freelancerreservation.suredelete")
-                                                        @include("layouts.component.modal.userRequests.chat")
+                                                    @elseif($request->status=='Cancel by customer' )
+                                                    @include("layouts.component.modal.userresrvationrequest.canceled")
+                                                    @elseif($request->status=='Finished' )
+                                                    @include("layouts.component.modal.freelancerreservation.finished")
+                                                    @elseif($request->status=='Completed' )
+                                                    @include("layouts.component.modal.freelancerreservation.completed")
+                                                    @elseif($request->status == 'Cancel by customer'||
+                                                    $request->status == 'Cancel by freelancer')
+                                                    @include("layouts.component.modal.userresrvationrequest.canceled")
+
+                                                    @else
 
 
-                                                        {{-- 
+
+                                                    @endif
+
+                                                    @include("layouts.component.modal.freelancerreservation.suredelete")
+                                                    @include("layouts.component.modal.userRequests.chat")
+
+
+                                                    {{-- 
 @include("layouts.component.modal.freelancerreservation.pendingcancancel")
 @include("layouts.component.modal.freelancerreservation.waitingwithrequest")
 @include("layouts.component.modal.freelancerreservation.waitingonly")
@@ -308,7 +307,7 @@
 @include("layouts.component.modal.freelancerreservation.suredelete")
 @include("layouts.component.modal.freelancerreservation.rejectedorcanceled") --}}
 
-                                                        @endforeach
+                                                    @endforeach
 
         </div>
     </div>
