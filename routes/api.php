@@ -134,7 +134,7 @@ Route::post('ReservationFinish/{id}', [FreelancerReservationController::class, '
 Route::get('getFreelancerReservationNew', [FreelancerReservationController::class, 'getFreelancerReservationNew'])->middleware('auth:api');
 Route::get('getFreelancerMyReservation', [FreelancerReservationController::class, 'getFreelancerMyReservation'])->middleware('auth:api');
 Route::get('acceptOfferReservation/{id}/{userid}', [FreelancerReservationController::class,'acceptReservation']);
-Route::get('ReservationRejectOffer/{id}', [FreelancerReservationController::class,'ReservationRejectOffer']);
+Route::get('ReservationRejectOffer/{id}', [FreelancerReservationController::class,'ReservationRejectOffer'])->middleware('auth:api');
 
 
 // order

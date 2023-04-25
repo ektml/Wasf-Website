@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
 use App\Notifications\reservation\AcceptOffer;
+use App\Notifications\reservation\RejectOffer;
 use App\Notifications\reservation\CancelReservationByCustomer;
 
 class ReservationController extends Controller
@@ -234,7 +235,9 @@ class ReservationController extends Controller
     
         if($reservation->status=='Pending'&&  $reservation->offer->first()->status=='pending' ){
             $reservation->update([
+
                 'status'=>'Rejected',
+
             ]);
     
             $reservation->offer()->first()->update([
@@ -243,12 +246,11 @@ class ReservationController extends Controller
             ]);
     
             $to = $reservation->freelancer_id;
-            $user_create=auth()->user()->id;
-             Notification::send($to, new RejectOffer($user_create,$id,'reservation',  $reservation->random_id));
+            $user_create=auth('api')->user()->id;
+             Notification::send($to, new RejectOffer($user_create , $id,'reservation',  $reservation->random_id));
     
         }
-    
-        return $this->returnError(400, 'Reservation Accept Failed');
+        return $this->returnData(200, 'Reservation reject  offer successfully');
         
     }catch(\Exception $e){
         echo $e;
