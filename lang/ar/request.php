@@ -61,6 +61,7 @@ return [
     "date desending" => "تاريخ تنازلي" ,
 "datedesending" => "تاريخ تنازلي" ,
 "active" => "نشط" ,
+'all'=>'الكل',
 
      // reservation 
 

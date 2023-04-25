@@ -59,6 +59,7 @@ return [
      "date desending"=>"date desending",
      "datedesending"=>"date desending",
      "active"=>"active",
+     "all"=>"all",
 
     
 

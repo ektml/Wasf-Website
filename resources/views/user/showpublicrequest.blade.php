@@ -61,7 +61,7 @@
                     <div>
                         <input type="checkbox" name="search[]" value="all" id="all" @if (in_array('newest',$filter))
                             checked @endif>
-                        <label for="all" class="bold">{{__('translate.all')}}</label>
+                        <label for="all" class="bold">{{__('request.all')}}</label>
                     </div>
 
                     <div>
