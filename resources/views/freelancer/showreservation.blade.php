@@ -255,7 +255,7 @@
                                                     @if ($request->status=="Pending" && $request->offer->first())
                                                     @include("layouts.component.modal.freelancerreservation.pendingcancancel")
 
-                                                    @elseif($request->status=="Pending")
+                                                   
                                                     @elseif($request->status=="Pending")
                                                     @include("layouts.component.modal.freelancerreservation.PendingAcceptOrReject")
                                                     @include("layouts.component.modal.freelancerreservation.offer")
