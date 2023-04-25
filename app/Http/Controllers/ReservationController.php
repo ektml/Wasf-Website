@@ -117,7 +117,11 @@ $visa_pay_id=null;
         }
      }
 if($request->paytype=='wallet'){
-    $payed = PaymentController::walletpay2($offer_total);
+
+    $total_wallet_after_pay= User::findOrFail($userid)->wallet()->total - $total;
+    $payed=User::findOrFail($userid)->wallet()->update([
+                "total"=>$total_wallet_after_pay,
+               ]);
     $pay_type='wallet';
    }elseif($request->paytype=='visa'){
 
