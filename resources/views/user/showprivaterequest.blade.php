@@ -63,15 +63,14 @@
                         <input type="checkbox" name="search[]" value="datedesending" id="datedesending"
                             @if(in_array('datedesending',$filter)) checked @endif>
                         <label for="datedesending"
-                            class="bold">{{__('request.date desending')}}{{__('request.pending')}}
-                            {{__('request.Completed')}}</label>
+                            class="bold">{{__('request.date desending')}}</label>
                     </div>
 
                     <div>
                         <input type="checkbox" name="search[]" value="Pending" id="pendding"
                             @if(in_array('Pending',$filter)) checked @endif>
                         <label for="pendding" class="bold">{{__('request.Pending')}}
-                            {{__('request.Completed')}}</label>
+                           </label>
                     </div>
 
                     <div>
@@ -83,7 +82,7 @@
                     <div>
                         <input type="checkbox" name="search[]" value="Completed" id="completed"
                             @if(in_array('Completed',$filter)) checked @endif>
-                        <label for="Completed" class="bold">{{__('request.pending')}}
+                        <label for="Completed" class="bold">
                             {{__('request.Completed')}}</label>
                     </div>
 
