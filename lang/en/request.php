@@ -28,6 +28,7 @@ return [
      "Completed"=>"Completed",
      "Complete"=>"Complete",
      "Cancel by customer"=>"Cancel by customer",
+     "Cancel by freelancer"=>"Cancel by freelancer",
      "Reject"=>"Reject",
      "Rejected"=>"Rejected",
      "reject"=>"reject",

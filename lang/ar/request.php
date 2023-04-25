@@ -26,6 +26,7 @@ return [
     "Completed"=>"تم الإنجاز",
     "Complete"=>"اكتمال",
     "Cancel by customer"=>"الغاء بواسطة العميل",
+    "Cancel by freelancer" =>"إلغاء بواسطة المستقل",
     "Reject"=>"رفض",
     "Rejected"=>"مرفوض",
     "reject"=>"رفض",
