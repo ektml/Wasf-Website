@@ -124,6 +124,9 @@
                     <a class="dropdown-item" href="{{route('freelanc.reservation')}}"><i
                             class="fa-regular fa-calendar font-size-18 align-middle me-1 text-muted"></i> <span
                             class="align-middle">{{__('translate.reservations')}}</span></a>
+                            <a class="dropdown-item" href="{{route("user.reservations")}}"><i
+                                class="fa-regular fa-calendar font-size-18 align-middle me-1 text-muted"></i> <span
+                                class="align-middle">{{__('translate.reservations')}}</span></a>
                     <a class="dropdown-item" href="{{route("freelanc.neworder")}}"><i
                             class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
                             class="align-middle">{{__('translate.orders')}}</span></a>
