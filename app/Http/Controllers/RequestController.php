@@ -215,7 +215,7 @@ if($request->type=='public'){
                 }
               
                 $aa=['In Process','Finished'];
-                $filter = array_diff($aa,$searchOptions);
+                $filter = array_diff($searchOptions,$aa);
 
                 $requests=$requests->paginate(20);
 
@@ -264,7 +264,8 @@ if($request->type=='public'){
                
                 }
                 $aa=['In Process','Finished'];
-                $filter = array_diff($aa,$searchOptions);
+                $filter = array_diff($searchOptions,$aa);
+
                 $requests=$requests->paginate(20);
              
         }else{
