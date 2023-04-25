@@ -28,9 +28,9 @@ class ReservationController extends Controller
                     $reserv->freelancer->profile_image = asset('Admin3/assets/images/users/'.$reserv->freelancer->profile_image);
               }
 
-              if($request->status == 'Waiting' &&
-              $request->date_time==now()->toDateString() && ($request->from<=now()
-                  ||$request->to <=now())){
+              if($reserv->status == 'Waiting' &&
+              $reserv->date_time==now()->toDateString() && ($reserv->from<=now()
+                  ||$reserv->to <=now())){
                     $reserv->status="In Process";
                   }
             }
