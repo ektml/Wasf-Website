@@ -198,12 +198,11 @@
                                                                     {{__('request.'.$request->status)}}<i
                                                                         class="fa-solid fa-circle px-2 "></i></p>
 
-                                                                @elseif($request->status == 'Cancel by
-                                                                customer'||$request->status == 'reject'
+                                            @elseif($request->status == 'Cancel by customer'||$request->status == 'reject'
                                                                 ||$request->status == 'Rejected'||
                                                                 $request->status=='Cancel by freelancer')
                                                                 <p class="status text-danger">
-                                                                    {{__('request.'.$request->status)}}<i
+                                                                {{__('request.'.$request->status)}}<i
                                                                         class="fa-solid fa-circle px-2 "></i></p>
 
                                                                 @endif
