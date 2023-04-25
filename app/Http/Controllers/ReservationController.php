@@ -104,8 +104,6 @@ class ReservationController extends Controller
 
 
 public function reservationPay(Request $request, $id){
-
-
 $reservation=Reservation::findOrFail($id);
 $offer_total=$reservation->offer->first()->price;
 $payed =false;
@@ -113,19 +111,11 @@ $visa_pay_id=null;
 
     if (request('id') && request('status')=='paid') {
         $paymentService=new \Moyasar\Providers\PaymentService();
-
-        
         $payment=$paymentService->fetch($request->id);
-
         if(trim($payment->amountFormat,config('moyasar.currency'))==$offer_total){
-
             $request->paytype='visa';
-
         }
-        
-
      }
-
 if($request->paytype=='wallet'){
     $payed = PaymentController::walletpay2($offer_total);
     $pay_type='wallet';
@@ -178,26 +168,26 @@ if($request->paytype=='wallet'){
 
 }
 
-public function reservationVisaPay(){
+// public function reservationVisaPay(){
 
-$reservation=Reservation::find(request()->res_id);
+// $reservation=Reservation::find(request()->res_id);
 
-   $price=$reservation->offer()->first()->price;
-    $Hp = new HayperpayController();
+//    $price=$reservation->offer()->first()->price;
+//     $Hp = new HayperpayController();
 
- $num=number_format($price, 2, '.', '');
-  $res= $Hp->checkout($num);
+//  $num=number_format($price, 2, '.', '');
+//   $res= $Hp->checkout($num);
 
 
-    $view = view('layouts.payment.ReservationHayperpay')->with(['responseData' => $res ,'res_id'=>$reservation->id])
-    ->renderSections();
+//     $view = view('layouts.payment.ReservationHayperpay')->with(['responseData' => $res ,'res_id'=>$reservation->id])
+//     ->renderSections();
  
- return response()->json([
-    'status' => true,
-    'content' => $view['main']
- ]);
+//  return response()->json([
+//     'status' => true,
+//     'content' => $view['main']
+//  ]);
 
-}
+// }
 
 
 public function rejectOffer($id){
@@ -303,7 +293,7 @@ return redirect()->back()->with(["state"=>'Waiting','id'=>$id]);
        'offer'=>['required'],
        
         ]);
-        
+
         $order=Reservation::find($id);
         $order->offer()->create([
          'type'=>"reservation",

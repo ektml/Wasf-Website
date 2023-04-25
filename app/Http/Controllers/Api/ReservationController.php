@@ -6,8 +6,10 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\Api\ApiResponseTrait;
+use App\Notifications\reservation\AcceptOffer;
 use App\Notifications\reservation\CancelReservationByCustomer;
 
 class ReservationController extends Controller
@@ -157,5 +159,72 @@ class ReservationController extends Controller
          echo $e;
          return $this->returnError(400, 'Reservation cancel Failed');
         }
+    }
+
+    public function acceptReservation(Request $request,$id,$user_id){
+
+        try{
+            $reservation=Reservation::findOrFail($id);
+        $offer_total=$reservation->offer->first()->price;
+        $payed =false;
+        $visa_pay_id=null;
+        
+            if (request('id') && request('status')=='paid') {
+                $paymentService=new \Moyasar\Providers\PaymentService();
+                $payment=$paymentService->fetch($request->id);
+                if(trim($payment->amountFormat,config('moyasar.currency'))==$offer_total){
+                    $request->paytype='visa';
+                }
+             }
+        if($request->paytype=='wallet'){
+            $payed = PaymentController::walletpay2($offer_total);
+            $pay_type='wallet';
+           }elseif($request->paytype=='visa'){
+        
+            $visa_pay_id=$payment->id;
+            $pay_type='bank';
+             $payed=true;
+             
+              
+           }elseif($request->paytype=='apay'){
+        
+            $pay_type='apay';
+           }else{
+        
+           }
+           
+           if($payed){
+        
+             $reservation->offer()->first()->update([
+                "status"=>'active',
+            ]);
+           
+            $reservation->update([
+               
+                'status'=>"Waiting"
+            ]);
+            $reservation->payment()->create([
+             'user_id'=>$userid,
+             'freelancer_id'=>$reservation->freelancer_id,
+             "status"=>'pending',
+             "pay_type"=>$pay_type,
+             "total"=>$offer_total,
+             "visapay_id"=> $visa_pay_id
+            ]);
+        
+            $freelancer=User::findorfail($reservation->freelancer_id);
+            
+             Notification::send($freelancer, new AcceptOffer($userid,$id,'reservation', $reservation->random_id));
+        
+             return $this->returnData(200, 'Reservation accept Successfully');
+           }
+        
+           return $this->returnError(400, 'Reservation Accept Failed');
+        
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, 'Reservation Accept Failed');
+        }
+        
     }
 }
