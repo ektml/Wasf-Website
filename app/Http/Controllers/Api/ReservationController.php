@@ -20,7 +20,7 @@ class ReservationController extends Controller
     public function allReservations(Request $request)
     {   
         try{
-            $reservations = Reservation::where('user_id', auth('api')->user()->id)->with('freelancer', 'offer')->get();
+            $reservations = Reservation::where('user_id', auth('api')->user()->id)->with('freelancer', 'offer','review')->get();
 
             foreach($reservations as $reserv){
 

@@ -19,7 +19,7 @@ class FreelancerReservationController extends Controller
 
         try{
             $re=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->with(
-            'offer','user'
+            'offer','user','review'
             )->get();
 
             $reservation=[];
@@ -52,7 +52,7 @@ class FreelancerReservationController extends Controller
 
         try{
             $re=Reservation::where('freelancer_id',auth('api')->user()->id)->with(
-            'offer','user'
+            'offer','user','review'
             )->get();
 
             $reservation=[];
