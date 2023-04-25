@@ -84,6 +84,7 @@
 
 
         <div class="cal1"></div>
+        <div id="evoCalendar"></div>
 
         <div class="section-header ">
             <h3 class="text-black">{{__('translate.Reservation List')}}</h3>
@@ -147,7 +148,8 @@
                                                         <h3 class="reservation-id">{{ $request->random_id}} </h3>
                                                     </div>
                                                     @if($request->status == 'Pending')
-                                                    <p class="status gray" data-color="C4C3C3"> {{__('request.'.$request->status)}}<i
+                                                    <p class="status gray" data-color="C4C3C3">
+                                                        {{__('request.'.$request->status)}}<i
                                                             class="fa-solid fa-circle px-2 "></i></p>
 
                                                     @elseif( $request->status == 'Waiting' &&
@@ -157,11 +159,13 @@
                                                                 class="fa-solid fa-circle px-2 "></i></p>
 
                                                             @elseif($request->status == 'Waiting' )
-                                                            <p class="status inprogress"> {{__('request.'.$request->status)}}<i
+                                                            <p class="status inprogress">
+                                                                {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Finished')
                                                             <p class="status gray" style="color: rgb(214, 214, 42);"
-                                                                data-color="C4C3C3"> {{__('request.'.$request->status)}}<i
+                                                                data-color="C4C3C3">
+                                                                {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Completed')
                                                             <p class="status gray text-black" data-color="C4C3C3">
@@ -170,7 +174,8 @@
                                                             @elseif($request->status == 'Cancel by
                                                             customer'||$request->status == 'reject' ||$request->status
                                                             == 'Rejected')
-                                                            <p class="status text-danger"> {{__('request.'.$request->status)}}<i
+                                                            <p class="status text-danger">
+                                                                {{__('request.'.$request->status)}}<i
                                                                     class="fa-solid fa-circle px-2 "></i></p>
                                                             @elseif($request->status == 'Posted by freelancer')
                                                             <p class="status text-black-50" style="word-break:keep-all">
@@ -339,6 +344,13 @@
 <script src="{{asset('assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clndr/1.4.7/clndr.min.js"></script>
 
+
+{{-- evo --}}
+<!-- Add jQuery library (required) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<!-- Add the evo-calendar.js for.. obviously, functionality! -->
+<script src="https://cdn.jsdelivr.net/npm/evo-calendar@1.1.2/evo-calendar/js/evo-calendar.min.js"></script>
 
 <script>
     @if(Session::has('state') && Session::get('state')=="paydone")
@@ -717,7 +729,9 @@ calendars.clndr1.forward();
 
 
 
-
+$("#evoCalendar").evoCalendar({
+    calendarEvents: events,
+  });
 
 
 </script>
