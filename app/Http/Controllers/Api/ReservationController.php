@@ -27,6 +27,12 @@ class ReservationController extends Controller
                 if(!stripos($reserv->freelancer->profile_image, "Admin3/assets/images/users/")){
                     $reserv->freelancer->profile_image = asset('Admin3/assets/images/users/'.$reserv->freelancer->profile_image);
               }
+
+              if($request->status == 'Waiting' &&
+              $request->date_time==now()->toDateString() && ($request->from<=now()
+                  ||$request->to <=now())){
+                    $reserv->status="In Process";
+                  }
             }
           
                 return $this->returnData(200, 'Reservations Returned Successfully', $reservations);
