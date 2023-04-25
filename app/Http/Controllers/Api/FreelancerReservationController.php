@@ -46,7 +46,7 @@ class FreelancerReservationController extends Controller
     public function getFreelancerMyReservation(){
 
         try{
-            $re=Reservation::where('status','Pending')->where('freelancer_id',auth('api')->user()->id)->with(
+            $re=Reservation::where('freelancer_id',auth('api')->user()->id)->with(
             'offer','user'
             )->get();
 
