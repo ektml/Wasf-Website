@@ -58,15 +58,10 @@ class ReservationController extends Controller
     public function show(Request $request)
     {
         $user_id = auth()->user()->id;
-        $reservations = Reservation::where('user_id', $user_id)->orderBy('status')->get();
+        $reservations = Reservation::where('user_id',$user_id)->orderBy('status')->get();
+        dd($reservations);
         return view('user.showreservation', compact('reservations'));
     }
-
-
-
-   
-
-
     
     public function changeStatus(Request $request , $id)
     {
