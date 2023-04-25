@@ -1105,10 +1105,10 @@ input.knob {
         flex-direction: column;
     }
 
-    .abouts .about-data .about-text {
+    /* .abouts .about-data .about-text {
         word-wrap: break-word;
         word-break: break-all;
-    }
+    } */
 }
 
 /* end about */
