@@ -208,7 +208,7 @@ class ReservationController extends Controller
                 'status'=>"Waiting"
             ]);
             $reservation->payment()->create([
-             'user_id'=>$userid,
+             'user_id'=>$user_id,
              'freelancer_id'=>$reservation->freelancer_id,
              "status"=>'pending',
              "pay_type"=>$pay_type,
@@ -218,7 +218,7 @@ class ReservationController extends Controller
         
             $freelancer=User::findorfail($reservation->freelancer_id);
             
-             Notification::send($freelancer, new AcceptOffer($userid,$id,'reservation', $reservation->random_id));
+             Notification::send($freelancer, new AcceptOffer($user_id,$id,'reservation', $reservation->random_id));
         
              return $this->returnData(200, 'Reservation accept Successfully');
            }
