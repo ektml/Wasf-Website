@@ -44,7 +44,7 @@
                 </button>
                 @foreach ( $filter as $f )
 
-                <span class=" px-2">{{ __("translate.". $f )}}</span>
+                <span class=" px-2">{{ __("request.". $f )}}</span>
                 @if(!$loop->last)
                 ,
                 @endif
@@ -70,7 +70,7 @@
                     <div>
                         <input type="checkbox" name="search[]" value="Pending" id="pendding"
                             @if(in_array('Pending',$filter)) checked @endif>
-                        <label for="pendding" class="bold">{{__('request.pending')}}
+                        <label for="pendding" class="bold">{{__('request.Pending')}}
                             {{__('request.Completed')}}</label>
                     </div>
 
