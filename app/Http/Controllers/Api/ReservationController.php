@@ -184,7 +184,7 @@ class ReservationController extends Controller
                 
              }
         if($request->paytype=='wallet'){
-            $total_wallet_after_pay= User::findOrFail($user_id)->wallet()->total - $total;
+            $total_wallet_after_pay= User::findOrFail($user_id)->wallet()->first()->total - $total;
             $payed=User::findOrFail($user_id)->wallet()->update([
                         "total"=>$total_wallet_after_pay,
                        ]);

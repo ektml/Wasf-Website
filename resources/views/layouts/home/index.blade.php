@@ -159,8 +159,6 @@ $(document).ready(function(){
 
 });
 @enderror
-
-
       @error('phone2')
     
     $(document).ready(function() {
