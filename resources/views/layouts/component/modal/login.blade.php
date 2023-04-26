@@ -16,9 +16,12 @@
             <label class="form-label" for="phone1">{{__('translate.Phone number')}}</label>
             <div class="input-icon">
               <i class="fa fa-mobile"></i>
-              <input type="text" id="phone1" class="form-control" name="phone" />
+              <input type="text" id="phone1" class="form-control @error('phone') is-invalid @enderror" name="phone" />
+              @error('phone')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
-          </div>
+          </div>  
 
           <!-- Password input -->
           <div class="form-outline mb-4 halfwidthinput">
