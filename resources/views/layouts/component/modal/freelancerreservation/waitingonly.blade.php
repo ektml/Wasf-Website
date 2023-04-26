@@ -66,7 +66,7 @@
                 <div class="btn-contianer d-flex flex-column justify-content-center align-items-center my-3">
 
              
-                    @if( $request->status == 'Waiting'  && $request->date_time==now()->toDateString() && ($request->from<=now() ))
+                    @if( $request->status == 'Waiting'  && $request->date_time<=now()->toDateString() && ($request->from<=now() ))
     
 
                     <form action="{{route('freelanc.reservation.finish',$request->id)}}" method="GET">
