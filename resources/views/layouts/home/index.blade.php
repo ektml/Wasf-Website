@@ -151,6 +151,15 @@ $(document).ready(function(){
     @endauth  
       })
 
+
+
+      if(error('phone') && error('password')){
+        $(document).ready(function() {
+
+$('#login').modal('show');
+ 
+});
+      }
        
    </script>
 </body>
