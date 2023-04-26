@@ -32,9 +32,9 @@
               <label class="form-label" for="phone">{{__('translate.Phone number')}}</label>
               <div class="input-icon">
                 <i class="fa fa-mobile"></i>
-                <input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror"
-                  value="{{old('phone')}}" name="phone" />
-                @error('phone')
+                <input type="text" id="phone" class="form-control @error('phone2') is-invalid @enderror"
+                  value="{{old('phone2')}}" name="phone2" />
+                @error('phone2')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
@@ -62,9 +62,9 @@
               <label class="form-label" for="password">{{__('translate.Password')}}</label>
               <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror"
-                  value="{{old('password')}}" name="password" />
-                @error('password')
+                <input type="password" id="password" class="form-control @error('password2') is-invalid @enderror"
+                  value="{{old('password2')}}" name="password2" />
+                @error('password2')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 

@@ -33,20 +33,20 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone'=>['required','min:9',Rule::unique('users', 'phone')->where(function ($query) {
+            'password2' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone2'=>['required','min:9',Rule::unique('users', 'phone')->where(function ($query) {
                 return $query;
             })],
             
-            'policy'=>['required']
+            'policy'=>['required']  
         ]);
 
         $user = User::create([
             'name' => $request->name,
-            'phone'=> $request->phone,
+            'phone'=> $request->phone2,
             'email' => $request->email,
             "profile_image"=> "default.png",
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password2),
         ]);
 
         Wallet::create([
