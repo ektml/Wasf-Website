@@ -135,7 +135,7 @@ Route::get('checkPayReservation/{id}/{total}', [ReservationController::class,'ch
 //freelancer reservation 
 Route::post('ReservationSendOffer/{id}', [FreelancerReservationController::class, 'sendOffer'])->middleware('auth:api');
 Route::post('ReservationEditOffer/{id}', [FreelancerReservationController::class, 'editOffer'])->middleware('auth:api');
-Route::post('ReservationFinish/{id}', [FreelancerReservationController::class, 'finish'])->middleware('auth:api');
+Route::get('ReservationFinish/{id}', [FreelancerReservationController::class, 'finish'])->middleware('auth:api');
 Route::get('getFreelancerReservationNew', [FreelancerReservationController::class, 'getFreelancerReservationNew'])->middleware('auth:api');
 Route::get('getFreelancerMyReservation', [FreelancerReservationController::class, 'getFreelancerMyReservation'])->middleware('auth:api');
 Route::get('freelancerCancelReservation/{id}', [FreelancerReservationController::class, 'freelancerCancelReservation'])->middleware('auth:api');
