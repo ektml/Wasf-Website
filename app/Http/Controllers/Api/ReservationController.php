@@ -184,16 +184,20 @@ class ReservationController extends Controller
                 
              }
         if($request->paytype=='wallet'){
-            $total_wallet_after_pay= User::findOrFail($user_id)->wallet->first()->total - $total;
-            $payed=User::findOrFail($user_id)->wallet()->update([
-                        "total"=>$total_wallet_after_pay,
-                       ]);
-            $pay_type='wallet';
-           }elseif($request->paytype=='visa'){
-        
-            $visa_pay_id=$payment->id;
-            $pay_type='bank';
-             $payed=true;
+            $total_wallet_after_pay= User::findOrFail($user_id)->wallet()->first()->total;
+            if( $total_wallet_after_pay >= $offer_total){
+                $total_wallet_after_pay = $total_wallet_after_pay - $offer_total;
+                $payed=User::findOrFail($user_id)->wallet()->update([
+                            "total"=>$total_wallet_after_pay,
+                           ]);
+                $pay_type='wallet';
+               }elseif($request->paytype=='visa'){
+            
+                $visa_pay_id=$payment->id;
+                $pay_type='bank';
+                 $payed=true;
+            }
+           
              
               
            }elseif($request->paytype=='apay'){
