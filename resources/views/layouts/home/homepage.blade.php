@@ -161,13 +161,23 @@
       });
    
 
-      if(error('phone') && error('password')){
+  @error('phone')
+    
         $(document).ready(function() {
 
-$('#login').modal('show');
+      $('#login').modal('show');
  
+    });
+    @enderror
+   
+      @error('phone2')
+    
+    $(document).ready(function() {
+
+  $('#signup').modal('show');
+
 });
-      }
+@enderror
   </script>
 </body>
 

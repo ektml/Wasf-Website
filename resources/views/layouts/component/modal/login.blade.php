@@ -29,7 +29,7 @@
             <label class="form-label" for="password1">{{__('translate.Password')}}</label>
             <div class="input-icon">
               <i class="fa fa-light fa-lock"></i>
-              <input type="password" id="password1" class="form-control" name="password" />
+              <input type="password" id="password1" class="form-control" name="password" style="margin-bottom: 30px;" />
               <button class="modal-color-text text-black-50 forget-pass" data-bs-target="#forgetpassword" type="button"
                 data-bs-toggle="modal">{{__('translate.Forgot password?')}}</button>
             </div>

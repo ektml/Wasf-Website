@@ -20,13 +20,10 @@
                 <i class="fa-regular fa-user"></i>
                 <input type="text" id="fullname" class="form-control @error('name') is-invalid @enderror"
                   value="{{old('name')}}" name="name" />
-                @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
-
               </div>
-
+              @error('name')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="form-outline mb-2 halfwidthinput">
               <label class="form-label" for="phone">{{__('translate.Phone number')}}</label>
@@ -34,13 +31,10 @@
                 <i class="fa fa-mobile"></i>
                 <input type="text" id="phone" class="form-control @error('phone2') is-invalid @enderror"
                   value="{{old('phone2')}}" name="phone2" />
-                @error('phone2')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
-
               </div>
-
+              @error('phone2')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="form-outline mb-2 halfwidthinput">
               <label class="form-label" for="email">{{__('translate.email')}}</label>
@@ -48,12 +42,11 @@
                 <i class="fa-regular fa-envelope"></i>
                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror"
                   value="{{old('email')}}" name="email" />
-                @error('email')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
 
               </div>
+              @error('email')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
 
             </div>
 
@@ -64,23 +57,22 @@
                 <i class="fa fa-lock"></i>
                 <input type="password" id="password" class="form-control @error('password2') is-invalid @enderror"
                   value="{{old('password2')}}" name="password2" />
-                @error('password2')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-
 
               </div>
-
+              @error('password2')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
             <div class="form-outline mb-2 halfwidthinput">
               <label class="form-label" for="confirm-pass">{{__('translate.confirm password')}}</label>
               <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input type="password" id="confirm-pass" class="form-control" name="password_confirmation" />
-                @error('password_confirmation')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
+
               </div>
+              @error('password_confirmation')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
 
             </div>
             <div class="form-outline mb-2 fullwidthinput d-flex ">
@@ -94,11 +86,12 @@
                 {{__('translate.and')}}<a href="#" class="privacy">{{__('translate.Privacy policy')}}</a>
               </label>
 
-              @error('policy')
-              <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
+
 
             </div>
+            @error('policy')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <!-- Submit button -->
             <div class="btn-contianer d-flex justify-content-center align-items-center">
               {{-- <button type="submit" class="btn  btn-modal  my-3 btn-model-primary">sign up</button> --}}

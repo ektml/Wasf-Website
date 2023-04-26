@@ -151,15 +151,24 @@ $(document).ready(function(){
     @endauth  
       })
 
+      @error('phone')
+    
+    $(document).ready(function() {
 
+  $('#login').modal('show');
 
-      if(error('phone') && error('password')){
-        $(document).ready(function() {
-
-$('#login').modal('show');
- 
 });
-      }
+@enderror
+
+
+      @error('phone2')
+    
+    $(document).ready(function() {
+
+  $('#signup').modal('show');
+
+});
+@enderror
        
    </script>
 </body>
