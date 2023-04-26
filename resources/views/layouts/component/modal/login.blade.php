@@ -33,7 +33,9 @@
               <button class="modal-color-text text-black-50 forget-pass" data-bs-target="#forgetpassword" type="button"
                 data-bs-toggle="modal">{{__('translate.Forgot password?')}}</button>
             </div>
-
+            @error('password')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
 
           <!-- 2 column grid layout for inline styling -->
