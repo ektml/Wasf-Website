@@ -447,13 +447,19 @@ class RequestController extends Controller
 
 
         public function requestEnoughtWallet($offer_id){
-            $price=Offer::findorfail($offer_id)->price;
-            $wallet=auth('api')->user()->wallet->total;
-            if($wallet>=$price){
-                return $this->returnData(200, 'Request Enought Wallet Successfully');
-            }else{
-                return $this->returnError(400, 'Request Enought Wallet Failed');
+            try{
+                $price=Offer::findorfail($offer_id)->price;
+                $wallet=auth('api')->user()->wallet->total;
+                if($wallet>=$price){
+                    return $this->returnData(200, 'Request Enought Wallet Successfully');
+                }else{
+                    return $this->returnError(400, 'Request Enought Wallet Failed');
+                }
+            }catch(\Exception $e){
+                echo $e;
+                return $this->returnError(400, 'there is error');
             }
+           
             }
 
 }
