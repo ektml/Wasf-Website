@@ -34,7 +34,7 @@ class PaymentController extends Controller
         $offer_id=$request->offer;
         $request_id=$request->request_id;
 
-      $offer=Offer::findorfail($offer_id);
+      $offer=Offer::find($offer_id);
 
         $offer_price= $offer->price;
         $freelancer_id= $offer->freelancer_id;
