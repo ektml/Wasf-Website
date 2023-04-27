@@ -297,6 +297,142 @@ class PaymentController extends Controller
 }
 
 
+public function checkEnoughWallet(Request $request,$user_id, $discount_key =null){
+    try{
+
+        $paydata=[];
+        $discount=null;
+        $discount_id=null;
+        $visa_pay_id=null;
+        $disvalue=0;      
+        
+        $user=User::find($user_id);
+        $user_wallet_total=$user->wallet()->first()->total;
+        
+        if(Discount::where('key',$discount_key)->exists()){
+         $discount=Discount::where('key',$discount_key)->first();
+         $discount_id=$discount->id;
+         $disvalue=$discount->value.$discount->by;
+        }
+       $cartController=  new CartController;
+         $paydata= $cartController->calcCartTotal($user_id,$discount);
+        
+         
+         if($user_wallet_total>=$paydata['total']){
+             
+            
+            return $this->returnData(201, 'wallet enough money');
+         }else{
+            return $this->returnError(400,'wallet  not enough money');
+         }
+    }catch(\Exception $e){
+        echo $e;
+        return $this->returnError(400,'wallet  not enough money');
+    }
+}
+
+public function cartWalletPay(Request $request,$user_id, $discount_key =null){
+    try{
+        $paydata=[];
+   $payed=false;
+   $discount=null;
+   $discount_id=null;
+   $visa_pay_id=null;
+   $disvalue=0;   
+   $payment_fail=false;     
+   
+   $user=User::find($user_id);
+   $user_wallet_total=$user->wallet()->first()->total;
+   
+   if(Discount::where('key',$discount_key)->exists()){
+    $discount=Discount::where('key',$discount_key)->first();
+    $discount_id=$discount->id;
+    $disvalue=$discount->value.$discount->by;
+   }
+  $cartController=  new CartController;
+    $paydata= $cartController->calcCartTotal($user_id,$discount);
+   
+    
+    if($user_wallet_total>=$paydata['total']){
+        
+        $user_wallet_total-=$paydata['total'];
+        $user->wallet()->update([
+        'total'=>$user_wallet_total,
+        ]);
+
+    }else{
+        $payment_fail=true;
+    }
+
+   
+
+           if( !$payment_fail && Cart::where('user_id',$user_id)->exists()){
+               
+
+                      $order= CardOrder::create([
+                      'user_id'=>$user_id,
+                      'price'=>$paydata['price'],
+                      'discount_id'=> $discount_id,
+                      'total'=>$paydata['total'],
+                       ]);
+                   foreach($paydata['cartadditems'] as $data ){
+                       $item =$data->cartsable;
+                       $selled= $item->sells()->create([
+                         "user_id"=>$user_id,
+                         "type"=>$data->type,
+                         'price'=>$data->price,
+                         'card_order_id'=>$order->id
+                          ]);
+                  
+                          foreach($item->file()->get() as $files){
+                              $selled->file()->create([
+                                  'name'=>$files->name,
+                                  'user_id'=>$user_id,
+                                  'type'=>$files->type,
+                                  'url'=>$files->url,
+                                  'size'=>$files->size,
+                              ]);
+                  
+                          }
+                         
+                         $tot= User::findOrFail($item->freelancer_id)->wallet->total ;
+                         $tot+= $data->price;
+                          User::findOrfail($item->freelancer_id)->wallet()->update([
+                              "total"=> $tot,
+                             ]);
+                             $order->payment()->create([
+                              'freelancer_id'=>$item->freelancer_id,
+                              'pay_type'=>'wallet',
+                              "status"=>'purchase',
+                              'total'=>$data->price,
+                              // 'discount'=>$disvalue,
+                              'visapay_id'=>$visa_pay_id, 
+                          ]);
+                    }
+                    $order->payment()->create([
+                       'user_id'=>$user_id,
+                       'pay_type'=>'wallet',
+                       "status"=>'purchase',
+                       'total'=>$paydata['total'],
+                       'discount'=>$disvalue,
+                       'visapay_id'=>$visa_pay_id,
+                   ]);
+               
+               //  empty cart 
+               Cart::where('user_id',$user_id)->delete();
+               return $this->returnData(201, 'pay done  Successfully');
+           }else{
+               return $this->returnError(400,'some thing went wrong'); 
+           }
+   }catch(\Exception $e){
+       
+       echo $e;
+       
+       return $this->returnError(400,'some thing went wrong');
+   }
+
+}
+
 public function checkCartPay($total){
     
     try{
