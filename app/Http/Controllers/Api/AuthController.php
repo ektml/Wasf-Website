@@ -104,7 +104,7 @@ class AuthController extends Controller
     public function userProfile($userid)
     {
         $user=User::find($userid);
-        $user->profile_image = asset('Admin3/assets/images/users/'.Auth::user()->profile_image);
+        $user->profile_image = asset('Admin3/assets/images/users/'. $user->profile_image->profile_image);
         return response()->json( $user);
     }
 
