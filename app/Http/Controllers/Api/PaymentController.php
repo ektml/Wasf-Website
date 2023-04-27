@@ -34,10 +34,10 @@ class PaymentController extends Controller
         $offer_id=$request->offer;
         $request_id=$request->request_id;
 
-      
+      $offer=Offer::findorfail($offer_id);
 
-        $offer_price= Offer::where('id',$offer_id)->first()->price;
-        $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
+        $offer_price= $offer->price;
+        $freelancer_id= $offer->freelancer_id;
 
         if($this->getuserwallet($user_id)>=$offer_price ){
             $total_wallet_after_pay=$this->getuserwallet($user_id)-$offer_price;
@@ -316,12 +316,8 @@ public function checkEnoughWallet(Request $request, $discount_key =null){
         }
        $cartController=  new CartController;
          $paydata= $cartController->calcCartTotal($user->id,$discount);
-        
-         
          if($user_wallet_total>=$paydata['total']){
-             
-            
-            return $this->returnData(201, 'wallet enough money');
+         return $this->returnData(201, 'wallet enough money');
          }else{
             return $this->returnError(400,'wallet  not enough money');
          }
