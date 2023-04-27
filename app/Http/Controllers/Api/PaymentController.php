@@ -28,16 +28,13 @@ class PaymentController extends Controller
 
 
     //for request only
-    function requestWalletPay( Request $request ,$user_id)
+    function requestWalletPay( Request $request,$user_id)
     {
         try{
         $offer_id=$request->offer;
         $request_id=$request->request_id;
-
-      $offer=Offer::find($offer_id);
-
-        $offer_price= $offer->price;
-        $freelancer_id= $offer->freelancer_id;
+        $offer_price= Offer::where('id',$offer_id)->first()->price;
+        $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
 
         return $this->returnData(201, compact('offer_price','freelancer_id'));
 
