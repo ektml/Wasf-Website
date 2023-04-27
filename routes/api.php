@@ -26,7 +26,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function($router){
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::get('/user-profile/{userid}', [AuthController::class, 'userProfile']);
+    
 });
 
 
@@ -65,7 +66,7 @@ Route::put('switchToFreelancerAccount/{user_id}', [UserController::class, 'switc
 Route::get('getCustomerById/{id}', [UserController::class, 'getCustomerById']);
 Route::put('editCustomer/{id}', [UserController::class, 'editCustomer']);
 Route::get('getWallet',[UserController::class,'getWallet'])->middleware('auth:api');
-
+Route::get('getWalletHistory',[UserController::class,'getWalletHistory'])->middleware('auth:api');
 
 
 // Freelancers

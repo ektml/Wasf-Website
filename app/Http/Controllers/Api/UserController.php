@@ -368,4 +368,34 @@ class UserController extends Controller
     }
     
 
+    public function getWalletHistory(){
+        
+        try{
+
+            $wallet_history=Payment::all()->sortByDesc("created_at");
+        $user_wallet_hestory=[];
+        $user_id=auth('api')->user()->id;
+        foreach($wallet_history as $wr){
+
+     if($wr->user_id == $user_id){
+
+               array_push( $user_wallet_hestory,$wr);
+
+    }
+
+     if($wr->freelancer_id == $user_id && ($wr->status=="purchase")){
+      
+        array_push($user_wallet_hestory,$wr);
+    }
+
+        }
+        return $this->returnData(200, 'wallet returned  Successfully', $user_wallet_hestory);
+                
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, 'wallet returned Failed');
+        }
+        
+    }
+
 }
