@@ -1,19 +1,20 @@
 <?php
 namespace App\Http\Controllers\Api;
-use App\Models\User;
+use Carbon\Carbon;
 use App\Models\File;
-use App\Models\Product;
+use App\Models\User;
 use App\Models\Photo;
 use App\Models\Selled;
-use Carbon\Carbon;
-use App\Models\Category;
+use App\Models\Payment;
+use App\Models\Product;
 use App\Models\Service;
-use App\Models\FreelancerService;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\FreelancerService;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Api\ApiResponseTrait;
 
 class UserController extends Controller
