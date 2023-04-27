@@ -39,6 +39,8 @@ class PaymentController extends Controller
         $offer_price= $offer->price;
         $freelancer_id= $offer->freelancer_id;
 
+        return $this->returnData(201, compact('offer_price','freelancer_id'));
+
         if($this->getuserwallet($user_id)>=$offer_price ){
             $total_wallet_after_pay=$this->getuserwallet($user_id)-$offer_price;
             $edit_offer= Requests::findorfail($request_id)->offer()->where('id',$offer_id)->update([
