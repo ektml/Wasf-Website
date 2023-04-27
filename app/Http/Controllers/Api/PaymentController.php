@@ -315,7 +315,7 @@ public function checkEnoughWallet(Request $request, $discount_key =null){
          $disvalue=$discount->value.$discount->by;
         }
        $cartController=  new CartController;
-         $paydata= $cartController->calcCartTotal($user_id,$discount);
+         $paydata= $cartController->calcCartTotal($user->id,$discount);
         
          
          if($user_wallet_total>=$paydata['total']){
