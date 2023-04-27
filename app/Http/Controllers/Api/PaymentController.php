@@ -28,7 +28,7 @@ class PaymentController extends Controller
 
 
     //for request only
-    function requestWalletPay( Request $request,$user_id)
+    function requestWalletPay(Request $request,$user_id)
     {
         try{
         $offer_id=$request->offer;
@@ -36,7 +36,7 @@ class PaymentController extends Controller
         $offer_price= Offer::where('id',$offer_id)->first()->price;
         $freelancer_id= Offer::where('id',$offer_id)->first()->freelancer_id;
 
-        return $this->returnData(201, compact('offer_price','freelancer_id'));
+        
 
         if($this->getuserwallet($user_id)>=$offer_price ){
             $total_wallet_after_pay=$this->getuserwallet($user_id)-$offer_price;
