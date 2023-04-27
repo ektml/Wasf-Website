@@ -108,6 +108,8 @@ Route::get('getPrivateRequestById/{id}', [RequestController::class, 'getPrivateR
 Route::post('changeStatus/{id}', [RequestController::class, 'changeStatus']);
 Route::post('requestWalletPay/{user_id}',[PaymentController::class,'requestWalletPay']);
 Route::get('requestBankPay/{id}/{request_id}/{offer_id}',[PaymentController::class,'requestBankPay']);
+
+Route::get('requestEnoughtWallet/{offerid}',[RequestController::class,"requestEnoughtWallet"])->middleware('auth:api');
 Route::get('cancelRequest/{id}',[RequestController::class,"cancelRequest"]);
 Route::post('rejectOfferRequest',[RequestController::class,'rejectOfferRequest']);
 Route::get('completeRequest/{id}',[RequestController::class,'completeRequest'])->middleware('auth:api');

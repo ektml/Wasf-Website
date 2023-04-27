@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers\Api;
-use App\Models\Requests;
-use App\Models\User;
 use App\Models\File;
+use App\Models\User;
+use App\Models\Offer;
+use App\Models\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -445,5 +446,14 @@ class RequestController extends Controller
         }
 
 
+        public function requestEnoughtWallet($offer_id){
+            $price=Offer::findorfail($offer_id)->price;
+            $wallet=auth('api')->user()->wallet->total;
+            if($wallet>=$price){
+                return $this->returnData(200, 'Request Enought Wallet Successfully');
+            }else{
+                return $this->returnError(400, 'Request Enought Wallet Failed');
+            }
+            }
 
 }
