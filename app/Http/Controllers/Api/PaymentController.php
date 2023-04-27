@@ -297,7 +297,7 @@ class PaymentController extends Controller
 }
 
 
-public function checkEnoughWallet(Request $request,$user_id, $discount_key =null){
+public function checkEnoughWallet(Request $request, $discount_key =null){
     try{
 
         $paydata=[];
@@ -306,7 +306,7 @@ public function checkEnoughWallet(Request $request,$user_id, $discount_key =null
         $visa_pay_id=null;
         $disvalue=0;      
         
-        $user=User::find($user_id);
+        $user=auth('api')->user();
         $user_wallet_total=$user->wallet()->first()->total;
         
         if(Discount::where('key',$discount_key)->exists()){

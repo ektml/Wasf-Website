@@ -54,7 +54,7 @@ Route::get('addServiceToFreelancer/{cat_id}/{serv_id}', [MainController::class, 
 Route::get('allProductsInCart',[MainController::class, 'allProductsInCart'])->middleware('auth:api')->middleware('auth:api');
 Route::get('cartBankPay/{user_id}/{discount_key?}',[PaymentController::class, 'cartBankPay']);
 Route::get('cartWalletPay/{user_id}/{discount_key?}',[PaymentController::class, 'cartWalletPay']);
-Route::get('checkEnoughWallet/{user_id}/{discount_key?}',[PaymentController::class, 'checkEnoughWallet']);
+Route::get('checkEnoughWallet/{discount_key?}',[PaymentController::class, 'checkEnoughWallet'])->middleware('auth:api');
 Route::get('checkCartPay/{total}',[PaymentController::class,'checkCartPay'])->middleware('auth:api');
 Route::post('cartCalcDiscount',[CartController::class, 'cartCalcDiscount'])->middleware('auth:api');
 
