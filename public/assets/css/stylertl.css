@@ -369,7 +369,9 @@ input[type="checkbox"] {
     margin-right: 5px;
     height: 49px;
     /* width: 172px; */
-    width: 240px;
+    /* width: 240px; */
+    padding: 10px 30px;
+    max-width: 100%;
     font-weight: 900;
     border-radius: 41px;
     display: flex;
@@ -628,7 +630,7 @@ ul.navbar-nav.me-auto.mb-2.mb-lg-0 {
 }
 
 .head a {
-    font-size: 18px;
+    font-size: 1.2rem;
 }
 .head .navbar-header {
     display: flex;
@@ -899,8 +901,7 @@ form.search-home button {
     position: relative;
 
     min-height: 60vh;
-
-    /* top:-48px; */
+    top:-2px;
 }
 
 /* .layout {
@@ -3459,4 +3460,8 @@ textarea:focus {
     margin-left:5px;
     margin-right:5px;
     font-size: 18px;
+}
+
+.iti__selected-flag {
+    margin-right: 20px;
 }
