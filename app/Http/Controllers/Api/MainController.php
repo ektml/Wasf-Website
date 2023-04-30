@@ -361,7 +361,7 @@ class MainController extends Controller
     }
 
 
-    public function sendContactUs(){
+    public function sendContactUs(Request $request){
         try{
             $request->validate([
                 'phone' => 'required|numeric',
@@ -378,7 +378,7 @@ class MainController extends Controller
             if($message){
                 return $this->returnData(200, 'Message Sent Successfully');
             }
-            
+
             return $this->returnError(400, 'Message Sent fail');
 
 
