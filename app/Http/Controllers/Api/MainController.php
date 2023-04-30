@@ -361,5 +361,31 @@ class MainController extends Controller
     }
 
 
+    public function sendContactUs(){
+        try{
+            $request->validate([
+                'phone' => 'required|numeric',
+                'subject' => 'required',
+                'message' => 'required',
+            ]);
+
+           $message= contactUs::create([
+                'phone' => $request->phone,
+                'subject' => $request->subject,
+                'message' => $request->message,
+           ]);
+
+            if($message){
+                return $this->returnData(200, 'Message Sent Successfully');
+            }
+            
+            return $this->returnError(400, 'Message Sent fail');
+
+
+        }catch(\Exception $e){
+            echo $e;
+            return $this->returnError(400, "send fail");
+        }
+    }
 
 }

@@ -35,6 +35,7 @@ Route::get('/user-profile/{userid}', [AuthController::class, 'userProfile']);
 
 // Settings
 Route::get('contactUs', [MainController::class, 'contactUs']);
+Route::post('sendContactUs', [MainController::class, 'sendContactUs']);
 Route::get('aboutUs', [MainController::class, 'aboutUs']);
 
 
