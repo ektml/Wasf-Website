@@ -65,7 +65,7 @@ class RequestController extends Controller
             'category_id' => 'required',
             'service_id' => 'nullable',
             'title' => 'required|string',
-             'attachment' => 'required|file|max:200',
+            'attachment' => 'required|max:512000',
             'description' => 'required',
             'due_date' => 'required|date',
             'type' => [\Illuminate\Validation\Rule::in(['public','private'])]
